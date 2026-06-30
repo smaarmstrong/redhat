@@ -86,7 +86,12 @@ ${c_yellow}One-time host setup needed.${c_off} Run these once, then re-run this 
   ${c_green}sudo systemctl enable --now libvirtd${c_off}
   ${c_green}sudo usermod -aG libvirt "\$USER"${c_off}
 
-Then log out and back in (or run \`newgrp libvirt\`) so the group takes effect.
+The group change needs your session to re-read your groups. Pick one:
+
+  - ${c_green}Quickest (this terminal only):${c_off} run  ${c_green}newgrp libvirt${c_off}  then re-run this script
+    in the same terminal. Check it worked: ${c_green}id -nG | grep libvirt${c_off}
+  - ${c_green}Everywhere:${c_off} log out of your desktop and back in (GNOME: top-right
+    system menu -> power/your name -> Log Out), or just ${c_green}reboot${c_off}.
 EOF
     die "host not ready"
   fi
