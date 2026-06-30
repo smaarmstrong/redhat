@@ -1,0 +1,9 @@
+# VM artifacts
+*.qcow2
+*.img
+*.iso
+
+# local state
+.venv/
+__pycache__/
+*.log
