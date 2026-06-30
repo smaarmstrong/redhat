@@ -1,6 +1,6 @@
 # redhat
 
-A terminal-native, Duolingo-style trainer for the **RHCSA** (and later **RHCE**) exams.
+A terminal-native, gamified trainer for the **RHCSA** (and later **RHCE**) exams.
 
 Instead of flashcards, you practice on a **real Rocky Linux 9 VM** — graded the way
 the actual exam is graded: by checking the *end state* of the system, never by
@@ -16,7 +16,7 @@ same loop:
 pick a task  →  do it on a real Rocky 9 box  →  grade the end state  →  pass/fail  →  retry
 ```
 
-Over time this grows the things that make Duolingo sticky — a prerequisite skill
+Over time this grows the things that make practice sticky — a prerequisite skill
 graph (atomic skills → composite exam-shaped scenarios), spaced repetition, and a
 daily streak. But the foundation is the task → grade → retry loop on real infra.
 
