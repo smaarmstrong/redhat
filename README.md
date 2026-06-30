@@ -57,16 +57,18 @@ sudo usermod -aG libvirt "$USER"
 The last command adds you to the `libvirt` group, but your session won't see it
 until it re-reads your groups. Either:
 
-- **Quickest (one terminal):** run `newgrp libvirt`, then run the provision script
-  in that same terminal. Confirm with `id -nG | grep libvirt`.
+- **Quickest (one terminal):** run `newgrp libvirt` **on its own**, then run the
+  commands below in that same terminal. Don't paste `newgrp` together with later
+  commands — it starts a new shell and swallows whatever you pasted after it.
 - **Everywhere:** log out of your desktop and back in (GNOME: top-right system menu
   → power/your name → **Log Out**), or `reboot`.
 
-Then build the VM:
+Confirm the group is active, then build the VM (run these as separate commands):
 
 ```bash
-./setup/provision-fedora.sh      # build it (downloads Rocky 9 image, ~600 MB once)
-./setup/connect.sh               # SSH in   (or: ./setup/connect.sh --console)
+id -nG | grep libvirt             # should print a line containing 'libvirt'
+./setup/provision-fedora.sh       # build it (downloads Rocky 9 image, ~600 MB once)
+./setup/connect.sh                # SSH in   (or: ./setup/connect.sh --console)
 ./setup/provision-fedora.sh --force   # tear down and rebuild from scratch
 ```
 
