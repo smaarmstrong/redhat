@@ -41,8 +41,12 @@ redhat/
 ├── setup/     # runs on the HOST (Fedora/Mac) to build the Rocky 9 VM
 ├── games/     # the console learning tools — run INSIDE the Rocky VM
 ├── tasks/     # task definitions + graders (prompt / setup / grade / solution)
+├── docs/      # reference, incl. the exam objectives that drive the curriculum
 └── README.md
 ```
+
+The exam objectives — the canonical content map every task maps back to — live in
+[docs/rhcsa-objectives.md](docs/rhcsa-objectives.md) (with a coverage checklist).
 
 ## Host setup (one time)
 
