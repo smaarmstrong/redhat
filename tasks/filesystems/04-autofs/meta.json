@@ -1,0 +1,7 @@
+{
+  "title": "Autofs auto-mount of an NFS share",
+  "domain": "File systems",
+  "objective": "Configure autofs",
+  "est_min": 12,
+  "needs": ""
+}

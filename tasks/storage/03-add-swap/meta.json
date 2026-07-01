@@ -1,0 +1,7 @@
+{
+  "title": "Add a persistent swap partition",
+  "domain": "Local storage",
+  "objective": "Add new partitions, logical volumes, and swap non-destructively",
+  "est_min": 8,
+  "needs": "spare-disk"
+}

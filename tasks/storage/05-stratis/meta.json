@@ -1,0 +1,7 @@
+{
+  "title": "Stratis pool and filesystem, mounted persistently",
+  "domain": "Local storage",
+  "objective": "Create and delete logical volumes",
+  "est_min": 12,
+  "needs": "spare-disk"
+}

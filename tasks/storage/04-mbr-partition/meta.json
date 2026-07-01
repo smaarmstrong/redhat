@@ -1,0 +1,7 @@
+{
+  "title": "MBR partition with ext4, mounted by UUID",
+  "domain": "Local storage",
+  "objective": "List, create, and delete partitions on GPT disks",
+  "est_min": 10,
+  "needs": "spare-disk"
+}

@@ -1,0 +1,7 @@
+{
+  "title": "VFAT filesystem mounted by UUID",
+  "domain": "File systems",
+  "objective": "Create, mount, unmount, and use VFAT, ext4, and XFS file systems",
+  "est_min": 10,
+  "needs": "spare-disk"
+}
