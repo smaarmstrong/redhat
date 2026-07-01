@@ -1,0 +1,7 @@
+{
+  "title": "Set a persistent default umask of 077",
+  "domain": "Security",
+  "objective": "Manage default file permissions",
+  "est_min": 5,
+  "needs": ""
+}

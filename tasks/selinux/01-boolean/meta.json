@@ -1,0 +1,7 @@
+{
+  "title": "Enable an SELinux boolean persistently",
+  "domain": "SELinux",
+  "objective": "Use Boolean settings to modify system SELinux settings",
+  "est_min": 3,
+  "needs": ""
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Restore the default SELinux context on a mislabelled file",
+  "domain": "Security",
+  "objective": "Restore default file contexts",
+  "est_min": 5,
+  "needs": ""
+}

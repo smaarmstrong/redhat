@@ -1,0 +1,7 @@
+{
+  "title": "Set and persist an SELinux file context",
+  "domain": "SELinux",
+  "objective": "Restore default file contexts",
+  "est_min": 5,
+  "needs": ""
+}

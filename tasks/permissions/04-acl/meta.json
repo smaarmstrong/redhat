@@ -1,0 +1,7 @@
+{
+  "title": "Grant read access with an ACL",
+  "domain": "Permissions",
+  "objective": "List, set, and change standard ugo/rwx permissions",
+  "est_min": 5,
+  "needs": ""
+}

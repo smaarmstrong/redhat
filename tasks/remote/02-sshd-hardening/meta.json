@@ -1,0 +1,7 @@
+{
+  "title": "Disable SSH password authentication",
+  "domain": "Remote & SSH",
+  "objective": "Configure key-based authentication for SSH",
+  "est_min": 6,
+  "needs": ""
+}
