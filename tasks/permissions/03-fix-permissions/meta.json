@@ -1,0 +1,7 @@
+{
+  "title": "Fix a broken file permission",
+  "domain": "Permissions",
+  "objective": "Diagnose and correct file permission problems",
+  "est_min": 6,
+  "needs": ""
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Permanently remove the cockpit service from the firewall",
+  "domain": "Security",
+  "objective": "Restrict network access using firewalld and firewall-cmd",
+  "est_min": 4,
+  "needs": ""
+}

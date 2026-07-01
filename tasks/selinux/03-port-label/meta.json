@@ -1,0 +1,7 @@
+{
+  "title": "Label a TCP port for SELinux",
+  "domain": "SELinux",
+  "objective": "Manage SELinux port labels",
+  "est_min": 4,
+  "needs": ""
+}

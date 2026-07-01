@@ -1,0 +1,7 @@
+{
+  "title": "Permanently open TCP port 8080",
+  "domain": "Firewall",
+  "objective": "Restrict network access using firewalld and firewall-cmd",
+  "est_min": 3,
+  "needs": ""
+}

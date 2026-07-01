@@ -1,0 +1,7 @@
+{
+  "title": "Permanently allow the http service",
+  "domain": "Firewall",
+  "objective": "Configure firewall settings using firewall-cmd/firewalld",
+  "est_min": 3,
+  "needs": ""
+}

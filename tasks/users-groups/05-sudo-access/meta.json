@@ -1,0 +1,7 @@
+{
+  "title": "Grant a user full sudo access",
+  "domain": "Users & groups",
+  "objective": "Configure privileged access (sudo)",
+  "est_min": 4,
+  "needs": ""
+}

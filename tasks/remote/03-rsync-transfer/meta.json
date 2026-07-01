@@ -1,0 +1,7 @@
+{
+  "title": "Mirror a directory with rsync",
+  "domain": "Remote & SSH",
+  "objective": "Securely transfer files between systems",
+  "est_min": 5,
+  "needs": ""
+}
