@@ -1,0 +1,7 @@
+{
+  "title": "Install a Flatpak application (bonus)",
+  "domain": "Software management",
+  "objective": "Install and remove Flatpak software packages",
+  "est_min": 6,
+  "needs": ""
+}

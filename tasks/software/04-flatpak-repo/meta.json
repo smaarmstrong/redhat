@@ -1,0 +1,7 @@
+{
+  "title": "Add the Flathub Flatpak remote (bonus)",
+  "domain": "Software management",
+  "objective": "Configure access to Flatpak repositories",
+  "est_min": 5,
+  "needs": ""
+}
