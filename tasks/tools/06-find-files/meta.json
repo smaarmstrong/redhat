@@ -1,0 +1,7 @@
+{
+  "title": "Find large .conf files under /etc",
+  "domain": "Essential tools",
+  "objective": "Create, delete, copy, and move files and directories",
+  "est_min": 5,
+  "needs": ""
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Start a network connection automatically at boot",
+  "domain": "Networking",
+  "objective": "Configure network services to start automatically at boot",
+  "est_min": 4,
+  "needs": ""
+}

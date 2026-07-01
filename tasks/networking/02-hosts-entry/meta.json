@@ -1,0 +1,7 @@
+{
+  "title": "Add a static /etc/hosts entry",
+  "domain": "Networking",
+  "objective": "Configure hostname resolution",
+  "est_min": 3,
+  "needs": ""
+}

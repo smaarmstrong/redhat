@@ -1,0 +1,7 @@
+{
+  "title": "Write a conditional path-check script",
+  "domain": "Shell scripting",
+  "objective": "Conditionally execute code (use of: if, test, [], etc.)",
+  "est_min": 5,
+  "needs": ""
+}

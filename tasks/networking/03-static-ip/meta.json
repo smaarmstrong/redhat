@@ -1,0 +1,7 @@
+{
+  "title": "Configure a static IPv4 connection",
+  "domain": "Networking",
+  "objective": "Configure IPv4 and IPv6 addresses",
+  "est_min": 6,
+  "needs": ""
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Enable a module stream (bonus)",
+  "domain": "Software management",
+  "objective": "Install and update software packages from Red Hat Content Delivery Network, a remote repository, or from the local file system",
+  "est_min": 6,
+  "needs": ""
+}

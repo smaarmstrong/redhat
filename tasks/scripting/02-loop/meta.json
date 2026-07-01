@@ -1,0 +1,7 @@
+{
+  "title": "Write a loop that sums arguments",
+  "domain": "Shell scripting",
+  "objective": "Use Looping constructs (for, etc.) to process file, command line input",
+  "est_min": 5,
+  "needs": ""
+}

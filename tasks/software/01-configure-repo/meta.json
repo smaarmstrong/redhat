@@ -1,0 +1,7 @@
+{
+  "title": "Configure a local RPM repository",
+  "domain": "Software management",
+  "objective": "Configure access to RPM repositories",
+  "est_min": 5,
+  "needs": ""
+}

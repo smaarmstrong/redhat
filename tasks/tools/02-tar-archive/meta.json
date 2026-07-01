@@ -1,0 +1,7 @@
+{
+  "title": "Create a gzip-compressed tar archive",
+  "domain": "Essential tools",
+  "objective": "Archive, compress, unpack, and uncompress files using tar, gzip, and bzip2",
+  "est_min": 4,
+  "needs": ""
+}

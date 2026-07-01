@@ -1,0 +1,7 @@
+{
+  "title": "Build a sorted user list with redirection",
+  "domain": "Essential tools",
+  "objective": "Use input-output redirection (>, >>, |, 2>, etc.)",
+  "est_min": 3,
+  "needs": ""
+}
