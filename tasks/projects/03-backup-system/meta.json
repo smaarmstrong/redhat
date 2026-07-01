@@ -1,0 +1,7 @@
+{
+  "title": "Build a scheduled /etc backup with a script, service, and timer",
+  "domain": "Projects",
+  "objective": "Composite scenario",
+  "est_min": 20,
+  "needs": ""
+}

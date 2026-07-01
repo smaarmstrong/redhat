@@ -1,0 +1,7 @@
+{
+  "title": "Provision a collaborative, SELinux-correct, firewalled web content area",
+  "domain": "Projects",
+  "objective": "Composite scenario",
+  "est_min": 25,
+  "needs": "spare-disk"
+}
