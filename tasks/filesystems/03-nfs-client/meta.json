@@ -1,0 +1,7 @@
+{
+  "title": "Mount an NFS share persistently",
+  "domain": "File systems",
+  "objective": "Mount and unmount network file systems using NFS",
+  "est_min": 10,
+  "needs": ""
+}

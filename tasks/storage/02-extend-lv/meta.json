@@ -1,0 +1,7 @@
+{
+  "title": "Extend a logical volume and grow its filesystem",
+  "domain": "Local storage",
+  "objective": "Extend existing logical volumes",
+  "est_min": 8,
+  "needs": "spare-disk"
+}

@@ -1,0 +1,7 @@
+{
+  "title": "LVM logical volume with XFS mounted at /data",
+  "domain": "Local storage",
+  "objective": "Create and delete logical volumes",
+  "est_min": 10,
+  "needs": "spare-disk"
+}
