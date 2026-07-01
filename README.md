@@ -39,14 +39,21 @@ daily streak. But the foundation is the task → grade → retry loop on real in
 ```
 redhat/
 ├── setup/     # runs on the HOST (Fedora/Mac) to build the Rocky 9 VM
-├── games/     # the console learning tools — run INSIDE the Rocky VM
-├── tasks/     # task definitions + graders (prompt / setup / grade / solution)
-├── docs/      # reference, incl. the exam objectives that drive the curriculum
+├── games/     # shared console engine (practice runner + grading lib) — run in the VM
+├── rhcsa/     # RHCSA track — tasks/ (graded Bash tasks) + docs/ (objectives, format)
+├── rhce/      # RHCE track  — tasks/ (Ansible tasks) + docs/ (objectives, format)
 └── README.md
 ```
 
-The exam objectives — the canonical content map every task maps back to — live in
-[docs/rhcsa-objectives.md](docs/rhcsa-objectives.md) (with a coverage checklist).
+The trainer covers **two exams**, kept separate:
+
+- **RHCSA (EX200)** — `rhcsa/tasks/`: graded Bash tasks on a real Rocky 9 system.
+- **RHCE (EX294)** — `rhce/tasks/`: Ansible playbook tasks graded by running them and
+  checking end state. `games/practice list` shows both tracks.
+
+Each track's objectives (with a coverage checklist) live in
+[rhcsa/docs/objectives.md](rhcsa/docs/objectives.md) and
+[rhce/docs/objectives.md](rhce/docs/objectives.md).
 
 ## Host setup (one time)
 
@@ -92,11 +99,11 @@ git clone https://github.com/smaarmstrong/redhat ~/redhat && cd ~/redhat
 ```
 
 See [games/README.md](games/README.md) for details and
-[docs/TASK-FORMAT.md](docs/TASK-FORMAT.md) for how tasks are authored.
+[rhcsa/docs/TASK-FORMAT.md](rhcsa/docs/TASK-FORMAT.md) for how tasks are authored.
 
 ## Status
 
 Working trainer: **70 graded tasks** across ~20 skill areas plus composite
 **project** scenarios, covering 59 of the RHCSA (EX200) objectives — see the
-coverage checklist in [docs/rhcsa-objectives.md](docs/rhcsa-objectives.md). Graders
+coverage checklist in [rhcsa/docs/objectives.md](rhcsa/docs/objectives.md). Graders
 run inside the practice machine and check persistent end state, exam-style.

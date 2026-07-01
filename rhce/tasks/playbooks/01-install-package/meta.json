@@ -1,0 +1,7 @@
+{
+  "title": "Install a package with a playbook",
+  "domain": "Create plays and playbooks",
+  "objective": "Create playbooks to configure systems to a specified state",
+  "est_min": 8,
+  "needs": ""
+}

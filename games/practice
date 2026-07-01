@@ -28,7 +28,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TASKS_DIR = REPO / "tasks"
+TRACKS = ["rhcsa", "rhce"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # ---- colours ---------------------------------------------------------------
@@ -70,18 +70,21 @@ def bump_streak(st):
 # ---- task discovery --------------------------------------------------------
 def discover():
     tasks = {}
-    if not TASKS_DIR.is_dir():
-        return tasks
-    for meta in sorted(TASKS_DIR.glob("*/*/meta.json")):
-        d = meta.parent
-        tid = f"{d.parent.name}/{d.name}"
-        try:
-            m = json.loads(meta.read_text())
-        except json.JSONDecodeError:
+    for track in TRACKS:
+        base = REPO / track / "tasks"
+        if not base.is_dir():
             continue
-        m["id"] = tid
-        m["dir"] = d
-        tasks[tid] = m
+        for meta in sorted(base.glob("*/*/meta.json")):
+            d = meta.parent
+            tid = f"{track}/{d.parent.name}/{d.name}"
+            try:
+                m = json.loads(meta.read_text())
+            except json.JSONDecodeError:
+                continue
+            m["id"] = tid
+            m["dir"] = d
+            m["track"] = track
+            tasks[tid] = m
     return tasks
 
 def resolve(tasks, ident):
@@ -119,25 +122,31 @@ def cmd_list(tasks, st):
     if not tasks:
         print(DIM("No tasks found yet."))
         return
-    by_domain = {}
-    for t in tasks.values():
-        by_domain.setdefault(t.get("domain", "Misc"), []).append(t)
     have_spare = spare_present()
     print()
-    for domain in sorted(by_domain):
-        print(BLD(domain))
-        for t in sorted(by_domain[domain], key=lambda x: x["id"]):
-            status = st["tasks"].get(t["id"], {}).get("status", "")
-            if status == "done":
-                mark = GRN("✓")
-            elif "spare-disk" in t.get("needs", "") and not have_spare:
-                mark = YEL("🔒")
-            else:
-                mark = DIM("•")
-            name = t["id"].split("/")[-1]
-            est = t.get("est_min")
-            est_s = DIM(f"  ~{est}m") if est else ""
-            print(f"  {mark} {name:<24} {DIM(t.get('title',''))}{est_s}")
+    for track in TRACKS:
+        tt = [t for t in tasks.values() if t["track"] == track]
+        if not tt:
+            continue
+        done = sum(1 for t in tt if st["tasks"].get(t["id"], {}).get("status") == "done")
+        print(BLU(BLD(f"━━ {track.upper()} ")) + DIM(f"({done}/{len(tt)} done) ━━━━━━━━━━━━━━━━"))
+        by_domain = {}
+        for t in tt:
+            by_domain.setdefault(t.get("domain", "Misc"), []).append(t)
+        for domain in sorted(by_domain):
+            print("  " + BLD(domain))
+            for t in sorted(by_domain[domain], key=lambda x: x["id"]):
+                status = st["tasks"].get(t["id"], {}).get("status", "")
+                if status == "done":
+                    mark = GRN("✓")
+                elif "spare-disk" in t.get("needs", "") and not have_spare:
+                    mark = YEL("🔒")
+                else:
+                    mark = DIM("•")
+                name = t["id"].split("/")[-1]
+                est = t.get("est_min")
+                est_s = DIM(f"  ~{est}m") if est else ""
+                print(f"    {mark} {name:<24} {DIM(t.get('title',''))}{est_s}")
         print()
     print_status_line(st)
     print(DIM("Start one with:  practice start <name>"))
@@ -206,7 +215,7 @@ def cmd_solution(tasks, st, ident):
     if sol.exists():
         # show it without the boilerplate header lines
         for line in sol.read_text().splitlines():
-            if line.startswith("#!") or line.startswith(". \"$(dirname"):
+            if line.startswith("#!") or line.startswith('. "$('):
                 continue
             print(line)
     print("─" * 60)

@@ -1,0 +1,7 @@
+{
+  "title": "Create a static inventory with groups",
+  "domain": "Configure Ansible",
+  "objective": "Create and use static inventories to define groups of hosts",
+  "est_min": 6,
+  "needs": ""
+}
