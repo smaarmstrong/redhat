@@ -1,0 +1,7 @@
+{
+  "title": "Start a container at boot via systemd",
+  "domain": "Containers (bonus)",
+  "objective": "Manage containers with podman",
+  "est_min": 10,
+  "needs": ""
+}

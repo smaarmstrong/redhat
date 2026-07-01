@@ -1,0 +1,7 @@
+{
+  "title": "Run a detached container with a published port",
+  "domain": "Containers (bonus)",
+  "objective": "Manage containers with podman",
+  "est_min": 6,
+  "needs": ""
+}

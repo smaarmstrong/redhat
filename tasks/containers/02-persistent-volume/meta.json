@@ -1,0 +1,7 @@
+{
+  "title": "Run a container with persistent storage at /data",
+  "domain": "Containers (bonus)",
+  "objective": "Manage containers with podman",
+  "est_min": 7,
+  "needs": ""
+}
