@@ -1,0 +1,7 @@
+{
+  "title": "Create and enable a systemd timer",
+  "domain": "Scheduling",
+  "objective": "Schedule tasks using at, cron and systemd timer units",
+  "est_min": 8,
+  "needs": ""
+}

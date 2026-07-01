@@ -1,0 +1,7 @@
+{
+  "title": "Enable and start a service at boot",
+  "domain": "Services",
+  "objective": "Start and stop services and configure services to start automatically at boot",
+  "est_min": 3,
+  "needs": ""
+}

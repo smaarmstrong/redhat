@@ -1,0 +1,7 @@
+{
+  "title": "Find and kill a runaway process",
+  "domain": "Processes",
+  "objective": "Identify CPU/memory intensive processes and kill processes",
+  "est_min": 4,
+  "needs": ""
+}

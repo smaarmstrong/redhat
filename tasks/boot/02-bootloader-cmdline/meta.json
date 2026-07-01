@@ -1,0 +1,7 @@
+{
+  "title": "Add a kernel command-line argument",
+  "domain": "Boot & bootloader",
+  "objective": "Modify the system bootloader",
+  "est_min": 6,
+  "needs": ""
+}

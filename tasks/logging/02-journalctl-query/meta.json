@@ -1,0 +1,7 @@
+{
+  "title": "Extract matching lines from the journal",
+  "domain": "Logging & journals",
+  "objective": "Locate and interpret system log files and journals",
+  "est_min": 5,
+  "needs": ""
+}
