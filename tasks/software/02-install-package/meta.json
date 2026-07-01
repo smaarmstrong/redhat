@@ -1,0 +1,7 @@
+{
+  "title": "Install a package",
+  "domain": "Software management",
+  "objective": "Install and update software packages from Red Hat Content Delivery Network, a remote repository, or from the local file system",
+  "est_min": 4,
+  "needs": ""
+}

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Reference solution. -C /  makes the stored paths opt/logs/...
+tar -czf /root/logs.tar.gz -C / opt/logs
