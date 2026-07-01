@@ -1,0 +1,7 @@
+{
+  "title": "Manage file content with lineinfile and blockinfile",
+  "domain": "Automate RHCSA tasks",
+  "objective": "File content",
+  "est_min": 10,
+  "needs": ""
+}

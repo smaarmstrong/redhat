@@ -1,0 +1,7 @@
+{
+  "title": "Clone a repo, add a file, and commit",
+  "domain": "Source control",
+  "objective": "Clone a Git repository; Add files to a Git repository",
+  "est_min": 8,
+  "needs": ""
+}

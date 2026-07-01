@@ -1,0 +1,7 @@
+{
+  "title": "Create and distribute SSH keys to managed nodes",
+  "domain": "Configure managed nodes",
+  "objective": "Create and distribute SSH keys to managed nodes",
+  "est_min": 8,
+  "needs": ""
+}

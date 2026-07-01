@@ -1,0 +1,7 @@
+{
+  "title": "Mount and persist a tmpfs with the mount module",
+  "domain": "Automate RHCSA tasks",
+  "objective": "File systems",
+  "est_min": 10,
+  "needs": ""
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Look up a module parameter with ansible-doc",
+  "domain": "Core components",
+  "objective": "Use provided documentation to look up information about modules and commands",
+  "est_min": 5,
+  "needs": ""
+}

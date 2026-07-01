@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+command -v ansible-playbook >/dev/null || dnf -y install ansible-core >/dev/null 2>&1 || true
+d=/root/rhce/handlers
+mkdir -p "$d"; rm -f "$d/playbook.yml"
+rm -f /etc/myapp.conf /root/rhce/handlers/reloaded.marker
+cat > "$d/ansible.cfg" <<'CFG'
+[defaults]
+inventory = inventory
+host_key_checking = False
+CFG
+cat > "$d/inventory" <<'INV'
+[managed]
+localhost ansible_connection=local
+INV
+exit 0

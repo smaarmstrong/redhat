@@ -1,0 +1,7 @@
+{
+  "title": "Render a config file from a Jinja2 template",
+  "domain": "Manage content",
+  "objective": "Create and use templates to create customized configuration files",
+  "est_min": 10,
+  "needs": ""
+}

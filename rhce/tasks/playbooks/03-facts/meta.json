@@ -1,0 +1,7 @@
+{
+  "title": "Write system facts to a file",
+  "domain": "Create plays and playbooks",
+  "objective": "Facts",
+  "est_min": 8,
+  "needs": ""
+}

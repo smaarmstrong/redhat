@@ -1,0 +1,7 @@
+{
+  "title": "Register a command result",
+  "domain": "Create plays and playbooks",
+  "objective": "Use variables to retrieve the results of running a command",
+  "est_min": 8,
+  "needs": ""
+}

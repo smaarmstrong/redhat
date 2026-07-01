@@ -36,7 +36,7 @@ pass=0; fail=0; failed=()
 for id in "${LIST[@]}"; do
   out=$(docker run --rm -v "$REPO":/redhat:ro "$IMAGE" bash -c '
     set -u
-    T=/redhat/tasks/'"$id"'
+    T=/redhat/rhcsa/tasks/'"$id"'
     bash "$T/setup.sh" >/dev/null 2>&1
     if bash "$T/grade.sh" >/dev/null 2>&1; then echo "NEG=pass"; else echo "NEG=fail"; fi
     bash "$T/solution.sh" >/dev/null 2>&1
