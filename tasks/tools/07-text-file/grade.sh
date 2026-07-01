@@ -5,6 +5,6 @@ expected="$(printf 'Authorized access only.\nContact ops@example.com\n')"
 
 check_eval "/etc/motd exists" '[ -f /etc/motd ]'
 check_eval "content is exactly the two required lines" \
-  '[ -f /etc/motd ] && diff <(printf "%s" "$expected") /etc/motd'
+  '[ -f /etc/motd ] && [ "$(cat /etc/motd)" = "$expected" ]'
 
 grade_summary
