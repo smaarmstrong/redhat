@@ -1,0 +1,239 @@
+#!/usr/bin/env python3
+"""
+practice — a console trainer for the RHCSA exam objectives.
+
+Runs INSIDE the Rocky practice machine. Each task gives you a real, exam-shaped
+job to do on the system; the grader then checks the *end state* (the way the real
+exam is scored), not the commands you typed.
+
+Usage:
+    practice list                 # all tasks, grouped by domain, with your status
+    practice start  <id>          # show a task and set up its starting state
+    practice check  <id>          # grade what you did (pass/fail per requirement)
+    practice solution <id>        # reveal a reference solution
+    practice reset  <id>          # re-run setup to start the task over
+    practice status               # your XP, streak, and completion
+
+<id> can be the full "domain/nn-name" or just the unique trailing name.
+
+Task and grader scripts change the system, so setup/check/solution run as root
+(via sudo if you aren't already root).
+"""
+import json
+import os
+import subprocess
+import sys
+from datetime import date
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+TASKS_DIR = REPO / "tasks"
+STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
+
+# ---- colours ---------------------------------------------------------------
+_tty = sys.stdout.isatty()
+def c(code, s):
+    return f"\033[{code}m{s}\033[0m" if _tty else s
+GRN = lambda s: c("32", s)
+RED = lambda s: c("31", s)
+YEL = lambda s: c("33", s)
+BLU = lambda s: c("34", s)
+DIM = lambda s: c("2", s)
+BLD = lambda s: c("1", s)
+
+# ---- state -----------------------------------------------------------------
+def load_state():
+    try:
+        return json.loads(STATE.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"tasks": {}, "xp": 0, "streak": {"count": 0, "last": ""}}
+
+def save_state(st):
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(json.dumps(st, indent=2))
+
+def bump_streak(st):
+    today = date.today().isoformat()
+    s = st["streak"]
+    if s["last"] == today:
+        return
+    from datetime import date as _d
+    last = s.get("last") or ""
+    yesterday = (_d.today().toordinal() - 1)
+    if last and _d.fromisoformat(last).toordinal() == yesterday:
+        s["count"] += 1
+    else:
+        s["count"] = 1
+    s["last"] = today
+
+# ---- task discovery --------------------------------------------------------
+def discover():
+    tasks = {}
+    if not TASKS_DIR.is_dir():
+        return tasks
+    for meta in sorted(TASKS_DIR.glob("*/*/meta.json")):
+        d = meta.parent
+        tid = f"{d.parent.name}/{d.name}"
+        try:
+            m = json.loads(meta.read_text())
+        except json.JSONDecodeError:
+            continue
+        m["id"] = tid
+        m["dir"] = d
+        tasks[tid] = m
+    return tasks
+
+def resolve(tasks, ident):
+    if ident in tasks:
+        return tasks[ident]
+    matches = [t for tid, t in tasks.items() if tid.split("/")[-1] == ident]
+    if len(matches) == 1:
+        return matches[0]
+    if not matches:
+        sys.exit(RED(f"No task matching '{ident}'. Try: practice list"))
+    sys.exit(RED(f"'{ident}' is ambiguous: " + ", ".join(t['id'] for t in matches)))
+
+def spare_present():
+    if os.environ.get("SPARE_DISK"):
+        return True
+    return any(Path(p).exists() for p in ("/dev/vdb", "/dev/sdb", "/dev/vdc", "/dev/sdc"))
+
+# ---- running scripts as root ----------------------------------------------
+def run_root(script, extra_env=None):
+    if not script.exists():
+        return 0
+    env = dict(os.environ)
+    if extra_env:
+        env.update(extra_env)
+    cmd = ["bash", str(script)]
+    if os.geteuid() != 0:
+        cmd = ["sudo", "-E", *cmd]
+    return subprocess.run(cmd, env=env).returncode
+
+# ---- commands --------------------------------------------------------------
+def cmd_list(tasks, st):
+    if not tasks:
+        print(DIM("No tasks found yet."))
+        return
+    by_domain = {}
+    for t in tasks.values():
+        by_domain.setdefault(t.get("domain", "Misc"), []).append(t)
+    have_spare = spare_present()
+    print()
+    for domain in sorted(by_domain):
+        print(BLD(domain))
+        for t in sorted(by_domain[domain], key=lambda x: x["id"]):
+            status = st["tasks"].get(t["id"], {}).get("status", "")
+            if status == "done":
+                mark = GRN("✓")
+            elif "spare-disk" in t.get("needs", "") and not have_spare:
+                mark = YEL("🔒")
+            else:
+                mark = DIM("•")
+            name = t["id"].split("/")[-1]
+            est = t.get("est_min")
+            est_s = DIM(f"  ~{est}m") if est else ""
+            print(f"  {mark} {name:<24} {DIM(t.get('title',''))}{est_s}")
+        print()
+    print_status_line(st)
+    print(DIM("Start one with:  practice start <name>"))
+
+def print_status_line(st):
+    done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
+    streak = st["streak"]["count"]
+    print(f"{BLD('XP')} {st['xp']}   {BLD('Streak')} {streak}🔥   {BLD('Done')} {done}\n")
+
+def cmd_status(tasks, st):
+    print()
+    print_status_line(st)
+    total = len(tasks)
+    done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
+    print(DIM(f"{done}/{total} tasks complete"))
+
+def cmd_start(tasks, st, ident):
+    t = resolve(tasks, ident)
+    if "spare-disk" in t.get("needs", "") and not spare_present():
+        print(YEL("This task needs a spare disk, but none was found."))
+        print(DIM("Attach a blank disk to the VM, or set SPARE_DISK=/dev/xyz."))
+        return
+    print()
+    print(BLD(f"{t['domain']} — {t['title']}"))
+    print(DIM(f"objective: {t.get('objective','')}"))
+    print(DIM(f"id: {t['id']}"))
+    print("─" * 60)
+    prompt = t["dir"] / "prompt.md"
+    if prompt.exists():
+        print(prompt.read_text().rstrip())
+    print("─" * 60)
+    print(DIM("Setting up the starting state..."))
+    rc = run_root(t["dir"] / "setup.sh")
+    if rc != 0:
+        print(RED("setup failed — see output above"))
+        return
+    st["tasks"].setdefault(t["id"], {})["status"] = "in-progress"
+    save_state(st)
+    print(GRN("Ready.") + DIM("  Do the task, then:  ") + f"practice check {t['id'].split('/')[-1]}")
+
+def cmd_check(tasks, st, ident):
+    t = resolve(tasks, ident)
+    print()
+    print(BLD(f"Grading: {t['title']}"))
+    rc = run_root(t["dir"] / "grade.sh")
+    entry = st["tasks"].setdefault(t["id"], {})
+    entry["attempts"] = entry.get("attempts", 0) + 1
+    if rc == 0:
+        first_time = entry.get("status") != "done"
+        entry["status"] = "done"
+        entry["completed"] = date.today().isoformat()
+        if first_time:
+            gain = 10 + int(t.get("est_min", 5))
+            st["xp"] += gain
+            bump_streak(st)
+            print(GRN(f"\n+{gain} XP") + f"   (streak {st['streak']['count']}🔥)")
+    save_state(st)
+
+def cmd_solution(tasks, st, ident):
+    t = resolve(tasks, ident)
+    sol = t["dir"] / "solution.sh"
+    print()
+    print(BLD(f"Reference solution — {t['title']}"))
+    print(DIM("(one valid way; the grader accepts any path to the same end state)"))
+    print("─" * 60)
+    if sol.exists():
+        # show it without the boilerplate header lines
+        for line in sol.read_text().splitlines():
+            if line.startswith("#!") or line.startswith(". \"$(dirname"):
+                continue
+            print(line)
+    print("─" * 60)
+
+def cmd_reset(tasks, st, ident):
+    t = resolve(tasks, ident)
+    print(DIM("Resetting task state..."))
+    run_root(t["dir"] / "setup.sh")
+    st["tasks"].setdefault(t["id"], {})["status"] = "in-progress"
+    save_state(st)
+    print(GRN("Reset. Starting state restored."))
+
+def main():
+    tasks = discover()
+    st = load_state()
+    args = sys.argv[1:]
+    if not args or args[0] in ("-h", "--help", "help"):
+        print(__doc__)
+        return
+    cmd, rest = args[0], args[1:]
+    if cmd == "list":
+        cmd_list(tasks, st)
+    elif cmd == "status":
+        cmd_status(tasks, st)
+    elif cmd in ("start", "check", "solution", "reset"):
+        if not rest:
+            sys.exit(RED(f"Usage: practice {cmd} <id>"))
+        {"start": cmd_start, "check": cmd_check,
+         "solution": cmd_solution, "reset": cmd_reset}[cmd](tasks, st, rest[0])
+    else:
+        sys.exit(RED(f"Unknown command '{cmd}'. Try: practice help"))
+
+if __name__ == "__main__":
+    main()

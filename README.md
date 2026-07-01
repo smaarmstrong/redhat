@@ -76,7 +76,27 @@ id -nG | grep libvirt             # should print a line containing 'libvirt'
 ./setup/provision-fedora.sh --force   # tear down and rebuild from scratch
 ```
 
+## Practice (inside the Rocky VM)
+
+Once you're on the Rocky machine, clone this repo and use the `practice` runner:
+
+```bash
+git clone https://github.com/smaarmstrong/redhat ~/redhat && cd ~/redhat
+
+./games/practice list                # every task, grouped by domain, with your status
+./games/practice start create-user   # show a task and set up its starting state
+#   ...do the task on the system...
+./games/practice check create-user   # grade the end state — pass/fail per requirement
+./games/practice solution create-user   # reveal a reference solution
+./games/practice status              # your XP, streak, completion
+```
+
+See [games/README.md](games/README.md) for details and
+[docs/TASK-FORMAT.md](docs/TASK-FORMAT.md) for how tasks are authored.
+
 ## Status
 
-Early scaffold. Next step: `setup/provision-fedora.sh` — get a working Rocky 9 VM
-you can SSH into, then clone this repo inside it and start on the first game.
+Working trainer: **65 graded tasks** across ~20 skill areas plus composite
+**project** scenarios, covering 54 of the RHCSA (EX200) objectives — see the
+coverage checklist in [docs/rhcsa-objectives.md](docs/rhcsa-objectives.md). Graders
+run inside the practice machine and check persistent end state, exam-style.
