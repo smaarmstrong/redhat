@@ -1,0 +1,7 @@
+{
+  "title": "Validate a working configuration using ad hoc Ansible commands",
+  "domain": "Configure managed nodes",
+  "objective": "Validate a working configuration using ad hoc Ansible commands",
+  "est_min": 6,
+  "needs": ""
+}

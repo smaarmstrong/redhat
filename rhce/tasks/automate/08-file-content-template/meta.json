@@ -1,0 +1,7 @@
+{
+  "title": "Manage /etc/motd from a content variable",
+  "domain": "Automate RHCSA tasks",
+  "objective": "File content",
+  "est_min": 8,
+  "needs": ""
+}

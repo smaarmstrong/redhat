@@ -1,0 +1,7 @@
+{
+  "title": "Modify ansible-navigator.yml",
+  "domain": "Configure Ansible",
+  "objective": "Modify ansible-navigator.yml",
+  "est_min": 6,
+  "needs": ""
+}

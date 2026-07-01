@@ -1,0 +1,7 @@
+{
+  "title": "Define a group variable with group_vars",
+  "domain": "Configure Ansible",
+  "objective": "Variables",
+  "est_min": 6,
+  "needs": ""
+}

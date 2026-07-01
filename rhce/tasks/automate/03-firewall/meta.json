@@ -1,0 +1,7 @@
+{
+  "title": "Open a firewall service with a playbook",
+  "domain": "Automate RHCSA tasks",
+  "objective": "Firewall rules",
+  "est_min": 8,
+  "needs": ""
+}

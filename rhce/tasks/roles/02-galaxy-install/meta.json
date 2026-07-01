@@ -1,0 +1,7 @@
+{
+  "title": "Install a role from Ansible Galaxy",
+  "domain": "Roles and collections",
+  "objective": "Install roles from Ansible Galaxy and use them",
+  "est_min": 10,
+  "needs": ""
+}

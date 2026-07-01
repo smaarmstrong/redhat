@@ -1,0 +1,7 @@
+{
+  "title": "Create and modify ansible.cfg",
+  "domain": "Configure Ansible",
+  "objective": "Create and modify ansible.cfg",
+  "est_min": 6,
+  "needs": ""
+}

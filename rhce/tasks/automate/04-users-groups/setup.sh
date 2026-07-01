@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+command -v ansible-playbook >/dev/null || dnf -y install ansible-core >/dev/null 2>&1 || true
+# undo the target state so there is work to do
+userdel -r deploybot >/dev/null 2>&1 || true
+groupdel devs >/dev/null 2>&1 || true
+d=/root/rhce/users-groups
+mkdir -p "$d"; rm -f "$d/playbook.yml"
+cat > "$d/ansible.cfg" <<'CFG'
+[defaults]
+inventory = inventory
+host_key_checking = False
+CFG
+cat > "$d/inventory" <<'INV'
+[managed]
+localhost ansible_connection=local
+INV
+exit 0

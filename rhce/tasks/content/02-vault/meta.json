@@ -1,0 +1,7 @@
+{
+  "title": "Protect data with Ansible Vault",
+  "domain": "Manage content",
+  "objective": "Use Ansible Vault in playbooks to protect sensitive data",
+  "est_min": 12,
+  "needs": ""
+}

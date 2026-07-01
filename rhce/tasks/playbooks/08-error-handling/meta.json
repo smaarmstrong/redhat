@@ -1,0 +1,7 @@
+{
+  "title": "Recover from a failing task",
+  "domain": "Create plays and playbooks",
+  "objective": "Configure error handling",
+  "est_min": 10,
+  "needs": ""
+}
