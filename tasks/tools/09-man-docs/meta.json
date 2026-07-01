@@ -1,0 +1,7 @@
+{
+  "title": "Find documented commands with apropos",
+  "domain": "Essential tools",
+  "objective": "Locate, read, and use system documentation including man, info, and files in /usr/share/doc",
+  "est_min": 4,
+  "needs": ""
+}

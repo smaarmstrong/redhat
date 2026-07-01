@@ -1,0 +1,7 @@
+{
+  "title": "Count user accounts from command output",
+  "domain": "Shell scripting",
+  "objective": "Process output of shell commands within a script",
+  "est_min": 5,
+  "needs": ""
+}

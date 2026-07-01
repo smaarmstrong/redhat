@@ -1,0 +1,7 @@
+{
+  "title": "Switch users and create a file as that user",
+  "domain": "Essential tools",
+  "objective": "Log in and switch users in multi-user targets",
+  "est_min": 3,
+  "needs": ""
+}

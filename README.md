@@ -96,7 +96,7 @@ See [games/README.md](games/README.md) for details and
 
 ## Status
 
-Working trainer: **65 graded tasks** across ~20 skill areas plus composite
-**project** scenarios, covering 54 of the RHCSA (EX200) objectives — see the
+Working trainer: **70 graded tasks** across ~20 skill areas plus composite
+**project** scenarios, covering 59 of the RHCSA (EX200) objectives — see the
 coverage checklist in [docs/rhcsa-objectives.md](docs/rhcsa-objectives.md). Graders
 run inside the practice machine and check persistent end state, exam-style.

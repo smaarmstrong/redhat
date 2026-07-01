@@ -18,24 +18,24 @@ Source: Red Hat RHCSA exam objectives.
 - [x] Use input-output redirection (`>`, `>>`, `|`, `2>`, etc.)
 - [x] Use `grep` and regular expressions to analyze text
 - [x] Access remote systems using SSH
-- [ ] Log in and switch users in multi-user targets
+- [x] Log in and switch users in multi-user targets
 - [x] Archive, compress, unpack, and uncompress files using `tar`, `gzip`, and `bzip2`
 - [x] Create and edit text files
 - [x] Create, delete, copy, and move files and directories
 - [x] Create hard and soft links
 - [x] List, set, and change standard ugo/rwx permissions
-- [ ] Locate, read, and use system documentation (`man`, `info`, `/usr/share/doc`)
+- [x] Locate, read, and use system documentation (`man`, `info`, `/usr/share/doc`)
 
 ## Manage software
 - [x] Configure access to RPM repositories
 - [x] Install and remove RPM software packages
-- [ ] Configure access to Flatpak repositories
-- [ ] Install and remove Flatpak software packages
+- [x] Configure access to Flatpak repositories
+- [x] Install and remove Flatpak software packages
 - [x] Create simple shell scripts
 - [x] Conditionally execute code (`if`, `test`, `[]`, etc.)
 - [x] Use looping constructs (`for`, etc.) to process files / command-line input
 - [x] Process script inputs (`$1`, `$2`, etc.)
-- [ ] Process output of shell commands within a script
+- [x] Process output of shell commands within a script
 
 ## Operate running systems
 - [ ] Boot, reboot, and shut down a system normally
