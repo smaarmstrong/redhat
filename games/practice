@@ -21,6 +21,7 @@ Task and grader scripts change the system, so setup/check/solution run as root
 """
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import date
@@ -86,7 +87,10 @@ def discover():
 def resolve(tasks, ident):
     if ident in tasks:
         return tasks[ident]
-    matches = [t for tid, t in tasks.items() if tid.split("/")[-1] == ident]
+    strip = lambda s: re.sub(r"^\d+-", "", s)
+    want = strip(ident)
+    matches = [t for tid, t in tasks.items()
+               if ident == tid.split("/")[-1] or want == strip(tid.split("/")[-1])]
     if len(matches) == 1:
         return matches[0]
     if not matches:

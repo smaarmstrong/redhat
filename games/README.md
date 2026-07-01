@@ -33,6 +33,9 @@ already). Progress/XP/streak are stored in `~/.local/state/rhcsa-trainer/progres
   `grade_summary`, and storage helpers `spare_disk` / `wipe_spare` / `spare_is_safe`.
 - `../tasks/<domain>/<nn-name>/` — the task content (see
   [../docs/TASK-FORMAT.md](../docs/TASK-FORMAT.md)).
+- `selftest.sh` — run-verifies graders in throwaway Rocky 9 containers
+  (`setup → grade [expect fail] → solution → grade [expect pass]`). Great for CI on
+  the container-safe tasks; storage/systemd/firewall/SELinux tasks still need the VM.
 
 ## Note
 
