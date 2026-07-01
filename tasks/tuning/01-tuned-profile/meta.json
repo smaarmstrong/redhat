@@ -1,0 +1,7 @@
+{
+  "title": "Set the active tuned profile",
+  "domain": "Tuning",
+  "objective": "Manage tuning profiles",
+  "est_min": 4,
+  "needs": ""
+}

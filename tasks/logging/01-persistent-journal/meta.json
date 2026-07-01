@@ -1,0 +1,7 @@
+{
+  "title": "Make the systemd journal persistent",
+  "domain": "Logging & journals",
+  "objective": "Preserve system journals",
+  "est_min": 5,
+  "needs": ""
+}

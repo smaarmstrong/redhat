@@ -1,0 +1,7 @@
+{
+  "title": "Renice a running process",
+  "domain": "Processes",
+  "objective": "Adjust process scheduling",
+  "est_min": 4,
+  "needs": ""
+}
