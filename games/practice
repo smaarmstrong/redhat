@@ -7,6 +7,8 @@ job to do on the system; the grader then checks the *end state* (the way the rea
 exam is scored), not the commands you typed.
 
 Usage:
+    practice train                # auto-pick what to do next (review or new) and start it
+    practice check                # grade the task you're currently on
     practice list                 # all tasks, grouped by domain, with your status
     practice start  <id>          # show a task and set up its starting state
     practice check  <id>          # grade what you did (pass/fail per requirement)
@@ -14,7 +16,12 @@ Usage:
     practice reset  <id>          # re-run setup to start the task over
     practice status               # your XP, streak, and completion
 
-<id> can be the full "domain/nn-name" or just the unique trailing name.
+New here? Just run `practice train`, do the task it gives you, then `practice
+check`. Repeat. It decides when to teach you something new and when to bring
+back older material for review, so you don't have to.
+
+<id> can be the full "domain/nn-name" or just the unique trailing name. For
+check/solution/reset you can omit <id> to act on the task train/start gave you.
 
 Task and grader scripts change the system, so setup/check/solution run as root
 (via sudo if you aren't already root).
@@ -47,7 +54,8 @@ def load_state():
     try:
         return json.loads(STATE.read_text())
     except (FileNotFoundError, json.JSONDecodeError):
-        return {"tasks": {}, "xp": 0, "streak": {"count": 0, "last": ""}}
+        return {"tasks": {}, "xp": 0, "streak": {"count": 0, "last": ""},
+                "current": None, "recent_picks": []}
 
 def save_state(st):
     STATE.parent.mkdir(parents=True, exist_ok=True)
@@ -66,6 +74,31 @@ def bump_streak(st):
     else:
         s["count"] = 1
     s["last"] = today
+
+# ---- spaced repetition -----------------------------------------------------
+# Days until the next review, indexed by how many times you've passed the task.
+# After the table runs out we keep roughly doubling.
+REVIEW_INTERVALS = [1, 3, 7, 16, 35, 75]
+
+def review_interval(reps):
+    """Days until the next review after `reps` successful passes (reps >= 1)."""
+    i = max(reps, 1) - 1
+    if i < len(REVIEW_INTERVALS):
+        return REVIEW_INTERVALS[i]
+    return REVIEW_INTERVALS[-1] * (2 ** (i - len(REVIEW_INTERVALS) + 1))
+
+def days_overdue(iso_due):
+    """How many days past its review date a task is (>=0 means due now).
+    None if it has no scheduled review yet."""
+    if not iso_due:
+        return None
+    return date.today().toordinal() - date.fromisoformat(iso_due).toordinal()
+
+def schedule_review(entry, reps):
+    """Record the next review date `review_interval(reps)` days out."""
+    entry["reps"] = reps
+    due = date.fromordinal(date.today().toordinal() + review_interval(reps))
+    entry["due"] = due.isoformat()
 
 # ---- task discovery --------------------------------------------------------
 def discover():
@@ -105,6 +138,56 @@ def spare_present():
         return True
     return any(Path(p).exists() for p in ("/dev/vdb", "/dev/sdb", "/dev/vdc", "/dev/sdc"))
 
+def runnable(t, have_spare):
+    """Can this task's setup actually run in the current environment?"""
+    return not ("spare-disk" in t.get("needs", "") and not have_spare)
+
+# ---- what to practise next -------------------------------------------------
+def due_reviews(tasks, st, have_spare):
+    """Passed tasks whose review date has arrived, most overdue first."""
+    out = []
+    for tid, entry in st["tasks"].items():
+        if entry.get("status") != "done":
+            continue
+        t = tasks.get(tid)
+        if not t or not runnable(t, have_spare):
+            continue
+        overdue = days_overdue(entry.get("due"))
+        if overdue is None or overdue >= 0:      # unscheduled, or due today/earlier
+            out.append((overdue if overdue is not None else 0, t))
+    out.sort(key=lambda x: -x[0])                # most overdue first
+    return [t for _, t in out]
+
+def next_new(tasks, st, have_spare, focus=None):
+    """First not-yet-passed task in canonical order (rhcsa track before rhce).
+    An in-progress task counts as not-done, so this resumes unfinished work."""
+    order = sorted(tasks.values(), key=lambda x: x["id"])
+    for track in ([focus] if focus else TRACKS):
+        for t in order:
+            if t["track"] != track:
+                continue
+            if st["tasks"].get(t["id"], {}).get("status") == "done":
+                continue
+            if not runnable(t, have_spare):
+                continue
+            return t
+    return None
+
+def soonest_review(tasks, st):
+    """The nearest upcoming (not-yet-due) review, as (days_away, task)."""
+    best = None
+    for tid, entry in st["tasks"].items():
+        if entry.get("status") != "done":
+            continue
+        t = tasks.get(tid)
+        due = entry.get("due")
+        if not t or not due:
+            continue
+        away = -days_overdue(due)
+        if away > 0 and (best is None or away < best[0]):
+            best = (away, t)
+    return best
+
 # ---- running scripts as root ----------------------------------------------
 def run_root(script, extra_env=None):
     if not script.exists():
@@ -137,24 +220,28 @@ def cmd_list(tasks, st):
             print("  " + BLD(domain))
             for t in sorted(by_domain[domain], key=lambda x: x["id"]):
                 status = st["tasks"].get(t["id"], {}).get("status", "")
+                locked = "spare-disk" in t.get("needs", "") and not have_spare
                 if status == "done":
-                    mark = GRN("✓")
-                elif "spare-disk" in t.get("needs", "") and not have_spare:
-                    mark = YEL("🔒")
+                    mark = GRN("[x]")
+                elif locked:
+                    mark = YEL("[-]")
                 else:
-                    mark = DIM("•")
+                    mark = DIM("[ ]")
                 name = t["id"].split("/")[-1]
                 est = t.get("est_min")
                 est_s = DIM(f"  ~{est}m") if est else ""
-                print(f"    {mark} {name:<24} {DIM(t.get('title',''))}{est_s}")
+                note = DIM("  (needs spare disk)") if locked else ""
+                print(f"    {mark} {name:<24} {DIM(t.get('title',''))}{est_s}{note}")
         print()
     print_status_line(st)
-    print(DIM("Start one with:  practice start <name>"))
+    print(DIM("Not sure where to start?  ") + BLD("practice train") + DIM("  picks for you."))
+    print(DIM("Or start a specific one:  practice start <name>"))
 
 def print_status_line(st):
     done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
     streak = st["streak"]["count"]
-    print(f"{BLD('XP')} {st['xp']}   {BLD('Streak')} {streak}🔥   {BLD('Done')} {done}\n")
+    unit = "day" if streak == 1 else "days"
+    print(f"{BLD('XP')} {st['xp']}   {BLD('Streak')} {streak} {unit}   {BLD('Done')} {done}\n")
 
 def cmd_status(tasks, st):
     print()
@@ -163,12 +250,13 @@ def cmd_status(tasks, st):
     done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
     print(DIM(f"{done}/{total} tasks complete"))
 
-def cmd_start(tasks, st, ident):
-    t = resolve(tasks, ident)
+def launch_task(tasks, st, t):
+    """Show a task, set up its starting state, and mark it current. Returns True
+    on success. Shared by `start` and `train`."""
     if "spare-disk" in t.get("needs", "") and not spare_present():
         print(YEL("This task needs a spare disk, but none was found."))
         print(DIM("Attach a blank disk to the VM, or set SPARE_DISK=/dev/xyz."))
-        return
+        return False
     print()
     print(BLD(f"{t['domain']} — {t['title']}"))
     print(DIM(f"objective: {t.get('objective','')}"))
@@ -182,10 +270,66 @@ def cmd_start(tasks, st, ident):
     rc = run_root(t["dir"] / "setup.sh")
     if rc != 0:
         print(RED("setup failed — see output above"))
-        return
-    st["tasks"].setdefault(t["id"], {})["status"] = "in-progress"
+        return False
+    entry = st["tasks"].setdefault(t["id"], {})
+    if entry.get("status") != "done":     # a review keeps its 'done' + schedule
+        entry["status"] = "in-progress"
+    st["current"] = t["id"]
     save_state(st)
-    print(GRN("Ready.") + DIM("  Do the task, then:  ") + f"practice check {t['id'].split('/')[-1]}")
+    print(GRN("Ready.") + DIM("  Do the task, then:  ") + "practice check")
+    return True
+
+def cmd_start(tasks, st, ident):
+    launch_task(tasks, st, resolve(tasks, ident))
+
+def choose_task(tasks, st, have_spare, focus=None):
+    """Decide what to practise next. Pure — no side effects, so it's testable.
+    Returns (task, kind, reason). kind is 'review', 'new', or None (nothing to do).
+
+    Reviews take priority once due, but never more than two in a row while new
+    material is still waiting, so new content always keeps advancing."""
+    reviews = due_reviews(tasks, st, have_spare)
+    new_task = next_new(tasks, st, have_spare, focus)
+    recent = st.get("recent_picks", [])
+    review_wall = len(recent) >= 2 and recent[-1] == "review" and recent[-2] == "review"
+
+    if reviews and not (review_wall and new_task):
+        pick, kind = reviews[0], "review"
+    elif new_task:
+        pick, kind = new_task, "new"
+    elif reviews:                     # only reviews left (all new material done)
+        pick, kind = reviews[0], "review"
+    else:
+        return None, None, ""
+
+    if kind == "review":
+        overdue = days_overdue(st["tasks"][pick["id"]].get("due"))
+        reason = "due for review" if not overdue else f"review — {overdue}d overdue"
+    elif st["tasks"].get(pick["id"], {}).get("status") == "in-progress":
+        reason = "resume — started but not yet passed"
+    else:
+        reason = "new material, next in sequence"
+    return pick, kind, reason
+
+def cmd_train(tasks, st, focus=None):
+    if not tasks:
+        print(DIM("No tasks found.")); return
+    pick, kind, reason = choose_task(tasks, st, spare_present(), focus)
+    if pick is None:
+        print()
+        print(GRN(BLD("All caught up — nothing due and no new tasks.")))
+        nxt = soonest_review(tasks, st)
+        if nxt:
+            print(DIM(f"Next review ({nxt[1]['title']}) comes due in {nxt[0]}d."))
+        print()
+        print_status_line(st)
+        return
+    st["recent_picks"] = (st.get("recent_picks", []) + [kind])[-4:]
+    tag = YEL("REVIEW") if kind == "review" else GRN(" NEW  ")
+    print()
+    print_status_line(st)
+    print(f"{tag}  {DIM(reason)}")
+    launch_task(tasks, st, pick)
 
 def cmd_check(tasks, st, ident):
     t = resolve(tasks, ident)
@@ -195,14 +339,24 @@ def cmd_check(tasks, st, ident):
     entry = st["tasks"].setdefault(t["id"], {})
     entry["attempts"] = entry.get("attempts", 0) + 1
     if rc == 0:
-        first_time = entry.get("status") != "done"
+        was_review = entry.get("status") == "done"
         entry["status"] = "done"
         entry["completed"] = date.today().isoformat()
-        if first_time:
-            gain = 10 + int(t.get("est_min", 5))
-            st["xp"] += gain
-            bump_streak(st)
-            print(GRN(f"\n+{gain} XP") + f"   (streak {st['streak']['count']}🔥)")
+        if was_review:
+            reps, gain = entry.get("reps", 1) + 1, 5
+        else:
+            reps, gain = 1, 10 + int(t.get("est_min", 5))
+        schedule_review(entry, reps)
+        st["xp"] += gain
+        bump_streak(st)
+        print(GRN(f"\n+{gain} XP") + f"   (streak {st['streak']['count']})")
+        print(DIM(f"Next review in {review_interval(reps)}d.  Next task:  ") + "practice train")
+    else:
+        if entry.get("status") == "done":   # a lapse — relearn from the start, soon
+            entry["reps"] = 0
+            entry["due"] = date.today().isoformat()
+        print(YEL("\nNot passed yet.") + DIM("  Fix it and re-run  ") + "practice check"
+              + DIM("   (stuck?  ") + "practice solution" + DIM(")"))
     save_state(st)
 
 def cmd_solution(tasks, st, ident):
@@ -240,11 +394,19 @@ def main():
         cmd_list(tasks, st)
     elif cmd == "status":
         cmd_status(tasks, st)
-    elif cmd in ("start", "check", "solution", "reset"):
+    elif cmd in ("train", "next"):
+        focus = rest[0] if rest and rest[0] in TRACKS else None
+        cmd_train(tasks, st, focus)
+    elif cmd == "start":
         if not rest:
-            sys.exit(RED(f"Usage: practice {cmd} <id>"))
-        {"start": cmd_start, "check": cmd_check,
-         "solution": cmd_solution, "reset": cmd_reset}[cmd](tasks, st, rest[0])
+            sys.exit(RED("Usage: practice start <id>   (or just: practice train)"))
+        cmd_start(tasks, st, rest[0])
+    elif cmd in ("check", "solution", "reset"):
+        ident = rest[0] if rest else st.get("current")
+        if not ident:
+            sys.exit(RED(f"Nothing to {cmd} — run 'practice train' first, "
+                         f"or name a task: practice {cmd} <id>"))
+        {"check": cmd_check, "solution": cmd_solution, "reset": cmd_reset}[cmd](tasks, st, ident)
     else:
         sys.exit(RED(f"Unknown command '{cmd}'. Try: practice help"))
 
