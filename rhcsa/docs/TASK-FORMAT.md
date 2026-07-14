@@ -84,9 +84,12 @@ plain readable prose plus two markers:
 - A line that is exactly `---` is a **pause**: the tutor prints everything above
   it, then waits ("Enter to continue") before going on. Use it to break the
   lecture into digestible beats.
-- A fenced ```` ```run ```` block is a **command to try**. The tutor shows it and
-  runs it live on the practice system (it's throwaway) so the learner sees real
-  output. One command per line; include `sudo` where root is needed.
+- A fenced ```` ```run ```` block is a **step to try**. The tutor shows it and runs
+  it live on the practice system (it's throwaway) so the learner sees real output.
+  The whole block runs as a **single shell script** (via `bash -c`), captured
+  verbatim — so `cd`, `$(...)`, and multi-line heredocs (e.g. writing a playbook
+  or a script) all work within one block. Include `sudo` where root is needed.
+  Keep a block to one logical step; use several blocks for several steps.
 
 Everything else is printed as-is, so write plain text (light structure,
 `$ command` for illustrative snippets), not heavy Markdown. The house style is
