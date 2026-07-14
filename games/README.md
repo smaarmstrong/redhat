@@ -18,10 +18,11 @@ make train     # once you know the ropes: picks the next task (new, or a review)
 make check     # grade it, then `make train` again
 ```
 
-`make learn` shows a short lesson (the concept, the commands, how to verify, the
-common traps) for the next task, then offers to set it up so you can try it for
-real. Tasks without a written lesson yet fall back to showing the task and
-pointing you at `make solution`.
+`make learn` is a tutor: it walks you through a short lecture for the next task —
+the concept, then telling you which commands to run (and running them live so you
+see real output), how to verify, and the common traps — then offers a clean solo
+run so you can do it yourself. Tasks without a written lesson yet fall back to
+showing the task and pointing you at `make solution`.
 
 `train` decides on its own whether to teach you something **new** (the next task
 in sequence) or bring back **older** material you've passed before, on a
