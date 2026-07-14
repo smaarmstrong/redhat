@@ -85,11 +85,23 @@ id -nG | grep libvirt             # should print a line containing 'libvirt'
 
 ## Practice (inside the Rocky VM)
 
-Once you're on the Rocky machine, clone this repo and use the `practice` runner:
+Once you're on the Rocky machine, clone this repo. The simplest way in is to let
+the trainer decide what you should practise:
 
 ```bash
 git clone https://github.com/smaarmstrong/redhat ~/redhat && cd ~/redhat
 
+make train     # picks the next task for you — new material, or an older one due for review
+#   ...do the task on the system...
+make check     # grade it, then `make train` again for the next one
+```
+
+`make train` interleaves new tasks (in sequence) with spaced-repetition reviews
+of things you've already passed, so you never have to decide what to work on.
+
+If you'd rather drive it yourself, the full runner is still there:
+
+```bash
 ./games/practice list                # every task, grouped by domain, with your status
 ./games/practice start create-user   # show a task and set up its starting state
 #   ...do the task on the system...
