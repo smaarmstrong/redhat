@@ -7,6 +7,7 @@ job to do on the system; the grader then checks the *end state* (the way the rea
 exam is scored), not the commands you typed.
 
 Usage:
+    practice learn                # teach the next new task, then let you try it
     practice train                # auto-pick what to do next (review or new) and start it
     practice check                # grade the task you're currently on
     practice list                 # all tasks, grouped by domain, with your status
@@ -16,9 +17,10 @@ Usage:
     practice reset  <id>          # re-run setup to start the task over
     practice status               # your XP, streak, and completion
 
-New here? Just run `practice train`, do the task it gives you, then `practice
-check`. Repeat. It decides when to teach you something new and when to bring
-back older material for review, so you don't have to.
+New to the material? Run `practice learn` — it explains the concept behind the
+next task, then sets it up so you can try it. Once you know the ropes, `practice
+train` just picks what to practise next (new material or a review) so you don't
+have to decide.
 
 <id> can be the full "domain/nn-name" or just the unique trailing name. For
 check/solution/reset you can omit <id> to act on the task train/start gave you.
@@ -234,8 +236,8 @@ def cmd_list(tasks, st):
                 print(f"    {mark} {name:<24} {DIM(t.get('title',''))}{est_s}{note}")
         print()
     print_status_line(st)
-    print(DIM("Not sure where to start?  ") + BLD("practice train") + DIM("  picks for you."))
-    print(DIM("Or start a specific one:  practice start <name>"))
+    print(DIM("New to this?  ") + BLD("practice learn") + DIM("  teaches the next one first."))
+    print(DIM("Know it already?  ") + BLD("practice train") + DIM("  just picks what to practise."))
 
 def print_status_line(st):
     done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
@@ -281,6 +283,112 @@ def launch_task(tasks, st, t):
 
 def cmd_start(tasks, st, ident):
     launch_task(tasks, st, resolve(tasks, ident))
+
+def ask(msg):
+    """Prompt the learner; treat a closed stdin (piped/non-interactive) as Enter."""
+    try:
+        return input(msg).strip().lower()
+    except EOFError:
+        print()
+        return ""
+
+def parse_lesson(text):
+    """Split a lesson into a sequence of beats the tutor walks through:
+        ('prose', text)   a chunk of the lecture, printed as-is
+        ('pause', None)   a `---` line — wait for the learner before going on
+        ('run',  [cmd])   a ```run fenced block — commands to try on the system
+    A lesson with none of these markers is just one prose beat (prints as-is)."""
+    beats, buf, lines, i = [], [], text.splitlines(), 0
+    def flush():
+        if any(l.strip() for l in buf):
+            beats.append(("prose", "\n".join(buf).strip("\n")))
+        buf.clear()
+    while i < len(lines):
+        s = lines[i].strip()
+        if s == "---":
+            flush(); beats.append(("pause", None)); i += 1
+        elif s.startswith("```run"):
+            flush(); cmds = []; i += 1
+            while i < len(lines) and not lines[i].strip().startswith("```"):
+                if lines[i].strip():
+                    cmds.append(lines[i].strip())
+                i += 1
+            i += 1                       # skip the closing fence
+            if cmds:
+                beats.append(("run", cmds))
+        else:
+            buf.append(lines[i]); i += 1
+    flush()
+    return beats
+
+def run_lesson(beats):
+    """Walk the learner through a parsed lesson. Prose is paced with pauses;
+    `run` commands are executed live on the practice system (it's throwaway) so
+    they see real output. Returns False if the learner quit early."""
+    for kind, payload in beats:
+        if kind == "prose":
+            print(payload)
+        elif kind == "pause":
+            if ask(DIM("\n  [Enter to continue · q to stop] ")) in ("q", "quit"):
+                return False
+            print()
+        elif kind == "run":
+            for cmd in payload:
+                print()
+                print(BLD("  Your turn — run this:"))
+                print(GRN("    " + cmd))
+                ans = ask(DIM("  [Enter to run it here · s to skip · q to stop] "))
+                if ans in ("q", "quit"):
+                    return False
+                if ans in ("s", "skip"):
+                    continue
+                print(DIM("  ── output " + "─" * 40))
+                subprocess.run(cmd, shell=True)
+                print(DIM("  " + "─" * 49))
+    return True
+
+def cmd_learn(tasks, st, ident=None, focus=None):
+    """Teach a task like a tutor: a paced lecture from learn.md, telling you
+    which commands to run as you go, then a solo practice run. With no id, it
+    teaches the next new task — the same one `train` would give you."""
+    if ident:
+        t = resolve(tasks, ident)
+    else:
+        t = next_new(tasks, st, spare_present(), focus)
+        if t is None:
+            print(DIM("You've started every task already. "
+                      "Revisit a lesson with:  practice learn <id>"))
+            return
+    short = t["id"].split("/")[-1]
+    print()
+    print(BLD(f"LESSON — {t['domain']}: {t['title']}"))
+    print(DIM(f"objective: {t.get('objective','')}"))
+    print(DIM(f"id: {t['id']}"))
+    print("─" * 60)
+    lesson = t["dir"] / "learn.md"
+    if not lesson.exists():
+        print(DIM("No written lesson for this task yet — read the task, give it a"))
+        print(DIM("go, and reveal a worked solution with  ") + "practice solution")
+        prompt = t["dir"] / "prompt.md"
+        if prompt.exists():
+            print("\n" + prompt.read_text().rstrip())
+        print("─" * 60)
+        if ask(BLD("Set it up so you can try it? ") + DIM("[Enter = yes, q = later] ")) not in ("q", "quit"):
+            launch_task(tasks, st, t)
+        else:
+            print(DIM("When you're ready:  ") + f"practice start {short}")
+        return
+
+    finished = run_lesson(parse_lesson(lesson.read_text()))
+    print("─" * 60)
+    if not finished:
+        print(DIM("Lesson paused. Pick it back up any time:  ") + f"practice learn {short}")
+        return
+    print(GRN("That's the lesson.") + DIM("  Best way to make it stick is to do it yourself."))
+    if ask(BLD("Practice it now, from a clean slate? ") + DIM("[Enter = yes, q = later] ")) not in ("q", "quit"):
+        launch_task(tasks, st, t)
+    else:
+        print(DIM("When you're ready:  ") + f"practice learn {short}" + DIM("  or  ") + f"practice start {short}")
 
 def choose_task(tasks, st, have_spare, focus=None):
     """Decide what to practise next. Pure — no side effects, so it's testable.
@@ -397,6 +505,11 @@ def main():
     elif cmd in ("train", "next"):
         focus = rest[0] if rest and rest[0] in TRACKS else None
         cmd_train(tasks, st, focus)
+    elif cmd == "learn":
+        if rest and rest[0] in TRACKS:
+            cmd_learn(tasks, st, focus=rest[0])
+        else:
+            cmd_learn(tasks, st, ident=rest[0] if rest else None)
     elif cmd == "start":
         if not rest:
             sys.exit(RED("Usage: practice start <id>   (or just: practice train)"))

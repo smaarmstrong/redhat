@@ -1,8 +1,8 @@
 # Task format
 
 Every practice task is a directory under `tasks/<domain>/<NN-name>/` containing
-exactly five files. The `practice` runner discovers tasks by scanning for
-`meta.json`.
+five required files plus one optional lesson. The `practice` runner discovers
+tasks by scanning for `meta.json`.
 
 ```
 tasks/storage/01-lvm-filesystem/
@@ -10,7 +10,8 @@ tasks/storage/01-lvm-filesystem/
 ├── prompt.md      # the task shown to the learner
 ├── setup.sh       # establishes the starting state (runs as root)
 ├── grade.sh       # checks the end state (runs as root)
-└── solution.sh    # a reference solution (revealed on request)
+├── solution.sh    # a reference solution (revealed on request)
+└── learn.md       # OPTIONAL: the lesson shown by `practice learn` (see below)
 ```
 
 ## `meta.json`
@@ -69,6 +70,41 @@ Helpers available from `common.sh`: `check`, `check_eval`, `grade_summary`,
 A minimal reference solution (one valid path). Storage tasks may start with the
 same `common.sh` header to use `spare_disk()`. The runner hides the header lines
 when displaying it.
+
+## `learn.md` (optional)
+
+The interactive lesson shown by `practice learn` before the learner attempts the
+task — for people meeting the material for the first time, not just being tested
+on it. Optional: if it's absent, `learn` falls back to showing the prompt and
+pointing at `solution`.
+
+`learn` reads it as a **tutor script** and walks the learner through it, so it's
+plain readable prose plus two markers:
+
+- A line that is exactly `---` is a **pause**: the tutor prints everything above
+  it, then waits ("Enter to continue") before going on. Use it to break the
+  lecture into digestible beats.
+- A fenced ```` ```run ```` block is a **command to try**. The tutor shows it and
+  runs it live on the practice system (it's throwaway) so the learner sees real
+  output. One command per line; include `sudo` where root is needed.
+
+Everything else is printed as-is, so write plain text (light structure,
+`$ command` for illustrative snippets), not heavy Markdown. The house style is
+five sections, interleaved with `---` pauses and ```` ```run ```` steps:
+
+```
+THE IDEA        what the thing is and the mental model for it
+WHY IT MATTERS  why the exam and a real admin care
+HOW TO DO IT    the actual commands (as ```run steps), explained as you go
+CHECK IT WORKED how to confirm it — ideally what the grader looks at
+GOTCHAS         the classic traps (e.g. "persist across reboot", two-places edits)
+```
+
+Because the ```` ```run ```` commands execute on the real system, the lesson can
+leave the task solved — that's fine: `learn` finishes by offering a clean solo
+run (`setup.sh` resets the starting state). A good `learn.md` teaches the *skill*
+so the solution becomes obvious; it should never be just a reworded
+`solution.sh`. See `rhcsa/tasks/boot/` for worked examples.
 
 ## Authoring rules
 
