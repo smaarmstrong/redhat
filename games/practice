@@ -294,10 +294,14 @@ def ask(msg):
 
 def parse_lesson(text):
     """Split a lesson into a sequence of beats the tutor walks through:
-        ('prose', text)   a chunk of the lecture, printed as-is
-        ('pause', None)   a `---` line — wait for the learner before going on
-        ('run',  [cmd])   a ```run fenced block — commands to try on the system
-    A lesson with none of these markers is just one prose beat (prints as-is)."""
+        ('prose', text)    a chunk of the lecture, printed as-is
+        ('pause', None)    a `---` line — wait for the learner before going on
+        ('run',  [lines])  a ```run fenced block — run as ONE shell script
+    A lesson with none of these markers is just one prose beat (prints as-is).
+
+    Lines inside a ```run block are captured VERBATIM (indentation and blank
+    lines preserved) so heredocs, multi-line YAML, and `cd` within the block
+    survive — the whole block is executed as a single script by run_lesson."""
     beats, buf, lines, i = [], [], text.splitlines(), 0
     def flush():
         if any(l.strip() for l in buf):
@@ -308,23 +312,25 @@ def parse_lesson(text):
         if s == "---":
             flush(); beats.append(("pause", None)); i += 1
         elif s.startswith("```run"):
-            flush(); cmds = []; i += 1
+            flush(); raw = []; i += 1
             while i < len(lines) and not lines[i].strip().startswith("```"):
-                if lines[i].strip():
-                    cmds.append(lines[i].strip())
-                i += 1
-            i += 1                       # skip the closing fence
-            if cmds:
-                beats.append(("run", cmds))
+                raw.append(lines[i]); i += 1      # verbatim — keep indentation
+            i += 1                                 # skip the closing fence
+            while raw and not raw[0].strip():  raw.pop(0)    # trim blank edges
+            while raw and not raw[-1].strip(): raw.pop()
+            if raw:
+                beats.append(("run", raw))
         else:
             buf.append(lines[i]); i += 1
     flush()
     return beats
 
 def run_lesson(beats):
-    """Walk the learner through a parsed lesson. Prose is paced with pauses;
-    `run` commands are executed live on the practice system (it's throwaway) so
-    they see real output. Returns False if the learner quit early."""
+    """Walk the learner through a parsed lesson. Prose is paced with pauses; a
+    `run` block is shown, then executed live as a SINGLE shell script on the
+    practice system (it's throwaway) so the learner sees real output — running
+    it whole means heredocs, `cd`, and $(...) within the block all work.
+    Returns False if the learner quit early."""
     for kind, payload in beats:
         if kind == "prose":
             print(payload)
@@ -333,18 +339,18 @@ def run_lesson(beats):
                 return False
             print()
         elif kind == "run":
-            for cmd in payload:
-                print()
-                print(BLD("  Your turn — run this:"))
-                print(GRN("    " + cmd))
-                ans = ask(DIM("  [Enter to run it here · s to skip · q to stop] "))
-                if ans in ("q", "quit"):
-                    return False
-                if ans in ("s", "skip"):
-                    continue
-                print(DIM("  ── output " + "─" * 40))
-                subprocess.run(cmd, shell=True)
-                print(DIM("  " + "─" * 49))
+            print()
+            print(BLD("  Your turn — run this:"))
+            for line in payload:
+                print(GRN("    " + line))
+            ans = ask(DIM("  [Enter to run it here · s to skip · q to stop] "))
+            if ans in ("q", "quit"):
+                return False
+            if ans in ("s", "skip"):
+                continue
+            print(DIM("  ── output " + "─" * 40))
+            subprocess.run(["bash", "-c", "\n".join(payload)])
+            print(DIM("  " + "─" * 49))
     return True
 
 def cmd_learn(tasks, st, ident=None, focus=None):
@@ -379,6 +385,19 @@ def cmd_learn(tasks, st, ident=None, focus=None):
             print(DIM("When you're ready:  ") + f"practice start {short}")
         return
 
+    # Put the system into the task's starting state first, so the walkthrough's
+    # live commands make sense (many tasks set up a scenario for you to fix).
+    if runnable(t, spare_present()):
+        print(DIM("Setting up a system to follow along on...\n"))
+        run_root(t["dir"] / "setup.sh")
+        entry = st["tasks"].setdefault(t["id"], {})
+        if entry.get("status") != "done":
+            entry["status"] = "in-progress"
+        st["current"] = t["id"]
+        save_state(st)
+    else:
+        print(YEL("This task needs a spare disk — the commands below won't run "
+                  "here,\nbut read along to learn the shape of it.\n"))
     finished = run_lesson(parse_lesson(lesson.read_text()))
     print("─" * 60)
     if not finished:
