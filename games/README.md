@@ -10,10 +10,18 @@ commands you typed.
 If you don't want to think about *what* to do, don't. From the repo root:
 
 ```bash
-make train     # picks the next task for you (new material, or a review), and sets it up
+make learn     # NEW to the material: explains the next task, then sets it up to try
 #   ...do the task on the system...
-make check     # grade it, then `make train` again for the next one
+make check     # grade it, then `make learn` again for the next one
+
+make train     # once you know the ropes: picks the next task (new, or a review)
+make check     # grade it, then `make train` again
 ```
+
+`make learn` shows a short lesson (the concept, the commands, how to verify, the
+common traps) for the next task, then offers to set it up so you can try it for
+real. Tasks without a written lesson yet fall back to showing the task and
+pointing you at `make solution`.
 
 `train` decides on its own whether to teach you something **new** (the next task
 in sequence) or bring back **older** material you've passed before, on a

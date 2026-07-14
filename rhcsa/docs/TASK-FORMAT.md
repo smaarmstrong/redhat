@@ -1,8 +1,8 @@
 # Task format
 
 Every practice task is a directory under `tasks/<domain>/<NN-name>/` containing
-exactly five files. The `practice` runner discovers tasks by scanning for
-`meta.json`.
+five required files plus one optional lesson. The `practice` runner discovers
+tasks by scanning for `meta.json`.
 
 ```
 tasks/storage/01-lvm-filesystem/
@@ -10,7 +10,8 @@ tasks/storage/01-lvm-filesystem/
 ├── prompt.md      # the task shown to the learner
 ├── setup.sh       # establishes the starting state (runs as root)
 ├── grade.sh       # checks the end state (runs as root)
-└── solution.sh    # a reference solution (revealed on request)
+├── solution.sh    # a reference solution (revealed on request)
+└── learn.md       # OPTIONAL: the lesson shown by `practice learn` (see below)
 ```
 
 ## `meta.json`
@@ -69,6 +70,26 @@ Helpers available from `common.sh`: `check`, `check_eval`, `grade_summary`,
 A minimal reference solution (one valid path). Storage tasks may start with the
 same `common.sh` header to use `spare_disk()`. The runner hides the header lines
 when displaying it.
+
+## `learn.md` (optional)
+
+The tutorial shown by `practice learn` before the learner attempts the task —
+for people meeting the material for the first time, not just being tested on it.
+Optional: if it's absent, `learn` falls back to showing the prompt and pointing
+at `solution`. It's printed as-is to the terminal, so write plain, readable text
+(light structure, `$ command` lines) rather than heavy Markdown. Keep it to the
+concept, not a command dump. The house style is five short sections:
+
+```
+THE IDEA        what the thing is and the mental model for it
+WHY IT MATTERS  why the exam and a real admin care
+HOW TO DO IT    the actual commands, explained (not just pasted)
+CHECK IT WORKED how to confirm it — ideally what the grader looks at
+GOTCHAS         the classic traps (e.g. "persist across reboot", two-places edits)
+```
+
+A good `learn.md` teaches the *skill* so the solution becomes obvious; it should
+never be just a reworded `solution.sh`.
 
 ## Authoring rules
 
