@@ -8,3 +8,5 @@ Create two links to an existing file.
 
 The links must persist after a reboot (they are stored on disk, so
 creating them once is enough).
+
+Note: /opt/src is owned by root, so create the links with sudo.

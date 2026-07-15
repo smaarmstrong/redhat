@@ -46,10 +46,16 @@ HOW TO DO IT
   One command makes both. `ln` with no options makes a HARD link;
   `ln -s` makes a SYMBOLIC one. The order is always ln TARGET LINKNAME.
 
+  One practical thing first: /opt/src is owned by root, and you're a
+  normal user. Writing there needs elevated rights, so we prefix each
+  command with `sudo` — you're a normal user who's been granted sudo,
+  exactly the situation on the exam. (Reading the directory needs no
+  sudo, which is why the `ls` steps above didn't use it.)
+
   First the hard link — same inode as original.txt:
 
 ```run
-ln /opt/src/original.txt /opt/src/hardlink.txt
+sudo ln /opt/src/original.txt /opt/src/hardlink.txt
 ```
 
   Now the soft link. Notice the target here is just `original.txt`, not
@@ -57,7 +63,7 @@ ln /opt/src/original.txt /opt/src/hardlink.txt
   link sits in, so this points at the file right beside it:
 
 ```run
-ln -s original.txt /opt/src/symlink.txt
+sudo ln -s original.txt /opt/src/symlink.txt
 ```
 
 ---
