@@ -372,10 +372,18 @@ def run_lesson(beats):
             print(BLD("  Your turn — run this:"))
             for line in payload:
                 print(GRN("    " + line))
-            ans = ask(DIM("  [Enter to run it here · s to skip · q to stop] "))
+            ans = ask(DIM("  [Enter to run it here · t to type it yourself · s skip · q stop] "))
             if ans in ("q", "quit"):
                 return False
             if ans in ("s", "skip"):
+                continue
+            if ans in ("t", "type"):
+                # Hand over a real interactive shell so the learner types it
+                # themselves — with genuine Tab autocompletion, history, etc.
+                print(DIM("  Shell open — type the command above yourself (Tab autocompletes)."))
+                print(DIM("  Run it, then `exit` (or Ctrl-D) to come back to the lesson."))
+                subprocess.run(["bash", "-i"])
+                print(DIM("  ── back to the lesson " + "─" * 26))
                 continue
             print(DIM("  ── output " + "─" * 40))
             subprocess.run(["bash", "-c", "\n".join(payload)])
