@@ -40,6 +40,13 @@ REPO = Path(__file__).resolve().parent.parent
 TRACKS = ["rhcsa", "rhce"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
+# How the learner invoked us, so hints name a command they can actually run.
+# SELF is the runnable path (e.g. ./games/practice) — used for hints that take
+# an <id>. INVOKE is what to suggest for the plain verbs: `make <verb>` when run
+# under make (MAKELEVEL is set), otherwise the same path.
+SELF = sys.argv[0] or "./games/practice"
+INVOKE = "make" if os.environ.get("MAKELEVEL") else SELF
+
 # ---- colours ---------------------------------------------------------------
 _tty = sys.stdout.isatty()
 def c(code, s):
@@ -236,8 +243,8 @@ def cmd_list(tasks, st):
                 print(f"    {mark} {name:<24} {DIM(t.get('title',''))}{est_s}{note}")
         print()
     print_status_line(st)
-    print(DIM("New to this?  ") + BLD("practice learn") + DIM("  teaches the next one first."))
-    print(DIM("Know it already?  ") + BLD("practice train") + DIM("  just picks what to practise."))
+    print(DIM("New to this?  ") + BLD(f"{INVOKE} learn") + DIM("  teaches the next one first."))
+    print(DIM("Know it already?  ") + BLD(f"{INVOKE} train") + DIM("  just picks what to practise."))
 
 def print_status_line(st):
     done = sum(1 for t in st["tasks"].values() if t.get("status") == "done")
@@ -278,7 +285,7 @@ def launch_task(tasks, st, t):
         entry["status"] = "in-progress"
     st["current"] = t["id"]
     save_state(st)
-    print(GRN("Ready.") + DIM("  Do the task, then:  ") + "practice check")
+    print(GRN("Ready.") + DIM("  Do the task, then:  ") + f"{INVOKE} check")
     return True
 
 def cmd_start(tasks, st, ident):
@@ -374,7 +381,7 @@ def cmd_learn(tasks, st, ident=None, focus=None):
     lesson = t["dir"] / "learn.md"
     if not lesson.exists():
         print(DIM("No written lesson for this task yet — read the task, give it a"))
-        print(DIM("go, and reveal a worked solution with  ") + "practice solution")
+        print(DIM("go, and reveal a worked solution with  ") + f"{INVOKE} solution")
         prompt = t["dir"] / "prompt.md"
         if prompt.exists():
             print("\n" + prompt.read_text().rstrip())
@@ -382,7 +389,7 @@ def cmd_learn(tasks, st, ident=None, focus=None):
         if ask(BLD("Set it up so you can try it? ") + DIM("[Enter = yes, q = later] ")) not in ("q", "quit"):
             launch_task(tasks, st, t)
         else:
-            print(DIM("When you're ready:  ") + f"practice start {short}")
+            print(DIM("When you're ready:  ") + f"{SELF} start {short}")
         return
 
     # Put the system into the task's starting state first, so the walkthrough's
@@ -401,13 +408,13 @@ def cmd_learn(tasks, st, ident=None, focus=None):
     finished = run_lesson(parse_lesson(lesson.read_text()))
     print("─" * 60)
     if not finished:
-        print(DIM("Lesson paused. Pick it back up any time:  ") + f"practice learn {short}")
+        print(DIM("Lesson paused. Pick it back up any time:  ") + f"{SELF} learn {short}")
         return
     print(GRN("That's the lesson.") + DIM("  Best way to make it stick is to do it yourself."))
     if ask(BLD("Practice it now, from a clean slate? ") + DIM("[Enter = yes, q = later] ")) not in ("q", "quit"):
         launch_task(tasks, st, t)
     else:
-        print(DIM("When you're ready:  ") + f"practice learn {short}" + DIM("  or  ") + f"practice start {short}")
+        print(DIM("When you're ready:  ") + f"{SELF} learn {short}" + DIM("  or  ") + f"{SELF} start {short}")
 
 def choose_task(tasks, st, have_spare, focus=None):
     """Decide what to practise next. Pure — no side effects, so it's testable.
@@ -477,13 +484,13 @@ def cmd_check(tasks, st, ident):
         st["xp"] += gain
         bump_streak(st)
         print(GRN(f"\n+{gain} XP") + f"   (streak {st['streak']['count']})")
-        print(DIM(f"Next review in {review_interval(reps)}d.  Next task:  ") + "practice train")
+        print(DIM(f"Next review in {review_interval(reps)}d.  Next task:  ") + f"{INVOKE} train")
     else:
         if entry.get("status") == "done":   # a lapse — relearn from the start, soon
             entry["reps"] = 0
             entry["due"] = date.today().isoformat()
-        print(YEL("\nNot passed yet.") + DIM("  Fix it and re-run  ") + "practice check"
-              + DIM("   (stuck?  ") + "practice solution" + DIM(")"))
+        print(YEL("\nNot passed yet.") + DIM("  Fix it and re-run  ") + f"{INVOKE} check"
+              + DIM("   (stuck?  ") + f"{INVOKE} solution" + DIM(")"))
     save_state(st)
 
 def cmd_solution(tasks, st, ident):
@@ -531,16 +538,16 @@ def main():
             cmd_learn(tasks, st, ident=rest[0] if rest else None)
     elif cmd == "start":
         if not rest:
-            sys.exit(RED("Usage: practice start <id>   (or just: practice train)"))
+            sys.exit(RED(f"Usage: {SELF} start <id>   (or just: {INVOKE} train)"))
         cmd_start(tasks, st, rest[0])
     elif cmd in ("check", "solution", "reset"):
         ident = rest[0] if rest else st.get("current")
         if not ident:
-            sys.exit(RED(f"Nothing to {cmd} — run 'practice train' first, "
-                         f"or name a task: practice {cmd} <id>"))
+            sys.exit(RED(f"Nothing to {cmd} — run '{INVOKE} train' first, "
+                         f"or name a task: {SELF} {cmd} <id>"))
         {"check": cmd_check, "solution": cmd_solution, "reset": cmd_reset}[cmd](tasks, st, ident)
     else:
-        sys.exit(RED(f"Unknown command '{cmd}'. Try: practice help"))
+        sys.exit(RED(f"Unknown command '{cmd}'. Try: {INVOKE} help"))
 
 if __name__ == "__main__":
     main()
