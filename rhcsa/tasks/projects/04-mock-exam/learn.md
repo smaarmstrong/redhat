@@ -49,6 +49,12 @@ lsblk
 
 HOW TO DO IT
 
+  Note: these tasks touch root-owned system paths and services, so
+  the commands that change them are prefixed with `sudo` — a normal
+  user who's been granted sudo, exactly the exam setup. (Read-only
+  inspection like `lsblk` needs no sudo, which is why the step above
+  didn't.)
+
   (a) User in wheel. Create examuser, then add to the wheel group with
   -aG (append, don't replace her other groups). Membership in wheel is the
   standard way to grant sudo on RHEL:

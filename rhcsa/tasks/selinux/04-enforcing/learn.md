@@ -50,6 +50,11 @@ HOW TO DO IT
   Step 1 — switch the running mode. setenforce 1 means enforcing, 0 means
   permissive (you can also say the words):
 
+  Note: changing the running SELinux mode and editing
+  /etc/selinux/config are privileged, so these commands are prefixed
+  with `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup. (Reading the mode with `getenforce` needs no sudo.)
+
 ```run
 sudo setenforce 1
 ```

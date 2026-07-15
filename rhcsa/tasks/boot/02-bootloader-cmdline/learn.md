@@ -40,6 +40,12 @@ THE CATCH: TWO PLACES
 
 STEP 1 — every installed kernel, via grubby
 
+  Note: the boot entries grubby edits live under /boot and the template
+  /etc/default/grub is owned by root; you're a normal user, so the
+  commands that change them are prefixed with `sudo` — a normal user
+  who's been granted sudo, exactly the exam setup. (Reading needs no
+  sudo, which is why `cat /proc/cmdline` didn't.)
+
   Apply the argument to all current kernels:
 
 ```run

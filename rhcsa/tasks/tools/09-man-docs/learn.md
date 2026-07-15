@@ -42,11 +42,16 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
-  The task just wants the FULL output of that search saved to a file.
-  Redirect apropos into /root/pw-cmds.txt:
+  The task just wants the FULL output of that search saved to a file,
+  /root/pw-cmds.txt.
+
+  That file sits under /root, which belongs to root, so we pipe
+  apropos to `sudo tee` to write it as root — a normal user who's been
+  granted sudo, exactly the exam setup. (Running `apropos` on its own
+  above needed no sudo; only writing into /root does.)
 
 ```run
-apropos password > /root/pw-cmds.txt
+apropos password | sudo tee /root/pw-cmds.txt > /dev/null
 ```
 
   That's it — one command, one redirect. If apropos ever returns
@@ -60,7 +65,7 @@ CHECK IT WORKED
   Look at the saved file:
 
 ```run
-cat /root/pw-cmds.txt
+sudo cat /root/pw-cmds.txt
 ```
 
   It holds exactly what apropos printed to the screen a moment ago. The
@@ -70,7 +75,7 @@ cat /root/pw-cmds.txt
   Count how many commands matched:
 
 ```run
-wc -l /root/pw-cmds.txt
+sudo wc -l /root/pw-cmds.txt
 ```
 
 ---

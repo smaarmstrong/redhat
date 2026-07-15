@@ -15,11 +15,17 @@ THE IDEA
 ---
 
   We're going to search /etc for regular files ending in .conf that are
-  bigger than 5k, and save the sorted paths to /root/bigconf.txt. First,
-  a taste of find with just one test:
+  bigger than 5k, and save the sorted paths to /root/bigconf.txt.
+
+  We run find with `sudo`: a normal user can't descend into every
+  directory under /etc, so an unprivileged find would miss files the
+  root grader sees (and spew permission-denied noise). The result also
+  lands in /root, which isn't yours to write, so we pipe it to
+  `sudo tee`. You're a normal user who's been granted sudo, exactly the
+  exam setup. First, a taste of find with just one test:
 
 ```run
-find /etc -name '*.conf' -type f | head
+sudo find /etc -name '*.conf' -type f | head
 ```
 
   That's already the .conf files; now we add the size filter.
@@ -45,7 +51,7 @@ HOW TO DO IT
   `sort` and redirect into the file:
 
 ```run
-find /etc -type f -name '*.conf' -size +5k | sort > /root/bigconf.txt
+sudo find /etc -type f -name '*.conf' -size +5k | sort | sudo tee /root/bigconf.txt > /dev/null
 ```
 
   find's output order is filesystem order (effectively random), so the
@@ -59,7 +65,7 @@ CHECK IT WORKED
   Look at the result:
 
 ```run
-cat /root/bigconf.txt
+sudo cat /root/bigconf.txt
 ```
 
   Full paths, alphabetically sorted, one per line. The grader runs the
@@ -69,7 +75,7 @@ cat /root/bigconf.txt
   Sanity-check one entry is genuinely over 5k if you like:
 
 ```run
-find /etc -type f -name '*.conf' -size +5k -exec ls -lh {} +
+sudo find /etc -type f -name '*.conf' -size +5k -exec ls -lh {} +
 ```
 
 ---

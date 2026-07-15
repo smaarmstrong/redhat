@@ -21,10 +21,16 @@ THE IDEA
 
 ---
 
-  See what volumes exist right now (probably none yet):
+  See what volumes exist right now (probably none yet).
+
+  We prefix each podman command with `sudo`: setup pulled the image
+  into root's container store and the grader runs as root, so our work
+  has to live in the same store it inspects, not your separate rootless
+  one. You're a normal user who's been granted sudo, exactly the exam
+  setup.
 
 ```run
-podman volume ls
+sudo podman volume ls
 ```
 
   Empty, or whatever a previous run left. We'll create one next.
@@ -49,7 +55,7 @@ HOW TO DO IT
   First create the named volume:
 
 ```run
-podman volume create appdata
+sudo podman volume create appdata
 ```
 
   Podman prints the name back. That storage now exists independently
@@ -65,7 +71,7 @@ podman volume create appdata
   Run it:
 
 ```run
-podman run -d --name datastore -v appdata:/data $(podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
+sudo podman run -d --name datastore -v appdata:/data $(sudo podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
 ```
 
   In an exam you'd just type the image name; the $(...) auto-picks the
@@ -92,7 +98,7 @@ CHECK IT WORKED
   Ask podman what's mounted in the container:
 
 ```run
-podman inspect -f '{{range .Mounts}}{{.Type}} {{.Source}} -> {{.Destination}}{{"\n"}}{{end}}' datastore
+sudo podman inspect -f '{{range .Mounts}}{{.Type}} {{.Source}} -> {{.Destination}}{{"\n"}}{{end}}' datastore
 ```
 
   You want a line whose destination is /data. That's exactly what the
@@ -105,7 +111,7 @@ podman inspect -f '{{range .Mounts}}{{.Type}} {{.Source}} -> {{.Destination}}{{"
   the volume:
 
 ```run
-podman exec datastore sh -c 'echo hello > /data/proof.txt; cat /data/proof.txt'
+sudo podman exec datastore sh -c 'echo hello > /data/proof.txt; cat /data/proof.txt'
 ```
 
   That file now lives in the appdata volume, not the container. Remove

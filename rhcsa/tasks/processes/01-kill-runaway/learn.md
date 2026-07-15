@@ -51,6 +51,12 @@ STEP 2 — kill it
   finds and signals in one shot using the same `-f` pattern matching. By
   default it sends SIGTERM:
 
+  Note: the runaway process is owned by root (the setup launched
+  it), and you're a normal user, so the command that signals it is
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Finding it with `pgrep`/`ps` needs no
+  sudo, which is why the earlier steps didn't.)
+
 ```run
 sudo pkill -f runaway-hog
 ```

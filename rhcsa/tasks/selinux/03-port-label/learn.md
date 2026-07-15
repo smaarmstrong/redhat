@@ -15,6 +15,11 @@ THE IDEA
   Let's see what type currently owns the http ports. TCP 8888 is NOT in the
   list yet (the setup made sure of that):
 
+  Note: even listing SELinux port labels with `semanage port -l`
+  requires root, as does adding one, so these commands are prefixed
+  with `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup.
+
 ```run
 sudo semanage port -l | grep ^http_port_t
 ```

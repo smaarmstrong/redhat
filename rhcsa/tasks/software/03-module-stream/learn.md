@@ -45,6 +45,12 @@ HOW TO DO IT
   Enable version 15 of the postgresql module. The syntax is
   module:stream — here postgresql:15. The -y accepts the transaction:
 
+  Note: enabling a module stream writes system state under /etc,
+  which only root may do, so the `dnf module enable` command is
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Listing modules with `dnf module list`
+  needs no sudo, which is why the earlier step didn't.)
+
 ```run
 sudo dnf -y module enable postgresql:15
 ```

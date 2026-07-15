@@ -45,10 +45,16 @@ HOW TO DO IT
 
   Chain the two filters and redirect to the file. First the tag filter to get
   only rhcsa-drill lines, then grep to keep only those containing 4711, then
-  `>` to write the result:
+  write the result to /root/drill.txt.
+
+  That file sits under /root, which belongs to root, so we pipe the
+  filtered lines to `sudo tee` to write it as root — a normal user
+  who's been granted sudo, exactly the exam setup. (Reading the journal
+  above needed no sudo: your account is in the `wheel` group, which may
+  read the full journal.)
 
 ```run
-journalctl -t rhcsa-drill --no-pager | grep 4711 > /root/drill.txt
+journalctl -t rhcsa-drill --no-pager | grep 4711 | sudo tee /root/drill.txt > /dev/null
 ```
 
   Read left to right: journalctl produces the tagged lines, grep throws away
@@ -63,14 +69,14 @@ CHECK IT WORKED
   Look at what you captured:
 
 ```run
-cat /root/drill.txt
+sudo cat /root/drill.txt
 ```
 
   Every line should be an rhcsa-drill message containing 4711, and none of
   the decoys. Count them if you like:
 
 ```run
-wc -l /root/drill.txt
+sudo wc -l /root/drill.txt
 ```
 
   The grader rebuilds the expected set the same way — `journalctl -t

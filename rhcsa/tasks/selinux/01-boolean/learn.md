@@ -48,6 +48,11 @@ HOW TO DO IT
 
   Turn it on, persistently:
 
+  Note: changing an SELinux boolean is privileged, so this command
+  is prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Reading state with `getsebool` needs no
+  sudo.)
+
 ```run
 sudo setsebool -P httpd_can_network_connect on
 ```

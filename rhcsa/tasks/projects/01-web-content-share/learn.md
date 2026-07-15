@@ -46,6 +46,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: this scenario lives in root-owned system paths, so the
+  commands that change it are prefixed with `sudo` — a normal user
+  who's been granted sudo, exactly the exam setup. (Read-only
+  inspection like `lsblk` needs no sudo, which is why the step above
+  didn't.)
+
   Part 1 — the LVM stack. The pipeline is always PV -> VG -> LV. Mark the
   spare as a physical volume, pool it into vg_web, then carve a 1 GiB
   logical volume named lv_web:

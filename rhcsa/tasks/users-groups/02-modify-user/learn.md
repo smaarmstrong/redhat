@@ -37,6 +37,11 @@ WHY IT MATTERS
 
 HOW TO DO IT — the shell
 
+  Note: modifying an account writes to /etc/passwd and /etc/shadow,
+  which needs privilege, so these commands are prefixed with `sudo`
+  — a normal user who's been granted sudo, exactly the exam setup.
+  (Reading with `getent`/`id` needs no sudo.)
+
   Point the login shell at /sbin/nologin:
 
 ```run

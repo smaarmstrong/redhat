@@ -49,8 +49,15 @@ HOW TO DO IT
 
   Run it:
 
+  Note: /srv/source and /srv/backup are owned by root and you're a
+  normal user, so the `rsync` commands that read the protected
+  source files and write the backup are prefixed with `sudo` — a
+  normal user who's been granted sudo, exactly the exam setup.
+  (Listing with `ls` needs no sudo, which is why the earlier step
+  didn't.)
+
 ```run
-rsync -a --delete /srv/source/ /srv/backup/
+sudo rsync -a --delete /srv/source/ /srv/backup/
 ```
 
   rsync creates /srv/backup for you. -a carried the odd permissions and the
@@ -64,7 +71,7 @@ CHECK IT WORKED
   dry-run mode it should find nothing:
 
 ```run
-rsync -anic /srv/source/ /srv/backup/
+sudo rsync -anic /srv/source/ /srv/backup/
 ```
 
   -n is dry-run (change nothing), -i itemizes each change, -c compares by

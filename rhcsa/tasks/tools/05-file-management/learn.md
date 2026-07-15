@@ -35,10 +35,16 @@ HOW TO DO IT
 
   First the three directories. `mkdir -p` creates parent directories as
   needed AND lets you list several at once, so /srv/proj itself and all
-  three subdirs appear in one command:
+  three subdirs appear in one command.
+
+  We're building this tree under /srv, which is root-owned, so the
+  commands that create files and directories there are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Listing it afterwards with `ls` needs no sudo, since the
+  directories are world-readable.)
 
 ```run
-mkdir -p /srv/proj/src /srv/proj/bin /srv/proj/docs
+sudo mkdir -p /srv/proj/src /srv/proj/bin /srv/proj/docs
 ```
 
   Now copy /etc/hostname into docs under a new name. cp takes SOURCE
@@ -46,14 +52,14 @@ mkdir -p /srv/proj/src /srv/proj/bin /srv/proj/docs
   new name in one go:
 
 ```run
-cp /etc/hostname /srv/proj/docs/hostname.txt
+sudo cp /etc/hostname /srv/proj/docs/hostname.txt
 ```
 
   Finally an empty file for the source directory. `touch` creates it with
   zero bytes:
 
 ```run
-touch /srv/proj/src/main.sh
+sudo touch /srv/proj/src/main.sh
 ```
 
 ---

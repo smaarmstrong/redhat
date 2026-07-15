@@ -16,8 +16,14 @@ THE IDEA
   running, but deploy has no authorized_keys, so root can only reach it by
   password. Confirm what root has to offer:
 
+  Note: /root and the deploy user's home are owned by root and
+  you're a normal user, so every step here is prefixed with `sudo`
+  — a normal user who's been granted sudo, exactly the exam setup.
+  The whole task acts as root (root's key is the one we install), so
+  even reading /root and the final `ssh` test run under sudo.
+
 ```run
-ls -l /root/.ssh/ 2>/dev/null || echo "root has no .ssh yet"
+sudo ls -l /root/.ssh/ 2>/dev/null || echo "root has no .ssh yet"
 ```
 
   Root may not even have a key pair yet — that's the first thing to fix.
@@ -45,7 +51,7 @@ HOW TO DO IT
   we guard with a test):
 
 ```run
-[ -f /root/.ssh/id_rsa ] || ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa
+sudo test -f /root/.ssh/id_rsa || sudo ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa
 ```
 
   That writes /root/.ssh/id_rsa (private) and /root/.ssh/id_rsa.pub
@@ -63,7 +69,7 @@ HOW TO DO IT
   deploy's .ssh with the right mode and owner in one shot with install:
 
 ```run
-install -d -m 700 -o deploy -g deploy /home/deploy/.ssh
+sudo install -d -m 700 -o deploy -g deploy /home/deploy/.ssh
 ```
 
   install -d makes the directory; -m 700 sets rwx for the owner only;
@@ -76,9 +82,9 @@ install -d -m 700 -o deploy -g deploy /home/deploy/.ssh
   file down to 600 and owned by deploy:
 
 ```run
-cat /root/.ssh/id_rsa.pub >> /home/deploy/.ssh/authorized_keys
-chmod 600 /home/deploy/.ssh/authorized_keys
-chown deploy:deploy /home/deploy/.ssh/authorized_keys
+sudo cat /root/.ssh/id_rsa.pub | sudo tee -a /home/deploy/.ssh/authorized_keys > /dev/null
+sudo chmod 600 /home/deploy/.ssh/authorized_keys
+sudo chown deploy:deploy /home/deploy/.ssh/authorized_keys
 ```
 
   Use >> (append), never > (overwrite) — on a real server that file may
@@ -93,7 +99,7 @@ CHECK IT WORKED
   the key really did it:
 
 ```run
-ssh -o BatchMode=yes -o StrictHostKeyChecking=no deploy@localhost true
+sudo ssh -o BatchMode=yes -o StrictHostKeyChecking=no deploy@localhost true
 echo "exit status: $?"
 ```
 

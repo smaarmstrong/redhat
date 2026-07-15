@@ -14,6 +14,11 @@ THE IDEA
 
 ---
 
+  Note: reading (and setting) another user's password aging touches
+  /etc/shadow, which needs privilege, so these commands are prefixed
+  with `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup.
+
   The user appuser already exists with loose defaults (max 99999, min 0,
   warn 14). See its current policy:
 

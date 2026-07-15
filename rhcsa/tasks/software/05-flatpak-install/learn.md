@@ -37,10 +37,15 @@ WHY IT MATTERS
 HOW TO DO IT
 
   Install GNOME Calculator from flathub. The -y accepts the prompts
-  (including any runtime it needs to pull down):
+  (including any runtime it needs to pull down).
+
+  Installing system-wide is privileged, so we prefix it with `sudo` —
+  a normal user who's been granted sudo, exactly the exam setup.
+  (Listing remotes and apps with `flatpak remotes` / `flatpak list`
+  is read-only and needs no sudo.)
 
 ```run
-flatpak install -y flathub org.gnome.Calculator
+sudo flatpak install -y flathub org.gnome.Calculator
 ```
 
   Heads-up: this genuinely downloads from the network, and the first

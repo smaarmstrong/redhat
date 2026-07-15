@@ -31,6 +31,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: nadia's account and its files live in root-owned system
+  paths (/etc, her home), so the commands that create or change them
+  are prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Read-only checks like `id nadia` need no
+  sudo.)
+
   Part 1 — group then user, in one pass. Create engineering with a FIXED
   GID of 5000 first, then create nadia. useradd flags: -m makes her home,
   -c sets the GECOS comment, -s sets the login shell, and -G adds her to

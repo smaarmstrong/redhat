@@ -56,6 +56,12 @@ HOW TO DO IT
   The cleanest way to write a multi-line config file is a "here-document" —
   cat writing everything between the markers straight into the file. Run:
 
+  Note: /etc/yum.repos.d is owned by root and you're a normal user,
+  so the command that writes the repo file there is prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Reading the existing .repo files needs no sudo, which is
+  why the earlier `ls`/`head` didn't.)
+
 ```run
 sudo tee /etc/yum.repos.d/local.repo > /dev/null <<'EOF'
 [localdvd]

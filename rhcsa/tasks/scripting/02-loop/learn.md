@@ -45,8 +45,14 @@ HOW TO DO IT
   Write the script with a quoted here-document so $@, $sum and $((...))
   land literally in the file rather than being expanded now:
 
+  Note: /usr/local/bin is owned by root and you're a normal user,
+  so the commands that create the script there are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Running the finished script needs no sudo, since it only
+  prints.)
+
 ```run
-cat > /usr/local/bin/sumargs.sh <<'EOF'
+sudo tee /usr/local/bin/sumargs.sh > /dev/null <<'EOF'
 #!/usr/bin/env bash
 sum=0
 for n in "$@"; do
@@ -65,7 +71,7 @@ EOF
   Make it executable so it can run by name:
 
 ```run
-chmod +x /usr/local/bin/sumargs.sh
+sudo chmod +x /usr/local/bin/sumargs.sh
 ```
 
 ---

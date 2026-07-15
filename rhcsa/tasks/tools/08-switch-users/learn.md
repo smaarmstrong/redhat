@@ -44,7 +44,14 @@ HOW TO DO IT
 
   We're root now. We want a file created BY operator so it's OWNED by
   operator. The tidy one-shot way is `su - operator -c '...'`: it becomes
-  operator, runs the touch, and returns:
+  operator, runs the touch, and returns.
+
+  We prefix it with `sudo`: switching into another account is
+  privileged, and operator's home is private to operator, so a normal
+  user can neither become operator nor look inside there. You're a
+  normal user who's been granted sudo, exactly the exam setup. (The
+  earlier `getent passwd` read needed no sudo; that's why it didn't use
+  it, and the checks below that peer into operator's home do.)
 
 ```run
 sudo su - operator -c 'touch /home/operator/created-by-me.txt'
@@ -64,7 +71,7 @@ CHECK IT WORKED
   Check the file and, crucially, its owner:
 
 ```run
-ls -l /home/operator/created-by-me.txt
+sudo ls -l /home/operator/created-by-me.txt
 ```
 
   The owner column should read `operator operator`. The grader checks
@@ -72,7 +79,7 @@ ls -l /home/operator/created-by-me.txt
   it sits in operator's home directory. Confirm ownership directly:
 
 ```run
-stat -c '%U' /home/operator/created-by-me.txt
+sudo stat -c '%U' /home/operator/created-by-me.txt
 ```
 
   It prints `operator`.

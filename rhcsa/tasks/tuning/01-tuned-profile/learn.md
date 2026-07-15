@@ -48,6 +48,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: enabling the tuned service writes a boot-time symlink under
+  /etc and tuned-adm records the profile under /etc/tuned/, both owned
+  by root, so those commands are prefixed with `sudo` — a normal user
+  who's been granted sudo, exactly the exam setup. (Reading needs no
+  sudo, which is why the earlier `tuned-adm active` didn't.)
+
   First make sure the tuned service is enabled and running, so it's there
   now and after a reboot. enable --now does both in one go:
 

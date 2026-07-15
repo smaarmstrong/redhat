@@ -44,6 +44,10 @@ HOW TO DO IT
     -c "Database User"   set the comment / GECOS field
     -s /bin/bash         set the login shell
 
+  Note: creating an account needs privilege, so the command is
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Reading with `getent` needs no sudo.)
+
   Run the whole thing at once:
 
 ```run

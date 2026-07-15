@@ -44,10 +44,17 @@ HOW TO DO IT
     > file        write the final result to the file
 
   cut's stdout flows into sort's stdin through the pipe, and sort's
-  stdout is redirected into the file. Build and run it:
+  stdout is redirected into the file. Build and run it.
+
+  The target /root/users.txt lives under /root, which belongs to root,
+  so we run the whole pipeline under `sudo sh -c '...'` — that way the
+  `>` redirection also happens as root, instead of your shell trying to
+  open the file as a normal user before sudo runs. You're a normal user
+  who's been granted sudo, exactly the exam setup. (Reading /etc/passwd
+  needed no sudo; it's world-readable.)
 
 ```run
-cut -d: -f1 /etc/passwd | sort -u > /root/users.txt
+sudo sh -c 'cut -d: -f1 /etc/passwd | sort -u > /root/users.txt'
 ```
 
   Nothing prints — that's correct. The output went into the file instead
@@ -60,7 +67,7 @@ CHECK IT WORKED
   Look at the file:
 
 ```run
-cat /root/users.txt
+sudo cat /root/users.txt
 ```
 
   A tidy alphabetical list, one name per line, no repeats. The grader
@@ -70,7 +77,7 @@ cat /root/users.txt
   Count the lines if you like:
 
 ```run
-wc -l /root/users.txt
+sudo wc -l /root/users.txt
 ```
 
 ---

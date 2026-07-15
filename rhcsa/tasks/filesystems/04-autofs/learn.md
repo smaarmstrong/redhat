@@ -57,6 +57,12 @@ HOW TO DO IT
   /etc/auto.master.d/ (it must end in .autofs). This line says "/mnt/auto
   is managed, look up keys in /etc/auto.share":
 
+  Note: writing autofs config under /etc and managing the autofs
+  service are privileged operations, so these commands are
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Inspecting with `showmount` and
+  `rpm -q` needs no sudo.)
+
 ```run
 sudo mkdir -p /etc/auto.master.d
 ```

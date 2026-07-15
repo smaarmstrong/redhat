@@ -37,6 +37,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: the default target is a root-owned symlink under
+  /etc/systemd/system, and you're a normal user, so the command that
+  rewrites it is prefixed with `sudo` — a normal user who's been
+  granted sudo, exactly the exam setup. (Reading needs no sudo, which
+  is why the earlier `systemctl get-default` didn't.)
+
   One command sets the default and rewrites that symlink for you,
   permanently. Go ahead and run it:
 

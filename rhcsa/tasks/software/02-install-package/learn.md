@@ -42,6 +42,12 @@ HOW TO DO IT
   Install the package. The -y answers "yes" to the confirmation prompt so
   it runs unattended:
 
+  Note: installing packages changes the whole system, which only
+  root may do, so the `dnf install` command is prefixed with `sudo`
+  — a normal user who's been granted sudo, exactly the exam setup.
+  (Querying with `dnf list`/`rpm -q` needs no sudo, which is why the
+  earlier steps didn't.)
+
 ```run
 sudo dnf -y install tree
 ```

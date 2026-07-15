@@ -22,7 +22,10 @@ THE IDEA
 
 ---
 
-  Let's look at what root's crontab holds right now. Run:
+  Let's look at what root's crontab holds right now. Because this is
+  ROOT's crontab (stored under /var/spool/cron/, owned by root), every
+  crontab command here is prefixed with `sudo` — a normal user who's
+  been granted sudo, exactly the exam setup. Run:
 
 ```run
 sudo crontab -l

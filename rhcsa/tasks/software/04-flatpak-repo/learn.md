@@ -45,10 +45,15 @@ HOW TO DO IT
 
   Add the Flathub remote from its .flatpakrepo descriptor file. The
   --if-not-exists flag makes the command safe to re-run — it won't error if
-  the remote is already there:
+  the remote is already there.
+
+  Adding a system-wide remote changes state owned by root, so we prefix
+  it with `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup. (Listing remotes with `flatpak remotes` is read-only and
+  needs no sudo, which is why the steps above didn't use it.)
 
 ```run
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
   Breaking down the arguments:

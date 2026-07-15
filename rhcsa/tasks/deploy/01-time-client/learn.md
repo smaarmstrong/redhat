@@ -39,6 +39,13 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: /etc/chrony.conf is owned by root and enabling chronyd writes a
+  boot-time symlink under /etc, and you're a normal user, so those
+  commands go through `sudo` — here `sudo tee -a` appends to the config
+  — a normal user who's been granted sudo, exactly the exam setup.
+  (Reading needs no sudo, which is why the earlier `grep` of
+  /etc/chrony.conf didn't.)
+
   First, add the server directive. A `server` line names one NTP server;
   iburst tells chrony to send a quick burst of packets at startup so it
   synchronises faster. Append it to the config:

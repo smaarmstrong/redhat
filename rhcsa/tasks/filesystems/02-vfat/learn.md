@@ -47,6 +47,11 @@ HOW TO DO IT
   Step 1 — partition the spare: a table plus one ~200 MiB partition. The
   "fat32" hint just marks the intended type; the real format comes next:
 
+  Note: partitioning, formatting and mounting are privileged
+  operations, so these commands are prefixed with `sudo` — a
+  normal user who's been granted sudo, exactly the exam setup.
+  (Inspecting with `lsblk` needs no sudo.)
+
 ```run
 sudo parted -s /dev/vdb mklabel gpt
 ```

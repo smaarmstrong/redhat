@@ -50,7 +50,10 @@ WHERE THE SETTING GOES
 
 HOW TO DO IT
 
-  Create the drop-in with a single umask line:
+  Create the drop-in with a single umask line. Writing into
+  /etc/profile.d is privileged, so the write goes through `sudo` (via
+  `tee`) — a normal user who's been granted sudo, exactly the exam
+  setup. (Reading the umask with `bash -lc umask` needs no sudo.)
 
 ```run
 echo 'umask 077' | sudo tee /etc/profile.d/umask.sh

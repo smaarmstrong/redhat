@@ -46,10 +46,15 @@ HOW TO DO IT
     [0-9]{1,3}        the final group, with no trailing dot
 
   Put together: ([0-9]{1,3}\.){3}[0-9]{1,3}. Feed it to grep -E and
-  redirect the matching lines into /root/ips.txt:
+  send the matching lines into /root/ips.txt.
+
+  That file sits under /root, which belongs to root, so we pipe grep's
+  output to `sudo tee` to write it as root — a normal user who's been
+  granted sudo, exactly the exam setup. (Reading /var/log/access.sample
+  needs no sudo; it's world-readable.)
 
 ```run
-grep -E '([0-9]{1,3}\.){3}[0-9]{1,3}' /var/log/access.sample > /root/ips.txt
+grep -E '([0-9]{1,3}\.){3}[0-9]{1,3}' /var/log/access.sample | sudo tee /root/ips.txt > /dev/null
 ```
 
   Single-quote the pattern so the shell doesn't try to interpret the
@@ -62,7 +67,7 @@ CHECK IT WORKED
   Look at what you captured:
 
 ```run
-cat /root/ips.txt
+sudo cat /root/ips.txt
 ```
 
   Every line with a dotted-quad is there, in the original order; the

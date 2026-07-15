@@ -19,10 +19,15 @@ THE IDEA
 
 ---
 
-  See what's already in the local store (setup pre-pulled something):
+  See what's already in the local store (setup pre-pulled something).
+
+  We prefix each podman command with `sudo`: setup pulled the image
+  into root's container store and the grader runs as root, so tagging
+  there (not in your separate rootless store) is what gets inspected.
+  You're a normal user who's been granted sudo, exactly the exam setup.
 
 ```run
-podman images
+sudo podman images
 ```
 
   You'll see ubi9/ubi or alpine cached. That base image is what we'll
@@ -47,7 +52,7 @@ HOW TO DO IT
   it's already cached it returns instantly:
 
 ```run
-podman pull registry.access.redhat.com/ubi9/ubi 2>/dev/null || podman pull docker.io/library/alpine
+sudo podman pull registry.access.redhat.com/ubi9/ubi 2>/dev/null || sudo podman pull docker.io/library/alpine
 ```
 
   (In an exam with a registry reachable you'd just
@@ -60,7 +65,7 @@ podman pull registry.access.redhat.com/ubi9/ubi 2>/dev/null || podman pull docke
   the image you have, the new tag is the label you're adding:
 
 ```run
-podman tag $(podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) localhost/myapp:v1
+sudo podman tag $(sudo podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) localhost/myapp:v1
 ```
 
   Plainly, that's:
@@ -77,14 +82,14 @@ CHECK IT WORKED
   The direct check the grader uses:
 
 ```run
-podman image exists localhost/myapp:v1
+sudo podman image exists localhost/myapp:v1
 ```
 
   Exit status 0 (no output) means the tag exists — that's a pass. You
   can also eyeball it:
 
 ```run
-podman images | grep myapp
+sudo podman images | grep myapp
 ```
 
   You'll see localhost/myapp with tag v1, and note its IMAGE ID

@@ -50,6 +50,12 @@ STEP 2 — renice it
   Now raise the nice value to 10. `-n 10` sets the value, `-p` says "this is a
   PID". We feed it the PID from pgrep directly:
 
+  Note: the nicejob process is owned by root (the setup launched
+  it), and you're a normal user, so the command that reprioritises
+  it is prefixed with `sudo` — a normal user who's been granted
+  sudo, exactly the exam setup. (Finding it with `pgrep`/`ps` needs
+  no sudo, which is why the earlier steps didn't.)
+
 ```run
 sudo renice -n 10 -p "$(pgrep -f nicejob | head -1)"
 ```
