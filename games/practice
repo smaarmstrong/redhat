@@ -152,6 +152,27 @@ def runnable(t, have_spare):
     return not ("spare-disk" in t.get("needs", "") and not have_spare)
 
 # ---- what to practise next -------------------------------------------------
+# Teaching order for new material: gentle fundamentals first, heavier/assumed-
+# knowledge domains later. Keyed by the task's domain directory name; anything
+# unlisted sorts last. (Alphabetical order used to make `boot` the 2nd thing a
+# beginner ever saw — grub + regex before they'd met grep or an editor.)
+DOMAIN_ORDER = {
+    # rhcsa — build the shell/tooling base before the exam objectives lean on it
+    "tools": 0, "scripting": 1, "users-groups": 2, "permissions": 3,
+    "processes": 4, "software": 5, "services": 6, "scheduling": 7,
+    "logging": 8, "networking": 9, "firewall": 10, "remote": 11,
+    "tuning": 12, "security": 13, "selinux": 14, "storage": 15,
+    "filesystems": 16, "boot": 17, "containers": 18, "deploy": 19,
+    "projects": 20,
+    # rhce — inventory/config, then playbook basics, then the broader objectives
+    "config": 0, "playbooks": 1, "nodes": 2, "content": 3, "roles": 4,
+    "collections": 5, "automate": 6, "source-control": 7,
+}
+
+def curriculum_key(t):
+    """Sort key placing a task in teaching order: (domain rank, then its id)."""
+    return (DOMAIN_ORDER.get(t["id"].split("/")[1], 99), t["id"])
+
 def due_reviews(tasks, st, have_spare):
     """Passed tasks whose review date has arrived, most overdue first."""
     out = []
@@ -168,9 +189,10 @@ def due_reviews(tasks, st, have_spare):
     return [t for _, t in out]
 
 def next_new(tasks, st, have_spare, focus=None):
-    """First not-yet-passed task in canonical order (rhcsa track before rhce).
-    An in-progress task counts as not-done, so this resumes unfinished work."""
-    order = sorted(tasks.values(), key=lambda x: x["id"])
+    """First not-yet-passed task in teaching order (fundamentals first; rhcsa
+    track before rhce). An in-progress task counts as not-done, so this resumes
+    unfinished work."""
+    order = sorted(tasks.values(), key=curriculum_key)
     for track in ([focus] if focus else TRACKS):
         for t in order:
             if t["track"] != track:
