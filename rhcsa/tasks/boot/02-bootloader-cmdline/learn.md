@@ -58,14 +58,35 @@ sudo grubby --info=DEFAULT | grep args
 
 STEP 2 — future kernels, via /etc/default/grub
 
-  Append the option INSIDE the quotes of the GRUB_CMDLINE_LINUX line. You
-  could open the file in vi, but here's the one-liner that does it safely:
+  /etc/default/grub is a plain text file. First just look at the line we care
+  about — the one starting with GRUB_CMDLINE_LINUX:
 
 ```run
-sudo sed -i 's/^\(GRUB_CMDLINE_LINUX="[^"]*\)"/\1 rd.md=0"/' /etc/default/grub
+grep GRUB_CMDLINE_LINUX /etc/default/grub
 ```
 
-  Check it landed:
+  See the options sitting inside the double quotes (things like "crashkernel...
+  rhgb quiet")? We need to add  rd.md=0  in there, inside those quotes. The
+  honest way — and the way the exam expects — is to open the file and type it
+  in. Open it now:
+
+```run
+sudo vi /etc/default/grub
+```
+
+  A 20-second vi guide for exactly this edit:
+    - Arrow-key onto the GRUB_CMDLINE_LINUX line, just before the closing " .
+    - Press  i  to start typing (that's "insert" mode).
+    - Type a space, then  rd.md=0
+    - Press  Esc  to stop typing.
+    - Type  :wq  and press Enter  (write, then quit).
+  Prefer nano? Run  sudo nano /etc/default/grub , add the text, then Ctrl-O
+  Enter to save and Ctrl-X to quit. Either editor is fine.
+
+---
+
+  Check your edit landed — the option should now be in the line, still inside
+  the quotes:
 
 ```run
 grep GRUB_CMDLINE_LINUX /etc/default/grub
@@ -90,3 +111,6 @@ GOTCHAS
     versa) is the usual way to half-fail this.
   - Append INSIDE the quotes of GRUB_CMDLINE_LINUX — don't add a second
     GRUB_CMDLINE_LINUX line, and don't leave the option outside the quotes.
+  - Yes, there are one-line tricks (with `sed`) that make this edit without
+    opening an editor. Save those for when you actually know the tool — editing
+    the file by hand is fully exam-legal and much easier to get right.
