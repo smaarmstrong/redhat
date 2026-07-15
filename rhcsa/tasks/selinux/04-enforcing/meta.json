@@ -3,5 +3,8 @@
   "domain": "SELinux",
   "objective": "Set enforcing and permissive modes for SELinux",
   "est_min": 3,
-  "needs": ""
+  "needs": "",
+  "prereq": [
+    "foundations/text/03-sed-substitute"
+  ]
 }

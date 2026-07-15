@@ -3,5 +3,8 @@
   "domain": "Boot & bootloader",
   "objective": "Modify the system bootloader",
   "est_min": 6,
-  "needs": ""
+  "needs": "",
+  "prereq": [
+    "foundations/editor/01-vim-basics"
+  ]
 }

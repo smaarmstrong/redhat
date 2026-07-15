@@ -1,0 +1,8 @@
+{
+  "title": "sed: find and replace inside files",
+  "domain": "Text processing",
+  "objective": "Foundations: substitute and delete lines with sed, safely, including in-place edits",
+  "est_min": 10,
+  "needs": "",
+  "prereq": ["foundations/text/02-regex-basics"]
+}

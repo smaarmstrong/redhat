@@ -15,11 +15,18 @@
 # Usage:  ./games/selftest.sh              # run the default container-safe set
 #         ./games/selftest.sh tools/03-redirection permissions/01-collab-dir
 #
+# Task ids may be track-qualified ("foundations/text/03-sed-substitute");
+# a bare "domain/task" id defaults to the rhcsa track.
+#
 set -uo pipefail
 REPO="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
 IMAGE="${IMAGE:-rockylinux:9}"
 
 LIST=(
+  foundations/editor/01-vim-basics foundations/shell/01-pipes-redirection
+  foundations/text/01-grep-basics foundations/text/02-regex-basics
+  foundations/text/03-sed-substitute foundations/text/04-awk-fields
+  foundations/search/01-find-basics
   tools/01-links tools/02-tar-archive tools/03-redirection tools/04-grep-regex
   tools/05-file-management tools/06-find-files tools/07-text-file
   scripting/01-conditional scripting/02-loop
@@ -34,9 +41,13 @@ LIST=(
 
 pass=0; fail=0; failed=()
 for id in "${LIST[@]}"; do
+  case "$id" in
+    */*/*) tp="${id%%/*}/tasks/${id#*/}" ;;   # track-qualified id
+    *)     tp="rhcsa/tasks/$id" ;;            # bare id = rhcsa track
+  esac
   out=$(docker run --rm -v "$REPO":/redhat:ro "$IMAGE" bash -c '
     set -u
-    T=/redhat/rhcsa/tasks/'"$id"'
+    T=/redhat/'"$tp"'
     bash "$T/setup.sh" >/dev/null 2>&1
     if bash "$T/grade.sh" >/dev/null 2>&1; then echo "NEG=pass"; else echo "NEG=fail"; fi
     bash "$T/solution.sh" >/dev/null 2>&1

@@ -38,18 +38,26 @@ daily streak. But the foundation is the task → grade → retry loop on real in
 
 ```
 redhat/
-├── setup/     # runs on the HOST (Fedora/Mac) to build the Rocky 9 VM
-├── games/     # shared console engine (practice runner + grading lib) — run in the VM
-├── rhcsa/     # RHCSA track — tasks/ (graded Bash tasks) + docs/ (objectives, format)
-├── rhce/      # RHCE track  — tasks/ (Ansible tasks) + docs/ (objectives, format)
+├── setup/       # runs on the HOST (Fedora/Mac) to build the Rocky 9 VM
+├── games/       # shared console engine (practice runner + grading lib) — run in the VM
+├── foundations/ # foundations track — teaches the shell tools the exam tasks assume
+├── rhcsa/       # RHCSA track — tasks/ (graded Bash tasks) + docs/ (objectives, format)
+├── rhce/        # RHCE track  — tasks/ (Ansible tasks) + docs/ (objectives, format)
 └── README.md
 ```
 
-The trainer covers **two exams**, kept separate:
+The trainer covers **two exams**, plus the groundwork for them:
 
+- **Foundations** — `foundations/tasks/`: first-class interactive lessons that
+  *teach* the shell tools everything else assumes — vi/vim, pipes & redirection,
+  grep, regular expressions, sed, awk, find — each with a small graded exercise.
+  Foundations sort first, so `learn`/`train` walk a beginner through the tools
+  before any exam task leans on them. Exam tasks that assume one of these carry
+  a *soft* prerequisite pointer (a one-line "new to sed? learn it first: ..."
+  nudge) — advisory only, never a gate.
 - **RHCSA (EX200)** — `rhcsa/tasks/`: graded Bash tasks on a real Rocky 9 system.
 - **RHCE (EX294)** — `rhce/tasks/`: Ansible playbook tasks graded by running them and
-  checking end state. `games/practice list` shows both tracks.
+  checking end state. `games/practice list` shows all three tracks.
 
 Each track's objectives (with a coverage checklist) live in
 [rhcsa/docs/objectives.md](rhcsa/docs/objectives.md) and

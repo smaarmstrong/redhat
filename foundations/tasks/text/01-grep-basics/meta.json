@@ -1,0 +1,7 @@
+{
+  "title": "Pull matching lines out of a file with grep",
+  "domain": "Text processing",
+  "objective": "Foundations: filter text with grep (-i, -v, -n, -c) before regex enters the picture",
+  "est_min": 6,
+  "needs": ""
+}

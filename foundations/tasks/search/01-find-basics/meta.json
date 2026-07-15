@@ -1,0 +1,7 @@
+{
+  "title": "find: hunt files by name, type and size",
+  "domain": "Finding files",
+  "objective": "Foundations: locate files with find and act on them (-name, -type, -size, -exec, -delete)",
+  "est_min": 8,
+  "needs": ""
+}

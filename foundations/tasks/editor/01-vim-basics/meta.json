@@ -1,0 +1,7 @@
+{
+  "title": "Edit a file with vi/vim",
+  "domain": "Text editor",
+  "objective": "Foundations: open, edit, save and quit in vi/vim (modes, insert, search)",
+  "est_min": 10,
+  "needs": ""
+}
