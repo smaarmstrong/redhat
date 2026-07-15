@@ -43,6 +43,11 @@ HOW TO DO IT
   Step 1 — make the disk a physical volume. This writes an LVM header so
   LVM will accept it into a pool:
 
+  Note: creating PVs, VGs and LVs, formatting and mounting are
+  privileged operations, so these commands are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup. (Inspecting with `lsblk` needs no sudo.)
+
 ```run
 sudo pvcreate -y /dev/vdb
 ```

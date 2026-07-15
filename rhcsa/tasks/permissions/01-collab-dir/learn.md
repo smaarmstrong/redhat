@@ -20,6 +20,11 @@ THE IDEA
 
 ---
 
+  Note: creating a group and making directories under /srv (a
+  root-owned path) needs privilege, so these commands are prefixed
+  with `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup.
+
   Nothing exists yet — no group, no directory. Let's build it. First the
   team's group:
 

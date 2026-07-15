@@ -42,6 +42,11 @@ HOW TO DO IT
 
   Step 1 — create the mountpoint directory:
 
+  Note: creating the mountpoint, editing /etc/fstab and mounting
+  are privileged operations, so these commands are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup. (Inspecting with `showmount` needs no sudo.)
+
 ```run
 sudo mkdir -p /mnt/nfs
 ```

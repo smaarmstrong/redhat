@@ -41,12 +41,18 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: /etc/hosts is owned by root and you're a normal user, so the
+  command that writes to it goes through `sudo` — here `sudo tee -a`
+  appends the line — a normal user who's been granted sudo, exactly the
+  exam setup. (Reading needs no sudo, which is why the earlier `cat
+  /etc/hosts` didn't.)
+
   We just need to append one line mapping the IP to the full name plus its
   short alias. Appending (>>) is important — you want to add to the file, not
   overwrite it:
 
 ```run
-echo "192.168.55.10   db.example.com db" >> /etc/hosts
+echo "192.168.55.10   db.example.com db" | sudo tee -a /etc/hosts
 ```
 
   That single line gives 192.168.55.10 two names: the canonical

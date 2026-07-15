@@ -40,7 +40,10 @@ HOW TO DO IT
 
   Because the correct default already lives in the policy, this is a
   one-liner. restorecon looks up the policy rule for the path and stamps the
-  right label onto the file. -v makes it report what it changed:
+  right label onto the file. -v makes it report what it changed.
+  Relabelling a file is privileged, so restorecon is prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Reading the label with `ls -Z` needs no sudo.)
 
 ```run
 sudo restorecon -v /var/www/page.html

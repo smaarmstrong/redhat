@@ -36,6 +36,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: the static hostname lives in /etc/hostname, owned by root, and
+  you're a normal user, so the command that sets it is prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Reading needs no sudo, which is why the earlier `hostnamectl
+  status` didn't.)
+
   One command sets the static hostname and writes it to /etc/hostname
   permanently:
 

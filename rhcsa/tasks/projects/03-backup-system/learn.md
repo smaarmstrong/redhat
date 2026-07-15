@@ -31,6 +31,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: this job lives in root-owned system paths (/var/backups,
+  /usr/local/bin, /etc/systemd), so the commands that create or
+  change it are prefixed with `sudo` — a normal user who's been
+  granted sudo, exactly the exam setup. (Read-only checks like
+  `systemctl is-enabled` need no sudo.)
+
   Part 2 first — the destination directory. `install -d` sets owner,
   group, and mode in one command. 0750 means root full, group read/execute,
   others nothing:
@@ -71,7 +77,7 @@ sudo chmod 0755 /usr/local/bin/backup.sh
 
 ```run
 sudo /usr/local/bin/backup.sh
-file /var/backups/etc-backup.tar.gz
+sudo file /var/backups/etc-backup.tar.gz
 sudo tar -tzf /var/backups/etc-backup.tar.gz | grep -m1 etc/
 ```
 

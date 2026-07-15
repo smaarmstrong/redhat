@@ -47,6 +47,12 @@ HOW TO DO IT
   Step 0 — make sure the daemon is running and enabled (so it also comes
   back after reboot, which the fstab option below will rely on):
 
+  Note: managing the stratisd service, creating pools and
+  filesystems and mounting are privileged operations, so these
+  commands are prefixed with `sudo` — a normal user who's been
+  granted sudo, exactly the exam setup. (Inspecting with `lsblk`
+  and `systemctl status` needs no sudo.)
+
 ```run
 sudo systemctl enable --now stratisd
 ```

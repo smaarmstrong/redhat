@@ -20,7 +20,11 @@ THE IDEA
 
 ---
 
-  Check firewalld is up and see which ports are open in the default zone:
+  Check firewalld is up and see which ports are open in the default
+  zone. firewall-cmd talks to firewalld over polkit, so even a
+  read-only listing fails for a normal user — every firewall-cmd here
+  is prefixed with `sudo`, a normal user who's been granted sudo,
+  exactly the exam setup.
 
 ```run
 sudo firewall-cmd --list-ports

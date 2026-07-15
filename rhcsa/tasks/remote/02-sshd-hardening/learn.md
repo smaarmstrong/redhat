@@ -19,8 +19,13 @@ THE IDEA
   PasswordAuthentication yes on, so we must make our "no" the one that
   takes effect. See the current effective value:
 
+  Note: sshd's config and host keys under /etc/ssh are readable
+  only by root, so `sshd -T`, `sshd -t`, the drop-in write, and the
+  reload are all prefixed with `sudo` — a normal user who's been
+  granted sudo, exactly the exam setup.
+
 ```run
-sshd -T | grep -i passwordauthentication
+sudo sshd -T | grep -i passwordauthentication
 ```
 
   sshd -T prints the fully merged, effective configuration — the source of
@@ -49,7 +54,7 @@ HOW TO DO IT
   (50-redhat.conf doesn't set this key, so it doesn't interfere.) Create it:
 
 ```run
-cat > /etc/ssh/sshd_config.d/99-no-password.conf <<'EOF'
+sudo tee /etc/ssh/sshd_config.d/99-no-password.conf > /dev/null <<'EOF'
 PasswordAuthentication no
 EOF
 ```
@@ -64,7 +69,7 @@ EOF
   then reload so the running daemon picks it up:
 
 ```run
-sshd -t && systemctl reload sshd
+sudo sshd -t && sudo systemctl reload sshd
 ```
 
   sshd -t parses the config and stays silent if it's good; the && means
@@ -78,7 +83,7 @@ CHECK IT WORKED
   Ask sshd for the effective value again — it should now say no:
 
 ```run
-sshd -T | grep -i passwordauthentication
+sudo sshd -T | grep -i passwordauthentication
 ```
 
   That's the grader's primary check: it reads PasswordAuthentication from

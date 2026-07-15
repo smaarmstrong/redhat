@@ -44,6 +44,12 @@ STEP 1 — write the .service
   Custom units live under /etc/systemd/system. Create the service that runs
   the script as a oneshot:
 
+  Note: /etc/systemd/system is owned by root and you're a normal
+  user, so the commands that write unit files and drive systemd are
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (Reading needs no sudo, which is why the
+  earlier `cat` didn't.)
+
 ```run
 sudo tee /etc/systemd/system/sitecheck.service <<'EOF'
 [Unit]

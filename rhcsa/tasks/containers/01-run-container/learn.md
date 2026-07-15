@@ -21,10 +21,15 @@ THE IDEA
 ---
 
   First, confirm podman is here and see what images the setup already
-  pulled for us:
+  pulled for us.
+
+  We prefix each podman command with `sudo`: setup pulled the image
+  into root's container store and the grader runs as root, so working
+  there (not in your separate rootless store) is what gets inspected.
+  You're a normal user who's been granted sudo, exactly the exam setup.
 
 ```run
-podman images
+sudo podman images
 ```
 
   You should see ubi9/ubi (or alpine) already cached — setup.sh
@@ -63,7 +68,7 @@ HOW TO DO IT
   Run it:
 
 ```run
-podman run -d --name web -p 8080:80 $(podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
+sudo podman run -d --name web -p 8080:80 $(sudo podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
 ```
 
   Podman prints a long hex container ID. That means it started. In an
@@ -88,7 +93,7 @@ CHECK IT WORKED
   List running containers:
 
 ```run
-podman ps
+sudo podman ps
 ```
 
   You should see "web" with a STATUS of "Up ..." and a PORTS column
@@ -99,7 +104,7 @@ podman ps
   You can ask podman directly about the port mapping:
 
 ```run
-podman port web
+sudo podman port web
 ```
 
   It prints "80/tcp -> 0.0.0.0:8080". That's exactly what the grader

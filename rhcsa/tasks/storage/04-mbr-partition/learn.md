@@ -40,6 +40,11 @@ HOW TO DO IT
   Step 1 — write an MBR (msdos) label. This is the one line that makes it
   MBR rather than GPT:
 
+  Note: partitioning, formatting and mounting are privileged
+  operations, so these commands are prefixed with `sudo` — a
+  normal user who's been granted sudo, exactly the exam setup.
+  (Inspecting with `lsblk` needs no sudo.)
+
 ```run
 sudo parted -s /dev/vdb mklabel msdos
 ```

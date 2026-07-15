@@ -14,11 +14,16 @@ THE IDEA
 
 ---
 
+  Note: this ledger is mode 640 and root-owned, so reading its ACL
+  with `getfacl`, acting as `auditor`, and changing the ACL all need
+  privilege — those are prefixed with `sudo`, a normal user granted
+  sudo, exactly the exam setup. (`ls -l` and `stat` need no sudo.)
+
   Look at the starting state and its ACL:
 
 ```run
 ls -l /srv/data/ledger.csv
-getfacl /srv/data/ledger.csv
+sudo getfacl /srv/data/ledger.csv
 ```
 
   getfacl prints the effective ACL. Right now it just mirrors the ordinary
@@ -63,7 +68,7 @@ CHECK IT WORKED
   Show the ACL again — you'll now see a new line:
 
 ```run
-getfacl /srv/data/ledger.csv
+sudo getfacl /srv/data/ledger.csv
 ```
 
   Look for user:auditor:r-- among the entries. Notice ls now shows a trailing

@@ -41,6 +41,11 @@ HOW TO DO IT
   Step 1 — put a partition table on the spare and create one partition
   spanning the disk. "100%" uses all remaining space:
 
+  Note: partitioning, formatting and mounting are privileged
+  operations, so these commands are prefixed with `sudo` — a
+  normal user who's been granted sudo, exactly the exam setup.
+  (Inspecting with `lsblk` needs no sudo.)
+
 ```run
 sudo parted -s /dev/vdb mklabel gpt
 ```

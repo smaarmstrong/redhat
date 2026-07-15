@@ -61,6 +61,12 @@ HOW TO DO IT
   everything under it, '/web(/.*)?', so index.html and any future files are
   all covered:
 
+  Note: changing SELinux file-context policy — and even listing it
+  with `semanage fcontext -l` — is privileged, so these commands are
+  prefixed with `sudo`, a normal user who's been granted sudo,
+  exactly the exam setup. (Reading a file's live label with `ls -Z`
+  needs no sudo.)
+
 ```run
 sudo semanage fcontext -a -t httpd_sys_content_t '/web(/.*)?'
 ```

@@ -41,6 +41,12 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: enabling a service writes a boot-time symlink under
+  /etc/systemd/system and starting it drives the system manager as
+  root, so the command is prefixed with `sudo` — a normal user who's
+  been granted sudo, exactly the exam setup. (Reading needs no sudo,
+  which is why the earlier `systemctl status chronyd` didn't.)
+
   You could do it in two commands:
 
     systemctl start chronyd     # active now

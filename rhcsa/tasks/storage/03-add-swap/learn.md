@@ -45,6 +45,12 @@ HOW TO DO IT
   partition, tagged as Linux swap. We use parted non-interactively; the
   1MiB start leaves room for alignment, so 1MiB..257MiB is 256 MiB:
 
+  Note: partitioning, formatting swap and activating it are
+  privileged operations, so these commands are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the
+  exam setup. (Inspecting with `lsblk` and `swapon --show` needs
+  no sudo.)
+
 ```run
 sudo parted -s /dev/vdb mklabel gpt
 ```

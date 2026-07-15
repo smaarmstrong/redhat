@@ -47,7 +47,13 @@ HOW TO DO IT
   tidy relative path opt/logs/auth.log — not a leading-slash absolute
   path, which tar strips and warns about anyway. The clean way to force
   that is `-C /`, which tells tar to change into / first, then archive
-  opt/logs:
+  opt/logs.
+
+  The archive lands in /root, which is owned by root and off-limits to
+  a normal user, so we prefix the tar with `sudo` — a normal user
+  who's been granted sudo, exactly the exam setup. (Reading /opt/logs
+  above needed no sudo; the later steps that read back /root/logs.tar.gz
+  do, since /root itself isn't yours to enter.)
 
 ```run
 sudo tar -czf /root/logs.tar.gz -C / opt/logs
@@ -64,7 +70,7 @@ CHECK IT WORKED
   with `t` (for "table of contents"):
 
 ```run
-tar -tzf /root/logs.tar.gz
+sudo tar -tzf /root/logs.tar.gz
 ```
 
   You should see opt/logs/ and the three .log files under it. That
@@ -74,7 +80,7 @@ tar -tzf /root/logs.tar.gz
   Confirm it really is gzip data, not just named .gz:
 
 ```run
-file /root/logs.tar.gz
+sudo file /root/logs.tar.gz
 ```
 
   It should say "gzip compressed data".

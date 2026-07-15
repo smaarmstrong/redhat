@@ -19,8 +19,13 @@ THE IDEA
   vg_app with a 256 MiB XFS logical volume lv_app, mounted at /app and
   already listed in /etc/fstab by UUID. Have a look:
 
+  Note: reading LVM metadata and resizing volumes are privileged
+  operations, so those commands are prefixed with `sudo` — a
+  normal user who's been granted sudo, exactly the exam setup.
+  (df needs no sudo.)
+
 ```run
-lvs vg_app; df -h /app
+sudo lvs vg_app; df -h /app
 ```
 
   df should report roughly 256 MiB. Our job: take it to 512 MiB without

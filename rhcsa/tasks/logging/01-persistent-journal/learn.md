@@ -43,7 +43,12 @@ STEP 1 — configure Storage=persistent
 
   The cleanest way is a drop-in file rather than editing the big main config.
   Anything under /etc/systemd/journald.conf.d/ overrides journald.conf, so
-  create the directory and a small file:
+  create the directory and a small file.
+
+  These paths live under /etc (root-owned), so the commands that create
+  and change them are prefixed with `sudo` — a normal user who's been
+  granted sudo, exactly the exam setup. (The `journalctl` read above
+  needed no sudo: your account is in the `wheel` group.)
 
 ```run
 sudo mkdir -p /etc/systemd/journald.conf.d

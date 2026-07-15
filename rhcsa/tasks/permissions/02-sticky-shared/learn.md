@@ -43,6 +43,11 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: creating directories under /srv (a root-owned path) needs
+  privilege, so these commands are prefixed with `sudo` — a normal
+  user who's been granted sudo, exactly the exam setup. (Reading
+  with `ls` needs no sudo, as the /tmp step above showed.)
+
   Create the directory:
 
 ```run

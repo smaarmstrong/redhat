@@ -14,6 +14,11 @@ THE IDEA
 
 ---
 
+  Note: running a command as another user (`sudo -u intern`) and
+  changing a root-owned file both need privilege, so those are
+  prefixed with `sudo` — a normal user who's been granted sudo,
+  exactly the exam setup. (The `ls` reads need no sudo.)
+
   The setup left /srv/reports/report.txt root-owned and mode 600, so the
   user intern can't read it. Let's SEE the problem exactly as intern would:
 

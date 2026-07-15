@@ -38,10 +38,16 @@ WHY IT MATTERS
 HOW TO DO IT — approach 1: generate systemd
 
   First run the container once, so podman has something to describe.
-  Its command is `sleep infinity` so it stays up:
+  Its command is `sleep infinity` so it stays up.
+
+  We prefix podman and the systemctl changes with `sudo`: the unit
+  lives under /etc/systemd/system (root-owned), setup pulled the image
+  into root's container store, and the grader runs as root — so all of
+  this must happen as root, not in your rootless store. You're a normal
+  user who's been granted sudo, exactly the exam setup.
 
 ```run
-podman run -d --name svc $(podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
+sudo podman run -d --name svc $(sudo podman image exists registry.access.redhat.com/ubi9/ubi && echo registry.access.redhat.com/ubi9/ubi || echo docker.io/library/alpine) sleep infinity
 ```
 
 ---
@@ -56,7 +62,7 @@ podman run -d --name svc $(podman image exists registry.access.redhat.com/ubi9/u
                  (the robust, recommended form)
 
 ```run
-cd /etc/systemd/system && podman generate systemd --name svc --files --new
+cd /etc/systemd/system && sudo podman generate systemd --name svc --files --new
 ```
 
   It prints the path it wrote, e.g.
@@ -69,11 +75,11 @@ cd /etc/systemd/system && podman generate systemd --name svc --files --new
   it starts at boot:
 
 ```run
-systemctl daemon-reload
+sudo systemctl daemon-reload
 ```
 
 ```run
-systemctl enable container-svc.service
+sudo systemctl enable container-svc.service
 ```
 
   enable creates the symlink that wires the unit into boot. (You could

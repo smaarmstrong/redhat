@@ -40,6 +40,13 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
+  Note: the connection profile is stored under
+  /etc/NetworkManager/system-connections/, owned by root, and you're a
+  normal user, so the command that modifies it is prefixed with `sudo`
+  — a normal user who's been granted sudo, exactly the exam setup.
+  (Reading needs no sudo, which is why the earlier `nmcli connection
+  show dummy0` didn't.)
+
   The whole job is one `nmcli connection modify` command that writes several
   properties into the profile at once. The pieces:
 

@@ -21,6 +21,11 @@ THE IDEA
   The setup allowed cockpit in the default zone, both ways. Confirm it's
   currently open. The permanent config:
 
+  Note: firewall-cmd talks to firewalld over polkit, so even the
+  read-only queries fail for a normal user — every firewall-cmd here
+  is prefixed with `sudo`, a normal user who's been granted sudo,
+  exactly the exam setup.
+
 ```run
 sudo firewall-cmd --permanent --query-service=cockpit
 ```

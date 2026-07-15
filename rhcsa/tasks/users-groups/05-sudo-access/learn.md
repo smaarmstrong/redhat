@@ -15,6 +15,11 @@ THE IDEA
 
 ---
 
+  Note: creating an account and reading the root-only /etc/sudoers
+  file both need privilege, so those commands are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup.
+
   First create the admin account the task asks for, opsadmin:
 
 ```run

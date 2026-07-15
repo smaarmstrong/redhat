@@ -50,8 +50,14 @@ HOW TO DO IT
   the shell from expanding $1 while we write, so the literal $1 lands in
   the script. Let's create it:
 
+  Note: /usr/local/bin is owned by root and you're a normal user,
+  so the commands that create the script there are prefixed with
+  `sudo` — a normal user who's been granted sudo, exactly the exam
+  setup. (Running the finished script needs no sudo, since it only
+  prints.)
+
 ```run
-cat > /usr/local/bin/checkpath.sh <<'EOF'
+sudo tee /usr/local/bin/checkpath.sh > /dev/null <<'EOF'
 #!/usr/bin/env bash
 if [ -e "$1" ]; then
   echo EXISTS
@@ -71,7 +77,7 @@ EOF
   Add it with chmod +x:
 
 ```run
-chmod +x /usr/local/bin/checkpath.sh
+sudo chmod +x /usr/local/bin/checkpath.sh
 ```
 
   Now the shebang plus the execute bit means you can run it by name.
