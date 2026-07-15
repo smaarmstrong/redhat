@@ -3,5 +3,8 @@
   "domain": "Essential tools",
   "objective": "Use input-output redirection (>, >>, |, 2>, etc.)",
   "est_min": 3,
-  "needs": ""
+  "needs": "",
+  "prereq": [
+    "foundations/shell/01-pipes-redirection"
+  ]
 }

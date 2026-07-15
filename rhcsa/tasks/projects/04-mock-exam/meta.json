@@ -3,5 +3,8 @@
   "domain": "Projects",
   "objective": "Composite scenario",
   "est_min": 30,
-  "needs": "spare-disk"
+  "needs": "spare-disk",
+  "prereq": [
+    "foundations/text/03-sed-substitute"
+  ]
 }

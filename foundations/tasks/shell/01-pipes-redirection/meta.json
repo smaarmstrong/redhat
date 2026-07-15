@@ -1,0 +1,7 @@
+{
+  "title": "Pipes and redirection: >, >>, 2>, |",
+  "domain": "Shell basics",
+  "objective": "Foundations: send command output to files and connect commands with pipes",
+  "est_min": 8,
+  "needs": ""
+}

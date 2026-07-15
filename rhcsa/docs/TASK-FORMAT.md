@@ -4,6 +4,15 @@ Every practice task is a directory under `tasks/<domain>/<NN-name>/` containing
 five required files plus one optional lesson. The `practice` runner discovers
 tasks by scanning for `meta.json`.
 
+This format is shared by all three tracks — `foundations/` (the shell tools the
+exam tasks assume: editor, grep, regex, sed, awk, pipes, find), `rhcsa/` and
+`rhce/`. Foundations tasks sort **first** in the curriculum, are lesson-led
+(`learn.md` is the point; the graded exercise exists so the skill gets
+practised), and avoid systemd/disk/SELinux so `games/selftest.sh` can verify
+their graders in a plain container. They also skip the `sudo` convention where
+possible: `setup.sh` creates world-writable practice dirs under `/opt/found/`
+so the lesson stays about the tool being taught.
+
 ```
 tasks/storage/01-lvm-filesystem/
 ├── meta.json      # metadata (parsed by the runner)
@@ -27,7 +36,16 @@ tasks/storage/01-lvm-filesystem/
 ```
 
 - `objective` should quote the wording from [rhcsa-objectives.md](rhcsa-objectives.md).
+  (Foundations tasks have no exam objective; they use a `Foundations: ...` skill
+  statement instead.)
 - `needs` is `""` normally, or `"spare-disk"` for tasks that require a blank disk.
+- `prereq` (optional) is a list of task ids — normally foundations lessons — that
+  this task leans on, e.g. `"prereq": ["foundations/text/03-sed-substitute"]`.
+  If the learner hasn't passed one yet, `learn`/`train` print a **soft** one-line
+  pointer ("new to it? learn it first: ..."). It never blocks or gates anything.
+  Keep the list short and honest: point only at tools the task or its lesson
+  actually uses unexplained (an editor, sed, a regex), not at everything vaguely
+  related.
 
 ## `prompt.md`
 

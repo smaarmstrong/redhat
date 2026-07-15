@@ -37,7 +37,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rhcsa", "rhce"]
+TRACKS = ["foundations", "rhcsa", "rhce"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -151,12 +151,33 @@ def runnable(t, have_spare):
     """Can this task's setup actually run in the current environment?"""
     return not ("spare-disk" in t.get("needs", "") and not have_spare)
 
+def prereq_advice(tasks, st, t):
+    """SOFT prerequisite pointers. A task's meta.json may list `prereq` — ids of
+    foundations lessons it leans on (e.g. sed, vim). If the learner hasn't
+    passed one yet, print a one-line nudge to learn it first. Advisory only:
+    it NEVER blocks or changes what runs."""
+    for pid in t.get("prereq", []):
+        p = tasks.get(pid)
+        if p is None:                     # allow a short id, same as resolve()
+            hits = [x for x in tasks.values() if x["id"].endswith("/" + pid)]
+            p = hits[0] if len(hits) == 1 else None
+        if p is None or p["id"] == t["id"]:
+            continue
+        if st["tasks"].get(p["id"], {}).get("status") == "done":
+            continue
+        short = p["id"].split("/")[-1]
+        print(YEL("heads-up") + DIM("  this task uses \"") + p.get("title", short)
+              + DIM("\" — new to it? learn it first:  ") + BLD(f"{SELF} learn {short}"))
+
 # ---- what to practise next -------------------------------------------------
 # Teaching order for new material: gentle fundamentals first, heavier/assumed-
 # knowledge domains later. Keyed by the task's domain directory name; anything
 # unlisted sorts last. (Alphabetical order used to make `boot` the 2nd thing a
 # beginner ever saw — grub + regex before they'd met grep or an editor.)
 DOMAIN_ORDER = {
+    # foundations — the shell tools themselves (editor, grep, regex, sed, awk,
+    # pipes, find), taught before any exam task assumes them
+    "editor": 0, "shell": 1, "text": 2, "search": 3,
     # rhcsa — build the shell/tooling base before the exam objectives lean on it
     "tools": 0, "scripting": 1, "users-groups": 2, "permissions": 3,
     "processes": 4, "software": 5, "services": 6, "scheduling": 7,
@@ -407,6 +428,7 @@ def cmd_learn(tasks, st, ident=None, focus=None):
     print(BLD(f"LESSON — {t['domain']}: {t['title']}"))
     print(DIM(f"objective: {t.get('objective','')}"))
     print(DIM(f"id: {t['id']}"))
+    prereq_advice(tasks, st, t)
     print("─" * 60)
     lesson = t["dir"] / "learn.md"
     if not lesson.exists():
@@ -493,6 +515,7 @@ def cmd_train(tasks, st, focus=None):
     print()
     print_status_line(st)
     print(f"{tag}  {DIM(reason)}")
+    prereq_advice(tasks, st, pick)
     launch_task(tasks, st, pick)
 
 def cmd_check(tasks, st, ident):

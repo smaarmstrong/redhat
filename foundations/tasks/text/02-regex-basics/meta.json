@@ -1,0 +1,8 @@
+{
+  "title": "Regular expressions: describe the shape of text",
+  "domain": "Text processing",
+  "objective": "Foundations: anchors, classes and quantifiers with grep -E (basic + extended regex)",
+  "est_min": 10,
+  "needs": "",
+  "prereq": ["foundations/text/01-grep-basics"]
+}

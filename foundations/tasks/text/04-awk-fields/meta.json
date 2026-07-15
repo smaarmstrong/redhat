@@ -1,0 +1,7 @@
+{
+  "title": "awk: pick columns out of structured text",
+  "domain": "Text processing",
+  "objective": "Foundations: split lines into fields with awk (-F, print, simple conditions)",
+  "est_min": 8,
+  "needs": ""
+}

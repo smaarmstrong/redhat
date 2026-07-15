@@ -3,5 +3,8 @@
   "domain": "Essential tools",
   "objective": "Use grep and regular expressions to analyze text",
   "est_min": 5,
-  "needs": ""
+  "needs": "",
+  "prereq": [
+    "foundations/text/02-regex-basics"
+  ]
 }
