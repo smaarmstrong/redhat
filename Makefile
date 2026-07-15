@@ -14,17 +14,21 @@
 #
 # `make train` decides on its own whether to give you new material (in
 # sequence) or bring back something older for review. Everything here just
-# forwards to ./games/practice — see `./games/practice help` for the full CLI.
+# forwards to ./games/practice — run `make help` for the list, or
+# `./games/practice help` for the full CLI (start/reset and per-task ids).
 
 PRACTICE := ./games/practice
+.DEFAULT_GOAL := help
 
-.PHONY: learn train next check solution list status help
+.PHONY: help learn train next check solution list status cli
 
-learn:    ; @$(PRACTICE) learn      ## teach the next task, then set it up to try
-train:    ; @$(PRACTICE) train      ## pick + set up the next task (new or review)
-next:     ; @$(PRACTICE) train      ## alias for `make train`
-check:    ; @$(PRACTICE) check      ## grade the task you're currently on
-solution: ; @$(PRACTICE) solution   ## reveal the reference solution for it
-list:     ; @$(PRACTICE) list       ## every task, grouped by domain, with status
-status:   ; @$(PRACTICE) status     ## your XP, streak and completion
-help:     ; @$(PRACTICE) help       ## the full practice CLI
+help: ; @printf 'redhat trainer — just run one of:\n\n  make learn      teach the next task, then set it up to try\n  make train      pick the next task for you (new material, or a review)\n  make check      grade the task you are currently on\n  make solution   reveal the reference solution for it\n  make list       every task, grouped by domain, with your status\n  make status     your XP, streak and completion\n\nFull CLI (start/reset a specific task by id):  $(PRACTICE) help\n'
+
+learn:    ; @$(PRACTICE) learn
+train:    ; @$(PRACTICE) train
+next:     ; @$(PRACTICE) train
+check:    ; @$(PRACTICE) check
+solution: ; @$(PRACTICE) solution
+list:     ; @$(PRACTICE) list
+status:   ; @$(PRACTICE) status
+cli:      ; @$(PRACTICE) help
