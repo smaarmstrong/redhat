@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/template-motd
+cd /opt/rhce/template-motd
 mkdir -p templates
 cat > templates/motd.j2 <<'J2'
 Welcome to {{ ansible_hostname }} running {{ ansible_distribution }} {{ ansible_distribution_version }}

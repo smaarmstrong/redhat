@@ -13,7 +13,7 @@ THE IDEA
   small answer file we'll write at the end:
 
 ```run
-cd /root/rhce/ansible-doc && ls -la
+cd /opt/rhce/ansible-doc && ls -la
 ```
 
 ---
@@ -65,7 +65,7 @@ ansible-doc ansible.builtin.user | grep -i shell
   single word, no quotes, no extra text:
 
 ```run
-cd /root/rhce/ansible-doc && echo shell > answer.txt && cat answer.txt
+cd /opt/rhce/ansible-doc && echo shell > answer.txt && cat answer.txt
 ```
 
 ---
@@ -76,7 +76,7 @@ CHECK IT WORKED
   exactly `shell`. Confirm the file holds just that one word:
 
 ```run
-cd /root/rhce/ansible-doc && cat -A answer.txt
+cd /opt/rhce/ansible-doc && cat -A answer.txt
 ```
 
   You should see `shell$` — the word then an end-of-line marker, nothing

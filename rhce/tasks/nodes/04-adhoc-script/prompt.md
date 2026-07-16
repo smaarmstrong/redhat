@@ -1,4 +1,4 @@
-Work in /root/rhce/adhoc-script/. Write an **executable** shell script named
+Work in /opt/rhce/adhoc-script/. Write an **executable** shell script named
 `check.sh` that validates the managed nodes are reachable by running an *ad-hoc*
 Ansible command that pings every host in the `managed` group:
 

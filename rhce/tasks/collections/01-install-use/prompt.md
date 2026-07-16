@@ -1,4 +1,4 @@
-Work in /root/rhce/collection-use/.
+Work in /opt/rhce/collection-use/.
 
 BONUS TASK — requires internet access to Ansible Galaxy.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 cat > playbook.yml <<'PB'
 ---
 - name: Configure passwordless sudo for the ansible user

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/galaxy-install
+cd /opt/rhce/galaxy-install
 cat > requirements.yml <<'REQ'
 ---
 roles:

@@ -24,7 +24,7 @@ THE IDEA
   `inventory` file here; our job is to add the ansible.cfg beside it.
 
 ```run
-cd /root/rhce/ansible-cfg && ls -la && cat inventory
+cd /opt/rhce/ansible-cfg && ls -la && cat inventory
 ```
 
 ---
@@ -62,7 +62,7 @@ HOW TO DO IT
   separate:
 
 ```run
-cd /root/rhce/ansible-cfg
+cd /opt/rhce/ansible-cfg
 cat > ansible.cfg <<'CFG'
 [defaults]
 inventory = inventory
@@ -84,7 +84,7 @@ CHECK IT WORKED
   from the built-in default, i.e. everything your file changed:
 
 ```run
-cd /root/rhce/ansible-cfg && ansible-config dump --only-changed
+cd /opt/rhce/ansible-cfg && ansible-config dump --only-changed
 ```
 
   You should see DEFAULT_HOST_LIST pointing at inventory,
@@ -95,7 +95,7 @@ cd /root/rhce/ansible-cfg && ansible-config dump --only-changed
   You can also confirm which config file Ansible chose:
 
 ```run
-cd /root/rhce/ansible-cfg && ansible --version | grep 'config file'
+cd /opt/rhce/ansible-cfg && ansible --version | grep 'config file'
 ```
 
   It should point at the ansible.cfg in this directory.

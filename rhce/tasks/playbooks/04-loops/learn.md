@@ -36,7 +36,7 @@ HOW TO DO IT
   and feed it a loop of the three usernames. Write the playbook:
 
 ```run
-cd /root/rhce/loops
+cd /opt/rhce/loops
 cat > playbook.yml <<'EOF'
 ---
 - name: Create application users with a loop
@@ -65,7 +65,7 @@ cat playbook.yml
   Run it:
 
 ```run
-cd /root/rhce/loops
+cd /opt/rhce/loops
 ansible-playbook playbook.yml
 ```
 
@@ -79,7 +79,7 @@ ansible-playbook playbook.yml
   exists and makes no change:
 
 ```run
-cd /root/rhce/loops
+cd /opt/rhce/loops
 ansible-playbook playbook.yml
 ```
 

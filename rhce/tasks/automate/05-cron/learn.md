@@ -12,14 +12,14 @@ THE IDEA
 
   This task creates a root cron job named `nightly-backup` running
   /usr/local/bin/backup.sh every day at 02:15. setup.sh cleared any old
-  entry. Working directory: /root/rhce/cron/.
+  entry. Working directory: /opt/rhce/cron/.
 
 ---
 
   Look at root's crontab now — it should have no backup entry:
 
 ```run
-crontab -l 2>/dev/null || echo "(no crontab yet)"
+sudo crontab -l 2>/dev/null || echo "(no crontab yet)"
 ```
 
   Empty or missing. After the playbook, one scheduled line will appear here.
@@ -42,7 +42,7 @@ HOW TO DO IT
   YAML doesn't treat them oddly); user: root puts it in root's crontab:
 
 ```run
-cd /root/rhce/cron
+cd /opt/rhce/cron
 cat > playbook.yml <<'EOF'
 ---
 - name: Schedule nightly backup cron job
@@ -72,13 +72,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/cron && ansible-playbook playbook.yml
+cd /opt/rhce/cron && ansible-playbook playbook.yml
 ```
 
   changed=1. Now re-run for the idempotence check:
 
 ```run
-cd /root/rhce/cron && ansible-playbook playbook.yml
+cd /opt/rhce/cron && ansible-playbook playbook.yml
 ```
 
   changed=0 — the module found the entry by its name and saw it already
@@ -92,7 +92,7 @@ CHECK IT WORKED
   pointing at backup.sh, plus the nightly-backup name. Look yourself:
 
 ```run
-crontab -l
+sudo crontab -l
 ```
 
   You should see a `# Ansible: nightly-backup` comment and a line

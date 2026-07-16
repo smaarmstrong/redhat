@@ -12,8 +12,16 @@ checks the end state**.
   (`command -v ansible-playbook || dnf -y install ansible-core`) and degrades
   gracefully in the grader if it's missing.
 - **Working directory:** `setup.sh` creates a per-task project dir at
-  `/root/rhce/<task-name>/` containing a starter `ansible.cfg` and `inventory`, and
+  `/opt/rhce/<task-name>/` containing a starter `ansible.cfg` and `inventory`, and
   the prompt tells the learner to work there. `grade.sh` runs Ansible from that dir.
+- **The learner is a normal user.** `setup.sh` and `grade.sh` run as root (via
+  sudo), but the learner edits files and runs `ansible-playbook` as their own
+  user, so every `setup.sh` ends by chowning the task dir to the invoking user:
+  `chown -R "${SUDO_USER:-root}": "$d"` — `SUDO_USER` when the runner invoked it
+  via sudo, falling back to root (e.g. the container selftest, which runs
+  everything as root). Playbooks get privilege the Ansible way, with
+  `become: true`; anything a grader must check *as* the learner resolves the user
+  with `U="${SUDO_USER:-root}"` (see `nodes/01-ssh-keys`).
 - **Managed node = localhost.** The starter inventory defines a `managed` group
   containing the control node itself:
   - module/config tasks use `localhost ansible_connection=local`;

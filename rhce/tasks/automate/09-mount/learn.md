@@ -16,7 +16,7 @@ THE IDEA
 
   ansible.posix.mount is in the ansible.posix collection (setup.sh installs
   it) and setup.sh strips any old /mnt/ramdisk entry. Working directory:
-  /root/rhce/mount/.
+  /opt/rhce/mount/.
 
 ---
 
@@ -47,7 +47,7 @@ HOW TO DO IT
   state: directory), then mount:
 
 ```run
-cd /root/rhce/mount
+cd /opt/rhce/mount
 cat > playbook.yml <<'EOF'
 ---
 - name: Mount and persist a tmpfs ramdisk
@@ -80,13 +80,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/mount && ansible-playbook playbook.yml
+cd /opt/rhce/mount && ansible-playbook playbook.yml
 ```
 
   changed=2 (directory + mount). Re-run for the idempotence check:
 
 ```run
-cd /root/rhce/mount && ansible-playbook playbook.yml
+cd /opt/rhce/mount && ansible-playbook playbook.yml
 ```
 
   changed=0 — the directory exists, it's already mounted, and the fstab line

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/register
+cd /opt/rhce/register
 cat > playbook.yml <<'PB'
 ---
 - name: Capture a command result with register
@@ -13,7 +13,7 @@ cat > playbook.yml <<'PB'
 
     - name: Save the result to a file
       ansible.builtin.copy:
-        dest: /root/rhce/register/whoami.txt
+        dest: /opt/rhce/register/whoami.txt
         content: "{{ whoami_result.stdout }}\n"
 PB
 ansible-playbook playbook.yml

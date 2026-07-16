@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/navigator 2>/dev/null || true
+cd /opt/rhce/navigator 2>/dev/null || true
 python3 -c 'import yaml' 2>/dev/null || echo "  ${C_Y}note${C_0} PyYAML not available (ships with ansible-core)"
 # nav_val KEYPATH EXPECTED : true if YAML nav config resolves KEYPATH to EXPECTED
 nav_val(){ python3 - "$1" "$2" <<'PY'

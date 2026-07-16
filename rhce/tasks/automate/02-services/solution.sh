@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/services
+cd /opt/rhce/services
 cat > playbook.yml <<'PB'
 ---
 - name: Enable and start chronyd

@@ -20,7 +20,7 @@ THE IDEA
   ansible.cfg pointing at it. There's no group_vars yet.
 
 ```run
-cd /root/rhce/inventory-vars && ls -la && cat inventory
+cd /opt/rhce/inventory-vars && ls -la && cat inventory
 ```
 
 ---
@@ -47,7 +47,7 @@ HOW TO DO IT
   key: value pairs:
 
 ```run
-cd /root/rhce/inventory-vars
+cd /opt/rhce/inventory-vars
 mkdir -p group_vars
 cat > group_vars/webservers <<'GV'
 ---
@@ -66,7 +66,7 @@ CHECK IT WORKED
   this is precisely what the grader does:
 
 ```run
-cd /root/rhce/inventory-vars && ansible-inventory -i inventory --host node1.example.com
+cd /opt/rhce/inventory-vars && ansible-inventory -i inventory --host node1.example.com
 ```
 
   In that JSON you should see "http_port": 8080. If it's there, the

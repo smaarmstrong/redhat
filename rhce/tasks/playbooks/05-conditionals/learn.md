@@ -15,7 +15,7 @@ THE IDEA
   This box is Rocky, which we can confirm from its facts before we start:
 
 ```run
-cd /root/rhce/conditionals
+cd /opt/rhce/conditionals
 ansible managed -m ansible.builtin.setup -a 'filter=ansible_distribution'
 ```
 
@@ -41,7 +41,7 @@ HOW TO DO IT
   tree ends up installed. Write the playbook:
 
 ```run
-cd /root/rhce/conditionals
+cd /opt/rhce/conditionals
 cat > playbook.yml <<'EOF'
 ---
 - name: Install tree only on Rocky
@@ -67,7 +67,7 @@ cat playbook.yml
   Run it:
 
 ```run
-cd /root/rhce/conditionals
+cd /opt/rhce/conditionals
 ansible-playbook playbook.yml
 ```
 
@@ -81,7 +81,7 @@ ansible-playbook playbook.yml
   evaluated, but tree is already present so package makes no change:
 
 ```run
-cd /root/rhce/conditionals
+cd /opt/rhce/conditionals
 ansible-playbook playbook.yml
 ```
 

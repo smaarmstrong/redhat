@@ -19,7 +19,7 @@ THE IDEA
   Confirm the recovery marker doesn't exist yet:
 
 ```run
-ls -l /root/rhce/error-handling/recovered.txt 2>&1 || true
+ls -l /opt/rhce/error-handling/recovered.txt 2>&1 || true
 ```
 
 ---
@@ -41,7 +41,7 @@ HOW TO DO IT
   rescue handles the failure, the overall run succeeds. Write the playbook:
 
 ```run
-cd /root/rhce/error-handling
+cd /opt/rhce/error-handling
 cat > playbook.yml <<'EOF'
 ---
 - name: Handle a task failure with block/rescue
@@ -55,7 +55,7 @@ cat > playbook.yml <<'EOF'
       rescue:
         - name: Record that we recovered
           ansible.builtin.file:
-            path: /root/rhce/error-handling/recovered.txt
+            path: /opt/rhce/error-handling/recovered.txt
             state: touch
 EOF
 cat playbook.yml
@@ -72,7 +72,7 @@ cat playbook.yml
   Run it:
 
 ```run
-cd /root/rhce/error-handling
+cd /opt/rhce/error-handling
 ansible-playbook playbook.yml
 ```
 
@@ -86,7 +86,7 @@ ansible-playbook playbook.yml
   Prove the exit status is really 0 (success), which is what matters:
 
 ```run
-cd /root/rhce/error-handling
+cd /opt/rhce/error-handling
 ansible-playbook playbook.yml; echo "exit status: $?"
 ```
 
@@ -100,7 +100,7 @@ CHECK IT WORKED
   and recovered.txt exists (proving rescue ran). Confirm the marker:
 
 ```run
-ls -l /root/rhce/error-handling/recovered.txt
+ls -l /opt/rhce/error-handling/recovered.txt
 ```
 
 ---

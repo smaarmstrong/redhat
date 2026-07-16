@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/error-handling
+cd /opt/rhce/error-handling
 cat > playbook.yml <<'PB'
 ---
 - name: Handle a task failure with block/rescue
@@ -13,7 +13,7 @@ cat > playbook.yml <<'PB'
       rescue:
         - name: Record that we recovered
           ansible.builtin.file:
-            path: /root/rhce/error-handling/recovered.txt
+            path: /opt/rhce/error-handling/recovered.txt
             state: touch
 PB
 ansible-playbook playbook.yml

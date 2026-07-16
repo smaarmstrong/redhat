@@ -3,7 +3,7 @@ command -v ansible-playbook >/dev/null || dnf -y install ansible-core >/dev/null
 # undo the target state so there is work to do
 userdel -r deploybot >/dev/null 2>&1 || true
 groupdel devs >/dev/null 2>&1 || true
-d=/root/rhce/users-groups
+d=/opt/rhce/users-groups
 mkdir -p "$d"; rm -f "$d/playbook.yml"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -14,4 +14,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 localhost ansible_connection=local
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0

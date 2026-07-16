@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 cat > playbook.yml <<'PB'
 ---
 - name: Install tree

@@ -1,8 +1,9 @@
-Work in /root/rhce/ssh-keys/. The managed user `ansible` already exists on this
+Work in /opt/rhce/ssh-keys/. The managed user `ansible` already exists on this
 host and `sshd` is running.
 
-Generate an SSH key pair for `root` (if one does not already exist) and distribute
-the public key so that `root` can log in as `ansible@127.0.0.1` without a password.
+Generate an SSH key pair for **your login user** (if one does not already exist)
+and distribute the public key so that you can log in as `ansible@127.0.0.1`
+without a password.
 
 You may do this any way you like — for example:
 

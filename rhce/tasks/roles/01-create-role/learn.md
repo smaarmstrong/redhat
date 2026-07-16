@@ -22,12 +22,12 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/create-role. Its ansible.cfg
+  Your working directory is /opt/rhce/create-role. Its ansible.cfg
   already sets roles_path = roles, so Ansible finds roles under ./roles.
   The `managed` group is localhost. Nothing exists yet:
 
 ```run
-ls /root/rhce/create-role/roles 2>/dev/null; echo "--- (empty) ---"
+ls /opt/rhce/create-role/roles 2>/dev/null; echo "--- (empty) ---"
 ```
 
 ---
@@ -51,7 +51,7 @@ HOW TO DO IT
   Step 1 — make the role's tasks and files directories:
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 mkdir -p roles/webconfig/tasks roles/webconfig/files
 ```
 
@@ -59,7 +59,7 @@ mkdir -p roles/webconfig/tasks roles/webconfig/files
   it lives here, tasks can refer to it by bare name:
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 cat > roles/webconfig/files/app.conf <<'CONF'
 # Managed by the webconfig role
 [myapp]
@@ -75,7 +75,7 @@ CONF
   app.conf into place (note src is just the bare filename):
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 cat > roles/webconfig/tasks/main.yml <<'TASKS'
 ---
 - name: Ensure config directory exists
@@ -99,7 +99,7 @@ TASKS
   tasks/main.yml:
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 cat > site.yml <<'PB'
 ---
 - name: Apply webconfig role
@@ -113,7 +113,7 @@ PB
   Run it:
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 ansible-playbook site.yml
 ```
 
@@ -131,7 +131,7 @@ cat /etc/myapp/app.conf
   Both file and copy are idempotent, so nothing changes on a second pass:
 
 ```run
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 ansible-playbook site.yml
 ```
 

@@ -11,7 +11,7 @@ THE IDEA
 
   This task's target is chronyd, the NTP time-sync daemon. setup.sh has
   deliberately disabled and stopped it, so there's real work for your playbook
-  to do. Your working directory /root/rhce/services/ already has ansible.cfg
+  to do. Your working directory /opt/rhce/services/ already has ansible.cfg
   and an inventory with the `managed` group.
 
 ---
@@ -43,7 +43,7 @@ HOW TO DO IT
   one task calling the service module with both attributes:
 
 ```run
-cd /root/rhce/services
+cd /opt/rhce/services
 cat > playbook.yml <<'EOF'
 ---
 - name: Enable and start chronyd
@@ -67,14 +67,14 @@ EOF
   Run it with ansible-playbook:
 
 ```run
-cd /root/rhce/services && ansible-playbook playbook.yml
+cd /opt/rhce/services && ansible-playbook playbook.yml
 ```
 
   The recap should show changed=1 — one task did work (enable + start). Now
   run it again to see idempotence:
 
 ```run
-cd /root/rhce/services && ansible-playbook playbook.yml
+cd /opt/rhce/services && ansible-playbook playbook.yml
 ```
 
   changed=0 this time: chronyd is already enabled and running, so there's

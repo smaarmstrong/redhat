@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/mount
+cd /opt/rhce/mount
 cat > playbook.yml <<'PB'
 ---
 - name: Mount and persist a tmpfs ramdisk

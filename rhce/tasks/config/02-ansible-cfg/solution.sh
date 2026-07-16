@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/ansible-cfg
+cd /opt/rhce/ansible-cfg
 cat > ansible.cfg <<'CFG'
 [defaults]
 inventory = inventory

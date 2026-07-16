@@ -14,7 +14,7 @@ THE IDEA
     ansible.builtin.package         installs/removes packages (dnf under the hood)
 
   setup.sh has already made your working directory at
-  /root/rhce/packages-repo/ with an ansible.cfg (points at the inventory) and
+  /opt/rhce/packages-repo/ with an ansible.cfg (points at the inventory) and
   an inventory file defining the `managed` group. Let's look.
 
 ---
@@ -22,7 +22,7 @@ THE IDEA
   Change into the working directory and see what setup left you:
 
 ```run
-cd /root/rhce/packages-repo && cat ansible.cfg inventory
+cd /opt/rhce/packages-repo && cat ansible.cfg inventory
 ```
 
   The ansible.cfg says "use the file called inventory", and the inventory puts
@@ -51,7 +51,7 @@ HOW TO DO IT
   needed to write repo files and install packages); then a tasks: list.
 
 ```run
-cd /root/rhce/packages-repo
+cd /opt/rhce/packages-repo
 cat > playbook.yml <<'EOF'
 ---
 - name: Configure repo and install tree
@@ -85,7 +85,7 @@ EOF
   in the current directory, finds the inventory, and applies the play:
 
 ```run
-cd /root/rhce/packages-repo && ansible-playbook playbook.yml
+cd /opt/rhce/packages-repo && ansible-playbook playbook.yml
 ```
 
   Watch the PLAY RECAP at the bottom. You should see ok=N changed=2 (the repo
@@ -96,7 +96,7 @@ cd /root/rhce/packages-repo && ansible-playbook playbook.yml
   Now prove idempotence — run the very same playbook again:
 
 ```run
-cd /root/rhce/packages-repo && ansible-playbook playbook.yml
+cd /opt/rhce/packages-repo && ansible-playbook playbook.yml
 ```
 
   This time changed=0. Nothing changed because the system already matches what

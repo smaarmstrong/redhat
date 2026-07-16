@@ -1,4 +1,4 @@
-Work in /root/rhce/file-content/. Write `playbook.yml` that manages the content of
+Work in /opt/rhce/file-content/. Write `playbook.yml` that manages the content of
 `/etc/security/limits.d/99-custom.conf` on the hosts in the `managed` group:
 
 - Use the `lineinfile` module to ensure the file contains this exact line:

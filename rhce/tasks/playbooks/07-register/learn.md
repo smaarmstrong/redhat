@@ -14,7 +14,7 @@ THE IDEA
   Confirm the output file doesn't exist yet:
 
 ```run
-ls -l /root/rhce/register/whoami.txt 2>&1 || true
+ls -l /opt/rhce/register/whoami.txt 2>&1 || true
 ```
 
 ---
@@ -37,7 +37,7 @@ HOW TO DO IT
   root, id -un prints "root". Write the playbook:
 
 ```run
-cd /root/rhce/register
+cd /opt/rhce/register
 cat > playbook.yml <<'EOF'
 ---
 - name: Capture a command result with register
@@ -51,7 +51,7 @@ cat > playbook.yml <<'EOF'
 
     - name: Save the result to a file
       ansible.builtin.copy:
-        dest: /root/rhce/register/whoami.txt
+        dest: /opt/rhce/register/whoami.txt
         content: "{{ whoami_result.stdout }}\n"
 EOF
 cat playbook.yml
@@ -70,7 +70,7 @@ cat playbook.yml
   Run it:
 
 ```run
-cd /root/rhce/register
+cd /opt/rhce/register
 ansible-playbook playbook.yml
 ```
 
@@ -83,7 +83,7 @@ ansible-playbook playbook.yml
   this doesn't touch your playbook, it just prints the variable's structure:
 
 ```run
-cd /root/rhce/register
+cd /opt/rhce/register
 ansible managed -b -m command -a 'id -un'
 ```
 
@@ -98,7 +98,7 @@ CHECK IT WORKED
   exists, and it contains exactly "root". Look at the file:
 
 ```run
-cat /root/rhce/register/whoami.txt
+cat /opt/rhce/register/whoami.txt
 ```
 
   One line: root. That's the captured stdout, written out.

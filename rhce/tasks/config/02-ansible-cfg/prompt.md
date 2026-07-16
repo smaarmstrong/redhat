@@ -1,4 +1,4 @@
-Work in /root/rhce/ansible-cfg/. Create an `ansible.cfg` file that configures:
+Work in /opt/rhce/ansible-cfg/. Create an `ansible.cfg` file that configures:
 
   • `[defaults]` section:
       - `inventory` = `inventory`

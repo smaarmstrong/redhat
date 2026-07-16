@@ -7,7 +7,7 @@ umount /mnt/ramdisk 2>/dev/null || true
 if [ -f /etc/fstab ]; then
   sed -i '\#[[:space:]]/mnt/ramdisk[[:space:]]#d' /etc/fstab 2>/dev/null || true
 fi
-d=/root/rhce/mount
+d=/opt/rhce/mount
 mkdir -p "$d"; rm -f "$d/playbook.yml"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -18,4 +18,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 localhost ansible_connection=local
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0

@@ -11,7 +11,7 @@ fi
 firewall-cmd --permanent --remove-service=http >/dev/null 2>&1 || true
 firewall-cmd --remove-service=http >/dev/null 2>&1 || true
 firewall-cmd --reload >/dev/null 2>&1 || true
-d=/root/rhce/firewall
+d=/opt/rhce/firewall
 mkdir -p "$d"; rm -f "$d/playbook.yml"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -22,4 +22,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 localhost ansible_connection=local
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0

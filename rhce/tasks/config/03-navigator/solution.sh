@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/navigator
+cd /opt/rhce/navigator
 cat > ansible-navigator.yml <<'YML'
 ---
 ansible-navigator:

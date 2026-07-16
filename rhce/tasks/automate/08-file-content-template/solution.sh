@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/motd-content
+cd /opt/rhce/motd-content
 cat > playbook.yml <<'PB'
 ---
 - name: Manage /etc/motd from a content variable

@@ -11,7 +11,7 @@ THE IDEA
   devs as a SUPPLEMENTARY group and a GECOS comment.
 
   setup.sh removed both the user and group so there's work to do. Working
-  directory: /root/rhce/users-groups/.
+  directory: /opt/rhce/users-groups/.
 
 ---
 
@@ -41,7 +41,7 @@ HOW TO DO IT
   Write the playbook — group task first, then user task:
 
 ```run
-cd /root/rhce/users-groups
+cd /opt/rhce/users-groups
 cat > playbook.yml <<'EOF'
 ---
 - name: Create devs group and deploybot user
@@ -76,13 +76,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/users-groups && ansible-playbook playbook.yml
+cd /opt/rhce/users-groups && ansible-playbook playbook.yml
 ```
 
   changed=2. Then re-run to confirm idempotence:
 
 ```run
-cd /root/rhce/users-groups && ansible-playbook playbook.yml
+cd /opt/rhce/users-groups && ansible-playbook playbook.yml
 ```
 
   changed=0 — the group and user already match, so nothing happens.

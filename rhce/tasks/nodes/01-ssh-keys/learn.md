@@ -17,14 +17,15 @@ THE IDEA
 
 ---
 
-  In this task the control user is root and the managed user is `ansible`
-  on 127.0.0.1 — we log the box into itself, which is enough to practise
-  the whole flow. Your working directory is /root/rhce/ssh-keys.
+  In this task the control user is you — your ordinary login user — and
+  the managed user is `ansible` on 127.0.0.1: we log the box into itself,
+  which is enough to practise the whole flow. Your working directory is
+  /opt/rhce/ssh-keys.
 
   First, notice there is no key yet — setup wiped it clean:
 
 ```run
-ls -l /root/.ssh/id_* 2>/dev/null || echo "no key pair yet"
+ls -l ~/.ssh/id_* 2>/dev/null || echo "no key pair yet"
 ```
 
 ---
@@ -41,18 +42,19 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
-  Step 1 — make a key pair for root, if one doesn't exist. The `-N ''`
+  Step 1 — make a key pair for your user, if one doesn't exist. The `-N ''`
   gives it an empty passphrase (so logins are truly non-interactive) and
   `-f` names the file:
 
 ```run
-[ -f /root/.ssh/id_rsa ] || ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+[ -f ~/.ssh/id_rsa ] || ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
 ```
 
   You now have id_rsa and id_rsa.pub:
 
 ```run
-ls -l /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+ls -l ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
 ```
 
 ---
@@ -61,44 +63,47 @@ ls -l /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
   hand-typed way is one command, ssh-copy-id, which appends your public
   key to the remote authorized_keys and fixes the permissions for you:
 
-    $ ssh-copy-id -i /root/.ssh/id_rsa.pub ansible@127.0.0.1
+    $ ssh-copy-id -i ~/.ssh/id_rsa.pub ansible@127.0.0.1
 
   That prompts for the ansible account's password the first (and only)
   time. It's exactly what the exam expects you to know.
 
   But this trainer is about Ansible, so let's do the same thing with a
-  playbook — no password needed, because we run it locally as root. Write
-  it with a heredoc:
+  playbook — no password needed, because we run it locally and `become`
+  root for the one step that writes to the ansible user's home. Write it
+  with a heredoc:
 
 ```run
-cd /root/rhce/ssh-keys
+cd /opt/rhce/ssh-keys
 cat > distribute.yml <<'PB'
 ---
-- name: Distribute root's public key to the ansible user
+- name: Distribute my public key to the ansible user
   hosts: localhost
   connection: local
   become: true
   tasks:
-    - name: Read root's public key
+    - name: Read my public key
       ansible.builtin.slurp:
-        src: /root/.ssh/id_rsa.pub
-      register: rootkey
+        src: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+      register: pubkey
 
-    - name: Authorise root's key for the ansible user
+    - name: Authorise my key for the ansible user
       ansible.posix.authorized_key:
         user: ansible
         state: present
-        key: "{{ rootkey.content | b64decode }}"
+        key: "{{ pubkey.content | b64decode }}"
 PB
 ```
 
-  The idea: slurp reads the .pub file (returning it base64-encoded, hence
-  the b64decode filter), and the authorized_key module installs it for the
-  ansible user — creating ~/.ssh with 0700 and authorized_keys with 0600,
-  owned by ansible, all correctly. Run it:
+  The idea: the env lookup resolves to YOUR home directory (lookups run on
+  the control node as you, before become kicks in), slurp reads the .pub
+  file (returning it base64-encoded, hence the b64decode filter), and the
+  authorized_key module installs it for the ansible user — creating ~/.ssh
+  with 0700 and authorized_keys with 0600, owned by ansible, all
+  correctly. Run it:
 
 ```run
-cd /root/rhce/ssh-keys
+cd /opt/rhce/ssh-keys
 ansible-playbook distribute.yml
 ```
 
@@ -116,11 +121,11 @@ ssh -o BatchMode=yes -o StrictHostKeyChecking=no ansible@127.0.0.1 true && echo 
 
   The grader also checks the file layout the module set up for you — that
   ~ansible/.ssh is 0700 and authorized_keys is 0600 and owned by ansible.
-  Look at it:
+  Look at it (another user's home, so this needs sudo):
 
 ```run
-ls -ld /home/ansible/.ssh
-ls -l /home/ansible/.ssh/authorized_keys
+sudo ls -ld /home/ansible/.ssh
+sudo ls -l /home/ansible/.ssh/authorized_keys
 ```
 
 ---
@@ -135,5 +140,6 @@ GOTCHAS
     would re-introduce the very prompt you're trying to remove.
   - authorized_key comes from the ansible.posix collection. If it isn't
     installed, the fallback is to append the .pub to authorized_keys by
-    hand and chmod/chown it — same result, and the grader only cares about
-    the outcome, not how you got there.
+    hand (with sudo, since it's another user's home) and chmod/chown it —
+    same result, and the grader only cares about the outcome, not how you
+    got there.

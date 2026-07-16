@@ -18,7 +18,7 @@ THE IDEA
   its own — it prints the whole dictionary:
 
 ```run
-cd /root/rhce/facts
+cd /opt/rhce/facts
 ansible managed -m ansible.builtin.setup
 ```
 
@@ -46,7 +46,7 @@ HOW TO DO IT
   two facts. Write the playbook:
 
 ```run
-cd /root/rhce/facts
+cd /opt/rhce/facts
 cat > playbook.yml <<'EOF'
 ---
 - name: Render facts into /etc/issue
@@ -72,7 +72,7 @@ cat playbook.yml
   Run it:
 
 ```run
-cd /root/rhce/facts
+cd /opt/rhce/facts
 ansible-playbook playbook.yml
 ```
 
@@ -86,7 +86,7 @@ ansible-playbook playbook.yml
   rendered line and does nothing:
 
 ```run
-cd /root/rhce/facts
+cd /opt/rhce/facts
 ansible-playbook playbook.yml
 ```
 

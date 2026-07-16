@@ -11,7 +11,7 @@ THE IDEA
   once in vars:, reference it with {{ }}, and copy renders it into place. This
   task writes a two-line /etc/motd from a variable called motd_text.
 
-  setup.sh blanked out /etc/motd. Working directory: /root/rhce/motd-content/.
+  setup.sh blanked out /etc/motd. Working directory: /opt/rhce/motd-content/.
 
 ---
 
@@ -44,7 +44,7 @@ HOW TO DO IT
   content:
 
 ```run
-cd /root/rhce/motd-content
+cd /opt/rhce/motd-content
 cat > playbook.yml <<'EOF'
 ---
 - name: Manage /etc/motd from a content variable
@@ -75,13 +75,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/motd-content && ansible-playbook playbook.yml
+cd /opt/rhce/motd-content && ansible-playbook playbook.yml
 ```
 
   changed=1. Now re-run for idempotence:
 
 ```run
-cd /root/rhce/motd-content && ansible-playbook playbook.yml
+cd /opt/rhce/motd-content && ansible-playbook playbook.yml
 ```
 
   changed=0 — the file's content already matches motd_text, so copy leaves it

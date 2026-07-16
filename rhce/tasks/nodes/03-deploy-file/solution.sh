@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/deploy-file
+cd /opt/rhce/deploy-file
 cat > playbook.yml <<'PB'
 ---
 - name: Deploy /etc/motd to managed nodes

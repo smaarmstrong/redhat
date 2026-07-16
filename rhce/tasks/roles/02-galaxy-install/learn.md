@@ -47,14 +47,14 @@ WHY IT MATTERS
 
 HOW TO DO IT
 
-  Your working directory is /root/rhce/galaxy-install, with a roles/
+  Your working directory is /opt/rhce/galaxy-install, with a roles/
   directory ready and roles_path = roles in ansible.cfg.
 
   Step 1 — declare the dependency. Write requirements.yml naming the role
   geerlingguy.ntp (author.rolename is Galaxy's naming scheme):
 
 ```run
-cd /root/rhce/galaxy-install
+cd /opt/rhce/galaxy-install
 cat > requirements.yml <<'REQ'
 ---
 roles:
@@ -69,7 +69,7 @@ REQ
   report a network error, which is fine for this bonus task:
 
 ```run
-cd /root/rhce/galaxy-install
+cd /opt/rhce/galaxy-install
 ansible-galaxy role install -r requirements.yml -p roles
 ```
 
@@ -81,13 +81,13 @@ CHECK IT WORKED
   checks the directory exists and has a tasks/main.yml:
 
 ```run
-ls -la /root/rhce/galaxy-install/roles/geerlingguy.ntp 2>/dev/null || echo "not installed (likely no network)"
+ls -la /opt/rhce/galaxy-install/roles/geerlingguy.ntp 2>/dev/null || echo "not installed (likely no network)"
 ```
 
   You can also list what ansible-galaxy knows is installed under this path:
 
 ```run
-cd /root/rhce/galaxy-install
+cd /opt/rhce/galaxy-install
 ansible-galaxy role list -p roles
 ```
 

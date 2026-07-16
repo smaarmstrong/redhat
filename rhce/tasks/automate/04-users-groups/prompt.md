@@ -1,4 +1,4 @@
-Work in /root/rhce/users-groups/. Write `playbook.yml` targeting the `managed`
+Work in /opt/rhce/users-groups/. Write `playbook.yml` targeting the `managed`
 group that:
 
 1. Creates the group `devs` with GID `6000` (`ansible.builtin.group`).

@@ -20,12 +20,12 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/privilege-escalation, with an
+  Your working directory is /opt/rhce/privilege-escalation, with an
   inventory whose `managed` group is just localhost. Confirm there's no
   sudoers drop-in for ansible yet:
 
 ```run
-ls -l /etc/sudoers.d/ansible 2>/dev/null || echo "no drop-in yet"
+sudo ls -l /etc/sudoers.d/ansible 2>/dev/null || echo "no drop-in yet"
 ```
 
 ---
@@ -52,7 +52,7 @@ HOW TO DO IT
   Write the playbook:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 cat > playbook.yml <<'PB'
 ---
 - name: Configure passwordless sudo for the ansible user
@@ -74,7 +74,7 @@ PB
   about wrong modes. Now run it:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 ansible-playbook playbook.yml
 ```
 
@@ -85,15 +85,15 @@ CHECK IT WORKED
   Look at the file that landed:
 
 ```run
-cat /etc/sudoers.d/ansible
-ls -l /etc/sudoers.d/ansible
+sudo cat /etc/sudoers.d/ansible
+sudo ls -l /etc/sudoers.d/ansible
 ```
 
   Confirm the whole sudoers configuration still parses cleanly — this is
   what the grader runs, and what saves you from a lockout:
 
 ```run
-visudo -cf /etc/sudoers && echo "sudoers OK"
+sudo visudo -cf /etc/sudoers && echo "sudoers OK"
 ```
 
   The grader also insists the playbook is idempotent. Run it a second time
@@ -101,7 +101,7 @@ visudo -cf /etc/sudoers && echo "sudoers OK"
   nothing:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 ansible-playbook playbook.yml
 ```
 

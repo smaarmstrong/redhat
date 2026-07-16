@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/file-content
+cd /opt/rhce/file-content
 cat > playbook.yml <<'PB'
 ---
 - name: Manage limits file content

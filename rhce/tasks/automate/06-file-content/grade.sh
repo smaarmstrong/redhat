@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/file-content 2>/dev/null || true
+cd /opt/rhce/file-content 2>/dev/null || true
 command -v ansible-playbook >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed"
 f=/etc/security/limits.d/99-custom.conf
 check "playbook.yml exists" test -f playbook.yml

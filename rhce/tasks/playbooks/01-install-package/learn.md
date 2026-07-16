@@ -17,7 +17,7 @@ THE IDEA
   there:
 
 ```run
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 ls -la
 cat inventory
 cat ansible.cfg
@@ -47,7 +47,7 @@ HOW TO DO IT
   become, then a tasks: list, then one task calling the package module.
 
 ```run
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 cat > playbook.yml <<'EOF'
 ---
 - name: Install tree
@@ -74,7 +74,7 @@ cat playbook.yml
   Now run it exactly the way the task asks — with ansible-playbook:
 
 ```run
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 ansible-playbook playbook.yml
 ```
 
@@ -89,7 +89,7 @@ ansible-playbook playbook.yml
   a second time:
 
 ```run
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 ansible-playbook playbook.yml
 ```
 
@@ -113,7 +113,7 @@ rpm -q tree
   before you commit to a full run:
 
 ```run
-cd /root/rhce/install-package
+cd /opt/rhce/install-package
 ansible-playbook --syntax-check playbook.yml
 ```
 

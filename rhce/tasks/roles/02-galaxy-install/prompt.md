@@ -1,4 +1,4 @@
-Work in /root/rhce/galaxy-install/.
+Work in /opt/rhce/galaxy-install/.
 
 BONUS TASK — requires internet access to Ansible Galaxy.
 

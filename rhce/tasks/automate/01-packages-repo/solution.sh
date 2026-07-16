@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/packages-repo
+cd /opt/rhce/packages-repo
 cat > playbook.yml <<'PB'
 ---
 - name: Configure repo and install tree

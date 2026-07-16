@@ -13,13 +13,13 @@ THE IDEA
 
 ---
 
-  Setup prepared a bare repository at /root/rhce/git/origin.git. "Bare"
+  Setup prepared a bare repository at /opt/rhce/git/origin.git. "Bare"
   means it holds history but has no working files checked out — it's the
   kind of repo you clone FROM (a stand-in for a remote), and it needs no
   network. Take a look:
 
 ```run
-cd /root/rhce/git && ls -la
+cd /opt/rhce/git && ls -la
 ```
 
 ---
@@ -42,14 +42,14 @@ HOW TO DO IT
   creates work/, copies the history, and checks out the files:
 
 ```run
-cd /root/rhce/git && rm -rf work && git clone /root/rhce/git/origin.git work
+cd /opt/rhce/git && rm -rf work && git clone /opt/rhce/git/origin.git work
 ```
 
   Look inside — you'll see the README.md that came from origin, plus a
   .git directory:
 
 ```run
-cd /root/rhce/git/work && ls -la
+cd /opt/rhce/git/work && ls -la
 ```
 
 ---
@@ -58,7 +58,7 @@ cd /root/rhce/git/work && ls -la
   git "include this in my next commit":
 
 ```run
-cd /root/rhce/git/work
+cd /opt/rhce/git/work
 cat > playbook.yml <<'PB'
 ---
 - name: Placeholder play
@@ -72,7 +72,7 @@ git add playbook.yml
   committed:
 
 ```run
-cd /root/rhce/git/work && git status
+cd /opt/rhce/git/work && git status
 ```
 
 ---
@@ -81,7 +81,7 @@ cd /root/rhce/git/work && git status
   snapshot in the repo's history:
 
 ```run
-cd /root/rhce/git/work && git commit -m "Add playbook"
+cd /opt/rhce/git/work && git commit -m "Add playbook"
 ```
 
 ---
@@ -93,14 +93,14 @@ CHECK IT WORKED
   ls-files lists everything git knows about):
 
 ```run
-cd /root/rhce/git/work && git ls-files
+cd /opt/rhce/git/work && git ls-files
 ```
 
   You should see playbook.yml (and README.md). Now confirm the commit
   landed by viewing the history:
 
 ```run
-cd /root/rhce/git/work && git log --oneline
+cd /opt/rhce/git/work && git log --oneline
 ```
 
   Two lines: the original "init" from origin and your "Add playbook".

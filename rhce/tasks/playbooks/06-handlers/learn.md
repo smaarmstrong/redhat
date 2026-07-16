@@ -15,7 +15,7 @@ THE IDEA
   Confirm the starting state — neither the config nor the marker exists yet:
 
 ```run
-ls -l /etc/myapp.conf /root/rhce/handlers/reloaded.marker 2>&1 || true
+ls -l /etc/myapp.conf /opt/rhce/handlers/reloaded.marker 2>&1 || true
 ```
 
 ---
@@ -38,7 +38,7 @@ HOW TO DO IT
   touches the marker file. Write the playbook:
 
 ```run
-cd /root/rhce/handlers
+cd /opt/rhce/handlers
 cat > playbook.yml <<'EOF'
 ---
 - name: Write config and notify a handler
@@ -53,7 +53,7 @@ cat > playbook.yml <<'EOF'
   handlers:
     - name: reload myapp
       ansible.builtin.file:
-        path: /root/rhce/handlers/reloaded.marker
+        path: /opt/rhce/handlers/reloaded.marker
         state: touch
 EOF
 cat playbook.yml
@@ -71,7 +71,7 @@ cat playbook.yml
   notified and runs:
 
 ```run
-cd /root/rhce/handlers
+cd /opt/rhce/handlers
 ansible-playbook playbook.yml
 ```
 
@@ -86,7 +86,7 @@ ansible-playbook playbook.yml
   it stays silent:
 
 ```run
-cd /root/rhce/handlers
+cd /opt/rhce/handlers
 ansible-playbook playbook.yml
 ```
 
@@ -104,7 +104,7 @@ CHECK IT WORKED
 
 ```run
 cat /etc/myapp.conf
-ls -l /root/rhce/handlers/reloaded.marker
+ls -l /opt/rhce/handlers/reloaded.marker
 ```
 
 ---

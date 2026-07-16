@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-cd /root/rhce/variables
+cd /opt/rhce/variables
 cat > playbook.yml <<'PB'
 ---
 - name: Write a message to a file using variables
   hosts: managed
   vars:
-    target_file: /root/rhce/vars/hello.txt
+    target_file: /opt/rhce/vars/hello.txt
     message: "hello from ansible"
   tasks:
     - name: Ensure the file has the message

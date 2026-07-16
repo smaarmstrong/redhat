@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/loops
+cd /opt/rhce/loops
 cat > playbook.yml <<'PB'
 ---
 - name: Create application users with a loop

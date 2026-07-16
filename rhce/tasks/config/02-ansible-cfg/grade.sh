@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/ansible-cfg 2>/dev/null || true
+cd /opt/rhce/ansible-cfg 2>/dev/null || true
 command -v ansible-config >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed"
 # cfg_has KEY VALUE : true if `ansible-config dump --only-changed` reports KEY set to VALUE
 cfg_has(){ ansible-config dump --only-changed 2>/dev/null | grep -Eiq "^${1}\b.*= *${2}\b"; }
