@@ -21,7 +21,7 @@ THE IDEA
   Check the starting point — http should not be allowed yet, in either config:
 
 ```run
-firewall-cmd --query-service=http; firewall-cmd --permanent --query-service=http
+sudo firewall-cmd --query-service=http; sudo firewall-cmd --permanent --query-service=http
 ```
 
   Both print `no`. Your job is to turn both into `yes`.
@@ -90,7 +90,7 @@ CHECK IT WORKED
   at the start:
 
 ```run
-firewall-cmd --query-service=http; firewall-cmd --permanent --query-service=http
+sudo firewall-cmd --query-service=http; sudo firewall-cmd --permanent --query-service=http
 ```
 
   Both should now say `yes`.

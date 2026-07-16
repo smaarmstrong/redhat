@@ -90,7 +90,7 @@ CHECK IT WORKED
 
 ```run
 getsebool httpd_can_network_connect
-semanage boolean -l 2>/dev/null | grep '^httpd_can_network_connect' || echo "(semanage not installed)"
+sudo semanage boolean -l 2>/dev/null | grep '^httpd_can_network_connect' || echo "(semanage not installed)"
 ```
 
   getsebool should now say `on`, and the semanage line should show the state

@@ -19,7 +19,7 @@ THE IDEA
   Look at root's crontab now — it should have no backup entry:
 
 ```run
-crontab -l 2>/dev/null || echo "(no crontab yet)"
+sudo crontab -l 2>/dev/null || echo "(no crontab yet)"
 ```
 
   Empty or missing. After the playbook, one scheduled line will appear here.
@@ -92,7 +92,7 @@ CHECK IT WORKED
   pointing at backup.sh, plus the nightly-backup name. Look yourself:
 
 ```run
-crontab -l
+sudo crontab -l
 ```
 
   You should see a `# Ansible: nightly-backup` comment and a line
