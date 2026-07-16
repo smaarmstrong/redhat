@@ -3,10 +3,18 @@ command -v git >/dev/null || dnf -y install git >/dev/null 2>&1 || true
 d=/opt/rhce/git
 rm -rf "$d"
 mkdir -p "$d"
-# global identity so commits work non-interactively
+# global identity so commits work non-interactively — for root (this script,
+# the container selftest) and for the invoking learner when run via sudo
 git config --global user.email >/dev/null 2>&1 || git config --global user.email "student@example.com"
 git config --global user.name  >/dev/null 2>&1 || git config --global user.name  "Student"
 git config --global init.defaultBranch main >/dev/null 2>&1 || true
+if [ -n "${SUDO_USER:-}" ]; then
+  runuser -u "$SUDO_USER" -- bash -c '
+    git config --global user.email >/dev/null 2>&1 || git config --global user.email "student@example.com"
+    git config --global user.name  >/dev/null 2>&1 || git config --global user.name  "Student"
+    git config --global init.defaultBranch main
+  ' >/dev/null 2>&1 || true
+fi
 # build a bare "origin" repo with one initial commit to clone from
 seed="$d/.seed"
 mkdir -p "$seed"
