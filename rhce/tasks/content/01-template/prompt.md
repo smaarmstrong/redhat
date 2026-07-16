@@ -1,4 +1,4 @@
-Work in /root/rhce/template-motd/. Create a Jinja2 template
+Work in /opt/rhce/template-motd/. Create a Jinja2 template
 `templates/motd.j2` that renders exactly one line:
 
     Welcome to {{ ansible_hostname }} running {{ ansible_distribution }} {{ ansible_distribution_version }}

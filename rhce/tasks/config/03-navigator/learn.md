@@ -16,7 +16,7 @@ THE IDEA
   scratch:
 
 ```run
-cd /root/rhce/navigator && ls -la
+cd /opt/rhce/navigator && ls -la
 ```
 
 ---
@@ -53,7 +53,7 @@ HOW TO DO IT
   heredoc, using two spaces per level and a space after every colon:
 
 ```run
-cd /root/rhce/navigator
+cd /opt/rhce/navigator
 cat > ansible-navigator.yml <<'YML'
 ---
 ansible-navigator:
@@ -75,7 +75,7 @@ CHECK IT WORKED
   whole file. Parse it and print the structure back:
 
 ```run
-cd /root/rhce/navigator && python3 -c 'import yaml,pprint;pprint.pprint(yaml.safe_load(open("ansible-navigator.yml")))'
+cd /opt/rhce/navigator && python3 -c 'import yaml,pprint;pprint.pprint(yaml.safe_load(open("ansible-navigator.yml")))'
 ```
 
   You want to see a nested dict: mode = 'stdout' and playbook-artifact =

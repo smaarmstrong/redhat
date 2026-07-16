@@ -1,4 +1,4 @@
-Work in /root/rhce/static-inventory/. Create a static inventory file named
+Work in /opt/rhce/static-inventory/. Create a static inventory file named
 `inventory` that defines:
 
   • group `webservers` — hosts node1.example.com and node2.example.com

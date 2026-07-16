@@ -1,4 +1,4 @@
-Work in /root/rhce/facts/. Write `playbook.yml` that runs against the `managed`
+Work in /opt/rhce/facts/. Write `playbook.yml` that runs against the `managed`
 group and uses gathered facts to write `/etc/issue` so that it contains a single
 rendered line:
 

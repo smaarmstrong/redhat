@@ -1,4 +1,4 @@
-Work in /root/rhce/ssh-keys/. The managed user `ansible` already exists on this
+Work in /opt/rhce/ssh-keys/. The managed user `ansible` already exists on this
 host and `sshd` is running.
 
 Generate an SSH key pair for `root` (if one does not already exist) and distribute

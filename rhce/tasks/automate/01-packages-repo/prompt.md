@@ -1,4 +1,4 @@
-Work in /root/rhce/packages-repo/. Write `playbook.yml` targeting the `managed`
+Work in /opt/rhce/packages-repo/. Write `playbook.yml` targeting the `managed`
 group that:
 
 1. Uses the `ansible.builtin.yum_repository` module to define a repository with

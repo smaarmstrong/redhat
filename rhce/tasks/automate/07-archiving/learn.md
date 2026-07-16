@@ -8,17 +8,17 @@ THE IDEA
   You point it at a `path:` (a file or directory to pack), a `dest:` (where
   the archive goes), and a `format:` (gz, bz2, zip, xz...). It packs and
   compresses in one step. This task archives /etc/ssh into
-  /root/rhce/archiving/etc-backup.tar.gz as gzip.
+  /opt/rhce/archiving/etc-backup.tar.gz as gzip.
 
   Note archive lives in the community.general collection, not ansible-core;
-  setup.sh best-effort installs it. Working directory: /root/rhce/archiving/.
+  setup.sh best-effort installs it. Working directory: /opt/rhce/archiving/.
 
 ---
 
   Confirm there's no archive yet:
 
 ```run
-ls -l /root/rhce/archiving/etc-backup.tar.gz 2>&1
+ls -l /opt/rhce/archiving/etc-backup.tar.gz 2>&1
 ```
 
   "No such file or directory" — the playbook will create it.
@@ -41,7 +41,7 @@ HOW TO DO IT
   there are root-only):
 
 ```run
-cd /root/rhce/archiving
+cd /opt/rhce/archiving
 cat > playbook.yml <<'EOF'
 ---
 - name: Archive the SSH configuration
@@ -51,7 +51,7 @@ cat > playbook.yml <<'EOF'
     - name: Create a gzip archive of /etc/ssh
       community.general.archive:
         path: /etc/ssh
-        dest: /root/rhce/archiving/etc-backup.tar.gz
+        dest: /opt/rhce/archiving/etc-backup.tar.gz
         format: gz
 EOF
 ```
@@ -65,13 +65,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/archiving && ansible-playbook playbook.yml
+cd /opt/rhce/archiving && ansible-playbook playbook.yml
 ```
 
   changed=1 and the archive file now exists. Re-run to see idempotence:
 
 ```run
-cd /root/rhce/archiving && ansible-playbook playbook.yml
+cd /opt/rhce/archiving && ansible-playbook playbook.yml
 ```
 
   On an unchanged source tree the module reports changed=0 — it sees the
@@ -87,7 +87,7 @@ CHECK IT WORKED
   sshd_config. List the archive's contents:
 
 ```run
-tar -tzf /root/rhce/archiving/etc-backup.tar.gz | head
+tar -tzf /opt/rhce/archiving/etc-backup.tar.gz | head
 ```
 
   You should see the /etc/ssh members, including sshd_config, and tar should

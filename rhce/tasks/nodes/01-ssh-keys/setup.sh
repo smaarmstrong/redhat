@@ -12,7 +12,7 @@ systemctl enable --now sshd >/dev/null 2>&1 || true
 rm -f /root/.ssh/id_rsa /root/.ssh/id_rsa.pub /root/.ssh/id_ed25519 /root/.ssh/id_ed25519.pub 2>/dev/null || true
 rm -f /home/ansible/.ssh/authorized_keys 2>/dev/null || true
 
-d=/root/rhce/ssh-keys
+d=/opt/rhce/ssh-keys
 mkdir -p "$d"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -23,4 +23,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 127.0.0.1 ansible_user=ansible
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0

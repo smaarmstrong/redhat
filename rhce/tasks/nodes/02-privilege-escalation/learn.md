@@ -20,7 +20,7 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/privilege-escalation, with an
+  Your working directory is /opt/rhce/privilege-escalation, with an
   inventory whose `managed` group is just localhost. Confirm there's no
   sudoers drop-in for ansible yet:
 
@@ -52,7 +52,7 @@ HOW TO DO IT
   Write the playbook:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 cat > playbook.yml <<'PB'
 ---
 - name: Configure passwordless sudo for the ansible user
@@ -74,7 +74,7 @@ PB
   about wrong modes. Now run it:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 ansible-playbook playbook.yml
 ```
 
@@ -101,7 +101,7 @@ visudo -cf /etc/sudoers && echo "sudoers OK"
   nothing:
 
 ```run
-cd /root/rhce/privilege-escalation
+cd /opt/rhce/privilege-escalation
 ansible-playbook playbook.yml
 ```
 

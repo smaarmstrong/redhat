@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/handlers
+cd /opt/rhce/handlers
 cat > playbook.yml <<'PB'
 ---
 - name: Write config and notify a handler
@@ -14,7 +14,7 @@ cat > playbook.yml <<'PB'
   handlers:
     - name: reload myapp
       ansible.builtin.file:
-        path: /root/rhce/handlers/reloaded.marker
+        path: /opt/rhce/handlers/reloaded.marker
         state: touch
 PB
 ansible-playbook playbook.yml

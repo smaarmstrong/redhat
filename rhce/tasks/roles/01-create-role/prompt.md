@@ -1,4 +1,4 @@
-Work in /root/rhce/create-role/. Create a role named `webconfig` under `roles/`
+Work in /opt/rhce/create-role/. Create a role named `webconfig` under `roles/`
 that deploys a configuration file:
 
   • the role must have the standard directory structure, including

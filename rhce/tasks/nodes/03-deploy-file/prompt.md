@@ -1,4 +1,4 @@
-Work in /root/rhce/deploy-file/. Write `playbook.yml` that deploys a file to the
+Work in /opt/rhce/deploy-file/. Write `playbook.yml` that deploys a file to the
 hosts in the `managed` group: create `/etc/motd` containing exactly the line
 
     Managed by Ansible

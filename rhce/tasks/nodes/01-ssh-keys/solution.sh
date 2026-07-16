@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/ssh-keys
+cd /opt/rhce/ssh-keys
 
 # 1. Generate a key for root if none exists
 [ -f /root/.ssh/id_rsa ] || ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa

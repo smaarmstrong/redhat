@@ -15,7 +15,7 @@ THE IDEA
   playbook:
 
 ```run
-cd /root/rhce/variables
+cd /opt/rhce/variables
 ls -la
 cat inventory
 ```
@@ -42,13 +42,13 @@ HOW TO DO IT
   the task. Write the playbook:
 
 ```run
-cd /root/rhce/variables
+cd /opt/rhce/variables
 cat > playbook.yml <<'EOF'
 ---
 - name: Write a message to a file using variables
   hosts: managed
   vars:
-    target_file: /root/rhce/vars/hello.txt
+    target_file: /opt/rhce/vars/hello.txt
     message: "hello from ansible"
   tasks:
     - name: Ensure the file has the message
@@ -75,7 +75,7 @@ cat playbook.yml
   Run it with ansible-playbook:
 
 ```run
-cd /root/rhce/variables
+cd /opt/rhce/variables
 ansible-playbook playbook.yml
 ```
 
@@ -87,7 +87,7 @@ ansible-playbook playbook.yml
   content against what's on disk and does nothing if they match:
 
 ```run
-cd /root/rhce/variables
+cd /opt/rhce/variables
 ansible-playbook playbook.yml
 ```
 
@@ -101,7 +101,7 @@ CHECK IT WORKED
   "hello from ansible", plus the idempotent second run. Check it yourself:
 
 ```run
-cat /root/rhce/vars/hello.txt
+cat /opt/rhce/vars/hello.txt
 ```
 
   You should see the one line, rendered from the variable, not typed in
@@ -114,7 +114,7 @@ GOTCHAS
   - Quote any value that begins with {{ — "{{ target_file }}" not
     {{ target_file }}. Unquoted, YAML misreads it and the play won't parse.
   - Use the variable, not the literal. A playbook that hard-codes
-    /root/rhce/vars/hello.txt defeats the task even if the file ends up
+    /opt/rhce/vars/hello.txt defeats the task even if the file ends up
     correct — the exam is testing that you referenced the variable.
   - {{ }} is for referencing a variable inside a string. You don't wrap the
     definition in the vars: block in braces — only the uses.

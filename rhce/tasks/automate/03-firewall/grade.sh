@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/firewall 2>/dev/null || true
+cd /opt/rhce/firewall 2>/dev/null || true
 command -v ansible-playbook >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed"
 command -v firewall-cmd >/dev/null || echo "  ${C_Y}note${C_0} firewalld not available — firewall checks will fail"
 if command -v ansible-galaxy >/dev/null && ! ansible-galaxy collection list 2>/dev/null | grep -q 'ansible.posix'; then

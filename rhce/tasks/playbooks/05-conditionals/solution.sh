@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/conditionals
+cd /opt/rhce/conditionals
 cat > playbook.yml <<'PB'
 ---
 - name: Install tree only on Rocky

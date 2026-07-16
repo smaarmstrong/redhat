@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/selinux
+cd /opt/rhce/selinux
 cat > playbook.yml <<'PB'
 ---
 - name: Enable an SELinux boolean persistently

@@ -19,7 +19,7 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/deploy-file; the inventory's
+  Your working directory is /opt/rhce/deploy-file; the inventory's
   `managed` group is localhost. setup blanked /etc/motd so you start
   clean:
 
@@ -49,7 +49,7 @@ HOW TO DO IT
   world-readable like a normal motd:
 
 ```run
-cd /root/rhce/deploy-file
+cd /opt/rhce/deploy-file
 cat > playbook.yml <<'PB'
 ---
 - name: Deploy /etc/motd to managed nodes
@@ -69,7 +69,7 @@ PB
   Run it:
 
 ```run
-cd /root/rhce/deploy-file
+cd /opt/rhce/deploy-file
 ansible-playbook playbook.yml
 ```
 
@@ -91,7 +91,7 @@ cat /etc/motd
   the content is already identical and does nothing:
 
 ```run
-cd /root/rhce/deploy-file
+cd /opt/rhce/deploy-file
 ansible-playbook playbook.yml
 ```
 

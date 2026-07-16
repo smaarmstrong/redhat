@@ -1,4 +1,4 @@
-Work in /root/rhce/mount/. Write `playbook.yml` that uses the
+Work in /opt/rhce/mount/. Write `playbook.yml` that uses the
 `ansible.posix.mount` module to mount a small **tmpfs** at `/mnt/ramdisk` on the
 hosts in the `managed` group and persist it in `/etc/fstab`:
 

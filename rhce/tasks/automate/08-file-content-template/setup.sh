@@ -2,7 +2,7 @@
 command -v ansible-playbook >/dev/null || dnf -y install ansible-core >/dev/null 2>&1 || true
 # Undo target end state: blank out any existing motd.
 : > /etc/motd 2>/dev/null || true
-d=/root/rhce/motd-content
+d=/opt/rhce/motd-content
 mkdir -p "$d"; rm -f "$d/playbook.yml"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -13,4 +13,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 localhost ansible_connection=local
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0

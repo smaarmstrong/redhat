@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/users-groups
+cd /opt/rhce/users-groups
 cat > playbook.yml <<'PB'
 ---
 - name: Create devs group and deploybot user

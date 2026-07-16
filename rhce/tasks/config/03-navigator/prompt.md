@@ -1,4 +1,4 @@
-Work in /root/rhce/navigator/. Create an `ansible-navigator.yml` configuration file
+Work in /opt/rhce/navigator/. Create an `ansible-navigator.yml` configuration file
 that sets:
 
   • `ansible-navigator.mode` = `stdout`

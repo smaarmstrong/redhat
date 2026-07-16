@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/facts
+cd /opt/rhce/facts
 cat > playbook.yml <<'PB'
 ---
 - name: Render facts into /etc/issue

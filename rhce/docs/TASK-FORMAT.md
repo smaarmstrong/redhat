@@ -12,7 +12,7 @@ checks the end state**.
   (`command -v ansible-playbook || dnf -y install ansible-core`) and degrades
   gracefully in the grader if it's missing.
 - **Working directory:** `setup.sh` creates a per-task project dir at
-  `/root/rhce/<task-name>/` containing a starter `ansible.cfg` and `inventory`, and
+  `/opt/rhce/<task-name>/` containing a starter `ansible.cfg` and `inventory`, and
   the prompt tells the learner to work there. `grade.sh` runs Ansible from that dir.
 - **Managed node = localhost.** The starter inventory defines a `managed` group
   containing the control node itself:

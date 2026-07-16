@@ -1,4 +1,4 @@
-Work in /root/rhce/motd-content/. Write `playbook.yml` that manages `/etc/motd` on
+Work in /opt/rhce/motd-content/. Write `playbook.yml` that manages `/etc/motd` on
 the hosts in the `managed` group using the `copy` module with its `content:` option
 fed from a variable.
 

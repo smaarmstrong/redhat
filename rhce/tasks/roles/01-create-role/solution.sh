@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/create-role
+cd /opt/rhce/create-role
 mkdir -p roles/webconfig/tasks roles/webconfig/files
 cat > roles/webconfig/files/app.conf <<'CONF'
 # Managed by the webconfig role

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/archiving
+cd /opt/rhce/archiving
 cat > playbook.yml <<'PB'
 ---
 - name: Archive the SSH configuration
@@ -9,7 +9,7 @@ cat > playbook.yml <<'PB'
     - name: Create a gzip archive of /etc/ssh
       community.general.archive:
         path: /etc/ssh
-        dest: /root/rhce/archiving/etc-backup.tar.gz
+        dest: /opt/rhce/archiving/etc-backup.tar.gz
         format: gz
 PB
 ansible-playbook playbook.yml

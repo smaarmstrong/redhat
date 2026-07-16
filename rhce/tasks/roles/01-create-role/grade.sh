@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/create-role 2>/dev/null || true
+cd /opt/rhce/create-role 2>/dev/null || true
 command -v ansible-playbook >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed"
 check "role dir roles/webconfig exists" test -d roles/webconfig
 check "role tasks/main.yml exists" test -f roles/webconfig/tasks/main.yml

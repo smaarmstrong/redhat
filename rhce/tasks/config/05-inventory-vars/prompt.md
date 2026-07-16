@@ -1,4 +1,4 @@
-Work in /root/rhce/inventory-vars/. A starter `inventory` file is already present
+Work in /opt/rhce/inventory-vars/. A starter `inventory` file is already present
 with a `webservers` group containing the host `node1.example.com`.
 
 Define a group variable `http_port` with the value `8080` for the `webservers`

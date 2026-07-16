@@ -13,7 +13,7 @@ THE IDEA
 
   seboolean is in the ansible.posix collection (setup.sh installs it), and
   setup.sh has turned the boolean off first. Working directory:
-  /root/rhce/selinux/.
+  /opt/rhce/selinux/.
 
 ---
 
@@ -45,7 +45,7 @@ HOW TO DO IT
   true is the key attribute:
 
 ```run
-cd /root/rhce/selinux
+cd /opt/rhce/selinux
 cat > playbook.yml <<'EOF'
 ---
 - name: Enable an SELinux boolean persistently
@@ -69,13 +69,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/selinux && ansible-playbook playbook.yml
+cd /opt/rhce/selinux && ansible-playbook playbook.yml
 ```
 
   changed=1. Now re-run for the idempotence check:
 
 ```run
-cd /root/rhce/selinux && ansible-playbook playbook.yml
+cd /opt/rhce/selinux && ansible-playbook playbook.yml
 ```
 
   changed=0 — the boolean is already on both at runtime and persistently, so

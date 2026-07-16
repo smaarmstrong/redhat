@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-cd /root/rhce/git
+cd /opt/rhce/git
 rm -rf work
-git clone /root/rhce/git/origin.git work
+git clone /opt/rhce/git/origin.git work
 cd work
 cat > playbook.yml <<'PB'
 ---

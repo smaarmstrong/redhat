@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/selinux 2>/dev/null || true
+cd /opt/rhce/selinux 2>/dev/null || true
 command -v ansible-playbook >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed"
 ansible-galaxy collection list ansible.posix >/dev/null 2>&1 || echo "  ${C_Y}note${C_0} ansible.posix collection (seboolean module) not installed"
 command -v getsebool >/dev/null || echo "  ${C_Y}note${C_0} SELinux userspace tools absent — boolean checks depend on a working SELinux"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/ssh-keys 2>/dev/null || true
+cd /opt/rhce/ssh-keys 2>/dev/null || true
 systemctl is-active sshd >/dev/null 2>&1 || echo "  ${C_Y}note${C_0} sshd not running — this grade depends on it"
 check "root has an SSH private key" bash -c 'test -f /root/.ssh/id_rsa || test -f /root/.ssh/id_ed25519 || test -f /root/.ssh/id_ecdsa'
 check "ansible authorized_keys exists" test -f /home/ansible/.ssh/authorized_keys

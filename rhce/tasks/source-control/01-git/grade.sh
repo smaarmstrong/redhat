@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/git 2>/dev/null || true
+cd /opt/rhce/git 2>/dev/null || true
 command -v git >/dev/null || echo "  ${C_Y}note${C_0} git not installed"
 check "work/ directory exists" test -d work
 check "work/ is a git repository" bash -c 'git -C work rev-parse --is-inside-work-tree >/dev/null 2>&1'

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/firewall
+cd /opt/rhce/firewall
 cat > playbook.yml <<'PB'
 ---
 - name: Allow http through the firewall

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/static-inventory
+cd /opt/rhce/static-inventory
 cat > inventory <<'INV'
 [webservers]
 node1.example.com

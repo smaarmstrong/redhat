@@ -13,7 +13,7 @@ THE IDEA
 
   This task manages /etc/security/limits.d/99-custom.conf. setup.sh deleted
   that file, so your playbook must be able to create it. Working directory:
-  /root/rhce/file-content/.
+  /opt/rhce/file-content/.
 
 ---
 
@@ -45,7 +45,7 @@ HOW TO DO IT
   a two-line block:
 
 ```run
-cd /root/rhce/file-content
+cd /opt/rhce/file-content
 cat > playbook.yml <<'EOF'
 ---
 - name: Manage limits file content
@@ -79,13 +79,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/file-content && ansible-playbook playbook.yml
+cd /opt/rhce/file-content && ansible-playbook playbook.yml
 ```
 
   changed=2 — one line added, one block added. Re-run for idempotence:
 
 ```run
-cd /root/rhce/file-content && ansible-playbook playbook.yml
+cd /opt/rhce/file-content && ansible-playbook playbook.yml
 ```
 
   changed=0: the line is already present and the block already matches between

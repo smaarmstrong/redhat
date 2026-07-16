@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/collection-use
+cd /opt/rhce/collection-use
 mkdir -p collections
 cat > collections/requirements.yml <<'REQ'
 ---

@@ -14,7 +14,7 @@ THE IDEA
   Note ansible.posix is a separate collection, not part of ansible-core.
   setup.sh best-effort installs it and makes sure firewalld is running, then
   removes the http service so your playbook has work to do. Working directory:
-  /root/rhce/firewall/.
+  /opt/rhce/firewall/.
 
 ---
 
@@ -45,7 +45,7 @@ HOW TO DO IT
   service and sets state: enabled with both flags:
 
 ```run
-cd /root/rhce/firewall
+cd /opt/rhce/firewall
 cat > playbook.yml <<'EOF'
 ---
 - name: Allow http through the firewall
@@ -70,13 +70,13 @@ EOF
   Run it:
 
 ```run
-cd /root/rhce/firewall && ansible-playbook playbook.yml
+cd /opt/rhce/firewall && ansible-playbook playbook.yml
 ```
 
   changed=1 on the first pass. Now the idempotence check — run again:
 
 ```run
-cd /root/rhce/firewall && ansible-playbook playbook.yml
+cd /opt/rhce/firewall && ansible-playbook playbook.yml
 ```
 
   changed=0: http is already allowed in both configs, so the module does

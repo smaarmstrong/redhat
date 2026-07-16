@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 . "$(_d="$(dirname "$(readlink -f "$0")")"; while [ ! -e "$_d/games/lib/common.sh" ] && [ "$_d" != / ]; do _d="$(dirname "$_d")"; done; printf %s "$_d/games/lib/common.sh")"
-cd /root/rhce/ansible-doc 2>/dev/null || true
+cd /opt/rhce/ansible-doc 2>/dev/null || true
 command -v ansible-doc >/dev/null || echo "  ${C_Y}note${C_0} ansible-core not installed (needed to look up the answer)"
 # Expected parameter name (computed literally): the user module's login-shell param is "shell".
 expected=shell

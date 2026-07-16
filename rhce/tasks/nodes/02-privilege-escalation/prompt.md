@@ -1,4 +1,4 @@
-Work in /root/rhce/privilege-escalation/. The user `ansible` already exists on the
+Work in /opt/rhce/privilege-escalation/. The user `ansible` already exists on the
 hosts in the `managed` group.
 
 Write `playbook.yml` that configures **passwordless sudo** for the `ansible` user by

@@ -1,4 +1,4 @@
-Work in /root/rhce/firewall/. Write `playbook.yml` targeting the `managed` group
+Work in /opt/rhce/firewall/. Write `playbook.yml` targeting the `managed` group
 that uses the `ansible.posix.firewalld` module to permanently allow the `http`
 service in the default zone, applying the change **both** to the permanent
 configuration and immediately to the running firewall. Run it with

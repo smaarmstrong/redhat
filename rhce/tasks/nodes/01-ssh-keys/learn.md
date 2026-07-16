@@ -19,7 +19,7 @@ THE IDEA
 
   In this task the control user is root and the managed user is `ansible`
   on 127.0.0.1 — we log the box into itself, which is enough to practise
-  the whole flow. Your working directory is /root/rhce/ssh-keys.
+  the whole flow. Your working directory is /opt/rhce/ssh-keys.
 
   First, notice there is no key yet — setup wiped it clean:
 
@@ -71,7 +71,7 @@ ls -l /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
   it with a heredoc:
 
 ```run
-cd /root/rhce/ssh-keys
+cd /opt/rhce/ssh-keys
 cat > distribute.yml <<'PB'
 ---
 - name: Distribute root's public key to the ansible user
@@ -98,7 +98,7 @@ PB
   owned by ansible, all correctly. Run it:
 
 ```run
-cd /root/rhce/ssh-keys
+cd /opt/rhce/ssh-keys
 ansible-playbook distribute.yml
 ```
 

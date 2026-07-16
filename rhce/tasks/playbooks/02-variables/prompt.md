@@ -1,7 +1,7 @@
-Work in /root/rhce/variables/. Write `playbook.yml` that runs against the
+Work in /opt/rhce/variables/. Write `playbook.yml` that runs against the
 `managed` group and defines two variables:
 
-  • `target_file: /root/rhce/vars/hello.txt`
+  • `target_file: /opt/rhce/vars/hello.txt`
   • `message: "hello from ansible"`
 
 The playbook must create the file named by `target_file` with its content set to

@@ -20,7 +20,7 @@ THE IDEA
   `inventory`, so that's the filename we must create.
 
 ```run
-cd /root/rhce/static-inventory && ls -la && cat ansible.cfg
+cd /opt/rhce/static-inventory && ls -la && cat ansible.cfg
 ```
 
   Right now there's no inventory file yet — that's the whole job.
@@ -55,7 +55,7 @@ HOW TO DO IT
   hostnames:
 
 ```run
-cd /root/rhce/static-inventory
+cd /opt/rhce/static-inventory
 cat > inventory <<'INV'
 [webservers]
 node1.example.com
@@ -82,7 +82,7 @@ CHECK IT WORKED
   uses. Ask it for the full picture:
 
 ```run
-cd /root/rhce/static-inventory && ansible-inventory -i inventory --list
+cd /opt/rhce/static-inventory && ansible-inventory -i inventory --list
 ```
 
   Look for node1/node2 under webservers, node3 under dbservers, and a
@@ -90,7 +90,7 @@ cd /root/rhce/static-inventory && ansible-inventory -i inventory --list
   friendlier tree view of the same thing:
 
 ```run
-cd /root/rhce/static-inventory && ansible-inventory -i inventory --graph
+cd /opt/rhce/static-inventory && ansible-inventory -i inventory --graph
 ```
 
   If `ansible-inventory` prints without error, the file parses — that's

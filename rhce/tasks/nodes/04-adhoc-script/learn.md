@@ -21,11 +21,11 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/adhoc-script; the `managed` group
+  Your working directory is /opt/rhce/adhoc-script; the `managed` group
   in the inventory is localhost. Try the ad-hoc ping by hand first:
 
 ```run
-cd /root/rhce/adhoc-script
+cd /opt/rhce/adhoc-script
 ansible managed -m ping
 ```
 
@@ -57,7 +57,7 @@ HOW TO DO IT
   Write it with a heredoc:
 
 ```run
-cd /root/rhce/adhoc-script
+cd /opt/rhce/adhoc-script
 cat > check.sh <<'SH'
 #!/usr/bin/env bash
 # Validate the managed nodes with an ad-hoc ping. Exits non-zero on failure.
@@ -69,7 +69,7 @@ SH
   A script isn't runnable until it's executable, so set the bit:
 
 ```run
-cd /root/rhce/adhoc-script
+cd /opt/rhce/adhoc-script
 chmod +x check.sh
 ```
 
@@ -81,7 +81,7 @@ CHECK IT WORKED
   0 means every managed host answered:
 
 ```run
-cd /root/rhce/adhoc-script
+cd /opt/rhce/adhoc-script
 ./check.sh
 echo "exit code: $?"
 ```
@@ -89,7 +89,7 @@ echo "exit code: $?"
   Confirm the executable bit is set (the x's in the listing):
 
 ```run
-ls -l /root/rhce/adhoc-script/check.sh
+ls -l /opt/rhce/adhoc-script/check.sh
 ```
 
 ---

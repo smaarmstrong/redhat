@@ -14,15 +14,15 @@ THE IDEA
 
   The password that locks and unlocks it can come from a file (via
   --vault-password-file) or a prompt (--ask-vault-pass). Here it's been
-  handed to you in /root/rhce/vault/vaultpass.
+  handed to you in /opt/rhce/vault/vaultpass.
 
 ---
 
-  Your working directory is /root/rhce/vault. Look at the password file
+  Your working directory is /opt/rhce/vault. Look at the password file
   you'll use to encrypt and decrypt:
 
 ```run
-cat /root/rhce/vault/vaultpass
+cat /opt/rhce/vault/vaultpass
 ```
 
   That single line IS the vault password. Keep such a file mode 0600.
@@ -52,7 +52,7 @@ HOW TO DO IT
   file:
 
 ```run
-cd /root/rhce/vault
+cd /opt/rhce/vault
 cat > secret.yml <<'VARS'
 db_password: s3cret
 VARS
@@ -62,7 +62,7 @@ ansible-vault encrypt --vault-password-file vaultpass secret.yml
   Look — it's now ciphertext:
 
 ```run
-head -1 /root/rhce/vault/secret.yml
+head -1 /opt/rhce/vault/secret.yml
 ```
 
 ---
@@ -73,7 +73,7 @@ head -1 /root/rhce/vault/secret.yml
   decryption worked:
 
 ```run
-cd /root/rhce/vault
+cd /opt/rhce/vault
 cat > playbook.yml <<'PB'
 ---
 - name: Use a vaulted variable
@@ -85,7 +85,7 @@ cat > playbook.yml <<'PB'
     - name: Write the decrypted secret to a file
       ansible.builtin.copy:
         content: "{{ db_password }}"
-        dest: /root/rhce/vault/out.txt
+        dest: /opt/rhce/vault/out.txt
         mode: '0600'
 PB
 ```
@@ -94,7 +94,7 @@ PB
   secret.yml at load time:
 
 ```run
-cd /root/rhce/vault
+cd /opt/rhce/vault
 ansible-playbook --vault-password-file vaultpass playbook.yml
 ```
 
@@ -106,14 +106,14 @@ CHECK IT WORKED
   grader looks for:
 
 ```run
-cat /root/rhce/vault/out.txt; echo
+cat /opt/rhce/vault/out.txt; echo
 ```
 
   And you can decrypt the vars file on demand to view it, without changing
   the file on disk, using ansible-vault view:
 
 ```run
-cd /root/rhce/vault
+cd /opt/rhce/vault
 ansible-vault view --vault-password-file vaultpass secret.yml
 ```
 

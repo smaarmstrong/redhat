@@ -20,7 +20,7 @@ THE IDEA
 
 ---
 
-  Your working directory is /root/rhce/template-motd, which already has a
+  Your working directory is /opt/rhce/template-motd, which already has a
   templates/ subdirectory (the conventional home for .j2 files). The
   `managed` group is localhost. setup blanked /etc/motd:
 
@@ -46,7 +46,7 @@ HOW TO DO IT
   One line, rendered per host:
 
 ```run
-cd /root/rhce/template-motd
+cd /opt/rhce/template-motd
 cat > templates/motd.j2 <<'J2'
 Welcome to {{ ansible_hostname }} running {{ ansible_distribution }} {{ ansible_distribution_version }}
 J2
@@ -60,7 +60,7 @@ J2
   rendered file goes):
 
 ```run
-cd /root/rhce/template-motd
+cd /opt/rhce/template-motd
 cat > playbook.yml <<'PB'
 ---
 - name: Render MOTD from a template
@@ -79,7 +79,7 @@ PB
   Run it:
 
 ```run
-cd /root/rhce/template-motd
+cd /opt/rhce/template-motd
 ansible-playbook playbook.yml
 ```
 
@@ -102,7 +102,7 @@ cat /etc/motd
   template compares the rendered result against what's already on disk:
 
 ```run
-cd /root/rhce/template-motd
+cd /opt/rhce/template-motd
 ansible-playbook playbook.yml
 ```
 

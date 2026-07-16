@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /root/rhce/cron
+cd /opt/rhce/cron
 cat > playbook.yml <<'PB'
 ---
 - name: Schedule nightly backup cron job

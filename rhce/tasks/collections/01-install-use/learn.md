@@ -22,7 +22,7 @@ THE IDEA
   folder rather than system-wide:
 
 ```run
-cd /root/rhce/collection-use && ls -la && cat ansible.cfg && cat inventory
+cd /opt/rhce/collection-use && ls -la && cat ansible.cfg && cat inventory
 ```
 
 ---
@@ -45,7 +45,7 @@ HOW TO DO IT
   top-level collections: key:
 
 ```run
-cd /root/rhce/collection-use
+cd /opt/rhce/collection-use
 mkdir -p collections
 cat > collections/requirements.yml <<'REQ'
 ---
@@ -60,14 +60,14 @@ REQ
   local collections directory (-p collections):
 
 ```run
-cd /root/rhce/collection-use && ansible-galaxy collection install -r collections/requirements.yml -p collections
+cd /opt/rhce/collection-use && ansible-galaxy collection install -r collections/requirements.yml -p collections
 ```
 
   If you have no network to Galaxy this is the step that fails — that's
   expected for the bonus. Confirm what's now installed:
 
 ```run
-cd /root/rhce/collection-use && ansible-galaxy collection list
+cd /opt/rhce/collection-use && ansible-galaxy collection list
 ```
 
   Look for community.general in the list.
@@ -79,7 +79,7 @@ cd /root/rhce/collection-use && ansible-galaxy collection list
   create /etc/myapp.ini with [main] enabled=true:
 
 ```run
-cd /root/rhce/collection-use
+cd /opt/rhce/collection-use
 cat > playbook.yml <<'PB'
 ---
 - name: Use a module from community.general
@@ -99,7 +99,7 @@ PB
   Now run it:
 
 ```run
-cd /root/rhce/collection-use && ansible-playbook playbook.yml
+cd /opt/rhce/collection-use && ansible-playbook playbook.yml
 ```
 
 ---
@@ -118,7 +118,7 @@ cat /etc/myapp.ini
   syntax-only check (no changes made) is also worth knowing:
 
 ```run
-cd /root/rhce/collection-use && ansible-playbook --syntax-check playbook.yml
+cd /opt/rhce/collection-use && ansible-playbook --syntax-check playbook.yml
 ```
 
 ---

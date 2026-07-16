@@ -4,7 +4,7 @@ command -v ansible-playbook >/dev/null || dnf -y install ansible-core >/dev/null
 if crontab -l >/dev/null 2>&1; then
   crontab -l 2>/dev/null | grep -v 'nightly-backup' | grep -v '/usr/local/bin/backup.sh' | crontab - 2>/dev/null || true
 fi
-d=/root/rhce/cron
+d=/opt/rhce/cron
 mkdir -p "$d"; rm -f "$d/playbook.yml"
 cat > "$d/ansible.cfg" <<'CFG'
 [defaults]
@@ -15,4 +15,5 @@ cat > "$d/inventory" <<'INV'
 [managed]
 localhost ansible_connection=local
 INV
+chown -R "${SUDO_USER:-root}": "$d"
 exit 0
