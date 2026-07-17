@@ -1,0 +1,8 @@
+{
+  "title": "install: copy with ownership, permissions and backups",
+  "domain": "Ch 5 - Advanced Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 5.6 (pp. 78-79)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "uniq: filtering duplicate lines (with sort)",
+  "domain": "Ch 5 - Advanced Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 5.1 (pp. 71-72)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "yum-utils: repoquery and yumdownloader",
+  "domain": "Ch 5 - Advanced Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 5.3 (pp. 74-76)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

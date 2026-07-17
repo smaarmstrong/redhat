@@ -1,0 +1,8 @@
+{
+  "title": "xargs: building command lines from standard input",
+  "domain": "Ch 5 - Advanced Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 5.2 (pp. 72-74)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

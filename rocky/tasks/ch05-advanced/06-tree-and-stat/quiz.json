@@ -1,0 +1,80 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.7 tree & 5.8 stat (pp. 80-82)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the tree command do?",
+      "options": [
+        "Expands the files and directories within a directory in a tree-like layout",
+        "Sorts files by size",
+        "Deletes a directory tree",
+        "Counts the inodes in a file system"
+      ],
+      "answer": 0,
+      "why": "tree lists the contents of a directory as an indented tree of files and subdirectories."
+    },
+    {
+      "type": "mcq",
+      "q": "In tree, which options show file sizes human-readably, and print the protections (permissions)?",
+      "options": [
+        "-h for human-readable sizes; -p for protections",
+        "-p for sizes; -h for protections",
+        "-u for sizes; -g for protections",
+        "-a for sizes; -h for protections"
+      ],
+      "answer": 0,
+      "why": "-h prints sizes human-readably and -p prints each file's protections; -u shows the owner (UID), -g the group (GID), -a all files."
+    },
+    {
+      "type": "cmd",
+      "q": "Show /etc/yum.repos.d/ as a tree displaying protections, owner, group and human-readable sizes (combine -h -u -g -p).",
+      "answers": ["tree -hugp /etc/yum.repos.d/", "tree -hugp /etc/yum.repos.d", "tree -h -u -g -p /etc/yum.repos.d/"],
+      "show": "tree -hugp /etc/yum.repos.d/",
+      "why": "The short options can be grouped: -h sizes, -u owner, -g group, -p protections."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the stat command display?",
+      "options": [
+        "The status of a file or file system (size, inode, links, permissions, timestamps, ...)",
+        "System memory and CPU statistics",
+        "Network connection statistics",
+        "The status of a systemd service"
+      ],
+      "answer": 0,
+      "why": "stat reports detailed status for a file or file system, including its timestamps."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the full status of the file /root/anaconda-ks.cfg.",
+      "answers": ["stat /root/anaconda-ks.cfg"],
+      "show": "stat /root/anaconda-ks.cfg",
+      "why": "stat <file> prints its size, blocks, device, inode, links, permissions and the atime/mtime/ctime timestamps."
+    },
+    {
+      "type": "mcq",
+      "q": "In stat's output, what does ctime (Change) represent?",
+      "options": [
+        "The last time the file's PROPERTIES changed (owner, group, permissions, size, links)",
+        "The file's creation time",
+        "The last time the file's content was read",
+        "The time the file will next be backed up"
+      ],
+      "answer": 0,
+      "why": "ctime is updated when metadata changes (owner/group/permissions/size/links); the creation time is the separate 'Birth' (btime) field, and content reads update atime."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the block-size caveat between 'stat' and 'ls -ls'?",
+      "options": [
+        "stat counts blocks as 512 bytes each, whereas ls -ls uses 1024-byte blocks",
+        "Both use 4096-byte blocks",
+        "stat uses 1024 bytes; ls -ls uses 512 bytes",
+        "Neither reports block counts"
+      ],
+      "answer": 0,
+      "why": "The 'Blocks' figure from stat is in 512-byte units, while ls -ls reports blocks in 1024-byte units - so the numbers differ for the same file."
+    }
+  ]
+}

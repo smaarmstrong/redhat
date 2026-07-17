@@ -1,0 +1,8 @@
+{
+  "title": "psmisc (pstree, killall, fuser) and watch",
+  "domain": "Ch 5 - Advanced Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 5.4-5.5 (pp. 76-77)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

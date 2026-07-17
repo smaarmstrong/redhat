@@ -1,0 +1,80 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.6 install command (pp. 78-79)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Despite its name, what does the install command actually do?",
+      "options": [
+        "Copies files and creates directories while managing permissions, ownership and backups",
+        "Installs software packages from a repository",
+        "Installs the bootloader",
+        "Registers a system service"
+      ],
+      "answer": 0,
+      "why": "install is NOT for packages; it combines cp and mkdir with chmod/chown and backup features in one command."
+    },
+    {
+      "type": "cmd",
+      "q": "Create the directory ~/samples using the install command.",
+      "answers": ["install -d ~/samples"],
+      "show": "install -d ~/samples",
+      "why": "-d treats its arguments as directory names to create (like mkdir)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which install options set the permissions, and the ownership, of the destination?",
+      "options": [
+        "-m sets permissions; -o and -g set the owner and group",
+        "-p sets permissions; -m sets ownership",
+        "-d sets permissions; -t sets ownership",
+        "-b sets permissions; -S sets ownership"
+      ],
+      "answer": 0,
+      "why": "-m sets the mode (permissions), -o the owner and -g the group; sudo is needed to change ownership."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -t option of install do?",
+      "options": [
+        "Copies all the source arguments INTO the given target directory",
+        "Sets the timestamp",
+        "Creates a temporary file",
+        "Tests the copy without performing it"
+      ],
+      "answer": 0,
+      "why": "-t names the target directory that the source files are copied into (-p is the one that preserves timestamps)."
+    },
+    {
+      "type": "mcq",
+      "q": "With 'install -b', how is the backup of an existing destination file named by default?",
+      "options": [
+        "The original name with a tilde (~) appended, e.g. sample.txt~",
+        "The original name with .old appended",
+        "backup_ prepended to the name",
+        "It overwrites without any backup"
+      ],
+      "answer": 0,
+      "why": "-b backs up the existing destination by appending a ~ to its name; -S lets you choose a different suffix."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy src/sample.txt into ~/samples/ (creating leading dirs, verbose) and back up any existing file using the suffix .bak instead of ~.",
+      "answers": ["install -v -b -S \".bak\" -D -t ~/samples/ src/sample.txt", "install -v -b -S .bak -D -t ~/samples/ src/sample.txt"],
+      "show": "install -v -b -S \".bak\" -D -t ~/samples/ src/sample.txt",
+      "why": "-b enables the backup, -S sets its suffix to .bak; -D creates leading components, -t is the target directory, -v is verbose."
+    },
+    {
+      "type": "mcq",
+      "q": "Which install option preserves the timestamps of the source files on the copy?",
+      "options": [
+        "-p",
+        "-t",
+        "-m",
+        "-b"
+      ],
+      "answer": 0,
+      "why": "-p keeps the source files' timestamps (compare with cp -p)."
+    }
+  ]
+}
