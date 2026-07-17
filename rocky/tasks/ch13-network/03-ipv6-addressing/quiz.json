@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1.1 IPv6 addressing (pp. 225-226)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How is a preferred-format IPv6 address written?",
+      "options": [
+        "As eight groups of four hexadecimal digits, separated by colons (X:X:X:X:X:X:X:X)",
+        "As four groups of decimal numbers separated by dots",
+        "As six hex bytes separated by colons",
+        "As a single 128-digit decimal number"
+      ],
+      "answer": 0,
+      "why": "IPv6 is 128 bits shown as eight colon-separated groups of four hex digits (e.g. 2001:0db8:130F:0000:0000:09C0:876A:130B)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the rule for using the double colon (::) in an IPv6 address?",
+      "options": [
+        "It replaces one or more consecutive all-zero groups, and may appear only ONCE in an address",
+        "It can appear as many times as needed",
+        "It replaces the leading zero of every group",
+        "It separates the network from the host like a slash"
+      ],
+      "answer": 0,
+      "why": ":: stands in for consecutive zero groups but may be used only once, otherwise the address would be ambiguous."
+    },
+    {
+      "type": "mcq",
+      "q": "Abbreviate 2001:0db8:130F:0000:0000:09C0:876A:130B by omitting leading zeros only.",
+      "options": [
+        "2001:db8:130F:0:0:9C0:876A:130B",
+        "2001:db8:130F::9C0:876A:130B",
+        "2001:0db8:130F:9C0:876A:130B",
+        "2001:db8:130F:0000:0000:9C0:876A:130B"
+      ],
+      "answer": 0,
+      "why": "Omitting leading zeros gives 2001:db8:130F:0:0:9C0:876A:130B; applying :: for the two zero groups would further shorten it to 2001:db8:130F::9C0:876A:130B."
+    },
+    {
+      "type": "mcq",
+      "q": "In IPv6, what are the equivalents of IPv4's network bits and host bits?",
+      "options": [
+        "Network prefix (n bits) and Interface ID (128-n bits)",
+        "Subnet mask and gateway",
+        "OUI and serial number",
+        "NetID and broadcast"
+      ],
+      "answer": 0,
+      "why": "The network prefix occupies n bits (like the network bits) and the interface ID the remaining 128-n bits (like host bits)."
+    },
+    {
+      "type": "mcq",
+      "q": "How is an IPv6 address written in a URL to avoid confusion with the port?",
+      "options": [
+        "In square brackets, e.g. [2001:db8:130F::9C0:876A:130B]:443",
+        "With the port before the address",
+        "With the colons removed",
+        "In parentheses"
+      ],
+      "answer": 0,
+      "why": "IPv6 addresses are enclosed in square brackets in a URL so the trailing :port is unambiguous."
+    }
+  ]
+}

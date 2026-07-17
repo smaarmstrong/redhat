@@ -1,0 +1,90 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1.2-13.1.3 packet structure (pp. 226-233)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the TTL (Time To Live) field in an IPv4 header do?",
+      "options": [
+        "Limits the datagram's lifespan/hops: each router decrements it by 1, and at TTL=0 the datagram is discarded",
+        "Counts the total bytes of the packet",
+        "Identifies the protocol version",
+        "Stores the source address"
+      ],
+      "answer": 0,
+      "why": "TTL is decremented by each router; when it reaches 0 the packet is dropped, preventing infinite loops."
+    },
+    {
+      "type": "mcq",
+      "q": "Which protocol numbers identify TCP, UDP and ICMP in the IPv4 Protocol field?",
+      "options": [
+        "TCP = 6, UDP = 17, ICMP = 1",
+        "TCP = 1, UDP = 6, ICMP = 17",
+        "TCP = 17, UDP = 1, ICMP = 6",
+        "TCP = 80, UDP = 53, ICMP = 8"
+      ],
+      "answer": 0,
+      "why": "The Protocol field uses 6 for TCP, 17 for UDP and 1 for ICMP."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the DF and MF fragmentation flags mean?",
+      "options": [
+        "DF = Don't Fragment (drop + ICMP error if too big); MF = More Fragments (1 means more fragments follow)",
+        "DF = Do Fragment; MF = Must Fragment",
+        "DF = Data Flag; MF = Mask Flag",
+        "They control the TTL"
+      ],
+      "answer": 0,
+      "why": "DF=1 forbids fragmentation (oversize packets are dropped with an ICMP error); MF=1 means this is not the last fragment."
+    },
+    {
+      "type": "mcq",
+      "q": "How is the actual IPv4 header length computed from the IHL field?",
+      "options": [
+        "Header length = IHL value * 4 (min IHL 5 = 20 bytes, max 15 = 60 bytes)",
+        "Header length = IHL value directly in bytes",
+        "Header length = IHL * 8",
+        "IHL is unrelated to header length"
+      ],
+      "answer": 0,
+      "why": "IHL counts 32-bit words, so bytes = IHL * 4: minimum 5 (20 bytes), maximum 15 (60 bytes)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the fixed size of the IPv6 basic header?",
+      "options": [
+        "40 bytes (8 fields)",
+        "20 bytes",
+        "60 bytes",
+        "It is variable"
+      ],
+      "answer": 0,
+      "why": "The IPv6 basic header is a fixed 40 bytes with 8 fields; options moved to extension headers."
+    },
+    {
+      "type": "mcq",
+      "q": "Which IPv6 field is the equivalent of IPv4's TTL?",
+      "options": [
+        "Hop Limit",
+        "Flow Label",
+        "Traffic Class",
+        "Payload Length"
+      ],
+      "answer": 0,
+      "why": "Hop Limit plays the role of IPv4's TTL; Traffic Class corresponds to IPv4's Type Of Service."
+    },
+    {
+      "type": "mcq",
+      "q": "Why did IPv6 move IPv4's Options into extension headers?",
+      "options": [
+        "IPv4 Options bloat the header (up to 60 bytes) and slow forwarding; IPv6 extension headers form a chain, added only when needed",
+        "To make packets larger by default",
+        "Because IPv6 has no options at all",
+        "To remove the Next header field"
+      ],
+      "answer": 0,
+      "why": "Extension headers chain via the Next header field and are added only when special processing is needed, keeping the basic header lean."
+    }
+  ]
+}

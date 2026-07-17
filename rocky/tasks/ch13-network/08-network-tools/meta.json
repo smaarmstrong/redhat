@@ -1,0 +1,8 @@
+{
+  "title": "Network tools: ss, ethtool, mtr, ipcalc",
+  "domain": "Ch 13 - Implementing the Network",
+  "objective": "Rocky Linux Admin Guide, ch. 13.3.3-13.3.7 (pp. 240-243)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

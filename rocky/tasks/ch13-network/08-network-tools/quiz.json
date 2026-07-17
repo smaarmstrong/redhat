@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.3.3-13.3.7 network tools (pp. 240-243)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which two older commands does mtr replace?",
+      "options": [
+        "ping and traceroute",
+        "netstat and ss",
+        "ifconfig and ip",
+        "host and dig"
+      ],
+      "answer": 0,
+      "why": "mtr is a network diagnostic tool that replaces ping and traceroute and is faster."
+    },
+    {
+      "type": "mcq",
+      "q": "Which older command does ss replace, and what is it used for?",
+      "options": [
+        "netstat - to view the status of ports and sockets",
+        "traceroute - to trace routes",
+        "ifconfig - to set IP addresses",
+        "arp - to view the ARP table"
+      ],
+      "answer": 0,
+      "why": "ss replaces the old netstat and shows socket/port status."
+    },
+    {
+      "type": "cmd",
+      "q": "View the local machine's listening TCP and UDP ports with numeric addresses and the owning processes.",
+      "answers": ["ss -tulnp", "ss -tulpn", "ss -tulnp"],
+      "show": "ss -tulnp",
+      "why": "-t TCP, -u UDP, -l listening, -n numeric, -p process: the classic 'what's listening' one-liner."
+    },
+    {
+      "type": "mcq",
+      "q": "In ss, what do the -l and -p options do?",
+      "options": [
+        "-l shows only listening sockets; -p shows the processes using the sockets",
+        "-l lists all sockets; -p resolves hostnames",
+        "-l shows the local port only; -p shows the peer",
+        "-l is for TCP; -p is for UDP"
+      ],
+      "answer": 0,
+      "why": "-l filters to listening sockets and -p adds the owning process info (-a all, -n numeric, -t TCP, -u UDP)."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the properties (speed, duplex, link) of the NIC ens160.",
+      "answers": ["ethtool ens160", "sudo ethtool ens160"],
+      "show": "ethtool ens160",
+      "why": "ethtool <device> reports NIC properties such as Speed, Duplex, Port and Link detected."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the broadcast address of 192.168.100.20/24 using ipcalc.",
+      "answers": ["ipcalc -b 192.168.100.20/24", "ipcalc --broadcast 192.168.100.20/24"],
+      "show": "ipcalc -b 192.168.100.20/24",
+      "why": "ipcalc -b prints the broadcast; -n network, -m netmask, -p prefix, -h hostname via DNS."
+    },
+    {
+      "type": "cmd",
+      "q": "Query this machine's public (WAN) IPv4 address using curl and ifconfig.me.",
+      "answers": ["curl -4 ifconfig.me"],
+      "show": "curl -4 ifconfig.me",
+      "why": "curl -4 ifconfig.me returns your public IPv4; curl -6 ifconfig.me returns the IPv6."
+    }
+  ]
+}

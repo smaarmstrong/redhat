@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1.1 MAC and IPv4 classes (pp. 222-225)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is a MAC address and how big is it?",
+      "options": [
+        "A physical (hardware) identifier assigned at the factory, 6 bytes, usually written in hexadecimal",
+        "A 4-byte address assigned by DHCP",
+        "A 128-bit logical address",
+        "A port number"
+      ],
+      "answer": 0,
+      "why": "The MAC address is a 6-byte factory-assigned hardware identifier, e.g. 5E:FF:56:A2:AF:15."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the first three bytes of a MAC address represent?",
+      "options": [
+        "The manufacturer identifier (OUI - Organizationally Unique Identifier)",
+        "A serial number",
+        "The IP network",
+        "A checksum"
+      ],
+      "answer": 0,
+      "why": "The first 3 bytes are the OUI (manufacturer); the last 3 are the manufacturer-allocated serial number."
+    },
+    {
+      "type": "mcq",
+      "q": "Which range corresponds to a Class A IPv4 address?",
+      "options": [
+        "0.0.0.0 to 127.255.255.255",
+        "128.0.0.0 to 191.255.255.255",
+        "192.0.0.0 to 223.255.255.255",
+        "224.0.0.0 to 239.255.255.255"
+      ],
+      "answer": 0,
+      "why": "Class A is 0-127, Class B 128-191, Class C 192-223, Class D 224-239, Class E 240-255 (first octet)."
+    },
+    {
+      "type": "mcq",
+      "q": "What are Class D addresses (224.0.0.0-239.255.255.255) used for?",
+      "options": [
+        "Multicast communication (not assigned to individual hosts)",
+        "Private LANs",
+        "Loopback",
+        "The default gateway"
+      ],
+      "answer": 0,
+      "why": "Class D is for multicast; Class E (240-255) is reserved and not used for regular networks."
+    },
+    {
+      "type": "mcq",
+      "q": "Which classes have their own private address ranges?",
+      "options": [
+        "Class A, B and C",
+        "Class D and E",
+        "Only Class A",
+        "None - all IPv4 is public"
+      ],
+      "answer": 0,
+      "why": "Classes A, B and C each have private ranges; 0.0.0.0 is reserved and not assigned to a host."
+    }
+  ]
+}

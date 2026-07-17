@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1.5 OSI and TCP/IP models (pp. 236-237)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How many layers does the ISO/OSI theoretical model have, and what is the top layer?",
+      "options": [
+        "7 layers; the top (layer 7) is the Application layer",
+        "4 layers; the top is Transport",
+        "5 layers; the top is Presentation",
+        "7 layers; the top is Physical"
+      ],
+      "answer": 0,
+      "why": "OSI has 7 layers: Application(7), Presentation, Session, Transport, Network, Data Link, Physical(1)."
+    },
+    {
+      "type": "mcq",
+      "q": "The memory aid 'All People Seem To Need Data Processing' helps recall which layers?",
+      "options": [
+        "Application, Presentation, Session, Transport, Network, Data Link, Physical",
+        "The TCP/IP 4 layers",
+        "The DNS record types",
+        "The IPv4 header fields"
+      ],
+      "answer": 0,
+      "why": "Each word's initial maps to an OSI layer from 7 down to 1: Application/Presentation/Session/Transport/Network/Data-link/Physical."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the TCP/IP 4-layer model relate to the OSI model?",
+      "options": [
+        "Its Application layer merges OSI's Application+Presentation+Session; Network Interface merges Data Link+Physical",
+        "It is identical, layer for layer",
+        "It has more layers than OSI",
+        "It replaces the Transport layer with DNS"
+      ],
+      "answer": 0,
+      "why": "TCP/IP collapses OSI's top three into Application and the bottom two into Network Interface; Transport and Internet map to OSI Transport and Network."
+    },
+    {
+      "type": "mcq",
+      "q": "Which protocols live at the TCP/IP Transport layer?",
+      "options": [
+        "TCP and UDP",
+        "IP and ICMP",
+        "HTTP and DNS",
+        "Ethernet and PPP"
+      ],
+      "answer": 0,
+      "why": "Transport is TCP/UDP; the Internet layer holds IP/ICMP/ARP, and Application holds HTTP/FTP/SMTP/DNS/DHCP."
+    },
+    {
+      "type": "mcq",
+      "q": "Which device operates at the TCP/IP Internet layer?",
+      "options": [
+        "The router",
+        "The switch",
+        "The hub",
+        "The repeater"
+      ],
+      "answer": 0,
+      "why": "Routers work at the Internet layer (IP); switches, hubs and NICs work at the Network Interface layer."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.5.4-13.7 lookup, records, troubleshooting (pp. 248-255)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which three commands view DNS resolution results, and which is recommended?",
+      "options": [
+        "host, nslookup and dig - dig is the recommended one",
+        "ping, traceroute and mtr - mtr recommended",
+        "ss, netstat and ip - ip recommended",
+        "getent, hostnamectl and nmcli - getent recommended"
+      ],
+      "answer": 0,
+      "why": "host, nslookup and dig all query DNS; dig is the recommended tool."
+    },
+    {
+      "type": "cmd",
+      "q": "Look up the DNS records for wiki.rockylinux.org using the recommended tool.",
+      "answers": ["dig wiki.rockylinux.org"],
+      "show": "dig wiki.rockylinux.org",
+      "why": "dig <name> queries DNS and shows the answer section (e.g. CNAME/A records)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between an A record and an AAAA record?",
+      "options": [
+        "A resolves a name to an IPv4 address; AAAA resolves it to an IPv6 address",
+        "A is IPv6; AAAA is IPv4",
+        "A is for mail; AAAA is for web",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "A maps a name to IPv4, AAAA maps it to IPv6."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a CNAME record do?",
+      "options": [
+        "Resolves a domain name to ANOTHER domain name (an alias)",
+        "Maps an IP address to a name",
+        "Specifies the mail server",
+        "Lists the authoritative name servers"
+      ],
+      "answer": 0,
+      "why": "CNAME points one name at another name (an alias); PTR does the reverse IP-to-name mapping."
+    },
+    {
+      "type": "mcq",
+      "q": "What is an MX record for?",
+      "options": [
+        "Specifying the e-mail server(s) for a domain",
+        "Mapping an IP to a hostname",
+        "Verifying domain ownership",
+        "Pointing to a name server"
+      ],
+      "answer": 0,
+      "why": "MX names the mail server(s) handling a domain's e-mail; NS lists the DNS servers, TXT holds text (SPF etc.)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which record type maps an IP address back to a domain name (reverse resolution)?",
+      "options": [
+        "PTR",
+        "A",
+        "CNAME",
+        "SRV"
+      ],
+      "answer": 0,
+      "why": "PTR maps IP to name and is used for reverse resolution (e.g. by mail servers)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which tool helps diagnose an IP or MAC address conflict on the network?",
+      "options": [
+        "arp-scan (needs the EPEL repository)",
+        "hostnamectl",
+        "ipcalc",
+        "getent"
+      ],
+      "answer": 0,
+      "why": "arp-scan (from EPEL) scans the LAN and flags duplicate addresses (DUP), which reveal IP/MAC conflicts - common with cloned VMs."
+    }
+  ]
+}

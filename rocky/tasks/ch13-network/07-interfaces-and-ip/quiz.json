@@ -1,0 +1,63 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.2-13.3.1 interfaces and ip (pp. 237-239)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the 'lo' interface for?",
+      "options": [
+        "The loopback - it lets TCP/IP programs on the machine talk to each other and lets you ping localhost",
+        "The primary Ethernet card",
+        "The wifi adapter",
+        "A logical bridge to the router"
+      ],
+      "answer": 0,
+      "why": "lo is the loopback interface; packets sent to localhost come back identically, useful for testing the network stack."
+    },
+    {
+      "type": "mcq",
+      "q": "On Rocky 8/9/10, which service assigns interface names like enoX/ensX/enpXsX?",
+      "options": [
+        "udev (now part of systemd)",
+        "NetworkManager alone",
+        "GRUB2",
+        "cron"
+      ],
+      "answer": 0,
+      "why": "udev (integrated into systemd) names interfaces by type/location: enoX on-board, ensX PCIe hotplug slot, enpXsX physical location."
+    },
+    {
+      "type": "mcq",
+      "q": "Which older command has the ip command replaced?",
+      "options": [
+        "ifconfig (no longer installed by default on Rocky 8/9/10)",
+        "systemctl",
+        "hostnamectl",
+        "ss"
+      ],
+      "answer": 0,
+      "why": "ip (from iproute2) replaces the historical ifconfig, which is not installed by default anymore."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the network interfaces (links).",
+      "answers": ["ip link", "ip link show"],
+      "show": "ip link",
+      "why": "ip link lists the interfaces."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the IP address information for the interface eth0.",
+      "answers": ["ip addr show eth0", "ip addr show dev eth0", "ip a show eth0"],
+      "show": "ip addr show eth0",
+      "why": "ip addr show <iface> shows that interface's addresses; ip addr show alone covers all interfaces."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the ARP table (neighbour table).",
+      "answers": ["ip neigh", "ip neigh show", "ip n"],
+      "show": "ip neigh",
+      "why": "ip neigh shows the ARP/neighbour table."
+    }
+  ]
+}
