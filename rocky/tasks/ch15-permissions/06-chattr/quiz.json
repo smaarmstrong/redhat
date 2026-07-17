@@ -1,0 +1,58 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.5 chattr (pp. 297-299)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the purpose of chattr?",
+      "options": [
+        "To set file/directory attributes that protect important files from accidental deletion or modification",
+        "To change file ownership",
+        "To compress files",
+        "To change the default group"
+      ],
+      "answer": 0,
+      "why": "chattr sets low-level attributes (like i and a) that guard files even against root until removed."
+    },
+    {
+      "type": "cmd",
+      "q": "Make the file /etc/resolv.conf immutable (cannot be modified or deleted).",
+      "answers": ["chattr +i /etc/resolv.conf", "sudo chattr +i /etc/resolv.conf"],
+      "show": "chattr +i /etc/resolv.conf",
+      "why": "+i makes a file immutable - not even root can change or delete it until you run chattr -i."
+    },
+    {
+      "type": "mcq",
+      "q": "With the 'i' (immutable) attribute set on a FILE, what can you still do?",
+      "options": [
+        "Only view it - you cannot delete, modify, or append to it",
+        "Append to it but not delete it",
+        "Delete it but not modify it",
+        "Everything except rename it"
+      ],
+      "answer": 0,
+      "why": "Immutable blocks delete, modify and append; only viewing remains."
+    },
+    {
+      "type": "cmd",
+      "q": "Set the append-only attribute on the log file /etc/tmpfile1.",
+      "answers": ["chattr +a /etc/tmpfile1", "sudo chattr +a /etc/tmpfile1"],
+      "show": "chattr +a /etc/tmpfile1",
+      "why": "+a allows appending to a file (e.g. >>) but forbids deleting or otherwise modifying it - useful for logs."
+    },
+    {
+      "type": "cmd",
+      "q": "View the attributes of the file /tmp/filei with lsattr.",
+      "answers": ["lsattr /tmp/filei", "lsattr -a /tmp/filei"],
+      "show": "lsattr /tmp/filei",
+      "why": "lsattr lists a file's chattr attributes (e.g. ----i---------e-----)."
+    },
+    {
+      "type": "cmd",
+      "q": "Remove the immutable attribute from the file /tmp/filei.",
+      "answers": ["chattr -i /tmp/filei", "sudo chattr -i /tmp/filei"],
+      "show": "chattr -i /tmp/filei",
+      "why": "chattr -i clears the immutable attribute so the file can be changed again."
+    }
+  ]
+}

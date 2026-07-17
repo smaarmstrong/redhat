@@ -1,0 +1,8 @@
+{
+  "title": "ACL permissions: getfacl and setfacl",
+  "domain": "Ch 15 - Review Permissions",
+  "objective": "Rocky Linux Admin Guide, ch. 15.3.1 (pp. 285-291)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,61 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.4 Sticky BIT (pp. 295-297)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the sticky bit (SBIT) do, and where is it valid?",
+      "options": [
+        "Only on directories: users with w can delete only their OWN files, not files created by others",
+        "On executables: it runs them as root",
+        "On files: it prevents modification",
+        "On directories: it hides the contents"
+      ],
+      "answer": 0,
+      "why": "On a shared writable directory, the sticky bit stops users deleting each other's files - each can only delete their own (root is exempt)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which leading octal digit represents the sticky bit?",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "7"
+      ],
+      "answer": 0,
+      "why": "Sticky = 1 (e.g. chmod 1777); SUID = 4, SGID = 2."
+    },
+    {
+      "type": "cmd",
+      "q": "Add the sticky bit to the directory /share (symbolic form).",
+      "answers": ["chmod o+t /share", "sudo chmod o+t /share"],
+      "show": "chmod o+t /share",
+      "why": "chmod o+t sets the sticky bit; numerically the leading digit is 1 (e.g. chmod 1777)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which well-known directory uses the sticky bit by default (shown as drwxrwxrwt)?",
+      "options": [
+        "/tmp",
+        "/etc",
+        "/root",
+        "/boot"
+      ],
+      "answer": 0,
+      "why": "/tmp is 1777 (the trailing 't') so users can create files there but only remove their own."
+    },
+    {
+      "type": "mcq",
+      "q": "Is the root user restricted by SUID/SGID/sticky-bit rules?",
+      "options": [
+        "No - root (uid=0) is not restricted by these special permissions",
+        "Yes - root obeys the sticky bit like everyone",
+        "Only by the sticky bit",
+        "Only by SUID"
+      ],
+      "answer": 0,
+      "why": "root can delete any file regardless of the sticky bit and is not constrained by SUID/SGID/SBIT."
+    }
+  ]
+}

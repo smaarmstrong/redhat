@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.2 SetUID (pp. 291-293)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does SetUID (SUID) do?",
+      "options": [
+        "While an executable runs, its executor temporarily gains the identity of the file's OWNER; only valid on executable binaries",
+        "It makes a file readable by everyone",
+        "It locks a file against deletion",
+        "It sets the default group for new files in a directory"
+      ],
+      "answer": 0,
+      "why": "SUID on an executable makes it run with the owner's identity for the duration; the identity reverts when it finishes."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does /usr/bin/passwd need SUID?",
+      "options": [
+        "It must write /etc/shadow (permissions 000), so it temporarily runs as root, the file's owner",
+        "Because ordinary users cannot run it otherwise",
+        "To make passwords readable",
+        "To speed up password changes"
+      ],
+      "answer": 0,
+      "why": "shadow is 000, so a normal user's passwd run temporarily becomes root (the owner) to update it."
+    },
+    {
+      "type": "cmd",
+      "q": "Add the SetUID permission to the executable myprog (symbolic form).",
+      "answers": ["chmod u+s myprog", "sudo chmod u+s myprog", "chmod 4755 myprog"],
+      "show": "chmod u+s myprog",
+      "why": "chmod u+s sets SUID; numerically it is the leading 4 (e.g. chmod 4755)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which leading octal digit represents SUID?",
+      "options": [
+        "4",
+        "2",
+        "1",
+        "7"
+      ],
+      "answer": 0,
+      "why": "SUID = 4 (e.g. chmod 4755); SGID = 2, sticky bit = 1."
+    },
+    {
+      "type": "mcq",
+      "q": "In ls -l you see a capital 'S' in the owner's execute position (e.g. -rwSr--r--). What does that mean?",
+      "options": [
+        "SUID is set but the owner lacks execute (x), so the SUID cannot actually be used",
+        "The file is a socket",
+        "SUID is working correctly",
+        "The sticky bit is set"
+      ],
+      "answer": 0,
+      "why": "A capital S means SUID is set on a file whose owner has no x - so it is non-functional (a lowercase s means x is present)."
+    },
+    {
+      "type": "cmd",
+      "q": "Find all SUID files on the system and long-list them.",
+      "answers": ["find / -perm -4000 -a -type f -exec ls -l {} \\;", "find / -perm -4000 -type f -exec ls -l {} \\;", "find / -perm -4000 -type f"],
+      "show": "find / -perm -4000 -a -type f -exec ls -l {} \\;",
+      "why": "-perm -4000 matches files with the SUID bit; a good habit for auditing since SUID can escalate to root."
+    },
+    {
+      "type": "cmd",
+      "q": "Remove the SetUID permission from myprog (symbolic form).",
+      "answers": ["chmod u-s myprog", "sudo chmod u-s myprog", "chmod 755 myprog"],
+      "show": "chmod u-s myprog",
+      "why": "chmod u-s clears SUID (numerically chmod 755)."
+    }
+  ]
+}
