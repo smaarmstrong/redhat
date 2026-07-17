@@ -1,0 +1,8 @@
+{
+  "title": "VI ex mode: search, replace and line deletion",
+  "domain": "Ch 6 - VI Text Editor",
+  "objective": "Rocky Linux Admin Guide, ch. 6.6 (pp. 92-95)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.4 Inserting text (pp. 88-89)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which key inserts text BEFORE the current character, and which inserts AFTER it?",
+      "options": [
+        "i inserts before the character; a inserts after it (append)",
+        "a inserts before; i inserts after",
+        "I inserts before; A inserts after",
+        "o inserts before; O inserts after"
+      ],
+      "answer": 0,
+      "why": "i = insert (before the cursor character), a = append (after it)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key starts inserting at the BEGINNING of the current line, and which at the END?",
+      "options": [
+        "I inserts at the start of the line; A appends at the end of the line",
+        "i inserts at the start; a at the end",
+        "A inserts at the start; I at the end",
+        "O inserts at the start; o at the end"
+      ],
+      "answer": 0,
+      "why": "Uppercase I jumps to the line's first character to insert, uppercase A appends at the line's end."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key opens a NEW line BELOW the current line (and enters insert mode), and which opens one ABOVE?",
+      "options": [
+        "o opens a line after (below); O opens a line before (above)",
+        "O opens a line after (below); o opens a line before (above)",
+        "a opens a line after; A opens a line before",
+        "i opens a line after; I opens a line before"
+      ],
+      "answer": 0,
+      "why": "Lowercase o opens a line after the current one, uppercase O opens a line before it."
+    },
+    {
+      "type": "mcq",
+      "q": "After you finish typing in insert mode, how do you get back to command mode?",
+      "options": [
+        "Press Esc",
+        "Press Enter",
+        "Press i again",
+        "Press : then Enter"
+      ],
+      "answer": 0,
+      "why": "The insert keys switch VI into insert mode, so Esc is needed to return to command mode."
+    },
+    {
+      "type": "mcq",
+      "q": "You want to add text at the very end of the current line. Which single key is the most direct?",
+      "options": [
+        "A (append at end of line)",
+        "a (append after the character)",
+        "i (insert before the character)",
+        "o (open a line below)"
+      ],
+      "answer": 0,
+      "why": "Uppercase A goes straight to the end of the line and enters insert mode there."
+    }
+  ]
+}

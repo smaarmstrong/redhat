@@ -1,0 +1,77 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.6.5-6.7 file operations, config, visual mode (pp. 95-97)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Launch the built-in interactive tutorial for learning VI.",
+      "answers": ["vimtutor"],
+      "show": "vimtutor",
+      "why": "vimtutor opens a guided lesson that teaches VI/vim hands-on."
+    },
+    {
+      "type": "cmd",
+      "q": "Insert (paste) the contents of the file notes.txt after the cursor.",
+      "answers": [":r notes.txt"],
+      "show": ":r notes.txt",
+      "why": ":r file reads another file's contents into the buffer after the cursor."
+    },
+    {
+      "type": "cmd",
+      "q": "Discard your unsaved changes and reload the last saved version of the file.",
+      "answers": [":e!", "e!"],
+      "show": ":e!",
+      "why": ":e! reloads the file from its last saved state, throwing away the current buffer's changes."
+    },
+    {
+      "type": "cmd",
+      "q": "Save lines 5 through 10 into a separate file called part.txt.",
+      "answers": [":5,10 w part.txt", ":5,10w part.txt"],
+      "show": ":5,10 w part.txt",
+      "why": ":n,m w file writes just the given line range (here 5 to 10) to another file."
+    },
+    {
+      "type": "cmd",
+      "q": "Open /home/rockstar/file and turn on line numbering at startup, using the -c option.",
+      "answers": ["vi -c \"set nu\" /home/rockstar/file", "vi -c 'set nu' /home/rockstar/file"],
+      "show": "vi -c \"set nu\" /home/rockstar/file",
+      "why": "-c runs an ex command as VI opens; here 'set nu' enables line numbers for the session."
+    },
+    {
+      "type": "mcq",
+      "q": "How can you make ex commands run automatically every time VI/vim starts?",
+      "options": [
+        "Put them in a file named .exrc in your login (home) directory",
+        "Pass them on every command line with -x",
+        "Type them into /etc/passwd",
+        "There is no way to persist them"
+      ],
+      "answer": 0,
+      "why": "Ex commands placed in ~/.exrc are read and applied at each VI/VIM startup."
+    },
+    {
+      "type": "mcq",
+      "q": "In visual mode, what is the difference between v and V?",
+      "options": [
+        "v selects at the character level; V selects at the line level",
+        "v selects lines; V selects characters",
+        "v enters insert mode; V enters ex mode",
+        "v saves; V quits"
+      ],
+      "answer": 0,
+      "why": "Lowercase v marks a character-level selection, uppercase V marks whole lines; visual mode is a sub-mode of command mode."
+    },
+    {
+      "type": "mcq",
+      "q": "Having marked a selection in visual mode (with v or V), which keys delete it and which copy it?",
+      "options": [
+        "x deletes (cuts) the marked selection; y copies (yanks) it",
+        "d deletes; p copies",
+        "c deletes; v copies",
+        "Esc deletes; Enter copies"
+      ],
+      "answer": 0,
+      "why": "After marking with the arrow keys, x cuts the highlighted text and y copies it."
+    }
+  ]
+}

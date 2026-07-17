@@ -1,0 +1,84 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.5 Characters, words and lines (pp. 89-92)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "In command mode, delete the single character under the cursor.",
+      "answers": ["x"],
+      "show": "x",
+      "why": "x deletes the character under the cursor; nx deletes n characters."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between r and R in command mode?",
+      "options": [
+        "r replaces just one character; R enters replace mode to overwrite several (ended with Esc)",
+        "r replaces several characters; R replaces one",
+        "r deletes a character; R deletes a line",
+        "They both undo the last change"
+      ],
+      "answer": 0,
+      "why": "r+character swaps a single character; R switches to replace mode (a kind of insert mode) until you press Esc."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete (cut) the word starting under the cursor.",
+      "answers": ["dw"],
+      "show": "dw",
+      "why": "dw deletes/cuts a word; position the cursor on the word's first character to cut the whole word."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy (yank) the word starting under the cursor.",
+      "answers": ["yw"],
+      "show": "yw",
+      "why": "yw copies a word into the buffer, ready to paste with p or P."
+    },
+    {
+      "type": "mcq",
+      "q": "After copying or cutting, which key pastes AFTER the cursor/line and which pastes BEFORE?",
+      "options": [
+        "p pastes after; P pastes before",
+        "P pastes after; p pastes before",
+        "y pastes after; d pastes before",
+        "a pastes after; i pastes before"
+      ],
+      "answer": 0,
+      "why": "Lowercase p pastes after the cursor (or current line); uppercase P pastes before it."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete (cut) the entire current line.",
+      "answers": ["dd"],
+      "show": "dd",
+      "why": "dd cuts the whole line; ndd cuts n lines."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy (yank) the entire current line.",
+      "answers": ["yy"],
+      "show": "yy",
+      "why": "yy copies the whole line; nyy copies n lines."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete (cut) from the cursor to the END of the current line.",
+      "answers": ["d$"],
+      "show": "d$",
+      "why": "d$ cuts from the cursor to the line end; d0 cuts from the start of the line to the cursor."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command undoes the last action, and how do you redo (cancel the cancellation)?",
+      "options": [
+        "u undoes the last action; Ctrl+R redoes it",
+        "U undoes the last action; u redoes it",
+        "Ctrl+R undoes; u redoes",
+        "Esc undoes; Enter redoes"
+      ],
+      "answer": 0,
+      "why": "u undoes the last action (U undoes all changes on the current line); Ctrl+R redoes an undone action."
+    }
+  ]
+}

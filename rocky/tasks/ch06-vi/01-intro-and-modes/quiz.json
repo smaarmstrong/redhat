@@ -1,0 +1,85 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.1-6.2 vi command & operating mode (pp. 83-86)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why is VI considered a crucial tool for an administrator?",
+      "options": [
+        "It is a text-mode editor present on every Linux/Unix system, so it is available even during a system failure",
+        "It is the fastest graphical editor available",
+        "It is the only editor that can open configuration files",
+        "It automatically saves work every few seconds"
+      ],
+      "answer": 0,
+      "why": "VI is entirely text-mode and universal across distributions and Unix, so it works even when little else does (e.g. a backup shell after a failure)."
+    },
+    {
+      "type": "cmd",
+      "q": "Open the file /home/rockstar/file in the VI editor.",
+      "answers": ["vi /home/rockstar/file"],
+      "show": "vi /home/rockstar/file",
+      "why": "vi <file> opens it in command mode; if the file does not exist, VI shows a blank page and takes that name when you first save."
+    },
+    {
+      "type": "mcq",
+      "q": "During an editing session, when is the ORIGINAL file actually modified?",
+      "options": [
+        "Only when you save; until then all changes stay in a buffer file",
+        "Continuously, as you type each character",
+        "Automatically every 30 seconds",
+        "As soon as you switch to insert mode"
+      ],
+      "answer": 0,
+      "why": "VI records changes in a buffer; the original file is untouched until you save, and there is no periodic backup - save regularly."
+    },
+    {
+      "type": "mcq",
+      "q": "What does vim add over classic VI?",
+      "options": [
+        "The same interface and functions plus improvements such as syntax highlighting",
+        "A completely different, mouse-only interface",
+        "It removes command mode",
+        "It can only edit shell scripts"
+      ],
+      "answer": 0,
+      "why": "vim keeps VI's interface and functions but adds improvements like syntax highlighting, useful for scripts and config files."
+    },
+    {
+      "type": "mcq",
+      "q": "What are VI's three working modes?",
+      "options": [
+        "Command mode, Insert mode, and Ex mode",
+        "Read mode, Write mode, and Delete mode",
+        "Normal mode, Visual mode, and Print mode",
+        "Text mode, Binary mode, and Safe mode"
+      ],
+      "answer": 0,
+      "why": "VI alternates between command and insert modes; the third, ex mode, is a footer command mode inherited from an older editor."
+    },
+    {
+      "type": "mcq",
+      "q": "Which mode is VI in when it starts, and how do you return to it from any other mode?",
+      "options": [
+        "It starts in command mode; press Esc to return to it",
+        "It starts in insert mode; press Enter to return",
+        "It starts in ex mode; press : to return",
+        "It starts in insert mode; press Esc to return"
+      ],
+      "answer": 0,
+      "why": "VI starts in command mode, the default; the Esc key always brings you back to it."
+    },
+    {
+      "type": "mcq",
+      "q": "In insert mode, is text written straight into the file?",
+      "options": [
+        "No - it goes into a memory buffer and only takes effect when the file is saved",
+        "Yes - each keystroke edits the file on disk immediately",
+        "Only if the file already existed",
+        "Only in vim, not in classic VI"
+      ],
+      "answer": 0,
+      "why": "Insert mode edits a buffer in memory; the changes become effective on disk only when you save."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.3 Moving the cursor (pp. 87-88)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which of the h, j, k, l keys move left, down, up and right respectively?",
+      "options": [
+        "h = left, j = down, k = up, l = right",
+        "h = up, j = left, k = right, l = down",
+        "h = right, j = up, k = down, l = left",
+        "h = down, j = up, k = left, l = right"
+      ],
+      "answer": 0,
+      "why": "The classic VI motions: h left, j down, k up, l right (the arrow keys do the same)."
+    },
+    {
+      "type": "cmd",
+      "q": "Move the cursor to the END of the current line (give the command-mode character).",
+      "answers": ["$"],
+      "show": "$",
+      "why": "$ jumps to the end of the line (the End key does the same)."
+    },
+    {
+      "type": "cmd",
+      "q": "Move the cursor to the BEGINNING of the current line (give the command-mode character).",
+      "answers": ["0"],
+      "show": "0",
+      "why": "0 (zero) jumps to the start of the line (the Home key does the same)."
+    },
+    {
+      "type": "mcq",
+      "q": "In command mode, which keys move one word to the RIGHT and one word to the LEFT?",
+      "options": [
+        "w moves right (to the next word); b moves left (back to the start of a word)",
+        "b moves right; w moves left",
+        "l moves right; h moves left, by word",
+        "n moves right; N moves left"
+      ],
+      "answer": 0,
+      "why": "w advances to the next word, b moves back to the beginning of a word; prefix with a number to repeat, e.g. 3w."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command jumps to the FIRST line of the file, and which to the LAST line?",
+      "options": [
+        "gg goes to the first line; G goes to the last line",
+        "G goes to the first line; gg goes to the last line",
+        "H goes to the first line; L goes to the last line",
+        "0 goes to the first line; $ goes to the last line"
+      ],
+      "answer": 0,
+      "why": "gg moves to the first line of the file and G to the last; note the case and the doubled g."
+    },
+    {
+      "type": "cmd",
+      "q": "Jump directly to line 15 of the file.",
+      "answers": ["15G", "15gg"],
+      "show": "15G",
+      "why": "Prefixing G with a line number (nG) jumps straight to that line."
+    },
+    {
+      "type": "mcq",
+      "q": "On screen, which keys move to the first, middle and last visible line?",
+      "options": [
+        "H = first line, M = middle line, L = last line of the screen",
+        "L = first line, M = middle line, H = last line",
+        "H = first line, L = middle line, M = last line",
+        "M = first line, H = middle line, L = last line"
+      ],
+      "answer": 0,
+      "why": "H (High), M (Middle) and L (Low) move to the top, centre and bottom lines currently on screen."
+    }
+  ]
+}
