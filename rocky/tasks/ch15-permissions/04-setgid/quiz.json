@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.3 SetGID (pp. 293-295)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does SetGID (SGID) do on an executable binary?",
+      "options": [
+        "While it runs, the executor temporarily gains the identity of the file's owner GROUP",
+        "It changes the file's owner to root",
+        "It makes the file immutable",
+        "It sets the sticky bit"
+      ],
+      "answer": 0,
+      "why": "On an executable, SGID grants the owner-group identity during execution (e.g. locate runs as group slocate to read mlocate.db)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which leading octal digit represents SGID?",
+      "options": [
+        "2",
+        "4",
+        "1",
+        "6"
+      ],
+      "answer": 0,
+      "why": "SGID = 2 (e.g. chmod 2711); SUID = 4, sticky = 1."
+    },
+    {
+      "type": "cmd",
+      "q": "Add the SetGID permission to the executable myprog (symbolic form).",
+      "answers": ["chmod g+s myprog", "sudo chmod g+s myprog", "chmod 2755 myprog"],
+      "show": "chmod g+s myprog",
+      "why": "chmod g+s sets SGID; numerically the leading digit is 2."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the effect of SGID on a DIRECTORY?",
+      "options": [
+        "Files created in it take the directory's group as their owner group (not the creator's primary group)",
+        "Only root can delete files in it",
+        "The directory becomes immutable",
+        "The directory can no longer be entered"
+      ],
+      "answer": 0,
+      "why": "SGID on a directory forces group inheritance - handy for team shares so everything belongs to the shared group."
+    },
+    {
+      "type": "mcq",
+      "q": "In ls -l you see a lowercase 's' in the group execute position (e.g. -rwxr-s--x). What does it mean?",
+      "options": [
+        "SGID is set and functional (the group has x); a capital S would mean the group lacks x",
+        "The file is a socket",
+        "The sticky bit is set",
+        "SGID is broken"
+      ],
+      "answer": 0,
+      "why": "Lowercase s = SGID with group x present (working); uppercase S = SGID set but group x missing."
+    },
+    {
+      "type": "cmd",
+      "q": "Find all SGID files on the system and long-list them.",
+      "answers": ["find / -perm -2000 -a -type f -exec ls -l {} \\;", "find / -perm -2000 -type f -exec ls -l {} \\;", "find / -perm -2000 -type f"],
+      "show": "find / -perm -2000 -a -type f -exec ls -l {} \\;",
+      "why": "-perm -2000 matches the SGID bit; worth auditing like SUID."
+    }
+  ]
+}

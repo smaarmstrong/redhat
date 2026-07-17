@@ -1,0 +1,8 @@
+{
+  "title": "sudo and the sudoers file",
+  "domain": "Ch 15 - Review Permissions",
+  "objective": "Rocky Linux Admin Guide, ch. 15.3.6 (pp. 299-301)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

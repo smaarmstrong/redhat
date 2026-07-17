@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.6 sudo (pp. 299-301)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the role of sudo?",
+      "options": [
+        "To let root assign specific commands (normally root-only) to ordinary users to run",
+        "To switch permanently to the root account",
+        "To encrypt commands",
+        "To schedule commands"
+      ],
+      "answer": 0,
+      "why": "sudo delegates chosen system commands to ordinary users without giving them the full root account."
+    },
+    {
+      "type": "cmd",
+      "q": "Edit the sudoers file safely (the recommended command, which edits /etc/sudoers).",
+      "answers": ["visudo", "sudo visudo"],
+      "show": "visudo",
+      "why": "visudo edits /etc/sudoers with syntax checking on save - safer than editing the file directly."
+    },
+    {
+      "type": "cmd",
+      "q": "Check /etc/sudoers for syntax errors without editing it.",
+      "answers": ["visudo -c", "sudo visudo -c"],
+      "show": "visudo -c",
+      "why": "visudo -c validates the sudoers syntax - a bad sudoers file can lock everyone out of sudo."
+    },
+    {
+      "type": "mcq",
+      "q": "In the sudoers line 'root ALL=(ALL) ALL', what do the four parts mean?",
+      "options": [
+        "user, the machines allowed, the identities that can be assumed, the permitted commands",
+        "user, group, password, shell",
+        "command, user, machine, log file",
+        "owner, group, others, mask"
+      ],
+      "answer": 0,
+      "why": "Format is 'user MACHINE=(run-as) COMMANDS' - who, on which hosts, as whom, running what."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you write a sudoers rule that applies to a GROUP rather than a single user?",
+      "options": [
+        "Prefix the name with % (e.g. %wheel)",
+        "Prefix with @",
+        "Suffix with :group",
+        "Use uppercase for the name"
+      ],
+      "answer": 0,
+      "why": "A leading % denotes a group, e.g. %wheel ALL=(ALL) ALL."
+    },
+    {
+      "type": "cmd",
+      "q": "As an ordinary user, list the sudo commands available to you.",
+      "answers": ["sudo -l"],
+      "show": "sudo -l",
+      "why": "sudo -l shows the commands the current user is permitted to run via sudo."
+    },
+    {
+      "type": "mcq",
+      "q": "How must the authorized commands be written in a sudoers rule?",
+      "options": [
+        "As absolute paths (e.g. /sbin/shutdown); multiple commands are comma-separated",
+        "As bare command names only",
+        "As relative paths",
+        "As glob patterns only"
+      ],
+      "answer": 0,
+      "why": "Commands are given by absolute path (comma-separated for several); naming /sbin/shutdown lets the user run it with any options."
+    }
+  ]
+}

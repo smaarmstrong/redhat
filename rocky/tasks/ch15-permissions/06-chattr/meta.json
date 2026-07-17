@@ -1,0 +1,8 @@
+{
+  "title": "chattr: file attributes (i and a)",
+  "domain": "Ch 15 - Review Permissions",
+  "objective": "Rocky Linux Admin Guide, ch. 15.3.5 (pp. 297-299)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

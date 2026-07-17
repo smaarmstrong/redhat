@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.1-15.2 review of permissions (pp. 283-285)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In 'ls -l' output, the block of 10 characters splits how?",
+      "options": [
+        "1 file-type character, then three groups of rwx for owner, group and others",
+        "10 permission bits with no type character",
+        "5 for the owner and 5 for the group",
+        "1 type, then owner and others only"
+      ],
+      "answer": 0,
+      "why": "The first character is the file type; the next nine are owner, group and others permissions (3x rwx)."
+    },
+    {
+      "type": "mcq",
+      "q": "For a FILE, what does the w (write) permission allow?",
+      "options": [
+        "Modifying the file's content (e.g. with vim, >>)",
+        "Listing a directory",
+        "Executing the file",
+        "Entering a directory"
+      ],
+      "answer": 0,
+      "why": "On a file, w permits changing its contents; r reads it, x executes it."
+    },
+    {
+      "type": "mcq",
+      "q": "For a DIRECTORY, what does the w permission allow?",
+      "options": [
+        "Creating, deleting and renaming files within it (mkdir, touch, rm)",
+        "Reading a file's contents",
+        "Executing files in it",
+        "Nothing - w is meaningless on directories"
+      ],
+      "answer": 0,
+      "why": "On a directory, w lets you create/delete/rename entries; r lists the contents and x lets you cd in."
+    },
+    {
+      "type": "mcq",
+      "q": "In the numeric notation, what values do r, w and x carry?",
+      "options": [
+        "r = 4, w = 2, x = 1",
+        "r = 1, w = 2, x = 4",
+        "r = 2, w = 4, x = 1",
+        "r = 4, w = 1, x = 2"
+      ],
+      "answer": 0,
+      "why": "read=4, write=2, execute=1, summed per class (e.g. rwx = 7)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file-type character represents a symbolic (soft) link?",
+      "options": [
+        "l",
+        "d",
+        "s",
+        "b"
+      ],
+      "answer": 0,
+      "why": "l is a link; d directory, b block device, c character device, s socket, p pipe, - ordinary file."
+    }
+  ]
+}

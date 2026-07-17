@@ -1,0 +1,82 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 15.3.1 ACL permissions (pp. 285-291)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What problem do ACLs (Access Control Lists) solve?",
+      "options": [
+        "They let you grant permissions to specific extra users/groups beyond the standard owner/group/others model",
+        "They encrypt files",
+        "They compress directories",
+        "They replace the root user"
+      ],
+      "answer": 0,
+      "why": "The three ugo identities can't express 'this one extra user gets rx'; ACLs add per-user/per-group permission entries."
+    },
+    {
+      "type": "cmd",
+      "q": "View the ACL of the directory /project.",
+      "answers": ["getfacl /project", "getfacl /project/", "sudo getfacl /project"],
+      "show": "getfacl /project",
+      "why": "getfacl displays a file/directory's ACL entries."
+    },
+    {
+      "type": "cmd",
+      "q": "Grant the user tom read and execute (rx) ACL permission on /project.",
+      "answers": ["setfacl -m u:tom:rx /project", "sudo setfacl -m u:tom:rx /project", "setfacl -m u:tom:rx /project/"],
+      "show": "setfacl -m u:tom:rx /project",
+      "why": "setfacl -m modifies the ACL; u:tom:rx adds tom with rx (use g: for a group)."
+    },
+    {
+      "type": "mcq",
+      "q": "In getfacl output, what does 'mask::rwx' represent?",
+      "options": [
+        "The maximum EFFECTIVE permissions - a user's real ACL rights are the logical AND of their entry and the mask",
+        "The default permissions for new files",
+        "The owner's permissions",
+        "The permissions of the root user"
+      ],
+      "answer": 0,
+      "why": "The mask caps effective permissions; a user granted rwx but with mask r-x effectively gets r-x."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a trailing '+' in an ls -l permission field (e.g. drwxrwx---+) indicate?",
+      "options": [
+        "The file/directory has ACL entries set",
+        "The file is executable",
+        "The file is a symlink",
+        "The file has the sticky bit"
+      ],
+      "answer": 0,
+      "why": "The + shows that extended ACL entries exist beyond the basic permissions."
+    },
+    {
+      "type": "cmd",
+      "q": "Remove the ACL entry for user tom from /project.",
+      "answers": ["setfacl -x u:tom /project", "sudo setfacl -x u:tom /project", "setfacl -x u:tom /project/"],
+      "show": "setfacl -x u:tom /project",
+      "why": "setfacl -x removes a specific ACL entry; setfacl -b removes ALL extended ACL entries."
+    },
+    {
+      "type": "cmd",
+      "q": "Set a DEFAULT ACL on /project so that NEW files inherit rx for user tom.",
+      "answers": ["setfacl -m d:u:tom:rx /project", "sudo setfacl -m d:u:tom:rx /project", "setfacl -m d:u:tom:rx /project/"],
+      "show": "setfacl -m d:u:tom:rx /project",
+      "why": "The d: prefix sets a default ACL, applied to files created later (must operate on a directory)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between a recursive (-R) ACL and a default (d:) ACL?",
+      "options": [
+        "-R applies to files/dirs that ALREADY exist; d: applies to files created in the future",
+        "-R is for new files; d: is for existing files",
+        "They are identical",
+        "-R only works on files, d: only on links"
+      ],
+      "answer": 0,
+      "why": "Recursion covers existing contents; the default ACL is what newly created entries inherit."
+    }
+  ]
+}
