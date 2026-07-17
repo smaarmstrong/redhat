@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.3 Systemd (p. 201)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is systemd?",
+      "options": [
+        "A service manager for Linux and the default initialization system since RedHat/CentOS 7",
+        "A text editor",
+        "The GRUB2 bootloader",
+        "A logging format"
+      ],
+      "answer": 0,
+      "why": "systemd is the service manager and has been the default init system since RHEL/CentOS 7."
+    },
+    {
+      "type": "mcq",
+      "q": "Which design goals drove the development of systemd?",
+      "options": [
+        "Compatibility with old SysV init scripts, plus parallel startup, on-demand daemon activation, snapshots and dependency management",
+        "Removing all services",
+        "Replacing the kernel",
+        "Running only one service at a time"
+      ],
+      "answer": 0,
+      "why": "systemd keeps SysV compatibility while adding parallel start, on-demand activation, snapshots and dependency handling."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file extension identifies a systemd SERVICE unit, and which a TARGET unit?",
+      "options": [
+        ".service for a system service; .target for a group of units",
+        ".target for a service; .service for a group",
+        ".unit for both",
+        ".d for a service; .cfg for a target"
+      ],
+      "answer": 0,
+      "why": "A .service unit is a system service; a .target unit groups other units (there are many other types: mount, socket, timer, ...)."
+    },
+    {
+      "type": "mcq",
+      "q": "How does systemd's socket activation help when restarting a service?",
+      "options": [
+        "It holds the listening socket and queues incoming messages, so a restart loses no messages",
+        "It disables the network during the restart",
+        "It duplicates the service",
+        "It skips the restart entirely"
+      ],
+      "answer": 0,
+      "why": "systemd creates the listening sockets and passes them to services; the socket stays available and messages queue, so a restart drops nothing."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the default timeout applied to service unit operations?",
+      "options": [
+        "5 minutes",
+        "30 seconds",
+        "1 hour",
+        "There is no timeout"
+      ],
+      "answer": 0,
+      "why": "A 5-minute default timeout stops a malfunctioning service from freezing the system."
+    }
+  ]
+}

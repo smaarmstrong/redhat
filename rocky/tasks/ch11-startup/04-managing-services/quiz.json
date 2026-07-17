@@ -1,0 +1,77 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.3.1-11.3.2 managing services (pp. 202-205)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Start the httpd service now.",
+      "answers": ["systemctl start httpd", "systemctl start httpd.service", "sudo systemctl start httpd"],
+      "show": "systemctl start httpd",
+      "why": "systemctl start <name> starts the service; the .service suffix is optional."
+    },
+    {
+      "type": "cmd",
+      "q": "Stop the nfs-server service.",
+      "answers": ["systemctl stop nfs-server", "systemctl stop nfs-server.service", "sudo systemctl stop nfs-server"],
+      "show": "systemctl stop nfs-server",
+      "why": "systemctl stop <name> stops a running service."
+    },
+    {
+      "type": "cmd",
+      "q": "Check the status of the sshd service.",
+      "answers": ["systemctl status sshd", "systemctl status sshd.service"],
+      "show": "systemctl status sshd",
+      "why": "systemctl status shows whether the service is running and recent log lines."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between 'systemctl start' and 'systemctl enable'?",
+      "options": [
+        "start runs the service NOW; enable makes it start automatically at boot",
+        "start enables at boot; enable runs it now",
+        "They are identical",
+        "start is permanent; enable is temporary"
+      ],
+      "answer": 0,
+      "why": "start affects the current session only; enable creates the boot-time activation (and disable removes it)."
+    },
+    {
+      "type": "cmd",
+      "q": "Configure the httpd service to start automatically at boot.",
+      "answers": ["systemctl enable httpd", "systemctl enable httpd.service", "sudo systemctl enable httpd"],
+      "show": "systemctl enable httpd",
+      "why": "systemctl enable activates the service at boot; disable turns that off."
+    },
+    {
+      "type": "cmd",
+      "q": "List the currently loaded service units.",
+      "answers": ["systemctl list-units --type service", "systemctl list-units --type=service"],
+      "show": "systemctl list-units --type service",
+      "why": "list-units --type service shows loaded services; list-unit-files --type service shows all and whether they're enabled."
+    },
+    {
+      "type": "mcq",
+      "q": "In a .service unit file, which three sections appear (as in the postfix example)?",
+      "options": [
+        "[Unit], [Service], [Install]",
+        "[Start], [Stop], [Reload]",
+        "[Header], [Body], [Footer]",
+        "[Config], [Runtime], [Boot]"
+      ],
+      "answer": 0,
+      "why": "[Unit] holds description/ordering (After=, Conflicts=), [Service] the exec commands (ExecStart=), [Install] the WantedBy= target."
+    },
+    {
+      "type": "mcq",
+      "q": "In the postfix .service file, what does 'WantedBy=multi-user.target' in [Install] mean?",
+      "options": [
+        "When enabled, the service is wanted by (started with) the multi-user.target",
+        "It conflicts with multi-user.target",
+        "It runs before the kernel",
+        "It sets the service's PID file"
+      ],
+      "answer": 0,
+      "why": "WantedBy in [Install] ties the service to a target, so enabling it hooks it into that target's startup."
+    }
+  ]
+}

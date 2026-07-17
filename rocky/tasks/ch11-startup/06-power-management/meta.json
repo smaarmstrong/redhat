@@ -1,0 +1,8 @@
+{
+  "title": "Shutdown, suspend and hibernate with systemctl",
+  "domain": "Ch 11 - System Startup",
+  "objective": "Rocky Linux Admin Guide, ch. 11.3.3 (p. 207)",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

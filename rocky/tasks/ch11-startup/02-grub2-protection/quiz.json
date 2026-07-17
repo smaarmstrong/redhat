@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.2 Protecting the GRUB2 bootloader (pp. 198-201)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why password-protect the GRUB2 bootloader?",
+      "options": [
+        "To prevent single-user-mode root access, GRUB console access, and booting an insecure OS on a dual-boot system",
+        "To speed up the boot process",
+        "To encrypt the root file system",
+        "To hide the boot menu entirely"
+      ],
+      "answer": 0,
+      "why": "Without protection, an attacker could boot single-user mode (becoming root), use the GRUB console, or pick an insecure OS that ignores access controls."
+    },
+    {
+      "type": "cmd",
+      "q": "Generate an encrypted PBKDF2 hash of a GRUB2 password (the command that ONLY produces the hash).",
+      "answers": ["grub2-mkpasswd-pbkdf2", "sudo grub2-mkpasswd-pbkdf2"],
+      "show": "grub2-mkpasswd-pbkdf2",
+      "why": "grub2-mkpasswd-pbkdf2 prompts for a password and prints its PBKDF2 hash; it does not touch any config file."
+    },
+    {
+      "type": "mcq",
+      "q": "After grub2-mkpasswd-pbkdf2 gives you the hash, what must you do with it?",
+      "options": [
+        "Manually paste it (with set superusers/password_pbkdf2 lines) into /etc/grub.d/00_header, then run grub2-mkconfig",
+        "Nothing - GRUB picks it up automatically",
+        "Paste it into /etc/fstab",
+        "Reboot and it applies itself"
+      ],
+      "answer": 0,
+      "why": "grub2-mkpasswd-pbkdf2 requires manual editing: add set superusers and password_pbkdf2 lines to 00_header, then regenerate grub.cfg."
+    },
+    {
+      "type": "cmd",
+      "q": "Set a GRUB2 password AND update the configuration automatically (the high-automation command).",
+      "answers": ["grub2-set-password", "sudo grub2-set-password", "grub2-setpassword", "sudo grub2-setpassword"],
+      "show": "grub2-set-password",
+      "why": "grub2-set-password both sets the password and updates the configuration for you."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file does grub2-set-password generate automatically?",
+      "options": [
+        "/boot/grub2/user.cfg",
+        "/etc/grub.d/00_header",
+        "/etc/default/grub",
+        "/boot/grub2/grub.cfg"
+      ],
+      "answer": 0,
+      "why": "grub2-set-password writes the GRUB2_PASSWORD hash into /boot/grub2/user.cfg."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the core difference between grub2-set-password and grub2-mkpasswd-pbkdf2?",
+      "options": [
+        "grub2-set-password sets the password AND updates config (high automation); grub2-mkpasswd-pbkdf2 only generates the hash (manual editing needed)",
+        "They are identical",
+        "grub2-mkpasswd-pbkdf2 updates config automatically; grub2-set-password only prints a hash",
+        "grub2-set-password removes the password"
+      ],
+      "answer": 0,
+      "why": "grub2-set-password is fully automatic; grub2-mkpasswd-pbkdf2 just produces a hash you must place by hand."
+    }
+  ]
+}
