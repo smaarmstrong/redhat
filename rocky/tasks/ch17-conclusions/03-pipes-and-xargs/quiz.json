@@ -1,0 +1,61 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 17 Conclusions - pipes & xargs tips",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "A pipe (|) connects which stream of one command to the next?",
+      "options": [
+        "Only stdout (channel 1); stderr does not go through the pipe by default",
+        "Only stderr",
+        "Both stdout and stderr always",
+        "Only stdin"
+      ],
+      "answer": 0,
+      "why": "A pipe carries stdout only; to send stderr through it you must redirect channel 2 onto channel 1 (2>&1)."
+    },
+    {
+      "type": "mcq",
+      "q": "To capture a command's stdout into a file AND merge stderr into it, which is correct?",
+      "options": [
+        "cmd 1>test.txt 2>&1 (redirect stdout first, then point stderr at it)",
+        "cmd 2>&1 1>test.txt",
+        "cmd 2>&1 >test.txt with any order",
+        "cmd 1>&2 2>test.txt"
+      ],
+      "answer": 0,
+      "why": "Order matters: send stdout to the file first, THEN 2>&1 makes stderr follow it. 'cmd 2>&1 1>test.txt' does not do what you expect."
+    },
+    {
+      "type": "mcq",
+      "q": "The tip 'tar uses keys, not options' means what in practice?",
+      "options": [
+        "tar xvf works even where -xvf might not on older systems; and modern tar auto-detects the compression format",
+        "tar requires a physical key file",
+        "tar cannot compress",
+        "You must always pass a dash"
+      ],
+      "answer": 0,
+      "why": "tar historically takes bare keys (xvf); you also no longer need to specify z/j on modern tar since it auto-detects compression when reading."
+    },
+    {
+      "type": "cmd",
+      "q": "Rename every .log file to .log.old, using xargs with the {} placeholder (input from 'ls *.log').",
+      "answers": ["ls *.log | xargs -I{} mv {} {}.old", "ls *.log | xargs -I {} mv {} {}.old"],
+      "show": "ls *.log | xargs -I{} mv {} {}.old",
+      "why": "-I{} sets a placeholder and runs one command per input line, substituting {} with each filename."
+    },
+    {
+      "type": "mcq",
+      "q": "For filenames that may contain spaces, which combination is safe with xargs?",
+      "options": [
+        "find ... -print0 paired with xargs -0 (separate on the null byte, not spaces)",
+        "ls | xargs with no options",
+        "cat file | xargs -n1",
+        "xargs -P4 with no placeholder"
+      ],
+      "answer": 0,
+      "why": "-print0 / -0 use the null byte as the separator, so spaces in names don't split arguments; -P runs jobs in parallel."
+    }
+  ]
+}

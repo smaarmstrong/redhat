@@ -1,0 +1,49 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 17 Conclusions - vim & fstab tips",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How does vim's :x differ from :wq?",
+      "options": [
+        ":x only writes the file if it was modified, so it doesn't needlessly change the modification time",
+        ":x quits without saving; :wq saves",
+        ":x always writes; :wq only writes if changed",
+        "They are completely identical in every case"
+      ],
+      "answer": 0,
+      "why": ":x writes only when there are changes (unlike :wq which always writes), sparing the mtime - which matters to make/file watchers. ZZ in normal mode does the same."
+    },
+    {
+      "type": "cmd",
+      "q": "In vim ex mode, save and quit using the two-keystroke shortcut.",
+      "answers": [":x"],
+      "show": ":x",
+      "why": ":x saves and quits (writing only if modified); the normal-mode equivalent is ZZ."
+    },
+    {
+      "type": "mcq",
+      "q": "At the end of an /etc/fstab line there are two integers. What does the FIRST one control?",
+      "options": [
+        "Whether the filesystem is included in backups by the dump utility (0 = no, 1 = yes)",
+        "The fsck check order",
+        "The mount priority",
+        "The number of retries"
+      ],
+      "answer": 0,
+      "why": "The first integer is the dump/backup flag; the second is the fsck check order."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the SECOND fstab integer control, and what does 1 mean there?",
+      "options": [
+        "The fsck check order at boot: 0 = don't check, 1 = check first (reserved for /), 2 = check afterwards",
+        "The dump backup flag; 1 = back up",
+        "The mount timeout in seconds",
+        "The filesystem type code"
+      ],
+      "answer": 0,
+      "why": "The second integer sets fsck order: 0 no check, 1 first (the root filesystem), 2 the other partitions."
+    }
+  ]
+}
