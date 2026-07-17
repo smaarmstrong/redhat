@@ -1,0 +1,8 @@
+{
+  "title": "cpio: modes and creating backups (copy-out)",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.3.1 (pp. 186-188)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

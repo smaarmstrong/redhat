@@ -1,0 +1,8 @@
+{
+  "title": "Backup concepts: backup vs archive, methods, frequency",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.1 (pp. 172-174)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

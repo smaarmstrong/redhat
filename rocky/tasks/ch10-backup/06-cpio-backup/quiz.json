@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.3.1 cpio copy-out mode (pp. 186-188)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are cpio's three operating modes?",
+      "options": [
+        "copy-out (-o, create), copy-in (-i, extract), copy-pass (-p, copy dir to dir)",
+        "read (-r), write (-w), append (-a)",
+        "backup (-b), restore (-s), verify (-v)",
+        "in (-i), out (-o), update (-u)"
+      ],
+      "answer": 0,
+      "why": "copy-out (-o) creates an archive, copy-in (-i) extracts, copy-pass (-p) copies files between directories."
+    },
+    {
+      "type": "mcq",
+      "q": "In copy-out mode, where does cpio get its list of files to back up?",
+      "options": [
+        "From standard input - you pipe a list from find, ls or cat into it",
+        "From command-line arguments only",
+        "From /etc/fstab",
+        "It backs up the whole disk automatically"
+      ],
+      "answer": 0,
+      "why": "copy-out reads the file list from stdin; commonly 'find ... | cpio -o'. (ls for this must be a plain list - no -l or -R.)"
+    },
+    {
+      "type": "cmd",
+      "q": "Back up the /etc directory (recursively) to /backups/etc.cpio using find piped into cpio, with output redirection.",
+      "answers": ["find /etc | cpio -ov > /backups/etc.cpio", "find /etc | cpio -o > /backups/etc.cpio"],
+      "show": "find /etc | cpio -ov > /backups/etc.cpio",
+      "why": "find lists the files, the pipe feeds them to cpio -o (v = verbose), and > writes the archive."
+    },
+    {
+      "type": "cmd",
+      "q": "Do the same backup of /etc to /backups/etc.cpio, but use cpio's -F option instead of the > redirection.",
+      "answers": ["find /etc | cpio -ovF /backups/etc.cpio", "find /etc | cpio -oF /backups/etc.cpio"],
+      "show": "find /etc | cpio -ovF /backups/etc.cpio",
+      "why": "-F names the archive medium, replacing the > redirection (and can also replace < when reading)."
+    },
+    {
+      "type": "mcq",
+      "q": "What determines whether a cpio backup is relative or absolute?",
+      "options": [
+        "The path given to find: an absolute path (find /etc) gives an absolute backup; a relative path (find etc) gives a relative one",
+        "The -o versus -i option",
+        "Whether you use -F",
+        "The compression used"
+      ],
+      "answer": 0,
+      "why": "cpio records whatever find outputs, so 'cd /; find etc' is relative while 'find /etc' is absolute."
+    },
+    {
+      "type": "cmd",
+      "q": "Append /etc/shadow to the existing cpio archive SystemFiles.A.cpio.",
+      "answers": ["find /etc/shadow | cpio -o -AF SystemFiles.A.cpio", "find /etc/shadow | cpio -oAF SystemFiles.A.cpio"],
+      "show": "find /etc/shadow | cpio -o -AF SystemFiles.A.cpio",
+      "why": "-A appends to an existing archive (direct-access media only); -F designates the archive to modify."
+    },
+    {
+      "type": "mcq",
+      "q": "If you use ls (instead of find) to build the file list for cpio, what is the restriction?",
+      "options": [
+        "It must be a simple list of names - no -l (details) and no -R (recursive)",
+        "ls cannot be used at all",
+        "ls must be run as root",
+        "ls must include -l for cpio to parse it"
+      ],
+      "answer": 0,
+      "why": "cpio needs a plain list of names, so ls must not use -l or -R."
+    }
+  ]
+}

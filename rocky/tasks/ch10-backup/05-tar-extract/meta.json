@@ -1,0 +1,8 @@
+{
+  "title": "Extracting tar backups",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.2.2 (pp. 183-185)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

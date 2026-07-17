@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.2.2 Managing a tar backup (pp. 181-183)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Append the file /etc/passwd to the existing uncompressed backup /backups/home.133.tar.",
+      "answers": ["tar rvf /backups/home.133.tar /etc/passwd"],
+      "show": "tar rvf /backups/home.133.tar /etc/passwd",
+      "why": "The r key appends files or directories to the end of an archive."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between the tar keys r and A?",
+      "options": [
+        "r appends files/directories to the archive; A appends the contents of one archive to another",
+        "r replaces the archive; A creates it",
+        "r reads; A adds",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "r adds files/dirs to the end of the archive; A appends all files from one archive into another."
+    },
+    {
+      "type": "mcq",
+      "q": "Can you add files to a COMPRESSED tar backup (e.g. backup.tgz)?",
+      "options": [
+        "No - tar reports 'Cannot update compressed archives'",
+        "Yes, with the r key",
+        "Yes, but only with the A key",
+        "Yes, if you use sudo"
+      ],
+      "answer": 0,
+      "why": "Appending is not possible on a compressed archive; tar refuses with 'Cannot update compressed archives'."
+    },
+    {
+      "type": "cmd",
+      "q": "List the contents of the uncompressed backup backup.tar without extracting it.",
+      "answers": ["tar tvf backup.tar"],
+      "show": "tar tvf backup.tar",
+      "why": "The t key lists the archive's contents (v adds detail); it works whether or not the archive is compressed."
+    },
+    {
+      "type": "mcq",
+      "q": "When listing or extracting, do you need to specify the compression algorithm used?",
+      "options": [
+        "No - 'tar tvf' reads a gzip or bzip2 archive just as well; the algorithm only matters when CREATING",
+        "Yes, you must always add z or j to read",
+        "Yes, but only for bzip2",
+        "No, and you also don't need it when creating"
+      ],
+      "answer": 0,
+      "why": "tar auto-detects compression when reading, so tar tvf == tar tvfj for listing; you only choose the algorithm at creation time."
+    },
+    {
+      "type": "cmd",
+      "q": "Create the backup file_name.tar of dir/ AND verify its integrity at creation time (W key).",
+      "answers": ["tar cvfW file_name.tar dir/", "tar cvfW file_name.tar dir"],
+      "show": "tar cvfW file_name.tar dir/",
+      "why": "The W key verifies the archive as it is written; it cannot be used on compressed archives."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you verify a COMPRESSED backup, since W does not work on it?",
+      "options": [
+        "Use the d key, e.g. 'tar dfz file_name.tgz'",
+        "Use the W key with sudo",
+        "You cannot verify compressed archives at all",
+        "Re-create the archive uncompressed first"
+      ],
+      "answer": 0,
+      "why": "The d key compares an existing archive against the filesystem and works on compressed backups (W does not)."
+    }
+  ]
+}

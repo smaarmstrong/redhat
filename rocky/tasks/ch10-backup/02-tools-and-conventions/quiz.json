@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.1.5-10.1.8 tools and conventions (pp. 174-177)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which of these are command-line backup tools mentioned by the guide?",
+      "options": [
+        "tar, cpio, pax, dd, dump",
+        "zip, rar, 7z, arj",
+        "cp, mv, rm, ln",
+        "grep, sed, awk, cut"
+      ],
+      "answer": 0,
+      "why": "The command-line backup tools listed are tar, cpio, pax, dd and dump; this chapter focuses on tar and cpio."
+    },
+    {
+      "type": "mcq",
+      "q": "Which statement about tar versus cpio is correct?",
+      "options": [
+        "tar is easy to use and can add files to an existing backup; cpio retains owners/groups/dates/rights and skips damaged files",
+        "cpio cannot preserve ownership; tar can never add files",
+        "tar skips damaged files; cpio cannot back up a whole file system",
+        "They are identical in every respect"
+      ],
+      "answer": 0,
+      "why": "tar is simple and supports appending; cpio preserves owners/groups/dates/rights, skips damaged files, and can handle the whole file system."
+    },
+    {
+      "type": "mcq",
+      "q": "Why use a naming convention (directory, utility, options, date) for backup files?",
+      "options": [
+        "To quickly identify a backup's contents and avoid a hazardous restoration",
+        "Because Linux requires file extensions",
+        "To compress the backup automatically",
+        "To make the backup smaller"
+      ],
+      "answer": 0,
+      "why": "An explicit name (e.g. home.A.tar.gz with a date) tells you the contents and format at a glance, reducing restore mistakes."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the two storage methods, internal and external, mean?",
+      "options": [
+        "Internal stores backups on the current working disk; external stores them on separate devices (USB, disk, server, NAS)",
+        "Internal means compressed; external means uncompressed",
+        "Internal means full backup; external means incremental",
+        "Internal is on tape; external is on disk"
+      ],
+      "answer": 0,
+      "why": "Internal keeps backups on the working disk (risky); external puts them on separate media such as USB drives, servers or NAS."
+    },
+    {
+      "type": "mcq",
+      "q": "If you see a file with a .tar.gz or .tgz extension, what does that tell you?",
+      "options": [
+        "It is a tar archive compressed with gzip - the suffix aids human recognition even though Linux does not require extensions",
+        "The extension is mandatory for the file to work",
+        "It is an executable program",
+        "It is a plain text file"
+      ],
+      "answer": 0,
+      "why": "Most Linux files need no extension; suffixes like .tar.gz/.tgz are added for humans to recognise the format and handle it correctly."
+    }
+  ]
+}

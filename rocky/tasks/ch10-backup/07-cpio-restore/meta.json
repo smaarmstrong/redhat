@@ -1,0 +1,8 @@
+{
+  "title": "cpio: reading and restoring (copy-in)",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.3.2-10.3.3 (pp. 189-190)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

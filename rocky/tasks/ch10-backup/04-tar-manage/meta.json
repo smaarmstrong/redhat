@@ -1,0 +1,8 @@
+{
+  "title": "Managing tar backups: add, list, verify",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.2.2 (pp. 181-183)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

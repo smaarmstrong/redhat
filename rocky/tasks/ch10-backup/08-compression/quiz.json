@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.4 Compression utilities (pp. 191-193)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Compress the file usr.tar with gzip.",
+      "answers": ["gzip usr.tar"],
+      "show": "gzip usr.tar",
+      "why": "gzip compresses the file in place, producing usr.tar.gz and keeping the same rights and access/modification dates."
+    },
+    {
+      "type": "cmd",
+      "q": "Decompress the file usr.tar.gz.",
+      "answers": ["gunzip usr.tar.gz", "gzip -d usr.tar.gz"],
+      "show": "gunzip usr.tar.gz",
+      "why": "gunzip removes the .gz extension, restoring usr.tar."
+    },
+    {
+      "type": "cmd",
+      "q": "Compress the file usr.cpio with bzip2.",
+      "answers": ["bzip2 usr.cpio"],
+      "show": "bzip2 usr.cpio",
+      "why": "bzip2 produces usr.cpio.bz2; its compression is better than gzip but takes longer."
+    },
+    {
+      "type": "cmd",
+      "q": "Decompress the file usr.cpio.bz2.",
+      "answers": ["bunzip2 usr.cpio.bz2", "bzip2 -d usr.cpio.bz2"],
+      "show": "bunzip2 usr.cpio.bz2",
+      "why": "bunzip2 removes the .bz2 extension, restoring usr.cpio."
+    },
+    {
+      "type": "mcq",
+      "q": "How does bzip2 compare with gzip?",
+      "options": [
+        "bzip2 compresses better than gzip but takes longer to run",
+        "bzip2 compresses worse but is faster",
+        "They give identical results",
+        "bzip2 cannot compress text files"
+      ],
+      "answer": 0,
+      "why": "bzip2 achieves better compression than gzip at the cost of more time/CPU."
+    },
+    {
+      "type": "mcq",
+      "q": "From LEAST to MOST efficient, what is the guide's ranking of these compressors?",
+      "options": [
+        "compress, gzip, bzip2, lzip, xz",
+        "xz, lzip, bzip2, gzip, compress",
+        "gzip, compress, xz, bzip2, lzip",
+        "bzip2, gzip, xz, compress, lzip"
+      ],
+      "answer": 0,
+      "why": "Least to most efficient: compress (.Z), gzip (.gz), bzip2 (.bz2), lzip (.lz), xz (.xz) - more efficiency costs more time/CPU."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is it better to back up FIRST and then compress, rather than compress during the backup?",
+      "options": [
+        "Compressing during the backup lengthens backup/restore time and makes it impossible to add files afterwards",
+        "Compressing during the backup corrupts the data",
+        "There is no difference",
+        "Compressing first is always faster"
+      ],
+      "answer": 0,
+      "why": "In-line compression lengthens backup and restore times and prevents appending files, so a separate compress step is preferred."
+    }
+  ]
+}

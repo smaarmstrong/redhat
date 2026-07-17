@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.3.2-10.3.3 cpio read and copy-in (pp. 189-190)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Read (list) the contents of the cpio backup /backups/etc.152.cpio with file attributes.",
+      "answers": ["cpio -tv < /backups/etc.152.cpio", "cpio -tvF /backups/etc.152.cpio"],
+      "show": "cpio -tv < /backups/etc.152.cpio",
+      "why": "-t reads/lists the archive and -v shows attributes; always read a backup before restoring from it."
+    },
+    {
+      "type": "cmd",
+      "q": "Restore the cpio backup /backups/etc.152.cpio (copy-in mode).",
+      "answers": ["cpio -iv < /backups/etc.152.cpio", "cpio -ivF /backups/etc.152.cpio"],
+      "show": "cpio -iv < /backups/etc.152.cpio",
+      "why": "-i is copy-in (extract/restore); the archive is fed on stdin (or via -F)."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, what happens to a file on disk that is NEWER than (or same age as) its copy in the backup, during a cpio restore?",
+      "options": [
+        "It is NOT restored (to avoid overwriting newer data with older)",
+        "It is always overwritten",
+        "The restore aborts entirely",
+        "It is renamed with a .bak suffix"
+      ],
+      "answer": 0,
+      "why": "cpio skips files whose on-disk modification date is newer than or equal to the backup, protecting recent data."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -u option do during a cpio restore?",
+      "options": [
+        "Replaces all files even if they already exist (overwriting, including with older versions)",
+        "Restores only unchanged files",
+        "Undoes the last restore",
+        "Restores to the user's home directory"
+      ],
+      "answer": 0,
+      "why": "-u forces every file to be replaced, so it can overwrite newer on-disk files with older ones from the archive."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -d (--make-directories) option do?",
+      "options": [
+        "Rebuilds the missing directory tree during extraction",
+        "Deletes directories",
+        "Lists directories only",
+        "Restores to /dev"
+      ],
+      "answer": 0,
+      "why": "-d recreates any missing directory structure needed to place the restored files."
+    },
+    {
+      "type": "mcq",
+      "q": "What does --no-absolute-filenames allow you to do?",
+      "options": [
+        "Restore an absolute-mode backup in a relative way (the leading / is stripped)",
+        "Force absolute paths on a relative backup",
+        "Skip all filenames",
+        "List only absolute paths"
+      ],
+      "answer": 0,
+      "why": "--no-absolute-filenames removes the leading / so an absolute backup restores relative to the current directory."
+    },
+    {
+      "type": "cmd",
+      "q": "Restore the absolute backup home.A.cpio using the -F option (copy-in, verbose).",
+      "answers": ["cpio -ivF home.A.cpio", "cpio -iF home.A.cpio"],
+      "show": "cpio -ivF home.A.cpio",
+      "why": "-F names the archive to read from, so no '<' redirection is needed; -i restores, -v is verbose."
+    }
+  ]
+}

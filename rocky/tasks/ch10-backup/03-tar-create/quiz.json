@@ -1,0 +1,77 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.2.2 Creating a tar backup (pp. 178-181)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create an uncompressed backup of /home into /backups/home.133.tar in RELATIVE mode.",
+      "answers": ["tar cvf /backups/home.133.tar /home/", "tar cvf /backups/home.133.tar /home", "tar -cvf /backups/home.133.tar /home/"],
+      "show": "tar cvf /backups/home.133.tar /home/",
+      "why": "cvf: c creates, v shows processed files, f names the archive. tar backs up in relative mode by default even if you give an absolute path."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the tar keys c, v and f mean?",
+      "options": [
+        "c = create a backup, v = show the processed file names (verbose), f = specify the archive file name",
+        "c = compress, v = verify, f = force",
+        "c = copy, v = view, f = find",
+        "c = check, v = validate, f = format"
+      ],
+      "answer": 0,
+      "why": "c creates, v is verbose, f names the archive/medium; the leading hyphen is optional in tar."
+    },
+    {
+      "type": "cmd",
+      "q": "Create an uncompressed backup of /home into /backups/home.133.P.tar explicitly in ABSOLUTE mode.",
+      "answers": ["tar cvfP /backups/home.133.P.tar /home/", "tar cvfP /backups/home.133.P.tar /home", "tar cvPf /backups/home.133.P.tar /home/"],
+      "show": "tar cvfP /backups/home.133.P.tar /home/",
+      "why": "The P key keeps the absolute paths; without both P AND an absolute source path, the backup is relative."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the P key change, and what is required for it to work?",
+      "options": [
+        "It stores absolute paths; you must also give the source path as absolute",
+        "It compresses the archive; nothing else is needed",
+        "It makes the backup relative",
+        "It previews the archive without creating it"
+      ],
+      "answer": 0,
+      "why": "P preserves absolute paths, but only if the source is also written absolutely; otherwise tar falls back to relative mode."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a gzip-compressed backup of dirname/ called backup.tar.gz.",
+      "answers": ["tar cvzf backup.tar.gz dirname/", "tar cvfz backup.tar.gz dirname/", "tar czvf backup.tar.gz dirname/", "tar cvzf backup.tar.gz dirname"],
+      "show": "tar cvzf backup.tar.gz dirname/",
+      "why": "The z key adds gzip compression on top of the create keys."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a bzip2-compressed backup of dirname/ called backup.tar.bz2.",
+      "answers": ["tar cvfj backup.tar.bz2 dirname/", "tar cvjf backup.tar.bz2 dirname/", "tar cvfj backup.tar.bz2 dirname"],
+      "show": "tar cvfj backup.tar.bz2 dirname/",
+      "why": "The j key adds bzip2 compression; .tbz and .tb2 are equivalent to .tar.bz2."
+    },
+    {
+      "type": "mcq",
+      "q": "Which extension is equivalent to .tar.gz?",
+      "options": [
+        ".tgz",
+        ".tbz2",
+        ".gz.tar",
+        ".zip"
+      ],
+      "answer": 0,
+      "why": ".tgz is shorthand for .tar.gz (as .tbz/.tb2 are for .tar.bz2)."
+    },
+    {
+      "type": "cmd",
+      "q": "Estimate (in bytes) the size an uncompressed tar of /directory/to/backup/ would be, without writing a file.",
+      "answers": ["tar cf - /directory/to/backup/ | wc -c", "tar cf - /directory/to/backup | wc -c"],
+      "show": "tar cf - /directory/to/backup/ | wc -c",
+      "why": "Writing the archive to '-' (stdout) and piping to 'wc -c' counts the bytes without creating a file (use bash, not zsh)."
+    }
+  ]
+}
