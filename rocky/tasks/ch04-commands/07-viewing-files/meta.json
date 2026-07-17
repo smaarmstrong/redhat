@@ -1,0 +1,8 @@
+{
+  "title": "Viewing files: file, more, less, cat, tac, head, tail",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.5.1-4.5.7 (pp. 50-53)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

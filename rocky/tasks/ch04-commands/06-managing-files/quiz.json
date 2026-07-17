@@ -1,0 +1,84 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.4.4-4.4.9 mkdir/touch/rmdir/rm/mv/cp (pp. 45-50)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create the directory tree /srv/data/2026, creating any parent directories that do not yet exist.",
+      "answers": ["mkdir -p /srv/data/2026"],
+      "show": "mkdir -p /srv/data/2026",
+      "why": "mkdir needs each parent to already exist; -p creates the missing parent directories along the way."
+    },
+    {
+      "type": "cmd",
+      "q": "Create an empty file called report in the current directory.",
+      "answers": ["touch report"],
+      "show": "touch report",
+      "why": "touch updates a file's timestamp, or creates it empty if it does not exist - its most common use."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the EMPTY directory /home/rockstar/work.",
+      "answers": ["rmdir /home/rockstar/work"],
+      "show": "rmdir /home/rockstar/work",
+      "why": "rmdir removes an empty directory; a non-empty one needs rm -r instead."
+    },
+    {
+      "type": "mcq",
+      "q": "You try 'rmdir project' but it fails because the directory is not empty. What is the guide's remedy?",
+      "options": [
+        "Use rm -r to delete the directory and its contents",
+        "Use rmdir -f to force it",
+        "Use mkdir -p first",
+        "Use mv to empty it"
+      ],
+      "answer": 0,
+      "why": "rmdir only removes empty directories; deleting a non-empty directory and its contents requires 'rm -r'."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the directory olddir together with all of its files and subdirectories.",
+      "answers": ["rm -r olddir", "rm -rf olddir", "rm -fr olddir"],
+      "show": "rm -r olddir",
+      "why": "-r deletes a directory recursively; -f additionally suppresses the confirmation prompt."
+    },
+    {
+      "type": "mcq",
+      "q": "On a Red Hat / Rocky system, why does plain 'rm file' ask for confirmation when the manual says rm does not?",
+      "options": [
+        "Because rm is aliased to 'rm -i' on these distributions",
+        "Because rm always asks on every Linux",
+        "Because the file is owned by root",
+        "Because -f is the default option"
+      ],
+      "answer": 0,
+      "why": "On Red Hat/Rocky, rm is an alias for 'rm -i', so it prompts; other distributions such as Debian give no prompt by default."
+    },
+    {
+      "type": "cmd",
+      "q": "Rename the file draft to final in the current directory.",
+      "answers": ["mv draft final"],
+      "show": "mv draft final",
+      "why": "mv both moves and renames; with two names in the same directory it renames draft to final."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy the directory /home/rockstar and everything inside it into /tmp.",
+      "answers": ["cp -r /home/rockstar /tmp", "cp -R /home/rockstar /tmp"],
+      "show": "cp -r /home/rockstar /tmp",
+      "why": "cp copies files; -r is required to copy a directory along with its files and subdirectories."
+    },
+    {
+      "type": "mcq",
+      "q": "Which cp option keeps the original owner, permissions and timestamp on the copy?",
+      "options": [
+        "-p",
+        "-r",
+        "-f",
+        "-s"
+      ],
+      "answer": 0,
+      "why": "-p preserves owner, permissions and timestamp; -s would instead create a symbolic link rather than a copy."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.2 General commands (pp. 31-38)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Search the manual page descriptions for every entry mentioning the keyword 'clear'.",
+      "answers": ["apropos clear", "man -k clear"],
+      "show": "apropos clear",
+      "why": "apropos searches by keyword within the manual pages; 'man -k' is the equivalent option form."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the one-line description of the 'clear' command only (not a keyword search).",
+      "answers": ["whatis clear", "man -f clear"],
+      "show": "whatis clear",
+      "why": "whatis prints the short description of the command passed as its argument; 'man -f' is equivalent."
+    },
+    {
+      "type": "cmd",
+      "q": "Open the manual page for the passwd command.",
+      "answers": ["man passwd"],
+      "show": "man passwd",
+      "why": "'man' reads the manual; with no section number it defaults to section 1, telling you about the passwd command and its options."
+    },
+    {
+      "type": "cmd",
+      "q": "Open the manual for the passwd FILE FORMAT (the /etc/passwd file), i.e. section 5, not the command.",
+      "answers": ["man 5 passwd"],
+      "show": "man 5 passwd",
+      "why": "Section 5 is 'File formats and conventions'; 'man 5 passwd' documents the file rather than the section-1 command of the same name."
+    },
+    {
+      "type": "mcq",
+      "q": "If you run 'man passwd' with no section number, which manual section is searched by default?",
+      "options": [
+        "Section 1 (executable programs or commands)",
+        "Section 5 (file formats and conventions)",
+        "Section 8 (system administration commands)",
+        "Section 2 (system calls)"
+      ],
+      "answer": 0,
+      "why": "The default section is 1. You can read a section's overview with 'man x intro' where x is the section number."
+    },
+    {
+      "type": "cmd",
+      "q": "Shut the system down electronically and immediately (force an immediate halt).",
+      "answers": ["shutdown -h now"],
+      "show": "shutdown -h now",
+      "why": "-h halts (shuts down electronically); 'now' in place of a time forces an immediate stop and sends no message to other users."
+    },
+    {
+      "type": "cmd",
+      "q": "Reboot the system in five minutes' time.",
+      "answers": ["shutdown -r +5"],
+      "show": "shutdown -r +5",
+      "why": "-r restarts; '+mm' schedules the action after that many minutes (an exact clock time would be given as hh:mm)."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the history of commands you have entered.",
+      "answers": ["history"],
+      "show": "history",
+      "why": "history lists previously entered commands; they are stored in the .bash_history file in your login directory."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the command history of the current session (without emptying the .bash_history file).",
+      "answers": ["history -c"],
+      "show": "history -c",
+      "why": "-c clears the current session's history in memory; -w would instead write the current history out to the history file."
+    },
+    {
+      "type": "mcq",
+      "q": "At the prompt, what does typing '!!' do?",
+      "options": [
+        "Recalls and runs the last command entered",
+        "Clears the history",
+        "Recalls the command by its number",
+        "Recalls the most recent command beginning with '!'"
+      ],
+      "answer": 0,
+      "why": "!! recalls the last command; !N recalls command number N, and !string recalls the most recent command beginning with that string."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key completes a command, path or file name, showing the options when pressed twice?",
+      "options": [
+        "The Tab key",
+        "The Enter key",
+        "Ctrl+C",
+        "The Space key"
+      ],
+      "answer": 0,
+      "why": "Tab completes when there is one solution; pressed a second time it lists the multiple possibilities. No list on a double Tab means there is no completion."
+    }
+  ]
+}

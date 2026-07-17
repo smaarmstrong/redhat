@@ -1,0 +1,8 @@
+{
+  "title": "Redirects and pipes: stdin, stdout, stderr, > >> < 2> | ",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.7 (pp. 60-64)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

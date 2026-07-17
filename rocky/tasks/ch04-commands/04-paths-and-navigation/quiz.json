@@ -1,0 +1,82 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.4 File Tree, pwd and cd (pp. 40-44)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In the Linux file tree, what is the root of the single hierarchical tree?",
+      "options": [
+        "The / directory",
+        "The /root directory",
+        "The /home directory",
+        "The C: drive"
+      ],
+      "answer": 0,
+      "why": "Linux uses one inverted tree whose root is the directory '/'; there are no separate drive letters."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between an absolute and a relative path?",
+      "options": [
+        "An absolute path starts from the root /; a relative path starts from the current directory",
+        "An absolute path starts from the current directory; a relative path starts from /",
+        "An absolute path may only point at directories; a relative path only at files",
+        "There is no difference; they are two names for the same thing"
+      ],
+      "answer": 0,
+      "why": "Absolute paths traverse from / (current directory irrelevant); relative paths traverse from wherever you currently are."
+    },
+    {
+      "type": "mcq",
+      "q": "Every directory, even an empty one, contains at least two references. What are '.' and '..'?",
+      "options": [
+        "'.' is the directory itself; '..' is its parent directory",
+        "'.' is the parent; '..' is the directory itself",
+        "'.' is the root; '..' is the home directory",
+        "'.' is a hidden file; '..' is a symbolic link"
+      ],
+      "answer": 0,
+      "why": "'.' refers to the directory itself and '..' to its parent; a relative path can begin with ./ or ../."
+    },
+    {
+      "type": "mcq",
+      "q": "The current directory is /home/groupA/bob. What relative path reaches /home/groupA/alice/myfile?",
+      "options": [
+        "../alice/myfile",
+        "./alice/myfile",
+        "/alice/myfile",
+        "alice/../myfile"
+      ],
+      "answer": 0,
+      "why": "From bob you go up one level with '..' into groupA, then down into alice to myfile: ../alice/myfile."
+    },
+    {
+      "type": "cmd",
+      "q": "Print the absolute path of the current directory.",
+      "answers": ["pwd"],
+      "show": "pwd",
+      "why": "pwd (Print Working Directory) shows the absolute path of where you currently are."
+    },
+    {
+      "type": "cmd",
+      "q": "Change the current directory to /tmp.",
+      "answers": ["cd /tmp"],
+      "show": "cd /tmp",
+      "why": "cd (Change Directory) moves you through the tree; here to the absolute path /tmp."
+    },
+    {
+      "type": "cmd",
+      "q": "Move up one level, into the parent of the current directory.",
+      "answers": ["cd ..", "cd ../"],
+      "show": "cd ..",
+      "why": "'..' is the parent directory, so 'cd ..' moves one level up the tree."
+    },
+    {
+      "type": "cmd",
+      "q": "Return to your own home directory, typing as little as possible.",
+      "answers": ["cd"],
+      "show": "cd",
+      "why": "cd with no argument returns you to your login (home) directory."
+    }
+  ]
+}

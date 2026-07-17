@@ -1,0 +1,8 @@
+{
+  "title": "Managing files: mkdir, touch, rmdir, rm, mv, cp",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.4.4-4.4.9 (pp. 45-50)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

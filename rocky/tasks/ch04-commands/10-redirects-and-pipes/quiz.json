@@ -1,0 +1,89 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.7 Redirects and pipes (pp. 60-64)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which channel numbers correspond to the three standard streams?",
+      "options": [
+        "0 = stdin (keyboard), 1 = stdout (screen), 2 = stderr (errors)",
+        "0 = stdout, 1 = stderr, 2 = stdin",
+        "1 = stdin, 2 = stdout, 3 = stderr",
+        "0 = stderr, 1 = stdin, 2 = stdout"
+      ],
+      "answer": 0,
+      "why": "stdin is channel 0 (keyboard by default), stdout channel 1 and stderr channel 2 (both the screen by default)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between > and >> for output redirection?",
+      "options": [
+        "> overwrites the file's contents; >> appends to them",
+        "> appends; >> overwrites",
+        "> writes to the screen; >> writes to a file",
+        "There is no difference"
+      ],
+      "answer": 0,
+      "why": "A single > overwrites the target (creating it if needed); >> appends. Both create the file if it does not exist."
+    },
+    {
+      "type": "cmd",
+      "q": "Write the output of 'date +%F' into the file date_file, replacing any existing contents.",
+      "answers": ["date +%F > date_file"],
+      "show": "date +%F > date_file",
+      "why": "A single > overwrites date_file with the command's standard output."
+    },
+    {
+      "type": "cmd",
+      "q": "APPEND the output of 'date +%F' to the end of date_file without erasing it.",
+      "answers": ["date +%F >> date_file"],
+      "show": "date +%F >> date_file",
+      "why": ">> appends the standard output to the file's existing content."
+    },
+    {
+      "type": "cmd",
+      "q": "Run 'ls -R /' and send only its ERROR output to the file errors_file (overwriting it).",
+      "answers": ["ls -R / 2> errors_file"],
+      "show": "ls -R / 2> errors_file",
+      "why": "The error stream is channel 2, so '2>' redirects stderr; '2>>' would append instead."
+    },
+    {
+      "type": "mcq",
+      "q": "What does '2>&1' do, as in 'ls -R / >> log_file 2>&1'?",
+      "options": [
+        "Redirects the error stream (2) to the same place as standard output (1)",
+        "Redirects standard output to the error stream",
+        "Runs the command twice",
+        "Sends errors to channel 21"
+      ],
+      "answer": 0,
+      "why": "2>&1 points stderr at wherever stdout is currently going, so both streams land in the one file."
+    },
+    {
+      "type": "cmd",
+      "q": "Run 'ls -R /' and discard its error output entirely by sending it to the 'bottomless pit' /dev/null (appending).",
+      "answers": ["ls -R / 2>> /dev/null", "ls -R / 2> /dev/null"],
+      "show": "ls -R / 2>> /dev/null",
+      "why": "/dev/null discards anything written to it; redirecting stderr there silences a command's errors."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a pipe (the | symbol) do?",
+      "options": [
+        "Connects the standard output of one command to the standard input of the next",
+        "Redirects standard output to a file",
+        "Runs two commands in parallel with no connection",
+        "Suppresses all output"
+      ],
+      "answer": 0,
+      "why": "A pipe feeds the left command's stdout into the right command's stdin; the commands after a pipe are typically filters (head, tail, sort, grep, wc)."
+    },
+    {
+      "type": "cmd",
+      "q": "List '/' in long format and pipe the result through 'head' to see only the beginning.",
+      "answers": ["ls -lia / | head", "ls -la / | head", "ls -l / | head"],
+      "show": "ls -lia / | head",
+      "why": "The pipe sends ls's output to head, which shows just the first lines."
+    }
+  ]
+}

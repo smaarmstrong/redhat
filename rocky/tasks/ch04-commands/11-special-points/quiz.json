@@ -1,0 +1,82 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.8 Special Points (pp. 64-68)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the tee command do?",
+      "options": [
+        "Sends a command's output to a file AND keeps it displayed on screen",
+        "Splits a file into two halves",
+        "Redirects errors to /dev/null",
+        "Renames a file"
+      ],
+      "answer": 0,
+      "why": "tee, combined with a pipe, writes the incoming output to a file while still showing it on screen; -a appends instead of overwriting."
+    },
+    {
+      "type": "cmd",
+      "q": "List '/' in long format and, using tee, save the output to the file fic while still showing it on screen.",
+      "answers": ["ls -lia / | tee fic", "ls -l / | tee fic", "ls -la / | tee fic"],
+      "show": "ls -lia / | tee fic",
+      "why": "The pipe feeds ls's output to tee, which both writes fic and prints to the terminal."
+    },
+    {
+      "type": "cmd",
+      "q": "List the aliases defined for the current shell session.",
+      "answers": ["alias"],
+      "show": "alias",
+      "why": "alias with no argument lists the current session's aliases (ls, ll, grep colouring, etc.)."
+    },
+    {
+      "type": "cmd",
+      "q": "Create an alias named ll that runs 'ls -l'.",
+      "answers": ["alias ll='ls -l'", "alias ll=\"ls -l\""],
+      "show": "alias ll='ls -l'",
+      "why": "alias name='command' defines a shortcut; it lasts only for the session unless saved to a config file."
+    },
+    {
+      "type": "mcq",
+      "q": "Where must an alias be defined to make it PERMANENT?",
+      "options": [
+        "In ~/.bashrc for one user, or /etc/bashrc for all users",
+        "In /etc/passwd",
+        "In /dev/null",
+        "Nowhere - aliases are always permanent"
+      ],
+      "answer": 0,
+      "why": "Session aliases vanish at logout; put them in .bashrc (per user) or /etc/bashrc (all users) to persist them."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the single alias named ll.",
+      "answers": ["unalias ll"],
+      "show": "unalias ll",
+      "why": "unalias removes an alias; 'unalias -a' would remove them all."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you run a command ONCE while ignoring its alias, without deleting the alias?",
+      "options": [
+        "Prefix it with a backslash, e.g. \\ls",
+        "Prefix it with a dot, e.g. .ls",
+        "Suffix it with an ampersand, e.g. ls&",
+        "Type it in capitals, e.g. LS"
+      ],
+      "answer": 0,
+      "why": "A leading backslash (\\ls) disables the alias for that one invocation, running the real command."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'ls /; cd /home; ls -lia; cd /', what does the ; character do?",
+      "options": [
+        "It strings the commands so they run sequentially, in order, on one line",
+        "It runs the commands in parallel",
+        "It pipes each command's output to the next",
+        "It comments out the rest of the line"
+      ],
+      "answer": 0,
+      "why": "The ; separator chains commands to run one after another in the order entered when you press Enter."
+    }
+  ]
+}

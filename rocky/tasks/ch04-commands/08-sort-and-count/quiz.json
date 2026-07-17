@@ -1,0 +1,82 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.5.8-4.5.9 sort and wc (pp. 54-57)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Sort the lines of the file colours.txt and print them in order.",
+      "answers": ["sort colours.txt"],
+      "show": "sort colours.txt",
+      "why": "sort orders the lines of a file on screen; the file itself is not modified."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does sort need the -n option for numeric data?",
+      "options": [
+        "Without it, numbers are sorted as characters, so '110' comes before '20'",
+        "Without it, sort refuses to run on numbers",
+        "-n reverses the numeric order",
+        "-n removes duplicate numbers"
+      ],
+      "answer": 0,
+      "why": "By default sort compares character by character, so '110' precedes '20'; -n compares the blocks by numeric value."
+    },
+    {
+      "type": "mcq",
+      "q": "Which sort option reverses the order of the result (e.g. largest first when combined with -n)?",
+      "options": [
+        "-r",
+        "-u",
+        "-o",
+        "-t"
+      ],
+      "answer": 0,
+      "why": "-r reverses the order; combined with -n it sorts from largest to smallest."
+    },
+    {
+      "type": "cmd",
+      "q": "Sort colours.txt and remove duplicate lines in one command.",
+      "answers": ["sort -u colours.txt"],
+      "show": "sort -u colours.txt",
+      "why": "-u removes duplicates after sorting - equivalent to piping 'sort FILE | uniq'."
+    },
+    {
+      "type": "cmd",
+      "q": "Sort the file size.txt by human-readable file sizes (like 1.7G, 18M, 69K), largest first.",
+      "answers": ["sort -hr size.txt", "sort -h -r size.txt"],
+      "show": "sort -hr size.txt",
+      "why": "-h understands the human-readable size suffixes produced by 'ls -h'; -r puts the largest first."
+    },
+    {
+      "type": "mcq",
+      "q": "The plain 'sort file' does not change the file. How do you save the sorted result?",
+      "options": [
+        "Use -o file, or redirect the output with >",
+        "sort always overwrites the file in place",
+        "Use the -s option",
+        "You cannot save a sorted result"
+      ],
+      "answer": 0,
+      "why": "sort only prints to the screen; -o writes to a named file, as does an output redirection with >."
+    },
+    {
+      "type": "cmd",
+      "q": "Count the number of lines in the file .bash_profile.",
+      "answers": ["wc -l .bash_profile"],
+      "show": "wc -l .bash_profile",
+      "why": "wc -l counts lines; wc alone reports lines, words and bytes together."
+    },
+    {
+      "type": "mcq",
+      "q": "In wc, which option counts words and which counts bytes?",
+      "options": [
+        "-w counts words; -c counts bytes",
+        "-w counts bytes; -c counts words",
+        "-l counts words; -m counts bytes",
+        "-w counts characters; -m counts words"
+      ],
+      "answer": 0,
+      "why": "wc: -l lines, -w words, -c bytes, -m characters."
+    }
+  ]
+}

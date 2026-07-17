@@ -1,0 +1,91 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.3 Display and Identification (pp. 38-40)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Clear the terminal screen.",
+      "answers": ["clear"],
+      "show": "clear",
+      "why": "clear shifts the display so the prompt sits at the top; Ctrl+L has the same effect."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key sequence has the same effect as the 'clear' command?",
+      "options": [
+        "Ctrl+L",
+        "Ctrl+C",
+        "Ctrl+D",
+        "Ctrl+Z"
+      ],
+      "answer": 0,
+      "why": "Ctrl+L clears the screen just like clear; Ctrl+C interrupts the running command instead."
+    },
+    {
+      "type": "cmd",
+      "q": "Print the text 123 to the screen WITHOUT a trailing newline.",
+      "answers": ["echo -n 123", "echo -n \"123\""],
+      "show": "echo -n \"123\"",
+      "why": "echo prints a string and adds a newline by default; the -n option suppresses that trailing newline."
+    },
+    {
+      "type": "mcq",
+      "q": "Which echo option interprets backslash sequences such as \\n (newline) and \\t (tab)?",
+      "options": [
+        "-e",
+        "-n",
+        "-t",
+        "-b"
+      ],
+      "answer": 0,
+      "why": "-e enables interpretation of escape sequences (\\n line break, \\t horizontal tab, \\a beep, ...); -n only removes the trailing newline."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the current date and time.",
+      "answers": ["date"],
+      "show": "date",
+      "why": "date with no arguments prints the current date and time (its format depends on the $LANG environment variable)."
+    },
+    {
+      "type": "cmd",
+      "q": "Display today's date in YYYY-MM-DD format using a date format string.",
+      "answers": ["date +%F"],
+      "show": "date +%F",
+      "why": "+%F is the shorthand format for a YYYY-MM-DD date; format specifiers are introduced with a leading '+'."
+    },
+    {
+      "type": "mcq",
+      "q": "Which date option is used to CHANGE the system date and time?",
+      "options": [
+        "-s",
+        "-d",
+        "-t",
+        "-F"
+      ],
+      "answer": 0,
+      "why": "date -s \"yyyy-MM-dd hh:mm[:ss]\" sets the clock; -d merely displays a given date without changing the system."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the UID, GID and groups of the user 'rockstar'.",
+      "answers": ["id rockstar"],
+      "show": "id rockstar",
+      "why": "id shows user and group information; with no argument it reports the current user, with a name it reports that user."
+    },
+    {
+      "type": "cmd",
+      "q": "Print just the login name of the current user.",
+      "answers": ["whoami"],
+      "show": "whoami",
+      "why": "whoami displays the login of the current user; 'who' instead lists all logged-in users and their terminals."
+    },
+    {
+      "type": "cmd",
+      "q": "List the users currently logged in, with their terminals and login times.",
+      "answers": ["who"],
+      "show": "who",
+      "why": "who lists logged-in users (tty = physical terminal, pts = virtual console); its -r option also shows the runlevel."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.6 Search (pp. 57-60)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the difference in purpose between find and grep?",
+      "options": [
+        "find searches for files/directories; grep searches for a string inside a file",
+        "find searches inside files; grep searches for files",
+        "Both search file contents; find is just faster",
+        "Both list files; grep only works on directories"
+      ],
+      "answer": 0,
+      "why": "find locates files and directories; grep searches for a string within a file's contents."
+    },
+    {
+      "type": "cmd",
+      "q": "Search under /home for files whose name matches test* (starting from /home).",
+      "answers": ["find /home -name \"test*\"", "find /home -name test*"],
+      "show": "find /home -name \"test*\"",
+      "why": "find searches the given directory tree; -name matches by file name. If no directory is given it searches from the current directory."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'find /tmp -name \"*.txt\" -exec rm -f {} \\;', what do {} and \\; mean?",
+      "options": [
+        "{} is replaced by each result; \\; ends the -exec command (the ; is escaped so the shell does not grab it)",
+        "{} is an empty set; \\; starts a comment",
+        "{} groups the options; \\; is a line continuation",
+        "{} is the current directory; \\; runs the command in the background"
+      ],
+      "answer": 0,
+      "why": "find substitutes each matching path for {} and runs the command once per result; the ; terminates -exec and must be escaped as \\; so the shell does not interpret it first."
+    },
+    {
+      "type": "cmd",
+      "q": "Using find's own delete action, remove every *.txt file under /tmp.",
+      "answers": ["find /tmp -name \"*.txt\" -delete", "find /tmp -name *.txt -delete"],
+      "show": "find /tmp -name \"*.txt\" -delete",
+      "why": "-delete does the same job as '-exec rm -f {} \\;' but is built into find."
+    },
+    {
+      "type": "cmd",
+      "q": "Find only the BINARY file associated with the command ls.",
+      "answers": ["whereis -b ls"],
+      "show": "whereis -b ls",
+      "why": "whereis locates files related to a command; -b restricts it to the binary (-m for man pages, -s for source)."
+    },
+    {
+      "type": "cmd",
+      "q": "Search /etc/passwd for lines containing the exact word 'root:'.",
+      "answers": ["grep \"root:\" /etc/passwd", "grep root: /etc/passwd", "grep -w \"root:\" /etc/passwd"],
+      "show": "grep \"root:\" /etc/passwd",
+      "why": "grep returns the whole line containing the string; -w would restrict the match to a whole word."
+    },
+    {
+      "type": "mcq",
+      "q": "In grep, what do the -i and -v options do?",
+      "options": [
+        "-i ignores case; -v excludes (inverts) lines containing the string",
+        "-i includes case; -v shows only matching words",
+        "-i searches inodes; -v shows the version",
+        "-i is interactive; -v is verbose"
+      ],
+      "answer": 0,
+      "why": "-i ignores case, -v shows the lines that do NOT contain the string, -w matches whole words."
+    },
+    {
+      "type": "cmd",
+      "q": "List the lines of /etc/passwd that START with 'root' (anchored to the beginning of the line).",
+      "answers": ["grep \"^root\" /etc/passwd", "grep ^root /etc/passwd", "grep -w \"^root\" /etc/passwd"],
+      "show": "grep \"^root\" /etc/passwd",
+      "why": "The ^ anchor matches the start of a line; $ would anchor to the end."
+    },
+    {
+      "type": "mcq",
+      "q": "Among the SHELL wildcards, what do *, ? and [ ] match?",
+      "options": [
+        "* any string (or none), ? exactly one character, [ ] one character from the listed set",
+        "* one character, ? any string, [ ] a range only",
+        "* a digit, ? a letter, [ ] any file",
+        "All three match exactly one character"
+      ],
+      "answer": 0,
+      "why": "* stands for any string including empty, ? for a single character, [123] for one character among those listed. Quote wildcards so the shell does not expand them, and don't confuse them with grep's regular-expression meta-characters."
+    }
+  ]
+}
