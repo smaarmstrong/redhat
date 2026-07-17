@@ -1,0 +1,90 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 12.5 symbols and execution (pp. 216-217)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do the crontab time symbols *, -, , and / mean?",
+      "options": [
+        "* = all values, - = a continuous range, , = a discontinuous list, / = an interval (step)",
+        "* = none, - = subtract, , = decimal, / = divide",
+        "* = range, - = all, , = step, / = list",
+        "They are all interchangeable"
+      ],
+      "answer": 0,
+      "why": "* every value, - a continuous range (11-16), , a discrete list (11,16), / a step interval (*/10)."
+    },
+    {
+      "type": "mcq",
+      "q": "When does '00 11,16 * * * /root/scripts/script' run?",
+      "options": [
+        "At 11:00 and at 16:00, every day",
+        "Every minute between 11:00 and 16:00",
+        "Once at 11:16 daily",
+        "Every 11 and 16 minutes"
+      ],
+      "answer": 0,
+      "why": "The comma list 11,16 in the hour field means it runs at both 11:00 and 16:00 each day."
+    },
+    {
+      "type": "mcq",
+      "q": "When does '00 11-16 * * * /root/scripts/script' run?",
+      "options": [
+        "Once an hour, on the hour, from 11:00 to 16:00 every day",
+        "Only at 11:00 and 16:00",
+        "Every minute from 11 to 16",
+        "On days 11 to 16 of the month"
+      ],
+      "answer": 0,
+      "why": "The range 11-16 in the hour field (minute 00) fires on the hour every hour from 11:00 through 16:00."
+    },
+    {
+      "type": "mcq",
+      "q": "What does '*/10 8-17 * * 1-5 /root/scripts/script' schedule?",
+      "options": [
+        "Every 10 minutes, from 08:00 to 17:00, Monday to Friday",
+        "At 10 past every hour, all week",
+        "Every 10 hours on weekdays",
+        "Once at 08:10 on weekends"
+      ],
+      "answer": 0,
+      "why": "*/10 = every 10 minutes, 8-17 = the working hours, 1-5 = Monday to Friday (day-of-week)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the @daily shortcut do?",
+      "options": [
+        "Runs the command daily just after midnight",
+        "Runs the command every hour",
+        "Runs the command once at reboot",
+        "Runs the command every Sunday"
+      ],
+      "answer": 0,
+      "why": "@daily runs just after midnight each day; @weekly is every Sunday after midnight, @monthly the 1st, @annually 1 January."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the @reboot shortcut do?",
+      "options": [
+        "Runs a command when the system reboots (starts up)",
+        "Reboots the system every hour",
+        "Runs a command just before shutdown",
+        "Runs a command every minute"
+      ],
+      "answer": 0,
+      "why": "@reboot schedules the command to run at system startup."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the crond daemon process scheduled tasks?",
+      "options": [
+        "It reads all users' task files every minute, runs due tasks, and writes events to /var/log/cron",
+        "It reads tasks only at boot and logs to /etc/cron",
+        "It runs tasks every second and logs to the terminal",
+        "It waits for the user to trigger each task manually"
+      ],
+      "answer": 0,
+      "why": "crond reads the schedule files every minute, runs whatever is due, and logs events/messages to /var/log/cron."
+    }
+  ]
+}

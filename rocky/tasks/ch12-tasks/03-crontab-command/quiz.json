@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 12.4 The crontab command (pp. 213-214)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where is a user's schedule file stored when they create scheduled tasks?",
+      "options": [
+        "Under /var/spool/cron/ (named after the user)",
+        "In /etc/crontab",
+        "In the user's home directory",
+        "In /var/log/cron"
+      ],
+      "answer": 0,
+      "why": "Each user's tasks live in /var/spool/cron/<user>; crond reads these files (the minimum recognised unit is 1 minute)."
+    },
+    {
+      "type": "cmd",
+      "q": "Edit your own crontab (schedule) file.",
+      "answers": ["crontab -e"],
+      "show": "crontab -e",
+      "why": "crontab -e opens your schedule file in vi for editing."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the contents of your crontab file.",
+      "answers": ["crontab -l"],
+      "show": "crontab -l",
+      "why": "crontab -l lists your scheduled entries without editing them."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete your crontab file.",
+      "answers": ["crontab -r"],
+      "show": "crontab -r",
+      "why": "crontab -r removes the schedule file entirely."
+    },
+    {
+      "type": "cmd",
+      "q": "As root, edit the crontab of the user user1.",
+      "answers": ["crontab -u user1 -e", "sudo crontab -u user1 -e"],
+      "show": "crontab -u user1 -e",
+      "why": "-u names another user's schedule file; only root may use -u."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is running 'crontab' with NO options dangerous?",
+      "options": [
+        "It deletes the old schedule file and waits for new input (you must press Ctrl+D to exit)",
+        "It reboots the system",
+        "It lists every user's crontab",
+        "It disables cron entirely"
+      ],
+      "answer": 0,
+      "why": "Bare crontab discards the existing file and reads new lines from stdin until Ctrl+D - easy to wipe your schedule by mistake (use -e)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is a requirement for a program scheduled via crontab?",
+      "options": [
+        "It must be autonomous and provide its own redirections (stdin/stdout/stderr) - not rely on terminal I/O",
+        "It must print to the current terminal",
+        "It must wait for keyboard input",
+        "It must be restarted after each run"
+      ],
+      "answer": 0,
+      "why": "Scheduled jobs run unattended, so the program must be autonomous with redirected I/O; interactive terminal commands are unsuitable."
+    }
+  ]
+}

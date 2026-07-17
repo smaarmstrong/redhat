@@ -1,0 +1,56 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 12.1-12.2 cron basics (pp. 210-211)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the cron utility used for?",
+      "options": [
+        "The periodic (scheduled) execution of tasks",
+        "Compressing files",
+        "Managing user passwords",
+        "Partitioning disks"
+      ],
+      "answer": 0,
+      "why": "cron schedules the periodic execution of tasks (backups, monitoring, repetitive admin jobs); you interact with it through crontab."
+    },
+    {
+      "type": "mcq",
+      "q": "Who may use cron?",
+      "options": [
+        "Administrators for system tasks, and normal users for tasks/scripts they have access to (subject to permission)",
+        "Only root",
+        "Only normal users",
+        "Anyone, with no restrictions ever"
+      ],
+      "answer": 0,
+      "why": "cron is used by admins for system tasks and by normal users for their own, controlled by the cron.allow/cron.deny permission files."
+    },
+    {
+      "type": "mcq",
+      "q": "Which daemon runs the cron service in memory?",
+      "options": [
+        "crond",
+        "systemd-cron",
+        "atd",
+        "cronjobd"
+      ],
+      "answer": 0,
+      "why": "The crond daemon runs the cron service; if it is not running, scheduled tasks will not launch."
+    },
+    {
+      "type": "cmd",
+      "q": "Check the status of the crond service.",
+      "answers": ["systemctl status crond", "systemctl status crond.service"],
+      "show": "systemctl status crond",
+      "why": "systemctl status crond shows whether the cron daemon is running."
+    },
+    {
+      "type": "cmd",
+      "q": "Enable the crond daemon so it starts automatically at boot.",
+      "answers": ["systemctl enable crond", "sudo systemctl enable crond", "systemctl enable crond.service"],
+      "show": "systemctl enable crond",
+      "why": "Enabling crond ensures the scheduler is running after a reboot, so scheduled tasks actually fire."
+    }
+  ]
+}
