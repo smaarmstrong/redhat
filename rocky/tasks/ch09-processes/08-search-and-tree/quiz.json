@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.6.9-9.6.11 pgrep/pkill/killall/pstree (pp. 167-169)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the pgrep command do?",
+      "options": [
+        "Searches running processes by name and prints the matching PIDs",
+        "Sends a signal to processes by name",
+        "Greps inside a process's memory",
+        "Displays the process tree"
+      ],
+      "answer": 0,
+      "why": "pgrep finds processes by name and outputs their PIDs; pkill goes further and signals them."
+    },
+    {
+      "type": "cmd",
+      "q": "Find the PID(s) of the sshd process(es) owned by root.",
+      "answers": ["pgrep -u root sshd"],
+      "show": "pgrep -u root sshd",
+      "why": "pgrep -u root sshd returns the PIDs of root's sshd processes."
+    },
+    {
+      "type": "cmd",
+      "q": "Send the default signal to all processes named tomcat (by name).",
+      "answers": ["pkill tomcat"],
+      "show": "pkill tomcat",
+      "why": "pkill signals every process matching the name; killall tomcat does the same job."
+    },
+    {
+      "type": "mcq",
+      "q": "What signal do pkill and killall send by default?",
+      "options": [
+        "SIGTERM (15)",
+        "SIGKILL (9)",
+        "SIGSTOP (19)",
+        "SIGINT (2)"
+      ],
+      "answer": 0,
+      "why": "Both default to SIGTERM; you can specify another, e.g. pkill -9."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'pkill -t pts/1' do?",
+      "options": [
+        "Ends the connection session attached to terminal pts/1",
+        "Kills process number 1",
+        "Sends SIGKILL to all processes",
+        "Lists processes on pts/1"
+      ],
+      "answer": 0,
+      "why": "pkill -t targets processes by terminal, so it can end a user's session on that tty."
+    },
+    {
+      "type": "cmd",
+      "q": "Kill all processes named tomcat using killall.",
+      "answers": ["killall tomcat"],
+      "show": "killall tomcat",
+      "why": "killall <name> signals all matching processes (default SIGTERM); -i asks for confirmation, -l lists signal names."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the process tree with each process's PID shown.",
+      "answers": ["pstree -p"],
+      "show": "pstree -p",
+      "why": "pstree -p adds the PID to each process in the tree; -n sorts by PID, -u shows uid transitions."
+    }
+  ]
+}

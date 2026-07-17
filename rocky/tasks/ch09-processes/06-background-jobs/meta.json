@@ -1,0 +1,8 @@
+{
+  "title": "Background jobs: nohup, Ctrl+z, &, fg, bg, jobs",
+  "domain": "Ch 9 - Process Management",
+  "objective": "Rocky Linux Admin Guide, ch. 9.6.2-9.6.6 (pp. 163-165)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

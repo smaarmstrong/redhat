@@ -1,0 +1,54 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.3-9.4 types and permissions (pp. 160-161)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What characterises a system process (daemon)?",
+      "options": [
+        "It is started by the system, associated with no terminal, owned by a system user (often root), and waits in memory for a call",
+        "It is always started from a user's terminal",
+        "It only runs when a user logs in",
+        "It has no owner"
+      ],
+      "answer": 0,
+      "why": "A daemon is launched by the system, tied to no terminal, owned by a system user (often root), loaded at boot and waiting in memory."
+    },
+    {
+      "type": "mcq",
+      "q": "How is a daemon usually recognised by its name, and what does 'daemon' stand for?",
+      "options": [
+        "By a trailing 'd' (e.g. sshd, crond); Disk And Execution MONitor",
+        "By a leading 'sys'; System Daemon",
+        "By an uppercase name; Dedicated Autonomous Entity MONitor",
+        "By a '.service' suffix; Data Access MONitor"
+      ],
+      "answer": 0,
+      "why": "Daemons typically end in 'd' (sshd, crond); the term stands for Disk And Execution MONitor."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, what are a process's real UID and GID?",
+      "options": [
+        "The same as the real UID/GID of the user who executed the command",
+        "Always 0 (root)",
+        "Always the file owner's",
+        "Randomly assigned"
+      ],
+      "answer": 0,
+      "why": "Normally the process's real UID/GID equal those of the user who ran the command."
+    },
+    {
+      "type": "mcq",
+      "q": "What changes when a command has the SUID bit set?",
+      "options": [
+        "The process's EFFECTIVE UID becomes the command owner's, not the user's - so effective and real UIDs differ",
+        "The command can no longer be run",
+        "The real UID becomes 0",
+        "Nothing changes about identity"
+      ],
+      "answer": 0,
+      "why": "SUID (or SGID) makes the effective UID (or GID) that of the command's owner; the system checks access by the EFFECTIVE identifiers."
+    }
+  ]
+}

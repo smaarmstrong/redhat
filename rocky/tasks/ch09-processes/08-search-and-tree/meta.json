@@ -1,0 +1,8 @@
+{
+  "title": "Finding and signalling processes: pgrep, pkill, killall, pstree",
+  "domain": "Ch 9 - Process Management",
+  "objective": "Rocky Linux Admin Guide, ch. 9.6.9-9.6.11 (pp. 167-169)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}
