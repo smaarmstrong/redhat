@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1 IP addressing (pp. 220-222)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In a subnet mask, which bits mark the network part and which the host part of an address?",
+      "options": [
+        "The consecutive 1s mark the network bits; the consecutive 0s mark the host bits",
+        "The 0s are the network bits; the 1s are the host bits",
+        "The first byte is always the network; the rest is host",
+        "There is no relationship between mask bits and network/host"
+      ],
+      "answer": 0,
+      "why": "The subnet mask's leading 1s define the network bits and its trailing 0s define the host bits."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the CIDR notation 192.168.1.10/24 mean?",
+      "options": [
+        "The first 24 bits are the network part (mask 255.255.255.0)",
+        "There are 24 usable hosts",
+        "The address is on VLAN 24",
+        "The 24th host on the network"
+      ],
+      "answer": 0,
+      "why": "/24 means 24 network bits, i.e. the mask 255.255.255.0."
+    },
+    {
+      "type": "mcq",
+      "q": "How is the network address (NetID) of a host obtained?",
+      "options": [
+        "By a bitwise logical AND between the IP address and the subnet mask",
+        "By adding the IP and the mask",
+        "By a logical OR between the IP and the mask",
+        "By reversing the IP address"
+      ],
+      "answer": 0,
+      "why": "NetID = IP AND mask; e.g. 192.168.1.10 AND 255.255.255.0 = 192.168.1.0."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you get the broadcast address of a network?",
+      "options": [
+        "Keep the network bits unchanged and set all host bits to 1",
+        "Set all bits to 1",
+        "Keep the host bits and zero the network bits",
+        "Add 1 to the network address"
+      ],
+      "answer": 0,
+      "why": "The broadcast address keeps the network bits and turns every host bit to 1 (e.g. 192.168.1.255 for 192.168.1.10/24)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two addresses in a range have special roles and cannot be assigned to a host?",
+      "options": [
+        "The first (network address) and the last (broadcast address)",
+        "The first two addresses",
+        "The last two addresses",
+        "Only the broadcast address"
+      ],
+      "answer": 0,
+      "why": "The first address is the network address and the last is the broadcast address; neither can be given to a terminal machine."
+    },
+    {
+      "type": "mcq",
+      "q": "What makes a subnet mask 'legitimate'?",
+      "options": [
+        "Its 1s are consecutive from left to right (e.g. 11111111.11111111.11111111.00000000)",
+        "It contains an equal number of 1s and 0s",
+        "It starts with a 0",
+        "Any pattern of bits is valid"
+      ],
+      "answer": 0,
+      "why": "A legitimate mask has its 1 bits contiguous from the left; a pattern like 11001001... is illegitimate."
+    }
+  ]
+}

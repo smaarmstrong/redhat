@@ -1,0 +1,8 @@
+{
+  "title": "DNS concepts: hostname, domain, FQDN, hierarchy",
+  "domain": "Ch 13 - Implementing the Network",
+  "objective": "Rocky Linux Admin Guide, ch. 13.1.4 (pp. 234-235)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

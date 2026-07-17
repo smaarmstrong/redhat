@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 13.1.4 DNS (pp. 234-235)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does DNS do?",
+      "options": [
+        "Translates (resolves) human-friendly domain names into IP addresses",
+        "Assigns IP addresses via leases",
+        "Encrypts network traffic",
+        "Routes packets between networks"
+      ],
+      "answer": 0,
+      "why": "DNS (Domain Name System) maps hostnames/domain names to IP addresses; the translation is called domain name resolution."
+    },
+    {
+      "type": "mcq",
+      "q": "For docs.rockylinux.org, what is 'docs' and what is 'rockylinux.org'?",
+      "options": [
+        "'docs' is the hostname; 'rockylinux.org' is the domain",
+        "'docs' is the domain; 'rockylinux.org' is the hostname",
+        "Both are hostnames",
+        "'docs' is the TLD"
+      ],
+      "answer": 0,
+      "why": "The hostname identifies the device (docs) while rockylinux.org is the domain; a domain does not represent a specific host."
+    },
+    {
+      "type": "mcq",
+      "q": "What is an FQDN?",
+      "options": [
+        "A Fully Qualified Domain Name - the complete name of a host plus all domain levels (e.g. docs.rockylinux.org.)",
+        "A DNS server address",
+        "A firewall rule name",
+        "A subnet mask in words"
+      ],
+      "answer": 0,
+      "why": "The FQDN is the full hostname-plus-domains name; per RFC the trailing root dot is standard (docs.rockylinux.org.)."
+    },
+    {
+      "type": "mcq",
+      "q": "In docs.rockylinux.org., what is the root domain?",
+      "options": [
+        "The trailing dot (.)",
+        "org",
+        "rockylinux",
+        "docs"
+      ],
+      "answer": 0,
+      "why": "The root domain is the final dot; org is the first-level (TLD), rockylinux the second-level, docs the hostname."
+    },
+    {
+      "type": "mcq",
+      "q": "How many canonical root-server endpoints are there, and how are they realised physically?",
+      "options": [
+        "13 logical endpoints (a-m.root-servers.net), implemented by 1,500+ anycast instances worldwide",
+        "Exactly 13 physical servers, one per continent",
+        "One server run by ICANN",
+        "256 servers, one per network class"
+      ],
+      "answer": 0,
+      "why": "There are 13 logical root endpoints (a through m) but they are served by over 1,500 anycast instances run by 13 organisations."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a DNS 'zone'?",
+      "options": [
+        "A contiguous portion of the DNS namespace managed by an authoritative server, holding its resolution records (A, MX, ...)",
+        "A physical data centre",
+        "A range of IP addresses",
+        "A firewall segment"
+      ],
+      "answer": 0,
+      "why": "A zone is the slice of the namespace an authoritative server manages, storing the FQDN records within that scope."
+    }
+  ]
+}
