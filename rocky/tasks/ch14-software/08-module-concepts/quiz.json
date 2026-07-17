@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.5-14.5.2 module concepts (pp. 270-273)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do Application (Module) Streams let a repository do in RL 8.x/9.x?",
+      "options": [
+        "Host multiple versions of an application and its dependencies, so you can pick a specific version",
+        "Compress packages more efficiently",
+        "Stream package downloads over the network",
+        "Replace the RPM database"
+      ],
+      "answer": 0,
+      "why": "Modular Application Streams let a repo offer several versions (streams) of an app, giving admins version flexibility."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a module 'stream'?",
+      "options": [
+        "A specific version of the application within a module",
+        "A network connection to the repo",
+        "A group of unrelated packages",
+        "The GPG key of the module"
+      ],
+      "answer": 0,
+      "why": "A module can contain multiple streams (versions) of the same application; after enabling a module you can use only one stream."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a module 'profile'?",
+      "options": [
+        "A set of packages bundled for a specific usage scenario (e.g. common, minimal, server)",
+        "A user account for the module",
+        "The module's changelog",
+        "The repository ID"
+      ],
+      "answer": 0,
+      "why": "A profile is a named package set for a use case; a stream can have several profiles (or none)."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'dnf module list' output, what does the [d] marker mean?",
+      "options": [
+        "It marks the default stream (or default profile)",
+        "It marks a disabled module",
+        "It marks an installed module",
+        "It marks a downloaded module"
+      ],
+      "answer": 0,
+      "why": "[d] is the default stream/profile; the hints are [d]efault, [e]nabled, [x]disabled, [i]nstalled."
+    },
+    {
+      "type": "mcq",
+      "q": "How do RL 8.x/9.x differ from RL 10.x regarding Application Streams?",
+      "options": [
+        "RL 8/9 provide them in modular form (dnf module works); RL 10 is non-modular (dnf module no longer works)",
+        "RL 10 is modular; RL 8/9 are not",
+        "Neither version has Application Streams",
+        "They behave identically"
+      ],
+      "answer": 0,
+      "why": "RL 8/9 use Module Streams via dnf module; from RL 10, Application Streams are non-modular and dnf module is gone."
+    }
+  ]
+}

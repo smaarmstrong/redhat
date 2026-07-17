@@ -1,0 +1,8 @@
+{
+  "title": "Managing modules with dnf module",
+  "domain": "Ch 14 - Software Management",
+  "objective": "Rocky Linux Admin Guide, ch. 14.5.3 (pp. 274-280)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

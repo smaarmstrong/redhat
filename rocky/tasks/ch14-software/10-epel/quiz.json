@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.6 Using the EPEL repository (pp. 281-282)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is EPEL?",
+      "options": [
+        "Extra Packages for Enterprise Linux - a free community repo (Fedora SIG) of additional packages for RHEL/Rocky/CentOS",
+        "The default Rocky Linux base repository",
+        "A commercial Red Hat subscription repo",
+        "A package compression format"
+      ],
+      "answer": 0,
+      "why": "EPEL (Extra Packages for Enterprise Linux) is a Fedora-community repo providing extra packages built from Fedora sources for RHEL-family systems."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the EPEL repository configuration.",
+      "answers": ["dnf install epel-release", "sudo dnf install epel-release", "dnf -y install epel-release", "sudo dnf -y install epel-release"],
+      "show": "sudo dnf install epel-release",
+      "why": "The epel-release package sets up the EPEL repo."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the epel-release package actually contain?",
+      "options": [
+        "Only the repository configuration files and the GPG key - no executables or libraries",
+        "All EPEL software packages",
+        "A copy of Fedora",
+        "The dnf command itself"
+      ],
+      "answer": 0,
+      "why": "epel-release just adds the .repo configuration and GPG key; the actual software is then pulled from the EPEL repo."
+    },
+    {
+      "type": "mcq",
+      "q": "Is EPEL commercially supported by Red Hat?",
+      "options": [
+        "No - it is a volunteer Fedora-community project with no Red Hat SLA or support contract",
+        "Yes - it is fully supported under RHEL subscriptions",
+        "Yes - but only on Rocky Linux",
+        "Only the GPG keys are supported"
+      ],
+      "answer": 0,
+      "why": "Red Hat hosts infrastructure and engineers help maintain it, but there are no commercial support contracts or SLAs for EPEL packages."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the package nmon from the EPEL repository ONLY, disabling all other repos.",
+      "answers": ["dnf --disablerepo=\"*\" --enablerepo=\"epel\" install nmon", "sudo dnf --disablerepo=\"*\" --enablerepo=\"epel\" install nmon", "dnf --disablerepo=* --enablerepo=epel install nmon"],
+      "show": "sudo dnf --disablerepo=\"*\" --enablerepo=\"epel\" install nmon",
+      "why": "--disablerepo turns off all repos and --enablerepo re-enables just epel, so the package comes from EPEL."
+    },
+    {
+      "type": "mcq",
+      "q": "Why might you need --disablerepo/--enablerepo when several repos are enabled?",
+      "options": [
+        "Because the same package can exist in multiple repos, and by default the newest version wins - this pins the source",
+        "Because dnf cannot read multiple repos otherwise",
+        "Because EPEL disables itself by default",
+        "Because it speeds up the download"
+      ],
+      "answer": 0,
+      "why": "With multiple repos, dnf defaults to the newest version; the enable/disable options force the package to come from a specific repo."
+    }
+  ]
+}

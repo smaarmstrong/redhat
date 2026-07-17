@@ -1,0 +1,8 @@
+{
+  "title": "rpm: install, upgrade, uninstall",
+  "domain": "Ch 14 - Software Management",
+  "objective": "Rocky Linux Admin Guide, ch. 14.3-14.3.1 (pp. 256-257)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

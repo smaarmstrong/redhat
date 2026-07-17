@@ -1,0 +1,8 @@
+{
+  "title": "More DNF commands: list, provides, repolist, download, clean",
+  "domain": "Ch 14 - Software Management",
+  "objective": "Rocky Linux Admin Guide, ch. 14.4.1 (pp. 263-267)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.1-14.2 package concepts (pp. 255-256)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are the two ways to install software on Linux?",
+      "options": [
+        "Install binary packages from a repository, or compile and install the source code package",
+        "Only compile from source",
+        "Only download binaries from a website",
+        "Copy the files manually or use FTP"
+      ],
+      "answer": 0,
+      "why": "You either install pre-built packages from a repository (preferred - dependencies are handled) or compile the source code package yourself."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the guide recommend installing from the repository rather than compiling source?",
+      "options": [
+        "The package management system resolves dependencies for you; resolving them by hand for a source build is hard",
+        "Compiling is impossible on Linux",
+        "Source packages contain viruses",
+        "Repositories are always faster to download"
+      ],
+      "answer": 0,
+      "why": "The package manager solves dependency issues automatically, which is difficult to do manually when compiling source."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a (binary) 'package'?",
+      "options": [
+        "Source files pre-compiled into executable machine code and bundled into a binary file of a specific format",
+        "A single human-readable code file",
+        "A compressed archive of documentation",
+        "A repository configuration file"
+      ],
+      "answer": 0,
+      "why": "In Linux, 'software package' means the binary package - source compiled into machine code and packaged in a defined format."
+    },
+    {
+      "type": "mcq",
+      "q": "What does RPM stand for, and which distributions use it?",
+      "options": [
+        "RedHat Package Manager - used by Rocky Linux, Fedora, CentOS, SUSE and other Red Hat-family distros (.rpm files)",
+        "Rapid Package Method - used only by Debian",
+        "Remote Program Manager - used by all Linux",
+        "Red Package Model - used by Ubuntu"
+      ],
+      "answer": 0,
+      "why": "RPM (RedHat Package Manager) is the Red Hat family's system, with .rpm packages; Debian and derivatives use DPKG and .deb."
+    },
+    {
+      "type": "mcq",
+      "q": "In the guide's terminology, what do 'RPM', 'rpm' and '.rpm' each refer to?",
+      "options": [
+        "RPM = the package management system; rpm = the command; .rpm = the package file suffix",
+        "They are three names for the same command",
+        "RPM = the file; rpm = the system; .rpm = the command",
+        "All three refer to the repository"
+      ],
+      "answer": 0,
+      "why": "Capital RPM is the system, lowercase rpm is the command, and .rpm is the file-format suffix."
+    }
+  ]
+}
