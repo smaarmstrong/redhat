@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.3-14.3.1 rpm install (pp. 256-257)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Install the package file tree-1.7.0-15.el8.x86_64.rpm, showing a progress bar and progress info.",
+      "answers": ["rpm -ivh tree-1.7.0-15.el8.x86_64.rpm", "sudo rpm -ivh tree-1.7.0-15.el8.x86_64.rpm"],
+      "show": "rpm -ivh tree-1.7.0-15.el8.x86_64.rpm",
+      "why": "-i installs, -v is verbose, -h shows the hash progress bar; installing a new package uses the Full Package Name."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the -h and -v options add to an rpm operation?",
+      "options": [
+        "-h shows a progress bar (hashes); -v gives verbose progress info",
+        "-h is help; -v is version",
+        "-h halts; -v verifies",
+        "They do nothing for install"
+      ],
+      "answer": 0,
+      "why": "-h prints a hash-mark progress bar and -v reports progress verbosely."
+    },
+    {
+      "type": "cmd",
+      "q": "Upgrade an already-installed package using the file wget-1.19.5-12.el8_10.x86_64.rpm (with progress bar).",
+      "answers": ["rpm -Uvh wget-1.19.5-12.el8_10.x86_64.rpm", "sudo rpm -Uvh wget-1.19.5-12.el8_10.x86_64.rpm"],
+      "show": "rpm -Uvh wget-1.19.5-12.el8_10.x86_64.rpm",
+      "why": "-U updates an installed package (and installs it if absent); -vh adds verbose + progress bar."
+    },
+    {
+      "type": "cmd",
+      "q": "Uninstall the installed package 'tree'.",
+      "answers": ["rpm -e tree", "sudo rpm -e tree"],
+      "show": "rpm -e tree",
+      "why": "-e (erase) uninstalls; note it takes the Package Name, not the full file name."
+    },
+    {
+      "type": "mcq",
+      "q": "When do you use the Full Package Name versus the Package Name with rpm?",
+      "options": [
+        "Full Package Name for a not-yet-installed package (e.g. install); Package Name for an already-installed one",
+        "Always the Full Package Name",
+        "Always the Package Name",
+        "Full name for query only"
+      ],
+      "answer": 0,
+      "why": "Installing a new package uses the full file name; operating on an installed package uses the Package Name (rpm reads /var/lib/rpm)."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does rpm store information about installed packages?",
+      "options": [
+        "In the /var/lib/rpm/ database directory",
+        "In /etc/yum.repos.d/",
+        "In /var/log/rpm",
+        "In the package files themselves"
+      ],
+      "answer": 0,
+      "why": "The RPM database lives in /var/lib/rpm/, which is why installed packages can be referenced by short name."
+    },
+    {
+      "type": "mcq",
+      "q": "How does rpm handle dependencies, and what happens if one is missing?",
+      "options": [
+        "It does NOT resolve them automatically; a missing dependency gives a 'failed dependencies' error you must fix manually",
+        "It downloads and installs dependencies for you",
+        "It ignores dependencies entirely",
+        "It removes the conflicting package"
+      ],
+      "answer": 0,
+      "why": "rpm is a local manager, so you resolve dependencies yourself (e.g. rpm -ivh a.rpm b.rpm c.rpm); dnf is what resolves them automatically."
+    }
+  ]
+}

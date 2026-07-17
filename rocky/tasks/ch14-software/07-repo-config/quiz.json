@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.4.2 repository configuration (pp. 268-269)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where are the repository configuration files stored, and what is their extension?",
+      "options": [
+        "In /etc/yum.repos.d/, ending in .repo",
+        "In /etc/dnf/, ending in .conf",
+        "In /var/lib/rpm/, ending in .repo",
+        "In /etc/repos/, ending in .cfg"
+      ],
+      "answer": 0,
+      "why": "Repo definitions live in /etc/yum.repos.d/ as .repo files; each may hold one or more repositories."
+    },
+    {
+      "type": "mcq",
+      "q": "In a .repo definition, what is the text inside the square brackets, e.g. [baseos]?",
+      "options": [
+        "The repository ID, which must be unique",
+        "The human-readable name",
+        "The mirror URL",
+        "A comment"
+      ],
+      "answer": 0,
+      "why": "The [ ] holds the repository ID (must be unique); the 'name' option gives the descriptive name."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the 'enabled' option control, and what is its default?",
+      "options": [
+        "Whether the repo is used as a package source; default is 1 (True)",
+        "Whether GPG checking is on; default 0",
+        "Whether the repo is a mirror; default 1",
+        "The repo priority; default 99"
+      ],
+      "answer": 0,
+      "why": "enabled=1 (the default) includes the repo as a source; set 0 to disable it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'gpgcheck' do, and what is its default value?",
+      "options": [
+        "Whether to GPG-signature-check packages from the repo; default is 0 (False)",
+        "Whether to enable the repo; default 1",
+        "Whether to count usage; default 1",
+        "The GPG key path"
+      ],
+      "answer": 0,
+      "why": "gpgcheck toggles signature checking (default 0/False); the gpgkey option gives the public key path."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between the 'baseurl' and 'mirrorlist' options?",
+      "options": [
+        "baseurl is a direct list of repo URLs; mirrorlist is a URL that returns a list of mirrors",
+        "baseurl is for GPG keys; mirrorlist is for packages",
+        "They are identical",
+        "baseurl disables the repo; mirrorlist enables it"
+      ],
+      "answer": 0,
+      "why": "baseurl points straight at the repo URL(s); mirrorlist points at a URL that hands back a list of mirrors (both support https/http/ftp/file/NFS and $variables)."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.4.1 more dnf commands (pp. 263-267)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "List the packages currently installed on the system with dnf.",
+      "answers": ["dnf list --installed", "sudo dnf list --installed"],
+      "show": "dnf list --installed",
+      "why": "dnf list --installed shows installed packages; plain 'dnf list' (=--all) lists everything available."
+    },
+    {
+      "type": "cmd",
+      "q": "Find which package provides the file /usr/bin/systemctl.",
+      "answers": ["dnf provides /usr/bin/systemctl", "sudo dnf provides /usr/bin/systemctl"],
+      "show": "dnf provides /usr/bin/systemctl",
+      "why": "dnf provides reports the package owning a given file (works even for not-installed packages, unlike rpm -qf)."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the enabled repositories.",
+      "answers": ["dnf repolist", "sudo dnf repolist"],
+      "show": "dnf repolist",
+      "why": "dnf repolist shows enabled repos by default; --all lists all, --disabled only disabled ones."
+    },
+    {
+      "type": "cmd",
+      "q": "Download the tree package to the current directory without installing it.",
+      "answers": ["dnf download tree", "sudo dnf download tree"],
+      "show": "dnf download tree",
+      "why": "dnf download fetches the package locally; --downloaddir/--destdir choose where to save it."
+    },
+    {
+      "type": "cmd",
+      "q": "Clean all of dnf's cached data.",
+      "answers": ["dnf clean all", "sudo dnf clean all"],
+      "show": "dnf clean all",
+      "why": "dnf clean all removes all temporary/cached files for enabled repositories."
+    },
+    {
+      "type": "mcq",
+      "q": "Which dnf command adds, enables or disables repositories from the command line?",
+      "options": [
+        "dnf config-manager (--add-repo / --set-enabled / --set-disabled)",
+        "dnf repolist",
+        "dnf makecache",
+        "dnf history"
+      ],
+      "answer": 0,
+      "why": "config-manager manages repos: --add-repo <URL>, --set-enabled <id>, --set-disabled <id>."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between 'dnf list --updates' and 'dnf list --available'?",
+      "options": [
+        "--updates shows packages you can upgrade; --available shows packages available to install",
+        "--updates shows installed packages; --available shows the cache",
+        "They are identical",
+        "--available shows only disabled repos"
+      ],
+      "answer": 0,
+      "why": "--updates lists upgradable packages; --available lists installable ones (--installed lists what's on the system)."
+    }
+  ]
+}

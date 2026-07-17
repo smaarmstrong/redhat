@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.3.2 Query package (pp. 258-259)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "List ALL installed rpm packages.",
+      "answers": ["rpm -qa", "sudo rpm -qa"],
+      "show": "rpm -qa",
+      "why": "-q queries and -a means all installed packages."
+    },
+    {
+      "type": "cmd",
+      "q": "Show detailed information about the installed package bash.",
+      "answers": ["rpm -qi bash"],
+      "show": "rpm -qi bash",
+      "why": "-qi queries the info of an installed package."
+    },
+    {
+      "type": "cmd",
+      "q": "List the files installed by the package bash.",
+      "answers": ["rpm -ql bash"],
+      "show": "rpm -ql bash",
+      "why": "-ql lists the files a package released onto the system."
+    },
+    {
+      "type": "cmd",
+      "q": "Find out which package owns the file /usr/bin/bash.",
+      "answers": ["rpm -qf /usr/bin/bash"],
+      "show": "rpm -qf /usr/bin/bash",
+      "why": "-qf queries the package that a given installed file belongs to."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -R option (with -q) show?",
+      "options": [
+        "The dependencies of a package (add -p to query an uninstalled .rpm file's dependencies)",
+        "The removal date",
+        "The repository name",
+        "The file checksums"
+      ],
+      "answer": 0,
+      "why": "-qR lists dependencies; combined with -p (e.g. rpm -qRp file.rpm) it queries a not-yet-installed package file."
+    },
+    {
+      "type": "mcq",
+      "q": "What does adding -p to a query (e.g. rpm -qip file.rpm) do?",
+      "options": [
+        "Queries an UNINSTALLED package file rather than the installed database",
+        "Prints the package to the screen",
+        "Purges the package",
+        "Queries by priority"
+      ],
+      "answer": 0,
+      "why": "-p targets a package file on disk (uninstalled), so rpm -qip/-qlp inspect a .rpm before installing it."
+    },
+    {
+      "type": "cmd",
+      "q": "List all installed packages whose name starts with 'dbus' (wildcards aren't allowed in rpm, so filter with grep).",
+      "answers": ["rpm -qa | grep ^dbus", "rpm -qa | grep '^dbus'"],
+      "show": "rpm -qa | grep ^dbus",
+      "why": "rpm queries need a deterministic name, so pipe rpm -qa through grep to match a pattern."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "rpm: querying packages",
+  "domain": "Ch 14 - Software Management",
+  "objective": "Rocky Linux Admin Guide, ch. 14.3.2 (pp. 258-259)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

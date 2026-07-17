@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.4-14.4.1 DNF basics (pp. 261-263)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is DNF, and what does it succeed?",
+      "options": [
+        "Dandified Yum - the successor to YUM (Yellow dog Updater Modified)",
+        "Debian Network Fetcher, successor to apt",
+        "Dynamic Node Framework, successor to rpm",
+        "Data Name Finder, successor to DNS"
+      ],
+      "answer": 0,
+      "why": "DNF (Dandified Yum) is the successor of YUM and the default package manager on Red Hat-family distros."
+    },
+    {
+      "type": "mcq",
+      "q": "What is DNF's equivalent in the Debian world?",
+      "options": [
+        "apt (Advanced Packaging Tool)",
+        "rpm",
+        "dpkg-query",
+        "yum"
+      ],
+      "answer": 0,
+      "why": "Red Hat distros use dnf; Debian-family distros use apt."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the packages wget and tree from the repository, answering yes automatically.",
+      "answers": ["dnf -y install wget tree", "sudo dnf -y install wget tree", "dnf install -y wget tree"],
+      "show": "dnf -y install wget tree",
+      "why": "dnf install pulls from the repository (resolving dependencies); -y auto-answers yes."
+    },
+    {
+      "type": "cmd",
+      "q": "Search the repositories for packages matching 'vim'.",
+      "answers": ["dnf search vim", "sudo dnf search vim"],
+      "show": "dnf search vim",
+      "why": "dnf search finds packages in the repository matching the given string."
+    },
+    {
+      "type": "cmd",
+      "q": "Upgrade all upgradable packages on the system, answering yes automatically.",
+      "answers": ["dnf update -y", "dnf -y update", "sudo dnf update -y", "dnf upgrade -y", "dnf -y upgrade"],
+      "show": "dnf update -y",
+      "why": "dnf update (or upgrade) upgrades packages; with no package name it upgrades everything upgradable."
+    },
+    {
+      "type": "cmd",
+      "q": "Automatically remove packages that were installed as dependencies but are no longer needed.",
+      "answers": ["dnf -y autoremove", "sudo dnf -y autoremove", "dnf autoremove -y"],
+      "show": "dnf -y autoremove",
+      "why": "dnf autoremove deletes now-unused dependency packages."
+    },
+    {
+      "type": "mcq",
+      "q": "How does dnf handle dependencies compared with rpm?",
+      "options": [
+        "dnf resolves and installs dependencies automatically from the repository; rpm does not",
+        "Neither resolves dependencies",
+        "rpm resolves them; dnf does not",
+        "They behave identically"
+      ],
+      "answer": 0,
+      "why": "dnf interacts with repositories and resolves dependencies automatically, unlike the local-only rpm."
+    }
+  ]
+}

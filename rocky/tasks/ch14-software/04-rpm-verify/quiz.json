@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 14.3.3-14.3.4 verify signature and files (pp. 259-261)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Verify the signature of the downloaded package file wget-1.19.5-12.el8_10.x86_64.rpm.",
+      "answers": ["rpm -K wget-1.19.5-12.el8_10.x86_64.rpm", "sudo rpm -K wget-1.19.5-12.el8_10.x86_64.rpm"],
+      "show": "rpm -K wget-1.19.5-12.el8_10.x86_64.rpm",
+      "why": "rpm -K checks the package signature; a good result prints 'digests signatures OK', a bad one 'DIGESTS SIGNATURES NOT OK'."
+    },
+    {
+      "type": "mcq",
+      "q": "Why verify a package's signature, and what must be done first?",
+      "options": [
+        "To confirm the package is intact and untampered; you must import the required public key first",
+        "To compress the package",
+        "To speed up installation",
+        "To register the package with the vendor"
+      ],
+      "answer": 0,
+      "why": "Signature verification proves the package wasn't tampered with; the corresponding public key must be imported beforehand (usually by the admin)."
+    },
+    {
+      "type": "mcq",
+      "q": "If a package fails signature verification (NOT OK), what should you do?",
+      "options": [
+        "Do not continue to use/install the package",
+        "Install it anyway with --force",
+        "Re-download and install without checking",
+        "Edit the package to fix it"
+      ],
+      "answer": 0,
+      "why": "A failed verification means the package may be tampered with - you should not use it."
+    },
+    {
+      "type": "cmd",
+      "q": "Check whether the files installed by the chrony package have changed since installation.",
+      "answers": ["rpm -V chrony", "sudo rpm -V chrony"],
+      "show": "rpm -V chrony",
+      "why": "rpm -V compares installed files against the values recorded in the RPM database; a '.' means that check passed."
+    },
+    {
+      "type": "mcq",
+      "q": "In rpm -V output, what do the characters 'S', '5' and 'T' indicate when they appear (e.g. 'S.5....T.')?",
+      "options": [
+        "S = file size changed, 5 = MD5 checksum changed, T = modification time (mtime) changed",
+        "S = signature, 5 = five files, T = type",
+        "S = symlink, 5 = permissions, T = timestamp of access",
+        "They are always dots and mean nothing"
+      ],
+      "answer": 0,
+      "why": "The 9-field column flags changes: S size, M mode/perms, 5 MD5, D device, L link, U owner, G group, T mtime, P capabilities."
+    },
+    {
+      "type": "mcq",
+      "q": "In rpm -V output, what does a 'c' in the second column mean (e.g. 'S.5....T.  c /etc/chrony.conf')?",
+      "options": [
+        "The file is a configuration file",
+        "The file was created today",
+        "The check was cancelled",
+        "The file is compressed"
+      ],
+      "answer": 0,
+      "why": "The second column is the file type: c config, d documentation, g ghost, l license, r readme."
+    }
+  ]
+}
