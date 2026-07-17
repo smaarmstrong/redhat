@@ -1,0 +1,109 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.6 Check your Knowledge (pp. 26-27)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "An operating system is a set of programs for managing the available resources of a computer.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "why": "The chapter's core definition, verbatim."
+    },
+    {
+      "type": "mcq",
+      "q": "The operating system is necessary to... which pair is actually on the OS's job list?",
+      "options": [
+        "Manage physical and virtual memory, and collect information about the programs used or in use",
+        "Allow direct access to peripherals, and manage memory",
+        "Subcontract the management of tasks to the processor, and collect information",
+        "Allow direct access to peripherals, and subcontract task management to the processor"
+      ],
+      "answer": 0,
+      "why": "Two traps from the guide's own quiz: the OS INTERCEPTS access to peripherals (software rarely touches hardware directly), and the OS itself schedules processes - it does not subcontract task management to the processor."
+    },
+    {
+      "type": "mcq",
+      "q": "Among these personalities, which ones participated in the development of UNIX?",
+      "options": [
+        "Ken Thompson and Brian Kernighan",
+        "Linus Torvalds and Ken Thompson",
+        "Andrew Stuart Tanenbaum and Brian Kernighan",
+        "Lionel Richie and Dennis Ritchie"
+      ],
+      "answer": 0,
+      "why": "Thompson and Ritchie began UNIX; Kernighan joined later. Torvalds created Linux, Tanenbaum MINIX. Lionel Richie sang 'Hello' - different Richie."
+    },
+    {
+      "type": "mcq",
+      "q": "The original nationality of Linus Torvalds, creator of the Linux kernel, is:",
+      "options": [
+        "Finnish",
+        "Swedish",
+        "Norwegian",
+        "Flemish",
+        "French"
+      ],
+      "answer": 0,
+      "why": "A Finnish student, per the 1991 history bullet."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of the following distributions is the oldest?",
+      "options": [
+        "Slackware",
+        "Debian",
+        "Red Hat",
+        "Arch"
+      ],
+      "answer": 0,
+      "why": "The chapter only dated Debian (1993), but Slackware shipped in July 1993, weeks before Debian was announced - the one option the chapter never taught. Red Hat 1994, Arch 2002."
+    },
+    {
+      "type": "mcq",
+      "q": "Is the Linux kernel multi-tasking, multi-user, multi-processor, multi-core, cross-platform, open?",
+      "options": [
+        "Yes - all of those",
+        "Multi-tasking and multi-user only",
+        "Everything except multi-core",
+        "Everything except open"
+      ],
+      "answer": 0,
+      "why": "Section 3.2.3: time-sharing multi-task, multi-user (from MULTICS), multi-processor or multi-core, multi-platform via C, and open (POSIX, TCP/IP, NFS, Samba)."
+    },
+    {
+      "type": "mcq",
+      "q": "Is free software necessarily open-source?",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "why": "Free software is necessarily open-source..."
+    },
+    {
+      "type": "mcq",
+      "q": "Is open-source software necessarily free?",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": 0,
+      "why": "...but the opposite is not true: open source means the source is available under conditions, distinct from the GPL's freedoms."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of the following is NOT a shell?",
+      "options": [
+        "The Jason-Bourne shell (jbsh)",
+        "The Bourne-Again shell (bash)",
+        "The C shell (csh)",
+        "The Korn shell (ksh)"
+      ],
+      "answer": 0,
+      "why": "The guide's own joke: Jason Bourne is a film franchise; Steve Bourne wrote the Bourne shell. bash, csh and ksh are real."
+    }
+  ]
+}
