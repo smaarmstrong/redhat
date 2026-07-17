@@ -1,0 +1,8 @@
+{
+  "title": "systemd targets (run levels)",
+  "domain": "Ch 11 - System Startup",
+  "objective": "Rocky Linux Admin Guide, ch. 11.3.3 (pp. 206-207)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

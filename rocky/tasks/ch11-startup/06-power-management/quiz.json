@@ -1,0 +1,46 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.3.3 Shutdown/suspend/hibernate (p. 207)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Turn off (power off) the system with systemctl.",
+      "answers": ["systemctl poweroff", "sudo systemctl poweroff"],
+      "show": "systemctl poweroff",
+      "why": "systemctl poweroff replaces the old poweroff command and turns the system off."
+    },
+    {
+      "type": "cmd",
+      "q": "Restart (reboot) the system with systemctl.",
+      "answers": ["systemctl reboot", "sudo systemctl reboot"],
+      "show": "systemctl reboot",
+      "why": "systemctl reboot replaces the old reboot command."
+    },
+    {
+      "type": "cmd",
+      "q": "Suspend the system (the systemctl replacement for pm-suspend).",
+      "answers": ["systemctl suspend", "sudo systemctl suspend"],
+      "show": "systemctl suspend",
+      "why": "systemctl suspend suspends the system (old pm-suspend)."
+    },
+    {
+      "type": "cmd",
+      "q": "Hibernate the system (the systemctl replacement for pm-hibernate).",
+      "answers": ["systemctl hibernate", "sudo systemctl hibernate"],
+      "show": "systemctl hibernate",
+      "why": "systemctl hibernate hibernates the system (old pm-hibernate)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which systemctl command both hibernates AND suspends the system (the old pm-suspend-hybrid)?",
+      "options": [
+        "systemctl hybrid-sleep",
+        "systemctl halt",
+        "systemctl suspend-then-hibernate",
+        "systemctl standby"
+      ],
+      "answer": 0,
+      "why": "systemctl hybrid-sleep both hibernates and suspends, replacing pm-suspend-hybrid."
+    }
+  ]
+}

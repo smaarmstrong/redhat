@@ -1,0 +1,8 @@
+{
+  "title": "The boot process: BIOS, MBR, GRUB2, kernel, systemd",
+  "domain": "Ch 11 - System Startup",
+  "objective": "Rocky Linux Admin Guide, ch. 11.1 (pp. 194-197)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

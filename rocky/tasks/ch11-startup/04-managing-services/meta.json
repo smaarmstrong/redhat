@@ -1,0 +1,8 @@
+{
+  "title": "Managing services with systemctl",
+  "domain": "Ch 11 - System Startup",
+  "objective": "Rocky Linux Admin Guide, ch. 11.3.1-11.3.2 (pp. 202-205)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

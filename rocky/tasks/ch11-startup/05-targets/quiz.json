@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.3.3 Using system targets (pp. 206-207)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do systemd targets replace, and what is their purpose?",
+      "options": [
+        "They replace SysV/Upstart run levels; a .target groups other units into a dependency chain",
+        "They replace the kernel",
+        "They replace service files",
+        "They replace the GRUB menu"
+      ],
+      "answer": 0,
+      "why": "Targets (.target units) replace run levels; their job is to group units so a set of services starts together."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the system's current default target.",
+      "answers": ["systemctl get-default"],
+      "show": "systemctl get-default",
+      "why": "get-default reports the target that /etc/systemd/system/default.target links to (e.g. graphical.target)."
+    },
+    {
+      "type": "cmd",
+      "q": "Set the default target to multi-user.target.",
+      "answers": ["systemctl set-default multi-user.target", "sudo systemctl set-default multi-user.target"],
+      "show": "systemctl set-default multi-user.target",
+      "why": "set-default repoints the default.target symlink so the system boots into that target."
+    },
+    {
+      "type": "cmd",
+      "q": "Switch to the multi-user.target in the CURRENT session (without rebooting).",
+      "answers": ["systemctl isolate multi-user.target", "sudo systemctl isolate multi-user.target"],
+      "show": "systemctl isolate multi-user.target",
+      "why": "isolate switches the running system to that target immediately."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between multi-user.target and graphical.target?",
+      "options": [
+        "multi-user is a multi-user system with NO graphical interface; graphical adds the GUI (and also activates multi-user.target)",
+        "multi-user has the GUI; graphical is text-only",
+        "They are identical",
+        "multi-user shuts the system down"
+      ],
+      "answer": 0,
+      "why": "multi-user.target is the text multi-user state; graphical.target starts the GUI on top of it (pulling in multi-user.target)."
+    },
+    {
+      "type": "mcq",
+      "q": "How do rescue mode and emergency mode differ?",
+      "options": [
+        "Rescue mounts local file systems and starts key services (needs root password); emergency is the most minimal - root FS read-only, no other mounts or network",
+        "Emergency is fuller than rescue",
+        "Rescue starts the network; emergency starts the GUI",
+        "They are the same"
+      ],
+      "answer": 0,
+      "why": "Rescue (the old single-user mode) mounts local FSes and needs the root password; emergency is even more minimal, mounting only root read-only."
+    },
+    {
+      "type": "cmd",
+      "q": "Switch the current session into rescue mode.",
+      "answers": ["systemctl rescue", "sudo systemctl rescue"],
+      "show": "systemctl rescue",
+      "why": "systemctl rescue changes the current target to rescue mode; systemctl emergency enters the more minimal emergency mode."
+    }
+  ]
+}

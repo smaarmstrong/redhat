@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.3.4-11.3.5 journald and journalctl (pp. 207-209)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What kinds of log messages does journald capture?",
+      "options": [
+        "Syslog messages, kernel messages, initramfs/startup logs, and the stdout/stderr of all services",
+        "Only kernel messages",
+        "Only the output of systemctl",
+        "Only failed login attempts"
+      ],
+      "answer": 0,
+      "why": "journald captures syslog, kernel, initramfs/startup logs and every service's standard output and error."
+    },
+    {
+      "type": "mcq",
+      "q": "In what format does journald store its logs?",
+      "options": [
+        "A binary, indexed, structured format (read with journalctl)",
+        "Plain text in /var/log/messages",
+        "Compressed CSV",
+        "XML"
+      ],
+      "answer": 0,
+      "why": "journald stores logs in an indexed binary format, which is why you need journalctl to read them."
+    },
+    {
+      "type": "mcq",
+      "q": "Does journald keep logs across reboots by default, and where are they stored?",
+      "options": [
+        "No - by default it is not persistent; logs sit in /run/log/journal/ and are lost on reboot",
+        "Yes - logs persist in /var/log/journal forever",
+        "Yes - logs are copied to /boot",
+        "No - logs are never stored anywhere"
+      ],
+      "answer": 0,
+      "why": "Persistence is off by default; logs live in /run/log/journal/ and disappear when the system restarts."
+    },
+    {
+      "type": "cmd",
+      "q": "View the system journal (all captured log entries).",
+      "answers": ["journalctl"],
+      "show": "journalctl",
+      "why": "journalctl with no options shows the log, similar to /var/log/messages but with priorities marked, local timestamps and rotated logs included."
+    },
+    {
+      "type": "cmd",
+      "q": "Follow the journal in real time (show the latest entries and keep displaying new ones).",
+      "answers": ["journalctl -f"],
+      "show": "journalctl -f",
+      "why": "journalctl -f prints the last ten lines then streams new entries as they arrive."
+    },
+    {
+      "type": "cmd",
+      "q": "Show only journal entries with priority 'err' (error) or higher.",
+      "answers": ["journalctl -p err", "journalctl -p 3"],
+      "show": "journalctl -p err",
+      "why": "journalctl -p <priority> filters by the given level and above; err can also be given as the number 3."
+    },
+    {
+      "type": "mcq",
+      "q": "In journalctl priorities, which numbers correspond to emerg and debug?",
+      "options": [
+        "emerg = 0 (most severe), debug = 7 (least severe)",
+        "emerg = 7, debug = 0",
+        "emerg = 1, debug = 8",
+        "They have no numbers"
+      ],
+      "answer": 0,
+      "why": "Priorities run emerg(0), alert(1), crit(2), err(3), warning(4), notice(5), info(6), debug(7)."
+    }
+  ]
+}

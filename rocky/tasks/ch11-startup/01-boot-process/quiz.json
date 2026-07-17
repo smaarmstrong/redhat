@@ -1,0 +1,85 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 11.1 The boot process (pp. 194-197)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the BIOS do at the very start of the boot process?",
+      "options": [
+        "Runs the POST to detect/test/initialise hardware, then loads the MBR",
+        "Loads systemd directly",
+        "Mounts the root file system",
+        "Starts the graphical interface"
+      ],
+      "answer": 0,
+      "why": "The BIOS performs the POST (power on self-test) then loads the MBR."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the MBR, and what does it do?",
+      "options": [
+        "The first 512 bytes of the boot disk; it finds the boot device and loads GRUB2 into memory",
+        "The kernel image",
+        "The systemd default target",
+        "The partition holding /boot"
+      ],
+      "answer": 0,
+      "why": "The Master Boot Record is the first 512 bytes of the boot disk; it loads the GRUB2 bootloader and hands over control (the next 64 bytes hold the partition table)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which GRUB2 file should you EDIT to change menu settings, and which is generated (and must not be edited directly)?",
+      "options": [
+        "Edit /etc/default/grub; /boot/grub2/grub.cfg is generated",
+        "Edit /boot/grub2/grub.cfg; /etc/default/grub is generated",
+        "Edit both by hand",
+        "Edit /etc/grub2.cfg only"
+      ],
+      "answer": 0,
+      "why": "You set options in /etc/default/grub; grub2-mkconfig uses them to generate /boot/grub2/grub.cfg, which you should not edit directly."
+    },
+    {
+      "type": "cmd",
+      "q": "Regenerate the GRUB2 configuration file after editing /etc/default/grub.",
+      "answers": ["grub2-mkconfig -o /boot/grub2/grub.cfg", "sudo grub2-mkconfig -o /boot/grub2/grub.cfg"],
+      "show": "grub2-mkconfig -o /boot/grub2/grub.cfg",
+      "why": "grub2-mkconfig -o <file> rebuilds grub.cfg from /etc/default/grub and /etc/grub.d/."
+    },
+    {
+      "type": "mcq",
+      "q": "What does GRUB2 load from /boot, and what does it do with the initramfs?",
+      "options": [
+        "It loads the compressed kernel (vmlinuz) into memory and extracts the initramfs into a tmpfs in memory",
+        "It loads /etc/fstab and mounts everything",
+        "It loads systemd and skips the kernel",
+        "It formats /boot"
+      ],
+      "answer": 0,
+      "why": "GRUB2 finds vmlinuz in /boot, loads the kernel, and extracts the initramfs image into a temporary tmpfs in memory."
+    },
+    {
+      "type": "mcq",
+      "q": "After the kernel loads, which process does it start, and with what PID?",
+      "options": [
+        "systemd, with PID 1",
+        "init, with PID 0",
+        "bash, with PID 1",
+        "grub2, with PID 2"
+      ],
+      "answer": 0,
+      "why": "The kernel starts systemd as PID 1, the parent of all system processes."
+    },
+    {
+      "type": "mcq",
+      "q": "How does systemd decide what state to bring the system into?",
+      "options": [
+        "By reading the target that /etc/systemd/system/default.target links to (e.g. multi-user.target)",
+        "By reading /etc/inittab",
+        "By scanning /boot for a runlevel file",
+        "By asking the BIOS"
+      ],
+      "answer": 0,
+      "why": "systemd follows the default.target symlink to find the default target, which defines the services to start."
+    }
+  ]
+}

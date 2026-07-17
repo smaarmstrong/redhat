@@ -1,0 +1,8 @@
+{
+  "title": "systemd concepts: units and features",
+  "domain": "Ch 11 - System Startup",
+  "objective": "Rocky Linux Admin Guide, ch. 11.3 (p. 201)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
