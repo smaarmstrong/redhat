@@ -1,0 +1,87 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.3.1-7.3.2 useradd (pp. 104-107)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create the user carine with UID 1000, primary group GID 1013, and home directory /home/GroupC/carine.",
+      "answers": ["sudo useradd -u 1000 -g 1013 -d /home/GroupC/carine carine", "useradd -u 1000 -g 1013 -d /home/GroupC/carine carine"],
+      "show": "sudo useradd -u 1000 -g 1013 -d /home/GroupC/carine carine",
+      "why": "-u sets the UID, -g the primary group, -d the home directory; the login name comes last."
+    },
+    {
+      "type": "cmd",
+      "q": "Create the user albert with primary group GroupA and supplementary groups GroupP and GroupC.",
+      "answers": ["sudo useradd -g GroupA -G GroupP,GroupC albert", "useradd -g GroupA -G GroupP,GroupC albert"],
+      "show": "sudo useradd -g GroupA -G GroupP,GroupC albert",
+      "why": "-g sets the primary group; -G takes a comma-separated list of supplementary groups."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the state of a freshly created account (useradd with no password step)?",
+      "options": [
+        "It has no password and is locked; the user must be given a password to unlock it",
+        "It is immediately usable with an empty password",
+        "It is enabled with a default password of 'password'",
+        "It is deleted after 24 hours if no password is set"
+      ],
+      "answer": 0,
+      "why": "At creation the account has no password and is locked (shadow shows !!); it stays unusable until a password is assigned."
+    },
+    {
+      "type": "mcq",
+      "q": "With no options, what does useradd set up by default for the new user?",
+      "options": [
+        "A home directory and a primary group both named after the user, and the /bin/bash shell, with an auto-assigned UID/GID",
+        "No home directory, and the /sbin/nologin shell",
+        "A shared /home directory and GID 0",
+        "A random shell chosen from /etc/shells"
+      ],
+      "answer": 0,
+      "why": "Defaults: a same-named home directory and primary group, /bin/bash, and a UID/GID auto-deduced (usually 1000-60000), read from /etc/login.defs and /etc/default/useradd."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -M option of useradd do?",
+      "options": [
+        "Creates the user WITHOUT a home directory",
+        "Creates a system account",
+        "Forces creation of the home directory",
+        "Adds the user to the wheel group"
+      ],
+      "answer": 0,
+      "why": "-M skips creating the home directory (whereas Debian's useradd needs -m to force one)."
+    },
+    {
+      "type": "mcq",
+      "q": "When useradd creates the home directory, what does it copy into it?",
+      "options": [
+        "The template files from /etc/skel (e.g. .bashrc, .bash_profile, .bash_logout)",
+        "The contents of /root",
+        "The whole of /etc",
+        "Nothing - the directory is left empty"
+      ],
+      "answer": 0,
+      "why": "useradd populates the new home directory with the skeleton files from /etc/skel."
+    },
+    {
+      "type": "cmd",
+      "q": "Set the DEFAULT primary group to 1000, base home directory to /home and default shell to /bin/bash for future user creation (edit /etc/default/useradd via useradd).",
+      "answers": ["sudo useradd -D -g 1000 -b /home -s /bin/bash", "useradd -D -g 1000 -b /home -s /bin/bash"],
+      "show": "sudo useradd -D -g 1000 -b /home -s /bin/bash",
+      "why": "useradd -D sets the defaults in /etc/default/useradd; -g default group, -b base directory, -s default shell."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the maximum length of a Linux user name, per the guide's naming rules?",
+      "options": [
+        "32 characters",
+        "8 characters",
+        "16 characters",
+        "There is no limit"
+      ],
+      "answer": 0,
+      "why": "User names may be up to 32 characters, using lowercase letters, numbers and underscores; avoid starting with a number and don't clash with an existing group."
+    }
+  ]
+}

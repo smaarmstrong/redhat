@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.2.4-7.2.5 /etc/group & /etc/gshadow (pp. 102-103)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In an /etc/group line 'GroupP:x:516:patrick', what are the four colon-separated fields?",
+      "options": [
+        "Group name : password marker (x) : GID : supplementary members",
+        "Group name : GID : password : primary user",
+        "GID : group name : members : password",
+        "Group name : UID : GID : shell"
+      ],
+      "answer": 0,
+      "why": "The fields are: group name, password placeholder (x - real password is in /etc/gshadow), GID, and the supplementary members."
+    },
+    {
+      "type": "mcq",
+      "q": "In /etc/group, where does the 'x' in the second field indicate the group password is really stored?",
+      "options": [
+        "In /etc/gshadow",
+        "In /etc/group itself",
+        "In /etc/passwd",
+        "In /etc/shadow"
+      ],
+      "answer": 0,
+      "why": "The x is a placeholder; the actual (encrypted) group password lives in /etc/gshadow."
+    },
+    {
+      "type": "mcq",
+      "q": "The last field of an /etc/group line lists which users?",
+      "options": [
+        "The supplementary members of the group (not the users for whom it is the primary group)",
+        "Every user on the system",
+        "Only the group administrator",
+        "The users for whom this is the primary group"
+      ],
+      "answer": 0,
+      "why": "Only supplementary members are listed here; primary-group membership is recorded in /etc/passwd."
+    },
+    {
+      "type": "mcq",
+      "q": "In an /etc/gshadow line 'GroupA:$6$...:alain:rockstar', what is the third field (alain)?",
+      "options": [
+        "The group administrator",
+        "The encrypted password",
+        "The GID",
+        "The primary user"
+      ],
+      "answer": 0,
+      "why": "The gshadow fields are: group name, encrypted password, group administrator, and supplementary members."
+    },
+    {
+      "type": "mcq",
+      "q": "What does an '!' in the password field of /etc/gshadow mean?",
+      "options": [
+        "The password is locked, so no one can use a password to access the group",
+        "The group is hidden",
+        "The group has no members",
+        "The group is a system group"
+      ],
+      "answer": 0,
+      "why": "A ! locks the group password; members don't need it anyway, so this is common."
+    },
+    {
+      "type": "mcq",
+      "q": "What must be true about /etc/group and /etc/gshadow?",
+      "options": [
+        "Each line in /etc/group must have a corresponding line in /etc/gshadow (names match one-to-one)",
+        "They are independent and need not match",
+        "gshadow may list groups that group does not",
+        "Only root groups need appear in both"
+      ],
+      "answer": 0,
+      "why": "The group names in /etc/group and /etc/gshadow must correspond one-to-one, line for line."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "The /etc/group and /etc/gshadow files",
+  "domain": "Ch 7 - User Management",
+  "objective": "Rocky Linux Admin Guide, ch. 7.2.4-7.2.5 (pp. 102-103)",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

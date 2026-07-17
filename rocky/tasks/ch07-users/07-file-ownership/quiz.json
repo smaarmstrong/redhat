@@ -1,0 +1,77 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.4 File owners (pp. 112-113)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Change only the OWNER of the file myfile to albert.",
+      "answers": ["sudo chown albert myfile", "chown albert myfile"],
+      "show": "sudo chown albert myfile",
+      "why": "chown <user> <file> changes just the owning user."
+    },
+    {
+      "type": "cmd",
+      "q": "Set the owner of myfile to albert AND the owner group to GroupA in one command.",
+      "answers": ["sudo chown albert:GroupA myfile", "chown albert:GroupA myfile"],
+      "show": "sudo chown albert:GroupA myfile",
+      "why": "chown user:group sets both the owner and the group at once."
+    },
+    {
+      "type": "cmd",
+      "q": "Change only the GROUP of the file 'file' to GroupA, using chown (leave the owner unchanged).",
+      "answers": ["sudo chown :GroupA file", "chown :GroupA file"],
+      "show": "sudo chown :GroupA file",
+      "why": "chown :group (a leading colon, no user) changes only the owning group."
+    },
+    {
+      "type": "mcq",
+      "q": "What group does 'chown albert: file' assign to the file?",
+      "options": [
+        "albert's primary group",
+        "No group (it is removed)",
+        "The root group",
+        "The group named 'albert'"
+      ],
+      "answer": 0,
+      "why": "With a trailing colon and no group name, chown uses the specified user's primary group."
+    },
+    {
+      "type": "cmd",
+      "q": "Recursively change the owner and group of everything under /dir1 to albert and GroupA.",
+      "answers": ["sudo chown -R albert:GroupA /dir1", "chown -R albert:GroupA /dir1"],
+      "show": "sudo chown -R albert:GroupA /dir1",
+      "why": "-R applies the change recursively to the directory and all files beneath it."
+    },
+    {
+      "type": "cmd",
+      "q": "Change the owner group of the file 'file' to group1 using the dedicated group command.",
+      "answers": ["sudo chgrp group1 file", "chgrp group1 file"],
+      "show": "sudo chgrp group1 file",
+      "why": "chgrp changes a file's group; it also takes -R for recursion and -v to show changes."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'chown --reference=/etc/group /etc/passwd' do?",
+      "options": [
+        "Sets /etc/passwd's owner and group to match those of /etc/group",
+        "Copies the contents of /etc/group into /etc/passwd",
+        "Compares the two files' ownership",
+        "Makes /etc/passwd a symbolic link to /etc/group"
+      ],
+      "answer": 0,
+      "why": "--reference=RFILE applies RFILE's owner and group to the target file, instead of naming them explicitly."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, which group owns a newly created file?",
+      "options": [
+        "The primary group of the user who created the file",
+        "The root group",
+        "No group until one is assigned",
+        "A random group"
+      ],
+      "answer": 0,
+      "why": "Every file belongs to one user and one group; by default the creating user's primary group owns it."
+    }
+  ]
+}

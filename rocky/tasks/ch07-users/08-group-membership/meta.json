@@ -1,0 +1,8 @@
+{
+  "title": "Group membership: gpasswd, id, newgrp",
+  "domain": "Ch 7 - User Management",
+  "objective": "Rocky Linux Admin Guide, ch. 7.5 (pp. 114-115)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

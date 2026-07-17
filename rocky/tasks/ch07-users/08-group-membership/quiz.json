@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.5 Guest management (pp. 114-115)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Add the user patrick to the group GroupA (as a supplementary group) using gpasswd.",
+      "answers": ["sudo gpasswd -a patrick GroupA", "gpasswd -a patrick GroupA"],
+      "show": "sudo gpasswd -a patrick GroupA",
+      "why": "gpasswd -a adds a user to a group as a supplementary member."
+    },
+    {
+      "type": "cmd",
+      "q": "Make alain an administrator of the group GroupA using gpasswd.",
+      "answers": ["sudo gpasswd -A alain GroupA", "gpasswd -A alain GroupA"],
+      "show": "sudo gpasswd -A alain GroupA",
+      "why": "gpasswd -A sets the list of administrative users for the group."
+    },
+    {
+      "type": "cmd",
+      "q": "Remove the user patrick from the group GroupA using gpasswd.",
+      "answers": ["sudo gpasswd -d patrick GroupA", "gpasswd -d patrick GroupA"],
+      "show": "sudo gpasswd -d patrick GroupA",
+      "why": "gpasswd -d removes a user from the group."
+    },
+    {
+      "type": "mcq",
+      "q": "How does 'gpasswd -M' behave compared with 'gpasswd -a'?",
+      "options": [
+        "-M SETS the entire member list (replacing it); -a ADDS a single user",
+        "-M adds one user; -a replaces the whole list",
+        "They are identical",
+        "-M removes members; -a adds them"
+      ],
+      "answer": 0,
+      "why": "gpasswd -M defines the complete membership list (a modification/overwrite), whereas -a appends one user."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the UID, primary group and supplementary groups of the user alain.",
+      "answers": ["id alain", "sudo id alain"],
+      "show": "id alain",
+      "why": "id shows a user's UID, primary GID and the groups they belong to."
+    },
+    {
+      "type": "cmd",
+      "q": "Temporarily switch your primary group to the supplementary group groupA (spawning a new child shell).",
+      "answers": ["newgrp groupA"],
+      "show": "newgrp groupA",
+      "why": "newgrp selects one of your supplementary groups as a temporary primary group; each switch starts a new child shell (exit returns you)."
+    },
+    {
+      "type": "mcq",
+      "q": "After 'newgrp groupA', files you create take which group, and what happens to the shell?",
+      "options": [
+        "New files get groupA as their group, and you are in a new child shell (SHLVL increases)",
+        "New files keep your old primary group, and no new shell is started",
+        "New files have no group",
+        "It logs you out"
+      ],
+      "answer": 0,
+      "why": "newgrp makes groupA the temporary primary group so new files belong to it, and it spawns a child shell (unlike su -, which does not)."
+    }
+  ]
+}

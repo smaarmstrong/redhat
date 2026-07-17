@@ -1,0 +1,97 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.7-7.8 config files & su (pp. 119-124)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How is the /etc/default/useradd file meant to be edited?",
+      "options": [
+        "With the useradd -D command (running useradd -D alone displays its contents)",
+        "By hand with a text editor only",
+        "With the groupmod command",
+        "It cannot be changed"
+      ],
+      "answer": 0,
+      "why": "useradd -D both displays and sets the defaults in /etc/default/useradd; the other config files (login.defs, skel) are edited by hand."
+    },
+    {
+      "type": "mcq",
+      "q": "In /etc/login.defs, UMASK 022 means a newly created FILE gets which permissions?",
+      "options": [
+        "rw-r--r-- (644) - the base 666 minus the mask, with no execute bit on new files",
+        "rwxr-xr-x (755)",
+        "rwxrwxrwx (777)",
+        "rw------- (600)"
+      ],
+      "answer": 0,
+      "why": "UMASK 022 would give 755 for directories, but new files never get the execute bit, so they come out 644 (rw-r--r--)."
+    },
+    {
+      "type": "mcq",
+      "q": "According to /etc/login.defs, which UID range is reserved for system (service) accounts?",
+      "options": [
+        "201 to 999 (SYS_UID_MIN..SYS_UID_MAX)",
+        "1000 to 60000",
+        "0 to 200",
+        "60001 and above"
+      ],
+      "answer": 0,
+      "why": "SYS_UID_MIN..SYS_UID_MAX is 201-999; regular users get UID_MIN..UID_MAX (1000-60000)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the /etc/skel directory used for?",
+      "options": [
+        "It holds template files (.bashrc, .bash_profile, .bash_logout) copied into each new user's home directory",
+        "It stores deleted users' files",
+        "It contains the system's skeleton kernel",
+        "It is where passwords are cached"
+      ],
+      "answer": 0,
+      "why": "Everything in /etc/skel is copied into a new user's home directory at creation, seeding their environment files."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does 'userdel -r' also delete the user's primary group?",
+      "options": [
+        "Because USERGROUPS_ENAB is set to yes in /etc/login.defs (private-group scheme)",
+        "Because groups are never kept",
+        "Because -r means 'remove groups'",
+        "It does not - the group is always kept"
+      ],
+      "answer": 0,
+      "why": "USERGROUPS_ENAB yes ties the same-named private primary group to the user, so removing the user removes that group too."
+    },
+    {
+      "type": "cmd",
+      "q": "Switch identity to the user alain, loading their complete environment.",
+      "answers": ["su - alain", "sudo su - alain"],
+      "show": "su - alain",
+      "why": "su - <login> switches user AND loads their full login environment (the dash is what does that)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the key difference between 'su root' and 'su - root'?",
+      "options": [
+        "'su -' loads the target user's full login environment (PWD, HOME, PATH...); plain 'su' keeps your current environment",
+        "'su -' does not ask for a password; 'su' does",
+        "'su' loads the environment; 'su -' does not",
+        "There is no difference"
+      ],
+      "answer": 0,
+      "why": "Without the dash, su keeps your existing environment (e.g. PWD and LOGNAME stay); with the dash it loads the target's complete environment - so don't forget the -."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -c option of su do, as in 'su - root -c \"passwd alain\"'?",
+      "options": [
+        "Runs the given command under the other user's identity, then returns",
+        "Copies the user's configuration files",
+        "Changes the user's password",
+        "Creates the user"
+      ],
+      "answer": 0,
+      "why": "su -c executes a single command as the target user without starting an interactive shell."
+    }
+  ]
+}
