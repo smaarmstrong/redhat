@@ -1,0 +1,8 @@
+{
+  "title": "Process types and permissions (daemons, SUID)",
+  "domain": "Ch 9 - Process Management",
+  "objective": "Rocky Linux Admin Guide, ch. 9.3-9.4 (pp. 160-161)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Process generalities: PID, PPID, fork, init",
+  "domain": "Ch 9 - Process Management",
+  "objective": "Rocky Linux Admin Guide, ch. 9.1 (p. 157)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

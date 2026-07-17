@@ -1,0 +1,8 @@
+{
+  "title": "Orphan and zombie processes; ps state codes",
+  "domain": "Ch 9 - Process Management",
+  "objective": "Rocky Linux Admin Guide, ch. 9.6.12 (pp. 170-171)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.6.12 orphan and zombie (pp. 170-171)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is an orphan process?",
+      "options": [
+        "A child whose parent has died; init adopts it and reaps it when it finishes",
+        "A process that never had a parent",
+        "A terminated process still in the process table",
+        "A process with no memory allocated"
+      ],
+      "answer": 0,
+      "why": "When a parent dies, its children become orphans and are adopted by init, which collects their status until they end. Orphans are harmless."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a zombie process?",
+      "options": [
+        "A child that has exited but whose parent never called wait()/waitpid() to reap its status",
+        "A process using 100% CPU",
+        "A process running without a terminal",
+        "A process that has been killed with SIGKILL"
+      ],
+      "answer": 0,
+      "why": "A zombie has finished but its parent hasn't retrieved its exit status, so it lingers in the process table."
+    },
+    {
+      "type": "mcq",
+      "q": "Why are zombie processes a problem?",
+      "options": [
+        "They occupy slots/resources in the process table, degrading performance and blocking creation of new processes",
+        "They consume all the CPU",
+        "They delete files at random",
+        "They are actually harmless, unlike orphans"
+      ],
+      "answer": 0,
+      "why": "Zombies hold entries in the process table; enough of them can hurt performance and prevent new processes being created."
+    },
+    {
+      "type": "mcq",
+      "q": "In ps output, which state code marks a zombie (defunct) process?",
+      "options": [
+        "Z",
+        "R",
+        "S",
+        "D"
+      ],
+      "answer": 0,
+      "why": "Z is a defunct (zombie) process; R is running/runnable, S interruptible sleep, D uninterruptible sleep, T stopped."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the ps state code 'D' mean?",
+      "options": [
+        "Uninterruptible sleep (usually waiting on I/O)",
+        "Dead process",
+        "Debugging",
+        "Disk-backed idle"
+      ],
+      "answer": 0,
+      "why": "D is uninterruptible sleep (typically I/O); the 'dead' state is X, which should never be seen."
+    }
+  ]
+}

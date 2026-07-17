@@ -1,0 +1,80 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.6.7-9.6.8 nice/renice/top (pp. 166-167)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Launch 'find / -name \"file\"' with a nice value of 5, using the guide's recommended form.",
+      "answers": ["nice -n 5 find / -name \"file\"", "nice -n 5 find / -name file"],
+      "show": "nice -n 5 find / -name \"file\"",
+      "why": "nice -n <value> <command> starts the command at that niceness; 'nice -n N' is the recommended, portable form."
+    },
+    {
+      "type": "mcq",
+      "q": "If you run 'nice' with a command but NO value option, what nice value is applied?",
+      "options": [
+        "10",
+        "0",
+        "-20",
+        "19"
+      ],
+      "answer": 0,
+      "why": "With no option, nice sets the value to 10; running 'nice' alone just prints the current shell's nice value."
+    },
+    {
+      "type": "mcq",
+      "q": "What are an ordinary (non-root) user's limits when setting niceness?",
+      "options": [
+        "They can only REDUCE priority - only values 0 to 19 are accepted",
+        "They can set any value from -20 to 19",
+        "They can only raise priority",
+        "They cannot use nice at all"
+      ],
+      "answer": 0,
+      "why": "A standard user can only lower a process's priority (higher nice), accepting 0-19; negative values need root."
+    },
+    {
+      "type": "cmd",
+      "q": "Change the priority of the running process with PID 1664 to nice value 15.",
+      "answers": ["renice -n 15 -p 1664", "sudo renice -n 15 -p 1664"],
+      "show": "renice -n 15 -p 1664",
+      "why": "renice changes the priority of an EXISTING process; -p selects it by PID."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between nice and renice?",
+      "options": [
+        "nice sets priority when LAUNCHING a command; renice changes an already-RUNNING process",
+        "nice is for running processes; renice is for new ones",
+        "They are identical",
+        "nice is root-only; renice is not"
+      ],
+      "answer": 0,
+      "why": "nice applies at launch time; renice adjusts existing processes (and can target by -p PID, -u UID or -g GID)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the top command provide?",
+      "options": [
+        "A real-time, interactive display of processes and their CPU/memory consumption",
+        "A one-off static snapshot only",
+        "A list of background jobs in the current shell",
+        "The process tree"
+      ],
+      "answer": 0,
+      "why": "top shows processes and resource usage live and interactively."
+    },
+    {
+      "type": "mcq",
+      "q": "In top's columns, what does NI show?",
+      "options": [
+        "The nice value of the process",
+        "The number of instances",
+        "The network I/O",
+        "The node ID"
+      ],
+      "answer": 0,
+      "why": "NI is the nice value; PR is the priority, %CPU and %MEM the resource loads."
+    }
+  ]
+}

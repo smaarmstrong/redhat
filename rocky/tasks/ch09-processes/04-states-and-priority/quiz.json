@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.5 Process management (pp. 161-163)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why is total processing time divided into small ranges shared between processes?",
+      "options": [
+        "So processes take turns on the processor, enabling multitasking rather than one process hogging it",
+        "Because the CPU can only store one process at a time",
+        "To save electricity",
+        "Because processes cannot have priorities"
+      ],
+      "answer": 0,
+      "why": "Time-sharing gives each prioritised process a slice of processor time in turn, which is what makes multitasking possible."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is the 'zombie' process state?",
+      "options": [
+        "A request for destruction (terminated but not yet reaped)",
+        "Waiting for the processor to become available",
+        "Currently accessing the processor",
+        "Waiting for an I/O operation"
+      ],
+      "answer": 0,
+      "why": "Among the states (ready, in execution, suspended, stopped, zombie, dead), zombie is the 'request for destruction' state."
+    },
+    {
+      "type": "mcq",
+      "q": "What happens to child processes when their parent dies?",
+      "options": [
+        "They become orphans and are adopted by the init process, which will destroy them",
+        "They are killed instantly",
+        "They become the new init",
+        "They keep running with no parent forever"
+      ],
+      "answer": 0,
+      "why": "Orphaned children are adopted by init, which cleans them up."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the nice value range, and the default priority of a process?",
+      "options": [
+        "Nice ranges from -20 to 19; the default priority is 0",
+        "Nice ranges from 0 to 99; default is 50",
+        "Nice ranges from -99 to 99; default is 20",
+        "Nice ranges from 100 to 139; default is 100"
+      ],
+      "answer": 0,
+      "why": "Nice adjusts an ordinary process's priority over -20..19 (default 0); real-time processes use 0-99 and ordinary ones 100-139 internally."
+    },
+    {
+      "type": "mcq",
+      "q": "What defines SYNCHRONOUS execution of a command?",
+      "options": [
+        "The user loses the shell until the command finishes, then the prompt returns",
+        "The command runs in the background and the prompt returns at once",
+        "The command runs on another terminal",
+        "The command never returns a prompt"
+      ],
+      "answer": 0,
+      "why": "Synchronous means you wait: the prompt only reappears when the process ends. Asynchronous (background) returns the prompt immediately."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is a constraint of running a command asynchronously (in the background)?",
+      "options": [
+        "It must not wait for keyboard input or write results to the screen, and quitting the shell ends it",
+        "It must always print to the screen",
+        "It cannot have a priority",
+        "It must be run by root"
+      ],
+      "answer": 0,
+      "why": "A background job should take no keyboard input and produce no screen output; leaving the shell terminates it (see nohup to avoid that)."
+    }
+  ]
+}

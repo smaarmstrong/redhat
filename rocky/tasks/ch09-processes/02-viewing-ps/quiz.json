@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.2 Viewing processes (pp. 158-159)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Display ALL processes on the system in full format.",
+      "answers": ["ps -ef", "ps -fe"],
+      "show": "ps -ef",
+      "why": "-e shows every process and -f gives the full-format listing."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -e option of ps do?",
+      "options": [
+        "Displays all processes",
+        "Displays only the current user's processes",
+        "Displays the full format",
+        "Displays processes as a tree"
+      ],
+      "answer": 0,
+      "why": "-e shows all processes; -f is full format, -H is the tree view."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the processes belonging to the user root, in full format.",
+      "answers": ["ps -fu root", "ps -u root", "ps -uf root"],
+      "show": "ps -fu root",
+      "why": "-u <login> restricts the listing to that user's processes; -f adds the full format."
+    },
+    {
+      "type": "mcq",
+      "q": "With no options, what does ps display?",
+      "options": [
+        "Only the processes running from the current terminal",
+        "All processes on the system",
+        "Only root's processes",
+        "Nothing until a PID is given"
+      ],
+      "answer": 0,
+      "why": "Unqualified, ps shows only processes from the current terminal."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the information for the single process with PID 1664.",
+      "answers": ["ps -p 1664"],
+      "show": "ps -p 1664",
+      "why": "-p <PID> shows information for that specific process."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'ps -ef' output, what does the PPID column show?",
+      "options": [
+        "The parent process identifier",
+        "The process priority",
+        "The processing duration",
+        "The executing terminal"
+      ],
+      "answer": 0,
+      "why": "PPID is the parent process ID; C is priority, TIME is duration, TTY is the terminal, CMD the command."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ps option shows the processes in a tree structure?",
+      "options": [
+        "-H",
+        "-f",
+        "-u",
+        "-l"
+      ],
+      "answer": 0,
+      "why": "-H prints the process hierarchy as a tree; -l is long format."
+    }
+  ]
+}

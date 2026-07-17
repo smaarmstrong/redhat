@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.6.1 kill command (p. 163)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Forcibly kill the process with PID 1664 using signal 9.",
+      "answers": ["kill -9 1664"],
+      "show": "kill -9 1664",
+      "why": "kill -9 sends SIGKILL, which interrupts the process outright."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the kill command actually do?",
+      "options": [
+        "Sends a signal to a process (signals are how processes communicate)",
+        "Always deletes the process's files",
+        "Reboots the machine",
+        "Only works on your own shell"
+      ],
+      "answer": 0,
+      "why": "kill sends a signal to a process; signals are the means of inter-process communication."
+    },
+    {
+      "type": "mcq",
+      "q": "Which signal number is SIGKILL, the forceful interrupt?",
+      "options": [
+        "9",
+        "15",
+        "2",
+        "19"
+      ],
+      "answer": 0,
+      "why": "Signal 9 is SIGKILL; 15 is SIGTERM (clean termination), 2 is SIGINT."
+    },
+    {
+      "type": "mcq",
+      "q": "Which signal is the CLEAN termination (and the default sent by kill)?",
+      "options": [
+        "15 SIGTERM",
+        "9 SIGKILL",
+        "19 SIGSTOP",
+        "18 SIGCONT"
+      ],
+      "answer": 0,
+      "why": "SIGTERM (15) asks a process to terminate cleanly; it is the default when no signal is specified."
+    },
+    {
+      "type": "mcq",
+      "q": "Which pair of signals suspends and then resumes a process (the Ctrl+z effect and its reverse)?",
+      "options": [
+        "19 SIGSTOP suspends; 18 SIGCONT resumes",
+        "18 SIGSTOP suspends; 19 SIGCONT resumes",
+        "9 SIGKILL suspends; 15 SIGTERM resumes",
+        "2 SIGINT suspends; 9 SIGKILL resumes"
+      ],
+      "answer": 0,
+      "why": "SIGSTOP (19) suspends a process (equivalent to Ctrl+z); SIGCONT (18) lets it continue."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the complete list of signals the kill command understands (via the manual).",
+      "answers": ["man 7 signal"],
+      "show": "man 7 signal",
+      "why": "The full signal list is in section 7 of the manual: man 7 signal."
+    }
+  ]
+}

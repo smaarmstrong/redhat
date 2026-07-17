@@ -1,0 +1,80 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.6.2-9.6.6 background jobs (pp. 163-165)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does nohup let you do?",
+      "options": [
+        "Launch a process independently of the connection - it ignores the SIGHUP sent at logout",
+        "Kill a process by name",
+        "Raise a process's priority",
+        "List background jobs"
+      ],
+      "answer": 0,
+      "why": "nohup makes a process ignore SIGHUP (sent when the user logs out), so it keeps running after you disconnect."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is nohup often used with '0</dev/null'?",
+      "options": [
+        "nohup handles standard output and error but not standard input, so input is redirected from /dev/null",
+        "To discard the program's output",
+        "To speed up the process",
+        "Because nohup cannot write to files"
+      ],
+      "answer": 0,
+      "why": "nohup covers stdout and stderr but not stdin, so stdin is redirected from /dev/null."
+    },
+    {
+      "type": "mcq",
+      "q": "What does appending '&' to a command do?",
+      "options": [
+        "Runs it asynchronously (in the background) as a job and returns the prompt immediately, showing [job] PID",
+        "Runs it with the highest priority",
+        "Runs it as root",
+        "Redirects its output to a file"
+      ],
+      "answer": 0,
+      "why": "& backgrounds the command (now a 'job'), printing the job number in brackets and the PID, and gives the prompt back."
+    },
+    {
+      "type": "mcq",
+      "q": "What does pressing Ctrl+z do to a running foreground process?",
+      "options": [
+        "Temporarily suspends it and returns the prompt (showing the suspended job number)",
+        "Kills it immediately",
+        "Sends it to the background and keeps it running",
+        "Raises its priority"
+      ],
+      "answer": 0,
+      "why": "Ctrl+z suspends the synchronous process (SIGSTOP); you can then resume it in the background with bg."
+    },
+    {
+      "type": "cmd",
+      "q": "Bring background job number 1 to the FOREGROUND.",
+      "answers": ["fg 1", "fg %1"],
+      "show": "fg 1",
+      "why": "fg <job> brings that job to the foreground; bg <job> resumes it in the background."
+    },
+    {
+      "type": "cmd",
+      "q": "List the jobs currently running in the background, with their job numbers.",
+      "answers": ["jobs"],
+      "show": "jobs",
+      "why": "jobs lists background/suspended jobs and their numbers, states and commands."
+    },
+    {
+      "type": "mcq",
+      "q": "In the 'jobs' output, what does the + marker mean?",
+      "options": [
+        "It is the default job for fg/bg when no job number is given",
+        "It is a stopped job",
+        "It is a job owned by root",
+        "It is the oldest job"
+      ],
+      "answer": 0,
+      "why": "The + job is the default target of fg/bg; the - job is the next one in line to become +."
+    }
+  ]
+}

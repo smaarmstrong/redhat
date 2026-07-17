@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 9.1 Generalities (p. 157)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do PID and PPID identify?",
+      "options": [
+        "PID is a process's unique identifier; PPID is the identifier of its parent process",
+        "PID is the parent's ID; PPID is the process's own ID",
+        "PID is the port ID; PPID is the protocol ID",
+        "PID is the priority; PPID is the parent priority"
+      ],
+      "answer": 0,
+      "why": "Each process has a unique PID (Process IDentifier) and a PPID (Parent Process IDentifier)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which process is the ancestor of all other processes?",
+      "options": [
+        "The init process (father of all processes by successive filiation)",
+        "The bash process",
+        "The kthreadd process",
+        "The root process"
+      ],
+      "answer": 0,
+      "why": "By successive filiation, init is the father of all processes."
+    },
+    {
+      "type": "mcq",
+      "q": "How is a child process created, and what is returned to the parent?",
+      "options": [
+        "The parent calls fork() to duplicate its code; the child's PID is returned to the parent",
+        "The child calls fork() on itself; nothing is returned",
+        "The kernel creates it with no parent involvement",
+        "The parent's PID is returned to the child only"
+      ],
+      "answer": 0,
+      "why": "A child results from the parent calling fork() to duplicate its code; the child's PID goes back to the parent so it can communicate, and each child carries its parent's PID as its PPID."
+    },
+    {
+      "type": "mcq",
+      "q": "If you run the same command several times, what happens to the PID?",
+      "options": [
+        "A different PID is assigned each time; a finished process's number becomes available again",
+        "The same PID is reused every time",
+        "The PID stays fixed per command name",
+        "No PID is assigned until the command finishes"
+      ],
+      "answer": 0,
+      "why": "The PID represents the process at execution time; when it ends the number is freed, so repeated runs get different PIDs."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between a process and a thread?",
+      "options": [
+        "Each process has its own memory context; threads of the same process share that context",
+        "Threads each have their own memory; processes share one",
+        "They are the same thing",
+        "A thread always has a lower PID than its process"
+      ],
+      "answer": 0,
+      "why": "A process owns its resources and address space; threads within one process share that context."
+    }
+  ]
+}
