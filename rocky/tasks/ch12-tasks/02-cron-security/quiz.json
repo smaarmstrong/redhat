@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 12.3 Security (pp. 211-213)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "If NEITHER /etc/cron.allow nor /etc/cron.deny exists, who can use cron?",
+      "options": [
+        "All users",
+        "No users",
+        "Only root",
+        "Only users listed in /etc/passwd"
+      ],
+      "answer": 0,
+      "why": "With neither file present, all users may use cron."
+    },
+    {
+      "type": "mcq",
+      "q": "If /etc/cron.allow exists, what happens to /etc/cron.deny?",
+      "options": [
+        "cron.deny is ignored - only users in cron.allow may use cron",
+        "Both files are combined",
+        "cron.deny takes priority",
+        "cron stops working"
+      ],
+      "answer": 0,
+      "why": "When cron.allow is present it is the sole authority; cron.deny is completely ignored."
+    },
+    {
+      "type": "mcq",
+      "q": "What does an EMPTY /etc/cron.allow mean, versus an empty /etc/cron.deny?",
+      "options": [
+        "Empty cron.allow = NO users may use cron; empty cron.deny = ALL users may",
+        "Both empty files mean all users may use cron",
+        "Both empty files mean no users may use cron",
+        "Empty cron.allow = all users; empty cron.deny = no users"
+      ],
+      "answer": 0,
+      "why": "An empty allow-list permits nobody; an empty deny-list forbids nobody (so everyone is allowed)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the default situation on the system regarding these two files?",
+      "options": [
+        "/etc/cron.deny exists and is empty; /etc/cron.allow does not exist (so everyone may use cron)",
+        "/etc/cron.allow exists and is empty",
+        "Both files exist and list root only",
+        "Neither file exists"
+      ],
+      "answer": 0,
+      "why": "By default cron.deny is present but empty and cron.allow is absent, so all users can use cron."
+    },
+    {
+      "type": "mcq",
+      "q": "If the SAME user appears in both /etc/cron.allow and /etc/cron.deny, what happens?",
+      "options": [
+        "The user CAN use cron (allow wins)",
+        "The user cannot use cron (deny wins)",
+        "cron refuses to start",
+        "The user is deleted"
+      ],
+      "answer": 0,
+      "why": "cron.allow takes precedence, so a user listed in both is allowed to use cron."
+    }
+  ]
+}

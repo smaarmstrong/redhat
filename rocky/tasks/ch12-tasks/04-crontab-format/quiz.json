@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 12.5 The crontab file (pp. 215-216)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "A crontab line has six fields. What are the first five (in order) and the sixth?",
+      "options": [
+        "minute, hour, day of month, month, day of week - then the command/script to run",
+        "hour, minute, month, day, year - then the command",
+        "command, minute, hour, day, month - then the day of week",
+        "second, minute, hour, day, month - then the command"
+      ],
+      "answer": 0,
+      "why": "Fields 1-5 are minute, hour, day-of-month, month, day-of-week; field 6 is the command or script."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the valid range for the MINUTE field (field 1)?",
+      "options": [
+        "0 to 59",
+        "1 to 60",
+        "0 to 23",
+        "1 to 12"
+      ],
+      "answer": 0,
+      "why": "Minutes run 0-59; hours 0-23."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the valid range for the HOUR field (field 2)?",
+      "options": [
+        "0 to 23",
+        "1 to 24",
+        "0 to 12",
+        "0 to 59"
+      ],
+      "answer": 0,
+      "why": "Hours are 0-23 (24-hour clock)."
+    },
+    {
+      "type": "mcq",
+      "q": "In the day-of-week field (field 5), which values represent Sunday?",
+      "options": [
+        "0 or 7 (both mean Sunday); the range is 0-7",
+        "1 only",
+        "6 only",
+        "8"
+      ],
+      "answer": 0,
+      "why": "Day of week runs 0-7 where 0 and 7 both mean Sunday."
+    },
+    {
+      "type": "mcq",
+      "q": "In the line '10 4 1 * * /root/scripts/backup.sh', when does the task run?",
+      "options": [
+        "At 04:10 on the 1st of every month",
+        "At 10:04 every day",
+        "Every 10 minutes past 4am",
+        "On the 4th at 1am"
+      ],
+      "answer": 0,
+      "why": "minute 10, hour 4, day-of-month 1, any month, any weekday: 04:10 on the 1st of each month."
+    },
+    {
+      "type": "mcq",
+      "q": "What must the command field use for paths, and why?",
+      "options": [
+        "Absolute paths (and ideally redirects), because the job runs unattended with no interactive terminal",
+        "Relative paths only",
+        "No paths at all",
+        "Paths relative to /tmp"
+      ],
+      "answer": 0,
+      "why": "Scheduled tasks must use absolute paths (and preferably redirect their output), since they run without a terminal or shell context."
+    }
+  ]
+}
