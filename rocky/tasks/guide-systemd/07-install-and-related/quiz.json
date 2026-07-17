@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - [Install] & related commands",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does 'WantedBy=multi-user.target' in the [Install] section achieve when the unit is enabled?",
+      "options": [
+        "It links the unit into multi-user.target's wants, so enabling it starts it with that target",
+        "It stops multi-user.target",
+        "It sets the service description",
+        "It masks the unit"
+      ],
+      "answer": 0,
+      "why": "On enable, a symlink appears in /etc/systemd/system/multi-user.target.wants/, so the unit starts with that target."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the Alias= directive provide?",
+      "options": [
+        "Additional names for the unit (of the same type/suffix)",
+        "A password for the unit",
+        "The restart delay",
+        "A list of conflicting units"
+      ],
+      "answer": 0,
+      "why": "Alias= gives extra names (same suffix) by which the unit can be referred to once enabled."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command queries or changes the system time and date?",
+      "options": [
+        "timedatectl",
+        "hostnamectl",
+        "localectl",
+        "loginctl"
+      ],
+      "answer": 0,
+      "why": "timedatectl manages time/date; hostnamectl the hostname, localectl locale/keyboard, loginctl login sessions."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command profiles boot performance and shows/checks unit dependencies?",
+      "options": [
+        "systemd-analyze",
+        "journalctl",
+        "localectl",
+        "timedatectl"
+      ],
+      "answer": 0,
+      "why": "systemd-analyze profiles systemd (e.g. boot times) and checks unit files/dependencies."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command manages the sessions of logged-in users?",
+      "options": [
+        "loginctl",
+        "hostnamectl",
+        "timedatectl",
+        "systemd-analyze"
+      ],
+      "answer": 0,
+      "why": "loginctl handles login-session management."
+    }
+  ]
+}

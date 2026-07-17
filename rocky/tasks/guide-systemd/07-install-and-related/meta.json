@@ -1,0 +1,8 @@
+{
+  "title": "[Install] section and related systemd commands",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - [Install] & related commands",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

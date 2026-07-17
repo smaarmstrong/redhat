@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - Basic overview & Development history",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is systemd?",
+      "options": [
+        "A system daemon - an init software (service manager) for Linux, running as the first process",
+        "A text editor",
+        "A network protocol",
+        "A package manager"
+      ],
+      "answer": 0,
+      "why": "systemd (system daemon) is the init system/service manager, replacing traditional SysV-style init."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these was a stated purpose behind developing systemd?",
+      "options": [
+        "Parallel startup of services and a better framework for service dependencies, replacing SysV init",
+        "To remove the ability to run services",
+        "To make Linux single-user only",
+        "To replace the Linux kernel"
+      ],
+      "answer": 0,
+      "why": "systemd aimed at parallel service startup, better dependency handling, and reduced shell overhead versus SysV."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the main criticism levelled at systemd?",
+      "options": [
+        "It takes over too many components and is very complex (over a million lines), violating UNIX's KISS principle",
+        "It is too small to be useful",
+        "It cannot start services in parallel",
+        "It only runs on Fedora"
+      ],
+      "answer": 0,
+      "why": "Critics say systemd absorbs too much and is too complex, against 'Keep It Simple, Stupid', enlarging the attack surface."
+    },
+    {
+      "type": "mcq",
+      "q": "Which macOS technology inspired many of systemd's concepts?",
+      "options": [
+        "launchd",
+        "Time Machine",
+        "Spotlight",
+        "Finder"
+      ],
+      "answer": 0,
+      "why": "Many systemd designs are inspired by Apple's launchd."
+    },
+    {
+      "type": "mcq",
+      "q": "Who created systemd and roughly when?",
+      "options": [
+        "Two Red Hat engineers, Lennart Poettering and Kay Sievers, around 2010",
+        "Linus Torvalds in 1991",
+        "The Debian project in 2014",
+        "Canonical for Ubuntu in 2006"
+      ],
+      "answer": 0,
+      "why": "Poettering and Sievers (Red Hat) built the first version around 2010; Fedora 15 (2011) was the first distro to enable it by default."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - unit file content ([Unit], [Service])",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In the [Unit] section, what do After= and Before= define?",
+      "options": [
+        "The startup ORDER relative to other units",
+        "The file permissions",
+        "The restart delay",
+        "The environment variables"
+      ],
+      "answer": 0,
+      "why": "After=/Before= set ordering: After=network.target means this unit starts after network.target."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between Requires= and Wants= in [Unit]?",
+      "options": [
+        "With Requires=, if a dependency fails to activate the unit won't start; with Wants=, a failed dependency does not block it",
+        "They are identical",
+        "Requires= is weaker than Wants=",
+        "Wants= stops the unit if the dependency fails"
+      ],
+      "answer": 0,
+      "why": "Requires= is a hard dependency (failure blocks start); Wants= is soft (failure is tolerated)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does Conflicts= do?",
+      "options": [
+        "If a listed unit is running, the current unit cannot run (and vice versa)",
+        "It lists required units",
+        "It sets the restart policy",
+        "It orders startup"
+      ],
+      "answer": 0,
+      "why": "Conflicts= is a negative dependency: the two units can't be active at the same time (e.g. postfix conflicts with sendmail)."
+    },
+    {
+      "type": "mcq",
+      "q": "In [Service], what is the DEFAULT value of Type=?",
+      "options": [
+        "simple - the service runs as the main process",
+        "forking",
+        "oneshot",
+        "notify"
+      ],
+      "answer": 0,
+      "why": "Type=simple is the default; forking is for daemons that fork, oneshot must exit before follow-ups, notify sends sd_notify."
+    },
+    {
+      "type": "mcq",
+      "q": "For a traditional daemon that forks into the background, which Type= should you use (often with PIDFile=)?",
+      "options": [
+        "forking",
+        "simple",
+        "idle",
+        "dbus"
+      ],
+      "answer": 0,
+      "why": "Type=forking suits daemons that fork; PIDFile= then tells systemd the main PID."
+    },
+    {
+      "type": "mcq",
+      "q": "What does Restart=on-failure do?",
+      "options": [
+        "Restarts the service only when it exits with a non-zero (unclean) status",
+        "Always restarts the service",
+        "Never restarts the service",
+        "Restarts only on a clean exit"
+      ],
+      "answer": 0,
+      "why": "on-failure restarts on unclean exit/kill/timeout; 'no' (default) never restarts, 'always' restarts regardless, on-success only on clean exit."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the default KillMode=control-group do when the unit stops?",
+      "options": [
+        "Kills all remaining processes in the unit's control group",
+        "Kills only the main process",
+        "Kills nothing",
+        "Kills the whole system"
+      ],
+      "answer": 0,
+      "why": "control-group (default) kills every process in the unit's cgroup; 'process' kills only the main process, 'none' kills nothing."
+    }
+  ]
+}

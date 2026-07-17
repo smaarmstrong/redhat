@@ -1,0 +1,8 @@
+{
+  "title": "systemd as PID 1 and the runlevel-target mapping",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - systemd as PID 1",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}
