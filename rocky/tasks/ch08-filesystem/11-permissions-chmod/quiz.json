@@ -1,0 +1,92 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.6 File attributes (pp. 150-153)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "For a FILE, what do r, w and x permit?",
+      "options": [
+        "r = read/copy the file, w = modify its content, x = execute it",
+        "r = rename, w = read, x = delete",
+        "r = run, w = read, x = write",
+        "r = read the directory, w = enter it, x = list it"
+      ],
+      "answer": 0,
+      "why": "On a file: r reads/copies, w modifies content, x runs it as a program/script."
+    },
+    {
+      "type": "mcq",
+      "q": "For a DIRECTORY, what does the x permission allow?",
+      "options": [
+        "Entering the directory (cd into it)",
+        "Executing the directory as a program",
+        "Deleting the directory",
+        "Reading the directory listing"
+      ],
+      "answer": 0,
+      "why": "On a directory: r lists its contents, w creates/deletes entries in it, and x lets you cd into it (r and x usually go together)."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the user classes u, g and o stand for?",
+      "options": [
+        "u = owner (user), g = owning group, o = other users",
+        "u = users, g = guests, o = owners",
+        "u = universal, g = global, o = organisation",
+        "u = update, g = grant, o = override"
+      ],
+      "answer": 0,
+      "why": "u is the owner, g the owning group, o everyone else; 'a' (all) is shorthand for ugo."
+    },
+    {
+      "type": "mcq",
+      "q": "In octal permissions, r=4, w=2, x=1. What does 755 represent?",
+      "options": [
+        "rwxr-xr-x",
+        "rw-r--r--",
+        "rwxrwxrwx",
+        "r-xr-xr-x"
+      ],
+      "answer": 0,
+      "why": "7 = 4+2+1 = rwx for the owner; 5 = 4+1 = r-x for group and others, giving rwxr-xr-x."
+    },
+    {
+      "type": "cmd",
+      "q": "Using octal notation, set the permissions of file1 to rwxr----x (owner rwx, group read, others execute).",
+      "answers": ["chmod 741 file1", "sudo chmod 741 file1"],
+      "show": "chmod 741 file1",
+      "why": "owner rwx = 7, group r-- = 4, others --x = 1, so chmod 741."
+    },
+    {
+      "type": "cmd",
+      "q": "Give the OWNER execute permission on script.sh using symbolic notation (leave everything else unchanged).",
+      "answers": ["chmod u+x script.sh", "sudo chmod u+x script.sh"],
+      "show": "chmod u+x script.sh",
+      "why": "Symbolic form is [ugoa][+-=][rwx]; u+x adds execute for the owner only."
+    },
+    {
+      "type": "mcq",
+      "q": "Who is allowed to change the permissions of a file?",
+      "options": [
+        "The administrator and the file's owner",
+        "Any user on the system",
+        "Only the administrator",
+        "Only members of the owning group"
+      ],
+      "answer": 0,
+      "why": "Only root and the file's owner can change its permissions."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'chmod 4755 file', what does the leading 4 do?",
+      "options": [
+        "It sets a special permission (the set-uid bit)",
+        "It sets read permission for others",
+        "It is ignored",
+        "It makes the file read-only"
+      ],
+      "answer": 0,
+      "why": "A fourth leading octal digit sets special permissions; 4 here is set-uid (a topic covered more fully later)."
+    }
+  ]
+}

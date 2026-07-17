@@ -1,0 +1,8 @@
+{
+  "title": "Default rights and the umask",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.7 (pp. 154-157)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

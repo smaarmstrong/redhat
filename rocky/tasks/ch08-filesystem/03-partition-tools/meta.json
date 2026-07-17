@@ -1,0 +1,8 @@
+{
+  "title": "Partitioning tools: fdisk, cfdisk, parted",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.1.2-8.1.4 (pp. 128-130)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

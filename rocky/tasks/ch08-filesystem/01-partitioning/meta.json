@@ -1,0 +1,8 @@
+{
+  "title": "Partitioning: MBR, primary, extended and logical partitions",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.1 (pp. 126-128)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

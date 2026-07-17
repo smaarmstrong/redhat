@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.1.1-8.1.2 device naming (pp. 127-128)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How does a SCSI, SATA or USB hard disk appear under /dev?",
+      "options": [
+        "/dev/sd[a-z] (e.g. /dev/sda, /dev/sdb)",
+        "/dev/hd[a-d]",
+        "/dev/vd[a-z]",
+        "/dev/scsi0"
+      ],
+      "answer": 0,
+      "why": "SCSI/SATA/USB disks are /dev/sd[a-z]; old IDE disks were /dev/hd[a-d]."
+    },
+    {
+      "type": "mcq",
+      "q": "How does a VIRTUAL hard disk (as in a VM) typically appear?",
+      "options": [
+        "/dev/vd[a-z] (e.g. /dev/vda)",
+        "/dev/sd[a-z]",
+        "/dev/hd[a-d]",
+        "/dev/vm0"
+      ],
+      "answer": 0,
+      "why": "Virtual disks use the /dev/vd[a-z] naming."
+    },
+    {
+      "type": "mcq",
+      "q": "Which service is responsible for applying the device naming rules to detected hardware?",
+      "options": [
+        "udev",
+        "systemd-journald",
+        "cron",
+        "fdisk"
+      ],
+      "answer": 0,
+      "why": "udev applies the naming conventions (rules) to the devices it detects."
+    },
+    {
+      "type": "mcq",
+      "q": "In /dev/sda3, what does the trailing number 3 mean?",
+      "options": [
+        "It is the partition number on the block device sda",
+        "It is the disk number",
+        "It is the SCSI channel",
+        "It is the number of sectors"
+      ],
+      "answer": 0,
+      "why": "The number after the block device identifies a partition (here the 3rd on sda)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which device file name usually refers to the optical (CD/DVD) drive?",
+      "options": [
+        "/dev/cdrom or /dev/sr0",
+        "/dev/fd0",
+        "/dev/lp0",
+        "/dev/opt0"
+      ],
+      "answer": 0,
+      "why": "The optical drive appears as /dev/cdrom or /dev/sr0; /dev/fd[0-7] is a floppy and /dev/lp[0-2] a parallel printer."
+    }
+  ]
+}

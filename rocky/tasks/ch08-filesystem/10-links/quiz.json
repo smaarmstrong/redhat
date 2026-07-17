@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.5 Link files (pp. 149-150)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create a SOFT (symbolic) link named /root/slink1 pointing to /root/Afile.",
+      "answers": ["ln -s /root/Afile /root/slink1", "sudo ln -s /root/Afile /root/slink1"],
+      "show": "ln -s /root/Afile /root/slink1",
+      "why": "ln -s makes a symbolic link; the target comes first, the link name second."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a HARD link named /home/jack/read to the existing file /home/paul/letter.",
+      "answers": ["ln /home/paul/letter /home/jack/read", "sudo ln /home/paul/letter /home/jack/read"],
+      "show": "ln /home/paul/letter /home/jack/read",
+      "why": "ln with no option creates a hard link - a second name mapping the same inode."
+    },
+    {
+      "type": "mcq",
+      "q": "What happens to a soft (symbolic) link when its original file is deleted?",
+      "options": [
+        "The link breaks - it still exists but points to a file that is gone",
+        "The link is automatically deleted too",
+        "The original file is restored",
+        "The link becomes a hard link"
+      ],
+      "answer": 0,
+      "why": "A soft link is just a pointer to the original path (like a Windows shortcut); delete the original and the link dangles."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the defining feature of a hard link?",
+      "options": [
+        "It shares the SAME inode number as the original, so both names are the same physical file",
+        "It has a different inode and a copy of the data",
+        "It is always shown in red by ls",
+        "It only works across different file systems"
+      ],
+      "answer": 0,
+      "why": "Hard links are different directory entries for the same inode; content, owner and timestamps stay in sync because it is one file."
+    },
+    {
+      "type": "mcq",
+      "q": "What are the restrictions on hard links?",
+      "options": [
+        "They cannot span partitions/file systems and cannot be used on directories",
+        "They cannot point to ordinary files",
+        "They may only be created by root",
+        "They break when the original is edited"
+      ],
+      "answer": 0,
+      "why": "Because they rely on a shared inode, hard links can't cross file systems, and 'ln /etc /root/etc_hardlink' fails with 'hard link not allowed for directory'."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you tell ln to make a soft link rather than a hard link?",
+      "options": [
+        "Add the -s option (ln without -s makes a hard link)",
+        "Add the -h option",
+        "Use link instead of ln",
+        "There is no difference"
+      ],
+      "answer": 0,
+      "why": "ln -s creates a symbolic link; plain ln creates a hard link."
+    }
+  ]
+}

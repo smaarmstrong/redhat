@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.7 Default rights and mask (pp. 154-157)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "With the usual mask, what default permissions do a new directory and a new file get?",
+      "options": [
+        "Directory 755 (rwxr-xr-x), file 644 (rw-r--r--)",
+        "Directory 644, file 755",
+        "Both 777",
+        "Both 600"
+      ],
+      "answer": 0,
+      "why": "New directories default to 755 and new files to 644."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the default UMASK value defined in /etc/login.defs?",
+      "options": [
+        "022",
+        "077",
+        "755",
+        "644"
+      ],
+      "answer": 0,
+      "why": "login.defs sets UMASK 022, which yields 755 for directories and 644 for files."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the mask determine a new file's permissions?",
+      "options": [
+        "It removes the masked rights from the maximum, and new files never receive the execute bit anyway",
+        "It adds the masked rights to the minimum",
+        "It sets the exact permissions directly",
+        "It only affects directories"
+      ],
+      "answer": 0,
+      "why": "The mask subtracts rights from the maximum; additionally, new files never get x, which is why a 022 mask gives files 644, not 755."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the current umask value.",
+      "answers": ["umask"],
+      "show": "umask",
+      "why": "umask with no argument prints the current mask."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the umask in symbolic form (as u=...,g=...,o=...).",
+      "answers": ["umask -S"],
+      "show": "umask -S",
+      "why": "umask -S shows the resulting file rights symbolically (without the execute bit)."
+    },
+    {
+      "type": "cmd",
+      "q": "Set the umask to 027 for the current session.",
+      "answers": ["umask 027"],
+      "show": "umask 027",
+      "why": "umask <mode> sets the mask; 027 (or 077) is a common hardening choice."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the scope of a umask set on the command line, and how do you make it permanent?",
+      "options": [
+        "It applies only to the current session; make it permanent in profile files (/etc/profile, /etc/bashrc, ~/.bashrc)",
+        "It changes existing files immediately and is always permanent",
+        "It is stored in /etc/fstab",
+        "It cannot be made permanent"
+      ],
+      "answer": 0,
+      "why": "umask affects only the current session and does not touch existing files; put it in a profile file to persist (it overrides the login.defs UMASK)."
+    }
+  ]
+}

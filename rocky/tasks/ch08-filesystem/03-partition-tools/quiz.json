@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.1.2-8.1.4 fdisk/cfdisk/parted (pp. 128-130)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "List all partitions on all disks using fdisk.",
+      "answers": ["sudo fdisk -l", "fdisk -l"],
+      "show": "sudo fdisk -l",
+      "why": "fdisk -l lists logical devices; listing is really the only reason to still reach for fdisk."
+    },
+    {
+      "type": "mcq",
+      "q": "What are the limits of fdisk?",
+      "options": [
+        "It uses MBR partition tables only - no GPT, and cannot handle disks larger than 2 TB",
+        "It only works on GPT disks",
+        "It cannot list partitions",
+        "It only works on removable media"
+      ],
+      "answer": 0,
+      "why": "fdisk is MBR-only, so it cannot handle GPT or disks over 2 TB; its handy use is 'fdisk -l' to list."
+    },
+    {
+      "type": "mcq",
+      "q": "Between fdisk and cfdisk, which does the guide recommend for managing partitions, and why?",
+      "options": [
+        "cfdisk - it is more reliable and better optimised",
+        "fdisk - it supports GPT",
+        "fdisk - it is the only interactive one",
+        "Neither; both are deprecated"
+      ],
+      "answer": 0,
+      "why": "Both are interactive, but cfdisk is more reliable and better optimised, so it is preferred."
+    },
+    {
+      "type": "cmd",
+      "q": "Open the interactive partition manager cfdisk on the disk /dev/sda.",
+      "answers": ["sudo cfdisk /dev/sda", "cfdisk /dev/sda"],
+      "show": "sudo cfdisk /dev/sda",
+      "why": "cfdisk <device> opens the interactive menu to manage that disk's partitions."
+    },
+    {
+      "type": "mcq",
+      "q": "What advantage does parted have over fdisk?",
+      "options": [
+        "It partitions without fdisk's drawbacks and can even recover (rewrite) a deleted partition table",
+        "It only works from a GUI",
+        "It cannot be scripted",
+        "It is limited to 2 TB like fdisk"
+      ],
+      "answer": 0,
+      "why": "parted (partition editor) avoids fdisk's limits and includes a recovery function to rewrite a deleted partition table; gparted is its GUI."
+    },
+    {
+      "type": "mcq",
+      "q": "Without LVM, what are the five steps of preparing physical media, in order?",
+      "options": [
+        "Set up the disk, partition, create file systems, mount them, manage user access",
+        "Mount, partition, format, set up the disk, manage access",
+        "Create file systems, set up the disk, partition, manage access, mount",
+        "Partition, mount, manage access, format, set up the disk"
+      ],
+      "answer": 0,
+      "why": "The order is: set up the physical disk, partition, create the file systems, mount them into the tree, then manage user access."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.4.1-8.4.2 fstab and mounting (pp. 143-145)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "When is /etc/fstab read, and what does it contain?",
+      "options": [
+        "At system startup; it lists the file systems to mount, one per line",
+        "Only when you run fdisk; it lists partitions",
+        "Every second by a daemon; it logs disk usage",
+        "At shutdown; it lists files to delete"
+      ],
+      "answer": 0,
+      "why": "/etc/fstab is read at startup and describes each file system to mount on its own line."
+    },
+    {
+      "type": "mcq",
+      "q": "What are the six columns of an /etc/fstab line, in order?",
+      "options": [
+        "device : mount point : FS type : options : dump(backup) : fsck order",
+        "mount point : device : options : FS type : fsck order : dump",
+        "device : FS type : mount point : dump : options : fsck order",
+        "UUID : label : size : options : dump : fsck order"
+      ],
+      "answer": 0,
+      "why": "The fields are: filesystem device, mount point, filesystem type, mount options, dump/backup flag, and fsck check order."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the sixth column of /etc/fstab control?",
+      "options": [
+        "The order fsck checks the file system (0 = no check, 1 = priority, 2 = not priority)",
+        "Whether the filesystem is backed up",
+        "The mount options",
+        "The filesystem type"
+      ],
+      "answer": 0,
+      "why": "Column 6 sets the fsck pass order; column 5 is the dump/backup flag."
+    },
+    {
+      "type": "cmd",
+      "q": "Mount the device /dev/sda7 onto /home.",
+      "answers": ["mount /dev/sda7 /home", "sudo mount /dev/sda7 /home"],
+      "show": "mount /dev/sda7 /home",
+      "why": "mount <device> <directory> attaches the file system into the tree at that point."
+    },
+    {
+      "type": "cmd",
+      "q": "Mount ALL the file systems listed in /etc/fstab at once.",
+      "answers": ["mount -a", "sudo mount -a"],
+      "show": "mount -a",
+      "why": "mount -a mounts everything in /etc/fstab; the results are recorded in /etc/mtab."
+    },
+    {
+      "type": "cmd",
+      "q": "Unmount the file system mounted at /home.",
+      "answers": ["umount /home", "sudo umount /home"],
+      "show": "umount /home",
+      "why": "umount detaches a mounted file system, given either its mount point or its device."
+    },
+    {
+      "type": "mcq",
+      "q": "Why might umount fail with 'device is busy'?",
+      "options": [
+        "Because your shell (or a process) is still under the mount point",
+        "Because the device does not exist",
+        "Because the filesystem is read-only",
+        "Because you forgot -a"
+      ],
+      "answer": 0,
+      "why": "You must not be positioned below the mount point (nor have processes using it) when unmounting, or you get 'device is busy'."
+    }
+  ]
+}
