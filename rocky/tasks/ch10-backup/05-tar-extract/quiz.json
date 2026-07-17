@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.2.2 Extracting a tar backup (pp. 183-185)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Extract ALL files from the uncompressed backup /backups/etc.133.tar into the current directory.",
+      "answers": ["tar xvf /backups/etc.133.tar"],
+      "show": "tar xvf /backups/etc.133.tar",
+      "why": "The x key extracts; xvf works on both compressed and uncompressed archives."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the tar x key do?",
+      "options": [
+        "Extracts files from a backup (compressed or not)",
+        "Creates a backup",
+        "Lists the backup contents",
+        "Compresses the backup"
+      ],
+      "answer": 0,
+      "why": "x extracts; c creates, t lists."
+    },
+    {
+      "type": "cmd",
+      "q": "Extract all files from the bzip2-compressed backup /backups/home.133.tar.bz2 into the current directory.",
+      "answers": ["tar xvfj /backups/home.133.tar.bz2", "tar xvjf /backups/home.133.tar.bz2", "tar xvf /backups/home.133.tar.bz2"],
+      "show": "tar xvfj /backups/home.133.tar.bz2",
+      "why": "xvfj extracts a bzip2 archive; since tar auto-detects compression, plain xvf also works for listing/extracting."
+    },
+    {
+      "type": "cmd",
+      "q": "Extract ONLY the file etc/exports from the backup /backups/etc.133.tar.",
+      "answers": ["tar xvf /backups/etc.133.tar etc/exports"],
+      "show": "tar xvf /backups/etc.133.tar etc/exports",
+      "why": "Naming a path after the archive extracts just that file (restored under its path in the current directory)."
+    },
+    {
+      "type": "cmd",
+      "q": "Extract all files with the extension .conf from backup.tar using a wildcard.",
+      "answers": ["tar xvf backup.tar --wildcards '*.conf'", "tar xvf backup.tar --wildcards *.conf", "tar xvf backup.tar --wildcards \"*.conf\""],
+      "show": "tar xvf backup.tar --wildcards '*.conf'",
+      "why": "--wildcards lets a shell-style pattern select the files to extract (quote the pattern so the shell doesn't expand it)."
+    },
+    {
+      "type": "mcq",
+      "q": "To restore files to their ORIGINAL directory with 'tar xvfP', what must be true of how the backup was made?",
+      "options": [
+        "It must have been created with the P key (absolute path)",
+        "It must have been created compressed",
+        "It must have been created with the r key",
+        "Nothing special is required"
+      ],
+      "answer": 0,
+      "why": "Absolute restore (xvfP) only works if the backup itself was made in absolute mode (cvfP); take care extracting absolute backups."
+    },
+    {
+      "type": "mcq",
+      "q": "What should you always do before extracting a backup, especially an absolute one?",
+      "options": [
+        "Check/view the backup's contents first (tar tvf)",
+        "Delete the target directory first",
+        "Reboot the machine",
+        "Recompress the backup"
+      ],
+      "answer": 0,
+      "why": "Always list the contents before restoring; absolute-mode backups can overwrite files in their original locations."
+    }
+  ]
+}

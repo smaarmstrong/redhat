@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 10.1 Generalities (pp. 172-174)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the key difference between a backup and an archive?",
+      "options": [
+        "An archive destroys the source after the operation; a backup preserves the source",
+        "A backup destroys the source; an archive preserves it",
+        "They are the same thing",
+        "An archive is always compressed; a backup never is"
+      ],
+      "answer": 0,
+      "why": "The archive destroys the information source after the operation, while the backup preserves it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does an INCREMENTAL backup copy?",
+      "options": [
+        "The data changed since the last full OR incremental backup",
+        "All files every time",
+        "The data changed since the last full backup only",
+        "A user-selected subset of the system"
+      ],
+      "answer": 0,
+      "why": "Incremental backs up what changed since the last full or incremental backup; differential backs up what changed since the last FULL backup."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a DIFFERENTIAL backup copy?",
+      "options": [
+        "The files changed since the last full backup",
+        "The files changed since the last incremental backup",
+        "Everything on the disk",
+        "Only files in /etc"
+      ],
+      "answer": 0,
+      "why": "Differential always references the last full backup, whereas incremental references the most recent backup of any kind."
+    },
+    {
+      "type": "mcq",
+      "q": "What distinguishes a COLD backup from a HOT backup?",
+      "options": [
+        "Cold is taken while the system is shut down/maintenance; hot is taken while it runs normally (so hot data may lag)",
+        "Cold is faster; hot is slower",
+        "Cold is remote; hot is local",
+        "Cold is compressed; hot is not"
+      ],
+      "answer": 0,
+      "why": "A cold backup happens with the system stopped (data matches exactly); a hot backup runs live, so it lags the real-time data somewhat."
+    },
+    {
+      "type": "mcq",
+      "q": "Why should backup media be kept in a different room or building from the server?",
+      "options": [
+        "So a single disaster (fire, flood, theft) does not destroy both the server and its backups",
+        "To make backups run faster",
+        "Because the OS requires it",
+        "To save disk space on the server"
+      ],
+      "answer": 0,
+      "why": "Off-site storage protects the backups from the same disaster that could destroy the server; remote backup takes this further geographically."
+    }
+  ]
+}

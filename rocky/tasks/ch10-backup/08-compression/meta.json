@@ -1,0 +1,8 @@
+{
+  "title": "Compression: gzip, bzip2, gunzip, bunzip2",
+  "domain": "Ch 10 - Backup and Restore",
+  "objective": "Rocky Linux Admin Guide, ch. 10.4 (pp. 191-193)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}
