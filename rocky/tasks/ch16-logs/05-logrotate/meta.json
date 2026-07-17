@@ -1,0 +1,8 @@
+{
+  "title": "Log rotation with logrotate",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.2.2 (pp. 308-313)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

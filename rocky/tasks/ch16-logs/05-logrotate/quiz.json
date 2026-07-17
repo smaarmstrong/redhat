@@ -1,0 +1,73 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.2.2 Log rotation (pp. 308-313)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What three things does log rotation do?",
+      "options": [
+        "Rotate (archive current log + start a fresh one), compress old archives, and delete outdated ones",
+        "Encrypt, sign, and upload logs",
+        "Only compress logs",
+        "Only delete logs"
+      ],
+      "answer": 0,
+      "why": "Rotation archives and restarts the log, compresses old ones, and deletes those past the retention policy - preventing unbounded growth."
+    },
+    {
+      "type": "mcq",
+      "q": "With the 'dateext' parameter, how is a rotated 'secure' log named?",
+      "options": [
+        "secure-20250424 (a date suffix)",
+        "secure.1 (a rotation number)",
+        "secure.old",
+        "secure.gz only"
+      ],
+      "answer": 0,
+      "why": "dateext appends a date (secure-YYYYMMDD); without it, rotations are numbered (secure.1, secure.2, ...)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the 'rotate 4' directive mean in /etc/logrotate.conf?",
+      "options": [
+        "Keep 4 rotated files before deleting the oldest",
+        "Rotate every 4 hours",
+        "Rotate files larger than 4 MB",
+        "Compress after 4 rotations"
+      ],
+      "answer": 0,
+      "why": "rotate <N> keeps N old files after rotation; older ones are removed."
+    },
+    {
+      "type": "mcq",
+      "q": "Which directory holds per-application logrotate configuration snippets?",
+      "options": [
+        "/etc/logrotate.d/",
+        "/etc/rsyslog.d/",
+        "/var/log/logrotate/",
+        "/etc/logrotate.conf.d/"
+      ],
+      "answer": 0,
+      "why": "/etc/logrotate.conf is the global config; /etc/logrotate.d/ holds the per-package snippets (included via 'include')."
+    },
+    {
+      "type": "cmd",
+      "q": "Run logrotate against /etc/logrotate.conf verbosely to see what it does.",
+      "answers": ["logrotate -v /etc/logrotate.conf", "sudo logrotate -v /etc/logrotate.conf"],
+      "show": "logrotate -v /etc/logrotate.conf",
+      "why": "-v shows the rotation process; -f forces rotation even when the conditions aren't met."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the 'notifempty' directive do?",
+      "options": [
+        "Skips rotation if the log file is empty",
+        "Emails the admin when the log is empty",
+        "Rotates only empty logs",
+        "Deletes empty logs"
+      ],
+      "answer": 0,
+      "why": "notifempty prevents rotating an empty log; missingok ignores a missing log without warning."
+    }
+  ]
+}

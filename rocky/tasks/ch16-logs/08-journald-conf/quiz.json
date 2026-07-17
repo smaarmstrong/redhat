@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.3.2-16.4 journald.conf & coexistence (pp. 319-322)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which journald.conf Storage= value makes the journal PERSISTENT (kept in /var/log/journal/)?",
+      "options": [
+        "persistent",
+        "volatile",
+        "none",
+        "auto only"
+      ],
+      "answer": 0,
+      "why": "Storage=persistent stores logs in /var/log/journal/ (you may need to create it); volatile keeps them in RAM (/run), none saves nothing, auto behaves like persistent if the dir exists."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the DEFAULT value of Storage= in journald.conf?",
+      "options": [
+        "auto",
+        "persistent",
+        "volatile",
+        "none"
+      ],
+      "answer": 0,
+      "why": "The default is auto (which is similar to persistent - it uses /var/log/journal if that directory exists)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does Storage=volatile do?",
+      "options": [
+        "Stores the journal only in memory (the /run/log/journal/ temporary files)",
+        "Stores logs permanently on disk",
+        "Forwards logs to rsyslog",
+        "Disables all logging"
+      ],
+      "answer": 0,
+      "why": "volatile keeps logs in memory under /run/log/journal/, so they are lost on reboot."
+    },
+    {
+      "type": "mcq",
+      "q": "What does ForwardToSyslog= control, and what is its default?",
+      "options": [
+        "Whether journald forwards messages to the traditional syslog daemon; default is no",
+        "Whether to compress logs; default yes",
+        "Whether to store logs; default auto",
+        "Whether to rotate logs; default weekly"
+      ],
+      "answer": 0,
+      "why": "ForwardToSyslog=no by default; set it yes to feed a classic syslog daemon."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, can rsyslog and journald coexist?",
+      "options": [
+        "Yes - they coexist without affecting each other (rsyslog reads the journal via the imjournal input module)",
+        "No - only one can run",
+        "Only if journald is disabled",
+        "Only on RHEL 7"
+      ],
+      "answer": 0,
+      "why": "By default both run; rsyslog integrates the journal through the imjournal module rather than the syslog socket."
+    }
+  ]
+}

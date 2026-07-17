@@ -1,0 +1,8 @@
+{
+  "title": "journald.conf and rsyslog/journald coexistence",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.3.2-16.4 (pp. 319-322)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "journalctl in depth",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.3.1 (pp. 316-318)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

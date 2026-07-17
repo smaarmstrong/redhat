@@ -1,0 +1,61 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.1-16.2 log overview & files (pp. 302-303)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In RHEL/Rocky 8.x-9.x, which two programs mainly handle log collection?",
+      "options": [
+        "rsyslog and journald",
+        "cron and at",
+        "syslog and dmesg",
+        "logrotate and last"
+      ],
+      "answer": 0,
+      "why": "rsyslog (an upgraded syslog) and journald (a systemd component) are the two log collectors."
+    },
+    {
+      "type": "mcq",
+      "q": "Which /var/log file should you check FIRST when something goes wrong (it holds the core system messages)?",
+      "options": [
+        "/var/log/messages",
+        "/var/log/btmp",
+        "/var/log/lastlog",
+        "/var/log/maillog"
+      ],
+      "answer": 0,
+      "why": "/var/log/messages is the system-level log with core information - the first place to look on errors."
+    },
+    {
+      "type": "mcq",
+      "q": "What does /var/log/secure record?",
+      "options": [
+        "User-identity events: logins, su switches, user creation, password changes",
+        "Kernel boot messages",
+        "Scheduled-task output",
+        "Email delivery"
+      ],
+      "answer": 0,
+      "why": "/var/log/secure logs authentication/identity events (login, su, useradd, passwd changes)."
+    },
+    {
+      "type": "cmd",
+      "q": "View the binary log /var/log/wtmp (login/logout, boot/shutdown events) with its dedicated command.",
+      "answers": ["last", "last /var/log/wtmp"],
+      "show": "last",
+      "why": "wtmp is binary; the 'last' command reads it. btmp (login errors) uses lastb, and lastlog reads /var/log/lastlog."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command reads the binary /var/log/btmp (failed login attempts)?",
+      "options": [
+        "lastb",
+        "last",
+        "lastlog",
+        "cat"
+      ],
+      "answer": 0,
+      "why": "btmp records login errors and is read with lastb; last reads wtmp, lastlog reads /var/log/lastlog."
+    }
+  ]
+}

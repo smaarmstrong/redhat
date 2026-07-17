@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.2.1 Rules - priorities & actions (pp. 305-307)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which lists the syslog priorities from LOWEST to HIGHEST?",
+      "options": [
+        "debug, info, notice, warning, err, crit, alert, emerg",
+        "emerg, alert, crit, err, warning, notice, info, debug",
+        "info, debug, warning, err, notice, crit, emerg, alert",
+        "err, warning, info, debug, notice, crit, alert, emerg"
+      ],
+      "answer": 0,
+      "why": "Lowest to highest: debug < info < notice < warning < err < crit < alert < emerg."
+    },
+    {
+      "type": "mcq",
+      "q": "Lower vs higher priority - what is the trade-off in what gets logged?",
+      "options": [
+        "Lower priority records MORE detail (less severe); higher priority records LESS but more serious",
+        "Higher priority records more detail",
+        "Priority has no effect on volume",
+        "Lower priority means more severe"
+      ],
+      "answer": 0,
+      "why": "The lower the priority, the more (and less severe) the entries; the higher, the fewer and more serious."
+    },
+    {
+      "type": "mcq",
+      "q": "In a selector, what does 'cron.info' match versus 'cron.=info'?",
+      "options": [
+        "cron.info matches info AND higher priorities; cron.=info matches ONLY info",
+        "They are identical",
+        "cron.info matches only info; cron.=info matches info and higher",
+        "cron.=info excludes info"
+      ],
+      "answer": 0,
+      "why": "A plain '.' means that priority and above; '.=' means exactly that priority; '.!' excludes it."
+    },
+    {
+      "type": "mcq",
+      "q": "In the action field, what does '@192.168.100.20' mean?",
+      "options": [
+        "Send the log to a remote machine at that address",
+        "Save to a local file",
+        "Send to all logged-in users",
+        "Write to a terminal"
+      ],
+      "answer": 0,
+      "why": "A leading @ forwards to a remote host; a path saves locally, :omusrmsg: sends to users, /dev/ttyN to a terminal."
+    },
+    {
+      "type": "mcq",
+      "q": "In the action field, what does a leading '-' before a filename mean (e.g. -/var/log/maillog)?",
+      "options": [
+        "Disable the buffering (sync) mechanism when writing to the file",
+        "Delete the file first",
+        "Make the file read-only",
+        "Comment out the rule"
+      ],
+      "answer": 0,
+      "why": "The leading - disables synchronous writes (buffering) to that file, improving performance for busy logs."
+    }
+  ]
+}

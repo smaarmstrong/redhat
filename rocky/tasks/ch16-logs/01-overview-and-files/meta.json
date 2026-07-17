@@ -1,0 +1,8 @@
+{
+  "title": "Log overview and the /var/log files",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.1-16.2 (pp. 302-303)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
