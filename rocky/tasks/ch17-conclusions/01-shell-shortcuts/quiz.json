@@ -1,0 +1,68 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 17 Conclusions - shell tips",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the -- marker do in a command line?",
+      "options": [
+        "Marks the end of options, so anything after it is treated as an argument even if it starts with a dash",
+        "Comments out the rest of the line",
+        "Runs the command in the background",
+        "Repeats the previous command"
+      ],
+      "answer": 0,
+      "why": "-- ends option parsing; e.g. 'mkdir -p -- --hard' creates a directory literally named --hard instead of reading --hard as options."
+    },
+    {
+      "type": "cmd",
+      "q": "Jump back to the PREVIOUS working directory.",
+      "answers": ["cd -"],
+      "show": "cd -",
+      "why": "cd - returns to the last directory; cd with no argument goes to your home directory."
+    },
+    {
+      "type": "mcq",
+      "q": "The '[' used in an if test is actually what?",
+      "options": [
+        "A real program (/usr/bin/[), like true and false",
+        "Special shell syntax with no backing binary",
+        "A comment character",
+        "An alias for grep"
+      ],
+      "answer": 0,
+      "why": "[ is a genuine command (/usr/bin/[), equivalent to test; true and false are also real binaries."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the key sequence Ctrl+X Ctrl+E do?",
+      "options": [
+        "Opens the command you are typing in your editor ($EDITOR), running it when you close the file",
+        "Clears the screen",
+        "Kills the current command",
+        "Exits the shell"
+      ],
+      "answer": 0,
+      "why": "Ctrl+X Ctrl+E edits the current command line in $EDITOR - a lifesaver for long one-liners."
+    },
+    {
+      "type": "cmd",
+      "q": "Using brace expansion, copy file.conf to a backup named file.conf.bak in one short command.",
+      "answers": ["cp file.conf{,.bak}"],
+      "show": "cp file.conf{,.bak}",
+      "why": "{,.bak} expands to two strings (empty, then .bak), so this becomes 'cp file.conf file.conf.bak'."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'sudo !!' do?",
+      "options": [
+        "Re-runs the previous command prefixed with sudo",
+        "Runs two commands at once",
+        "Repeats the last two commands",
+        "Escalates the shell to root permanently"
+      ],
+      "answer": 0,
+      "why": "!! is the previous command, so 'sudo !!' reruns it with sudo - the reflex for when you forgot sudo. (!$ reuses just the last argument.)"
+    }
+  ]
+}

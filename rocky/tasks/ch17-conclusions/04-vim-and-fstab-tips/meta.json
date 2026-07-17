@@ -1,0 +1,8 @@
+{
+  "title": "vim :x and the /etc/fstab integers",
+  "domain": "Ch 17 - Conclusions (Tips)",
+  "objective": "Rocky Linux Admin Guide, ch. 17 (pp. 323+)",
+  "est_min": 4,
+  "needs": "",
+  "kind": "quiz"
+}
