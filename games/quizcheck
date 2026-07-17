@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+"""quizcheck — validate every quiz task the way the runner would use it.
+
+For each */tasks/*/*/quiz.json: the meta must declare kind "quiz"; every
+question must be well-formed (mcq: 2-6 options and an in-range answer index;
+cmd: a non-empty ASCII answers list); and no content may contain emoji.
+Run it after any quiz data edit.
+
+Usage:  ./games/quizcheck [repo_root]
+"""
+import json
+import sys
+import unicodedata
+from pathlib import Path
+
+EMOJI_RANGES = ((0x1F000, 0x1FAFF), (0x2600, 0x27BF), (0x2B00, 0x2BFF),
+                (0xFE00, 0xFE0F), (0x2190, 0x21FF))
+
+def has_emoji(s):
+    return any(a <= ord(ch) <= b for ch in s for a, b in EMOJI_RANGES)
+
+def main():
+    root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent
+    errors = []
+    def err(where, msg):
+        errors.append(f"{where}: {msg}")
+
+    quizzes = sorted(root.glob("*/tasks/*/*/quiz.json"))
+    nq = 0
+    for qf in quizzes:
+        d = qf.parent
+        where = str(d.relative_to(root))
+        try:
+            meta = json.loads((d / "meta.json").read_text())
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            err(where, f"meta.json missing/invalid: {e}"); continue
+        if meta.get("kind") != "quiz":
+            err(where, 'has quiz.json but meta.json lacks "kind": "quiz"')
+        try:
+            quiz = json.loads(qf.read_text())
+        except json.JSONDecodeError as e:
+            err(where, f"quiz.json invalid JSON: {e}"); continue
+        if not isinstance(quiz.get("questions"), list) or not quiz["questions"]:
+            err(where, "quiz.json needs a non-empty questions list"); continue
+        if not quiz.get("source"):
+            err(where, "quiz.json should name its guide `source` section")
+        pp = quiz.get("pass_pct", 80)
+        if not (isinstance(pp, int) and 1 <= pp <= 100):
+            err(where, f"pass_pct must be an int 1-100, got {pp!r}")
+        for i, q in enumerate(quiz["questions"], 1):
+            qw = f"{where} q{i}"
+            nq += 1
+            if not q.get("q") or not isinstance(q["q"], str):
+                err(qw, "missing question text 'q'")
+            kind = q.get("type")
+            if kind == "mcq":
+                opts = q.get("options")
+                if not isinstance(opts, list) or not (2 <= len(opts) <= 6):
+                    err(qw, "mcq needs 2-6 options")
+                elif len(set(opts)) != len(opts):
+                    err(qw, "mcq has duplicate options")
+                ans = q.get("answer")
+                if not isinstance(ans, int) or not opts or not (0 <= ans < len(opts)):
+                    err(qw, f"mcq answer must be an index into options, got {ans!r}")
+            elif kind == "cmd":
+                answers = q.get("answers")
+                if not isinstance(answers, list) or not answers or \
+                   not all(isinstance(a, str) and a.strip() for a in answers):
+                    err(qw, "cmd needs a non-empty 'answers' list of strings")
+                elif not all(a.isascii() for a in answers):
+                    err(qw, "cmd answers must be plain ASCII (they are typed)")
+            else:
+                err(qw, f"unknown question type {kind!r} (mcq|cmd)")
+            for field in ("q", "why", "show"):
+                v = q.get(field)
+                if isinstance(v, str) and has_emoji(v):
+                    err(qw, f"emoji found in {field!r} — plain text only")
+            for opt in (q.get("options") or []):
+                if isinstance(opt, str) and has_emoji(opt):
+                    err(qw, "emoji found in an option — plain text only")
+
+    # a quiz-kind meta without quiz.json is also broken
+    for meta in root.glob("*/tasks/*/*/meta.json"):
+        try:
+            m = json.loads(meta.read_text())
+        except json.JSONDecodeError:
+            continue
+        if m.get("kind") == "quiz" and not (meta.parent / "quiz.json").exists():
+            err(str(meta.parent.relative_to(root)), 'kind "quiz" but no quiz.json')
+
+    print(f"quizcheck: {len(quizzes)} quiz task(s), {nq} question(s)")
+    if errors:
+        print(f"{len(errors)} error(s):")
+        for e in errors:
+            print("  " + e)
+        sys.exit(1)
+    print("all quizzes pass")
+
+if __name__ == "__main__":
+    main()

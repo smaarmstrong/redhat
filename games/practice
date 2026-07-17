@@ -30,6 +30,7 @@ Task and grader scripts change the system, so setup/check/solution run as root
 """
 import json
 import os
+import random
 import re
 import subprocess
 import sys
@@ -37,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["foundations", "rhcsa", "rhce"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -175,6 +176,8 @@ def prereq_advice(tasks, st, t):
 # unlisted sorts last. (Alphabetical order used to make `boot` the 2nd thing a
 # beginner ever saw — grub + regex before they'd met grep or an editor.)
 DOMAIN_ORDER = {
+    # rocky — guide-knowledge quizzes; domain dirs are chNN-... so the default
+    # rank (99) plus lexical id order already walks the book front to back
     # foundations — the shell tools themselves (editor, grep, regex, sed, awk,
     # pipes, find), taught before any exam task assumes them
     "editor": 0, "shell": 1, "text": 2, "search": 3,
@@ -305,6 +308,8 @@ def cmd_status(tasks, st):
 def launch_task(tasks, st, t):
     """Show a task, set up its starting state, and mark it current. Returns True
     on success. Shared by `start` and `train`."""
+    if is_quiz(t):
+        return run_quiz(tasks, st, t)
     if "spare-disk" in t.get("needs", "") and not spare_present():
         print(YEL("This task needs a spare disk, but none was found."))
         print(DIM("Attach a blank disk to the VM, or set SPARE_DISK=/dev/xyz."))
@@ -341,6 +346,110 @@ def ask(msg):
     except EOFError:
         print()
         return ""
+
+# ---- quiz tasks (rocky track) -----------------------------------------------
+# A task whose meta.json has "kind": "quiz" is a knowledge quiz over a section
+# of the Rocky Linux Admin Guide, not a VM exercise: no setup/grade/solution
+# scripts. Its questions live in quiz.json — multiple choice ("mcq") for prose
+# knowledge, type-the-command ("cmd") for commands. Passing marks it done and
+# it enters the same spaced-repetition review cycle as every other task;
+# reviewing = retaking the quiz.
+
+def is_quiz(t):
+    return t.get("kind") == "quiz"
+
+def qnorm(s):
+    """Normalise a typed command answer: case-insensitive, whitespace-collapsed."""
+    return " ".join((s or "").strip().lower().split())
+
+def load_quiz(t):
+    try:
+        return json.loads((t["dir"] / "quiz.json").read_text())
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(RED(f"broken quiz data for {t['id']}: {e}"))
+        return None
+
+def quiz_settle(st, t, passed, pct):
+    """SR bookkeeping after a completed quiz — mirrors cmd_check's contract:
+    pass -> done + XP + next review scheduled; fail -> lapse back to due-now."""
+    entry = st["tasks"].setdefault(t["id"], {})
+    entry["attempts"] = entry.get("attempts", 0) + 1
+    if passed:
+        was_review = entry.get("status") == "done"
+        entry["status"] = "done"
+        entry["completed"] = date.today().isoformat()
+        if was_review:
+            reps, gain = entry.get("reps", 1) + 1, 5
+        else:
+            reps, gain = 1, 10 + int(t.get("est_min", 5))
+        schedule_review(entry, reps)
+        st["xp"] += gain
+        bump_streak(st)
+        print(GRN(f"\n+{gain} XP") + f"   (streak {st['streak']['count']})")
+        print(DIM(f"Next review in {review_interval(reps)}d.  Next task:  ") + f"{INVOKE} train")
+    else:
+        if entry.get("status") == "done":       # a lapsed review — bring it back
+            entry["reps"] = 0
+            entry["due"] = date.today().isoformat()
+        src = load_quiz(t) or {}
+        where = src.get("source", "the guide section")
+        print(YEL(f"\nNot passed — {pct}%.") + DIM(f"  Reread {where}, then retake:  ")
+              + f"{INVOKE} check")
+    save_state(st)
+
+def run_quiz(tasks, st, t):
+    """Run a quiz task interactively. Returns True if it ran to completion."""
+    quiz = load_quiz(t)
+    if not quiz or not quiz.get("questions"):
+        return False
+    entry = st["tasks"].setdefault(t["id"], {})
+    if entry.get("status") != "done":
+        entry["status"] = "in-progress"
+    st["current"] = t["id"]
+    save_state(st)
+    qs = quiz["questions"]
+    need = int(quiz.get("pass_pct", 80))
+    print()
+    print(BLD(f"{t['domain']} — {t['title']}"))
+    print(DIM(f"covers: {quiz.get('source', t.get('objective',''))}"))
+    print(DIM(f"id: {t['id']}   {len(qs)} questions · pass mark {need}%"))
+    print(DIM("(Enter skips a question — it counts as wrong; q quits without scoring)"))
+    print("─" * 60)
+    correct = 0
+    for i, q in enumerate(qs, 1):
+        print(f"\n{BLD(f'{i}.')} {q['q']}")
+        if q["type"] == "mcq":
+            order = list(range(len(q["options"])))
+            random.shuffle(order)
+            letters = "abcdefg"
+            for pos, oi in enumerate(order):
+                print(f"     {letters[pos]}) {q['options'][oi]}")
+            right_letter = letters[order.index(q["answer"])]
+            got = ask("   your answer: ")
+            if got in ("q", "quit"):
+                print(DIM("\nstopped — nothing scored. Retake any time.")); return True
+            ok = got == right_letter
+            reveal = f"{right_letter}) {q['options'][q['answer']]}"
+        else:                                    # "cmd" — type the command
+            got = ask("   the command: ")
+            if got in ("q", "quit"):
+                print(DIM("\nstopped — nothing scored. Retake any time.")); return True
+            ok = qnorm(got) in (qnorm(a) for a in q["answers"])
+            reveal = q.get("show") or q["answers"][0]
+        if ok:
+            correct += 1
+            print("   " + GRN("correct"))
+        else:
+            print("   " + RED("not quite") + DIM("  answer: ") + reveal)
+        if q.get("why"):
+            print("   " + DIM(q["why"]))
+    pct = round(100 * correct / len(qs))
+    print("\n" + "─" * 60)
+    tag = GRN if pct >= need else (YEL if pct >= 60 else RED)
+    print(tag(BLD(f"{correct}/{len(qs)}  ({pct}%)")) +
+          DIM(f"   pass mark {need}%"))
+    quiz_settle(st, t, pct >= need, pct)
+    return True
 
 def parse_lesson(text):
     """Split a lesson into a sequence of beats the tutor walks through:
@@ -424,6 +533,23 @@ def cmd_learn(tasks, st, ident=None, focus=None):
                       "Revisit a lesson with:  practice learn <id>"))
             return
     short = t["id"].split("/")[-1]
+    if is_quiz(t):
+        # A quiz's "lesson" is the guide section it covers: point there, then
+        # offer to take it.
+        quiz = load_quiz(t) or {}
+        print()
+        print(BLD(f"QUIZ — {t['domain']}: {t['title']}"))
+        print(DIM(f"covers: {quiz.get('source', t.get('objective',''))}"))
+        prompt = t["dir"] / "prompt.md"
+        if prompt.exists():
+            print("─" * 60)
+            print(prompt.read_text().rstrip())
+            print("─" * 60)
+        if ask(BLD("Take the quiz now? ") + DIM("[Enter = yes, q = later] ")) not in ("q", "quit"):
+            run_quiz(tasks, st, t)
+        else:
+            print(DIM("When you've read it:  ") + f"{SELF} start {short}")
+        return
     print()
     print(BLD(f"LESSON — {t['domain']}: {t['title']}"))
     print(DIM(f"objective: {t.get('objective','')}"))
@@ -520,6 +646,9 @@ def cmd_train(tasks, st, focus=None):
 
 def cmd_check(tasks, st, ident):
     t = resolve(tasks, ident)
+    if is_quiz(t):                     # checking a quiz = (re)taking it
+        run_quiz(tasks, st, t)
+        return
     print()
     print(BLD(f"Grading: {t['title']}"))
     rc = run_root(t["dir"] / "grade.sh")
@@ -548,6 +677,12 @@ def cmd_check(tasks, st, ident):
 
 def cmd_solution(tasks, st, ident):
     t = resolve(tasks, ident)
+    if is_quiz(t):
+        quiz = load_quiz(t) or {}
+        print(DIM("This one's a quiz — the answers come from reading "
+                  f"{quiz.get('source', 'the guide section')}."))
+        print(DIM("Take it (answers are revealed as you go):  ") + f"{INVOKE} check")
+        return
     sol = t["dir"] / "solution.sh"
     print()
     print(BLD(f"Reference solution — {t['title']}"))

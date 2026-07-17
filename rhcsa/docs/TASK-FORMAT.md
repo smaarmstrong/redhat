@@ -127,6 +127,43 @@ run (`setup.sh` resets the starting state). A good `learn.md` teaches the *skill
 so the solution becomes obvious; it should never be just a reworded
 `solution.sh`. See `rhcsa/tasks/boot/` for worked examples.
 
+## Quiz tasks (the rocky track)
+
+A task whose `meta.json` declares `"kind": "quiz"` is a **knowledge quiz**, not
+a VM exercise — no setup/grade/solution scripts. It quizzes a section of the
+Rocky Linux Admin Guide (see [../../rocky/README.md](../../rocky/README.md)
+for attribution). The directory holds `meta.json`, `prompt.md` (which guide
+section to read first), and `quiz.json`:
+
+```json
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.1 (pp. 14-15)",
+  "pass_pct": 80,
+  "questions": [
+    {"type": "mcq", "q": "An operating system is...",
+     "options": ["a set of programs that manages...", "..."],
+     "answer": 0,
+     "why": "shown after answering (optional)"},
+    {"type": "cmd", "q": "What command searches man page descriptions by keyword?",
+     "answers": ["apropos", "man -k"],
+     "show": "apropos",
+     "why": "man -k is the equivalent option form (optional)"}
+  ]
+}
+```
+
+- `mcq` — `answer` is the index of the correct option **as authored**; the
+  runner shuffles display order. Use `mcq` for prose knowledge (definitions,
+  history, concepts) — free-typed English answers grade badly.
+- `cmd` — the learner types the command; matching is case-insensitive and
+  whitespace-collapsed against any entry in `answers` (all plain ASCII).
+  `show` is the canonical form revealed on a miss (defaults to the first
+  answer). Use `cmd` for "what is the command to do X".
+- Passing (>= `pass_pct`, default 80) marks the task done and schedules it
+  into the normal spaced-repetition cycle; a review is simply a retake.
+  A skipped question counts as wrong; `q` quits without scoring.
+- Validate with **`./games/quizcheck`** after any quiz edit.
+
 ## Authoring rules
 
 - Use only tools present in a **Rocky 9 base install** (no internet assumed). If a

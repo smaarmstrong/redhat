@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 1-2 (pp. 11-13)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "The Rocky Linux courseware is published under which licence?",
+      "options": [
+        "Creative Commons BY-SA",
+        "GPLv3",
+        "MIT",
+        "Proprietary - all rights reserved"
+      ],
+      "answer": 0,
+      "why": "CC BY-SA: free to share and transform the material, while respecting the author's rights."
+    },
+    {
+      "type": "mcq",
+      "q": "In CC BY-SA, what does the BY (Attribution) part require of you?",
+      "options": [
+        "You must cite the name of the original author",
+        "You must buy a licence before redistributing",
+        "You may only use the material for non-commercial purposes",
+        "You must submit your changes back upstream"
+      ],
+      "answer": 0,
+      "why": "BY = Attribution: cite the original author. SA = Share Alike."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the guide give the vi editor a whole chapter of its own?",
+      "options": [
+        "Other commands sometimes use identical syntax to vi (sed comes to mind)",
+        "vi is the only text editor available on Rocky Linux",
+        "vi is required to compile the kernel",
+        "Graphical editors cannot edit configuration files"
+      ],
+      "answer": 0,
+      "why": "Knowing vi's essentials also pays off elsewhere - e.g. sed shares its syntax. nano is the simpler alternative, installed by default."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two backup tools does the guide investigate in its backup chapter?",
+      "options": [
+        "tar and cpio",
+        "rsnapshot and lsyncd",
+        "dd and dump",
+        "borg and restic"
+      ],
+      "answer": 0,
+      "why": "tar, and the less widespread cpio. (rsnapshot/lsyncd are named as enhancement software, not the tools investigated.)"
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the guide call System Startup an important read?",
+      "options": [
+        "Boot-time management has evolved significantly since the arrival of systemd",
+        "Rocky Linux boots differently from every other distribution",
+        "The BIOS must be reflashed on every kernel update",
+        "Startup scripts must be rewritten after every reboot"
+      ],
+      "answer": 0,
+      "why": "Management of the system during the boot process changed a lot with systemd."
+    }
+  ]
+}

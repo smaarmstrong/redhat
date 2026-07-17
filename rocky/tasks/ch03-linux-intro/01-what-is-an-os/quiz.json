@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.1-3.2.1 (pp. 14-15)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "The guide's definition: an operating system is...",
+      "options": [
+        "a set of programs that manages the available resources of a computer",
+        "the program that draws windows and menus on the screen",
+        "the collection of all software installed on a machine",
+        "the firmware that starts the computer before anything else"
+      ],
+      "answer": 0,
+      "why": "Linux, UNIX, BSD, Windows and MacOS are all operating systems by this definition."
+    },
+    {
+      "type": "mcq",
+      "q": "What is physical memory made up of?",
+      "options": [
+        "The RAM bars and the processor cache memory",
+        "The hard disk and the swap partition",
+        "The RAM bars and the hard disk",
+        "The processor registers only"
+      ],
+      "answer": 0,
+      "why": "Physical memory = RAM + processor cache, used for program execution."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does virtual memory live?",
+      "options": [
+        "On the hard disk, in the swap partition",
+        "In the processor cache",
+        "In a reserved area of the RAM",
+        "On the network, in a shared memory server"
+      ],
+      "answer": 0,
+      "why": "The swap partition unloads physical memory and can save system state at electrical shutdown."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is NOT one of the OS's resource-management jobs listed by the guide?",
+      "options": [
+        "Translate source code into machine code",
+        "Intercept access to peripherals",
+        "Schedule processes to occupy the processor",
+        "Protect files from unauthorized access"
+      ],
+      "answer": 0,
+      "why": "Compiling is a developer tool's job. The OS manages memory, peripherals, tasks, file protection, and collects information about programs in use."
+    },
+    {
+      "type": "mcq",
+      "q": "In the guide's layer diagram, what sits directly between applications and the hardware?",
+      "options": [
+        "The operating system",
+        "The user",
+        "The shell",
+        "The compiler"
+      ],
+      "answer": 0,
+      "why": "User -> Application -> Operating system -> Hardware."
+    },
+    {
+      "type": "mcq",
+      "q": "MULTICS (1964-1968) was developed for which three organisations?",
+      "options": [
+        "MIT, Bell Labs (AT&T) and General Electric",
+        "IBM, DEC and Xerox",
+        "Berkeley, Stanford and MIT",
+        "AT&T, IBM and Microsoft"
+      ],
+      "answer": 0,
+      "why": "MULTiplexed Information and Computing Service - the project UNIX later reacted against."
+    }
+  ]
+}
