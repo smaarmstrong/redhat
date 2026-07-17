@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.1 & 6.6.5 saving and quitting (pp. 84, 95)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "In ex mode, quit VI WITHOUT saving (the file has not been modified).",
+      "answers": [":q"],
+      "show": ":q",
+      "why": ":q quits; the 'q' stands for quit. It refuses if there are unsaved changes."
+    },
+    {
+      "type": "cmd",
+      "q": "In ex mode, save the file (write) without quitting.",
+      "answers": [":w"],
+      "show": ":w",
+      "why": ":w writes (saves) the buffer to the file; 'w' stands for write."
+    },
+    {
+      "type": "cmd",
+      "q": "In ex mode, save AND quit in one command (give either standard form).",
+      "answers": [":wq", ":x"],
+      "show": ":wq",
+      "why": ":wq writes then quits; :x is the equivalent shorthand (eXit)."
+    },
+    {
+      "type": "mcq",
+      "q": "From command mode (not ex mode), which key pressed twice saves and exits?",
+      "options": [
+        "The uppercase Z key twice (ZZ)",
+        "The lowercase z key twice (zz)",
+        "The x key twice (xx)",
+        "The w key twice (ww)"
+      ],
+      "answer": 0,
+      "why": "Pressing uppercase Z twice (ZZ) saves and exits directly from command mode."
+    },
+    {
+      "type": "cmd",
+      "q": "You made changes but want to quit WITHOUT saving them; force VI to discard the modifications and quit.",
+      "answers": [":q!"],
+      "show": ":q!",
+      "why": "Plain :q refuses to quit a modified buffer; adding ! forces the exit without confirmation, discarding the changes."
+    },
+    {
+      "type": "mcq",
+      "q": "What does adding '!' to a quit or write command (e.g. :q! or :w!) do?",
+      "options": [
+        "Forces the action without confirmation",
+        "Repeats the command twice",
+        "Runs it as a shell command",
+        "Adds a comment"
+      ],
+      "answer": 0,
+      "why": "The ! forces the command through without asking for confirmation - for example discarding unsaved changes with :q!."
+    },
+    {
+      "type": "cmd",
+      "q": "Save the current buffer under a different name, notes.txt.",
+      "answers": [":w notes.txt"],
+      "show": ":w notes.txt",
+      "why": ":w <file> writes the buffer to a new file name, leaving the original untouched."
+    }
+  ]
+}

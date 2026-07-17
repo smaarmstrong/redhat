@@ -1,0 +1,91 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 6.6 EX commands (pp. 92-95)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Turn ON line numbering in the current file (give the short ex command).",
+      "answers": [":set nu", ":set number"],
+      "show": ":set nu",
+      "why": ":set nu (or the longer :set number) shows line numbers; :set nonu hides them again."
+    },
+    {
+      "type": "cmd",
+      "q": "Search FORWARD from the cursor for the string 'error'.",
+      "answers": ["/error"],
+      "show": "/error",
+      "why": "/string searches forward from the cursor; ?string searches backward."
+    },
+    {
+      "type": "cmd",
+      "q": "Search BACKWARD (before the cursor) for the string 'error'.",
+      "answers": ["?error"],
+      "show": "?error",
+      "why": "?string searches backward from the cursor towards the start of the file."
+    },
+    {
+      "type": "mcq",
+      "q": "After a search, what do n and N do?",
+      "options": [
+        "n finds the next match; N finds the previous match",
+        "n finds the previous match; N finds the next",
+        "n starts a new search; N cancels it",
+        "n numbers the lines; N unnumbers them"
+      ],
+      "answer": 0,
+      "why": "n repeats the search in the same direction (next match); N repeats it in the opposite direction (previous match)."
+    },
+    {
+      "type": "mcq",
+      "q": "In a VI search, what do the characters ^, $ and . mean?",
+      "options": [
+        "^ matches the start of a line, $ the end of a line, and . any single character (except newline)",
+        "^ matches the end, $ the start, and . a literal dot",
+        "^ and $ both match any character; . matches a digit",
+        "They have no special meaning in VI searches"
+      ],
+      "answer": 0,
+      "why": "VI searches use regex: ^Word finds lines starting with Word, Word$ lines ending with it, W.rd matches any character in the middle, and * means the previous character repeated any number of times."
+    },
+    {
+      "type": "cmd",
+      "q": "Throughout the WHOLE file, replace every occurrence of 'foo' with 'bar' (all occurrences on every line).",
+      "answers": [":%s/foo/bar/g"],
+      "show": ":%s/foo/bar/g",
+      "why": ":% applies to the whole file and the trailing /g replaces every occurrence on each line, not just the first."
+    },
+    {
+      "type": "mcq",
+      "q": "In a substitution like :n,m s/search/replace, what does adding /g at the end change?",
+      "options": [
+        "It replaces EVERY occurrence on each line, not just the first",
+        "It makes the search global across all open files",
+        "It ignores case",
+        "It undoes the substitution"
+      ],
+      "answer": 0,
+      "why": "By default only the first match per line is replaced; /g forces every occurrence on the line to be replaced."
+    },
+    {
+      "type": "cmd",
+      "q": "From the first line to the last line, replace 'foo' with 'bar' (first occurrence per line only).",
+      "answers": [":1,$ s/foo/bar", ":1,$s/foo/bar", ":0,$ s/foo/bar", ":0,$s/foo/bar"],
+      "show": ":1,$ s/foo/bar",
+      "why": "1,$ is the range from the first line to the last ($); without /g only the first match on each line is replaced."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete every BLANK (empty) line in the file using a global ex command.",
+      "answers": [":g/^$/d"],
+      "show": ":g/^$/d",
+      "why": "g is global; ^$ matches an empty line (start immediately followed by end), and d deletes the matched lines."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete every line that CONTAINS the string 'debug'.",
+      "answers": [":g/debug/d"],
+      "show": ":g/debug/d",
+      "why": ":g/string/d deletes all lines matching the string; :g!/string/d would instead delete the lines that do NOT contain it."
+    }
+  ]
+}

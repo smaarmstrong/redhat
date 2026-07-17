@@ -1,0 +1,8 @@
+{
+  "title": "VI: entering insert mode (i, a, I, A, o, O)",
+  "domain": "Ch 6 - VI Text Editor",
+  "objective": "Rocky Linux Admin Guide, ch. 6.4 (pp. 88-89)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
