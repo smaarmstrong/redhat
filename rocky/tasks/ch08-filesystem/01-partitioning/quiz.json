@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.1 Partitioning (pp. 126-128)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where is the MBR partition table stored?",
+      "options": [
+        "In the first sector of the disk (the Master Boot Record)",
+        "In the last sector of the disk",
+        "In /etc/fstab",
+        "In the BIOS chip"
+      ],
+      "answer": 0,
+      "why": "The partition table is in the first sector of the disk (MBR), recording how the physical disk is divided."
+    },
+    {
+      "type": "mcq",
+      "q": "On an MBR disk, what is the maximum mix of partitions allowed?",
+      "options": [
+        "Up to 4 primary, OR 3 primary plus 1 extended",
+        "Up to 8 primary partitions",
+        "Unlimited primary partitions",
+        "Only 1 primary and 1 extended"
+      ],
+      "answer": 0,
+      "why": "An MBR disk allows at most four partitions: four primary, or three primary plus one extended (only one extended is permitted)."
+    },
+    {
+      "type": "mcq",
+      "q": "How many extended partitions can a single physical disk have (MBR)?",
+      "options": [
+        "Exactly one",
+        "Up to four",
+        "As many as will fit",
+        "None - extended partitions do not exist on MBR"
+      ],
+      "answer": 0,
+      "why": "There can be only one extended partition per physical disk."
+    },
+    {
+      "type": "mcq",
+      "q": "What can an extended partition hold?",
+      "options": [
+        "It cannot store data directly or be formatted; it can only contain logical partitions",
+        "It stores data directly like a primary partition",
+        "It holds the boot loader only",
+        "It can hold another extended partition"
+      ],
+      "answer": 0,
+      "why": "The extended partition is a container: it cannot be formatted or hold data itself, only logical partitions."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the largest disk an MBR partition table can address?",
+      "options": [
+        "2 TB",
+        "512 GB",
+        "16 TB",
+        "There is no limit"
+      ],
+      "answer": 0,
+      "why": "The MBR partition table can recognise disks up to 2 TB; beyond that you need GPT."
+    },
+    {
+      "type": "mcq",
+      "q": "On an MBR disk, which partition number is the first LOGICAL partition?",
+      "options": [
+        "5",
+        "1",
+        "4",
+        "0"
+      ],
+      "answer": 0,
+      "why": "Numbers 1-4 are reserved for primary/extended partitions, so logical partitions start at 5."
+    }
+  ]
+}

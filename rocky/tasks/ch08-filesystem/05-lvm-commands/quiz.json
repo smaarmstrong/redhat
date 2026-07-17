@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.2.2-8.2.3 LVM commands (pp. 134-135)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Turn the partition /dev/sdb1 into an LVM physical volume.",
+      "answers": ["pvcreate /dev/sdb1", "sudo pvcreate /dev/sdb1"],
+      "show": "pvcreate /dev/sdb1",
+      "why": "pvcreate initialises a disk or partition as an LVM physical volume."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a volume group called volume1 from the physical volume /dev/sdb1.",
+      "answers": ["vgcreate volume1 /dev/sdb1", "sudo vgcreate volume1 /dev/sdb1"],
+      "show": "vgcreate volume1 /dev/sdb1",
+      "why": "vgcreate <VG_name> <PV...> groups one or more PVs into a volume group."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a 600M logical volume named VolLog1 in the volume group volume1.",
+      "answers": ["lvcreate -L 600M -n VolLog1 volume1", "sudo lvcreate -L 600M -n VolLog1 volume1"],
+      "show": "lvcreate -L 600M -n VolLog1 volume1",
+      "why": "lvcreate -L sets the size and -n the name; the file system is then created on the new LV."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between lvcreate's -L and -l options?",
+      "options": [
+        "-L sets an absolute size (K/M/G); -l sets a number of PEs or a percentage of capacity",
+        "-L sets the name; -l sets the size",
+        "-L is for VGs; -l is for LVs",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "-L takes a size like 600M; -l takes a PE count or percentage (one PE = 4 MB by default)."
+    },
+    {
+      "type": "mcq",
+      "q": "After 'lvcreate -n VolLog1 volume1', what is the device path of the new LV?",
+      "options": [
+        "/dev/volume1/VolLog1 (a symbolic link to a /dev/dm-N device)",
+        "/dev/VolLog1",
+        "/dev/lvm/VolLog1",
+        "/volume1/VolLog1"
+      ],
+      "answer": 0,
+      "why": "LVs are named /dev/VG_name/LV_name, a soft link pointing to a /dev/dm-N device."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command adds another physical volume to an existing volume group (extends it)?",
+      "options": [
+        "vgextend",
+        "vgcreate",
+        "lvextend",
+        "pvcreate"
+      ],
+      "answer": 0,
+      "why": "vgextend grows a VG by adding PVs; lvextend grows a logical volume instead."
+    },
+    {
+      "type": "cmd",
+      "q": "View detailed information about the physical volume /dev/sdb1.",
+      "answers": ["pvdisplay /dev/sdb1", "sudo pvdisplay /dev/sdb1"],
+      "show": "pvdisplay /dev/sdb1",
+      "why": "pvdisplay shows PV details; vgdisplay and lvdisplay do the same for VGs and LVs."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "/etc/fstab and mounting: mount, umount",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.4.1-8.4.2 (pp. 143-145)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

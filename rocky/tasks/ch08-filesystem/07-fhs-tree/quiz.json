@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.4 Organization of a file system (pp. 142-143)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the FHS standard that Linux follows define?",
+      "options": [
+        "The names and roles of the system's directories",
+        "The encryption of passwords",
+        "The default shell",
+        "The partition table format"
+      ],
+      "answer": 0,
+      "why": "The Filesystem Hierarchy Standard (see man hier) defines directory names and their roles."
+    },
+    {
+      "type": "mcq",
+      "q": "Which directory holds files related to system startup (the kernel and boot loader)?",
+      "options": [
+        "/boot",
+        "/bin",
+        "/var",
+        "/srv"
+      ],
+      "answer": 0,
+      "why": "/boot contains the files related to system startup."
+    },
+    {
+      "type": "mcq",
+      "q": "What is /etc for?",
+      "options": [
+        "Configuration and script files",
+        "User home directories",
+        "Shared libraries",
+        "Temporary files"
+      ],
+      "answer": 0,
+      "why": "/etc holds configuration and script files (its name is glossed as 'editable text configuration')."
+    },
+    {
+      "type": "mcq",
+      "q": "Which directory contains files that may change in size, such as spool and log files?",
+      "options": [
+        "/var",
+        "/opt",
+        "/usr",
+        "/sbin"
+      ],
+      "answer": 0,
+      "why": "/var (variables) holds changing data like spools and logs."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the /proc directory?",
+      "options": [
+        "A mount point for the proc filesystem, giving information about running processes and the kernel",
+        "The processor's firmware",
+        "The directory of installed applications",
+        "A backup of /etc"
+      ],
+      "answer": 0,
+      "why": "/proc is the proc virtual filesystem exposing process and kernel information; /sys is a similar virtual FS."
+    },
+    {
+      "type": "mcq",
+      "q": "Which statement about mounting is correct?",
+      "options": [
+        "Mounting onto a non-empty directory hides its contents rather than deleting them, and only the administrator can mount",
+        "Mounting onto a non-empty directory deletes its contents",
+        "Any user can mount any filesystem",
+        "You must be standing under the mount point to unmount it"
+      ],
+      "answer": 0,
+      "why": "Mounting on a non-empty directory only hides the existing content; only the administrator can mount, and you must not be under a mount point to (un)mount it. Boot-time mounts go in /etc/fstab."
+    }
+  ]
+}

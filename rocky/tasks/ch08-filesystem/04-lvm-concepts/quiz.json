@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.2 LVM (pp. 130-133)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What core problem of standard partitions does LVM solve?",
+      "options": [
+        "Standard partitions have a fixed capacity once mounted; LVM lets disk capacity be adjusted flexibly",
+        "Standard partitions cannot hold a file system",
+        "Standard partitions cannot be mounted",
+        "Standard partitions are slower to read"
+      ],
+      "answer": 0,
+      "why": "A standard partition's size is fixed once mounted; LVM adds flexibility (resize, online moves, snapshots, mirroring, striping)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a PV (Physical Volume) in LVM?",
+      "options": [
+        "The basic storage block - a disk or partition initialised for use by LVM",
+        "A group of several disks",
+        "A file system built on a volume group",
+        "The smallest allocation unit"
+      ],
+      "answer": 0,
+      "why": "A PV is the basic LVM storage logic block, created from a disk or partition (or RAID array) after initialisation."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the relationship between PV, VG and LV?",
+      "options": [
+        "One or more PVs make up a VG; LVs are carved out of a VG and hold the file systems",
+        "One LV contains several VGs, each made of PVs",
+        "PV, VG and LV are three names for the same thing",
+        "A VG is built on top of an LV"
+      ],
+      "answer": 0,
+      "why": "PVs are pooled into a Volume Group (VG); Logical Volumes (LVs) are then created from the VG, and file systems live on the LVs."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a PE, and what is its default size?",
+      "options": [
+        "The Physical Extent - the smallest allocatable unit in a PV, 4 MB by default",
+        "The Primary Entry - 512 bytes",
+        "The Partition Encoding - 1 MB",
+        "The Physical Endpoint - 4 KB"
+      ],
+      "answer": 0,
+      "why": "The PE is the smallest allocatable unit of a PV (default 4 MB); the LE is its counterpart in an LV, and in one VG the PE and LE match one-to-one."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the main drawback of LVM?",
+      "options": [
+        "If one physical volume fails, all logical volumes using it are lost (so use LVM on RAID)",
+        "It cannot be resized",
+        "It only works on a single disk",
+        "It requires a GUI"
+      ],
+      "answer": 0,
+      "why": "Losing one PV loses every LV that spans it, so LVM is best layered on RAID disks."
+    },
+    {
+      "type": "mcq",
+      "q": "Why must there be at least one non-LVM partition for booting?",
+      "options": [
+        "LVM is managed by the operating system, so the BIOS needs a plain partition to boot from",
+        "The BIOS reads LVM natively but is slow",
+        "LVM partitions cannot hold /home",
+        "It is only a convention with no technical reason"
+      ],
+      "answer": 0,
+      "why": "LVM is understood only by the OS, not the BIOS, so a non-LVM partition (typically /boot) is required to start."
+    }
+  ]
+}

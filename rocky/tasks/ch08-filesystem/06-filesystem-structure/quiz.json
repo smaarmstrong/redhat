@@ -1,0 +1,104 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.3 Structure of a file system (pp. 137-141)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create an ext4 file system on the partition /dev/sda1.",
+      "answers": ["mkfs -t ext4 /dev/sda1", "sudo mkfs -t ext4 /dev/sda1", "mkfs.ext4 /dev/sda1"],
+      "show": "mkfs -t ext4 /dev/sda1",
+      "why": "mkfs -t <type> makes a file system; without one, the disk space cannot be used."
+    },
+    {
+      "type": "mcq",
+      "q": "Each file system initialises a boot sector, super block, inode table and data block - with which exception?",
+      "options": [
+        "The swap partition",
+        "The /boot partition",
+        "The root partition",
+        "Any LVM logical volume"
+      ],
+      "answer": 0,
+      "why": "The swap partition is the exception to this standard structure."
+    },
+    {
+      "type": "mcq",
+      "q": "The boot sector (512 bytes) is made of three parts. What are their sizes?",
+      "options": [
+        "MBR 446 bytes, DPT 64 bytes, BRID 2 bytes",
+        "MBR 64 bytes, DPT 446 bytes, BRID 2 bytes",
+        "MBR 256 bytes, DPT 254 bytes, BRID 2 bytes",
+        "MBR 512 bytes, DPT 0, BRID 0"
+      ],
+      "answer": 0,
+      "why": "446 (MBR/boot loader) + 64 (DPT partition table) + 2 (BRID boot record ID) = 512 bytes."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the super block describe?",
+      "options": [
+        "The file system itself: its name, type, status, size, free blocks, inode list, etc.",
+        "The contents of every file",
+        "Only the boot loader",
+        "The list of logged-in users"
+      ],
+      "answer": 0,
+      "why": "The super block holds the metadata needed to use the FS (name, type, status, size, free blocks/inodes); a copy is kept in RAM and flushed by sync."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is NOT stored in a file's inode?",
+      "options": [
+        "The file's name",
+        "The file type and access permissions",
+        "The owner and group IDs",
+        "Pointers to the data blocks holding the file"
+      ],
+      "answer": 0,
+      "why": "An inode holds type, permissions, owner/group, link count, size, timestamps and block pointers - but NOT the name; the name lives in the directory that references the inode."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the size of the inode table determine?",
+      "options": [
+        "The maximum number of files the file system can contain",
+        "The maximum size of any single file",
+        "The block size",
+        "The number of partitions"
+      ],
+      "answer": 0,
+      "why": "Each file needs an inode, so the inode table's size caps the number of files the FS can hold."
+    },
+    {
+      "type": "cmd",
+      "q": "Check and repair the file system on /dev/sda1.",
+      "answers": ["fsck /dev/sda1", "sudo fsck /dev/sda1"],
+      "show": "fsck /dev/sda1",
+      "why": "fsck checks a file system's consistency and offers to repair inconsistencies."
+    },
+    {
+      "type": "mcq",
+      "q": "What must be true of a partition before you run fsck on it?",
+      "options": [
+        "It must be unmounted",
+        "It must be mounted read-write",
+        "It must be an LVM volume",
+        "It must contain a swap area"
+      ],
+      "answer": 0,
+      "why": "The partition to be checked must be unmounted (for the root FS, use a /forcefsck file or shutdown -F to check at boot)."
+    },
+    {
+      "type": "mcq",
+      "q": "After an fsck repair, where are files that no longer have an inode-table entry placed?",
+      "options": [
+        "In the drive's /lost+found directory",
+        "In /tmp",
+        "In /root",
+        "They are deleted immediately"
+      ],
+      "answer": 0,
+      "why": "Recovered but unreferenced files are attached to the logical drive's /lost+found folder."
+    }
+  ]
+}

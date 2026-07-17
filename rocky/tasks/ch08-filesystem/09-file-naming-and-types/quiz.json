@@ -1,0 +1,90 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 8.5 File naming convention (pp. 146-150)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which of these file-naming facts is correct in Linux?",
+      "options": [
+        "Names are up to 255 characters, all ASCII characters are allowed, and case is significant",
+        "Names are limited to 8 characters and are case-insensitive",
+        "File extensions are mandatory",
+        "Names may not contain lowercase letters"
+      ],
+      "answer": 0,
+      "why": "Names are coded on 255 characters, any ASCII is allowed, upper/lowercase differ, and most files need no extension."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the effect of a leading dot (.) in a file name?",
+      "options": [
+        "It hides the file from a simple ls (you need ls -a to see it)",
+        "It makes the file executable",
+        "It marks the file as a directory",
+        "It compresses the file"
+      ],
+      "answer": 0,
+      "why": "A name beginning with '.' is only hidden from a plain ls; ls -a reveals it."
+    },
+    {
+      "type": "mcq",
+      "q": "In an 'ls -l' listing, what does the very first character of the 10-character block indicate?",
+      "options": [
+        "The file type ('-' for an ordinary file, 'd' for a directory, ...)",
+        "The owner's first initial",
+        "The read permission for the owner",
+        "The number of hard links"
+      ],
+      "answer": 0,
+      "why": "The first character is the file type; the remaining nine are the permissions (3x3 for user/group/others)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which set correctly lists Linux's seven file types?",
+      "options": [
+        "- ordinary, d directory, b block device, c character device, s socket, p pipe, l link",
+        "- ordinary, d directory, x executable, r readable, w writable, s system, t temp",
+        "f file, d directory, l link, m mount, n node, p partition, s swap",
+        "a archive, b binary, c code, d data, e exec, f file, g group"
+      ],
+      "answer": 0,
+      "why": "The seven types are -, d, b, c, s, p and l."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between a 'b' and a 'c' special file?",
+      "options": [
+        "'b' is a block device (disks, USB drives); 'c' is a character device (serial interfaces like mouse, keyboard)",
+        "'b' is a character device; 'c' is a block device",
+        "'b' is a binary; 'c' is C source",
+        "Both are the same kind of device file"
+      ],
+      "answer": 0,
+      "why": "Block ('b') devices are things like disks; character ('c') devices are serial-interface devices such as keyboards and mice."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a 'p' (pipe) file for?",
+      "options": [
+        "Passing information between processes on a First In, First Out basis",
+        "Storing compressed archives",
+        "Linking two disks together",
+        "Holding the boot loader"
+      ],
+      "answer": 0,
+      "why": "A pipe (FIFO) file passes transient data between processes: one writes, another reads, and the data is then gone."
+    },
+    {
+      "type": "mcq",
+      "q": "What does an 's' (socket) file allow?",
+      "options": [
+        "Bidirectional inter-process communication, on local or remote systems",
+        "One-way communication only",
+        "Storage of user passwords",
+        "Mounting of removable media"
+      ],
+      "answer": 0,
+      "why": "Socket files enable two-way inter-process communication (local or networked) and use a filesystem inode."
+    }
+  ]
+}

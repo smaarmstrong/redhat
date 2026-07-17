@@ -1,0 +1,8 @@
+{
+  "title": "LVM concepts: PV, VG, LV, PE, LE",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.2 (pp. 130-133)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

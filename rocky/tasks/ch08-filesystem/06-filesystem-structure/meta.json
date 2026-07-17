@@ -1,0 +1,8 @@
+{
+  "title": "Filesystem structure: mkfs, boot sector, superblock, inodes, fsck",
+  "domain": "Ch 8 - File System",
+  "objective": "Rocky Linux Admin Guide, ch. 8.3 (pp. 137-141)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}
