@@ -1,0 +1,90 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.2.2-3.2.3 (pp. 18-20)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which market-share figures does the guide give for Linux?",
+      "options": [
+        "About 3% of personal computers, more than 82% of smartphones",
+        "About 30% of personal computers, 50% of smartphones",
+        "Under 1% of personal computers, 99% of smartphones",
+        "About 10% of personal computers, 25% of smartphones"
+      ],
+      "answer": 0,
+      "why": "Android uses a Linux kernel; almost 70% of the world's websites are hosted on a Linux or UNIX server."
+    },
+    {
+      "type": "mcq",
+      "q": "Since 2018, how many of the top 500 supercomputers run Linux?",
+      "options": [
+        "100% - all of them",
+        "About half",
+        "The top 10 only",
+        "None - supercomputers use custom operating systems"
+      ],
+      "answer": 0,
+      "why": "Linux has equipped 100% of the top 500 supercomputers since 2018."
+    },
+    {
+      "type": "mcq",
+      "q": "In the guide's architectural design, what is the kernel?",
+      "options": [
+        "The heart of the system: it manages hardware resources, and other software must go through it to access the hardware",
+        "The utility that interprets user commands",
+        "The set of user programs like browsers and word processors",
+        "The graphical desktop environment"
+      ],
+      "answer": 0,
+      "why": "Kernel = first software component, the heart; the shell interprets commands; applications are user programs."
+    },
+    {
+      "type": "mcq",
+      "q": "Which are named as the main shells?",
+      "options": [
+        "Bourne shell, C shell, Korn shell, and Bourne-Again shell (bash)",
+        "bash, zsh, fish, and PowerShell",
+        "sh, dash, ash, and csh",
+        "Korn shell, Z shell, tcsh, and cmd"
+      ],
+      "answer": 0,
+      "why": "The shell is the utility that interprets user commands and ensures their execution."
+    },
+    {
+      "type": "mcq",
+      "q": "Linux is a time-sharing (multi-task) system. Which of these is listed as a consequence?",
+      "options": [
+        "All of: simultaneous execution of several programs, CPU time distributed by the scheduler, reduced impact of a failed application, and reduced performance when too many programs run",
+        "Only one user may be logged in at a time",
+        "Programs must cooperate to yield the processor",
+        "The kernel restarts after each program finishes"
+      ],
+      "answer": 0,
+      "why": "Time-sharing = the OS divides processing time between programs, switching transparently."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does Linux's multi-user ability historically come from?",
+      "options": [
+        "MULTICS, whose purpose was letting several users work from terminals on one (expensive) computer",
+        "Windows NT domains",
+        "The Apache web server",
+        "The C language's standard library"
+      ],
+      "answer": 0,
+      "why": "Each user gets an account with memory space and access rights to files and software."
+    },
+    {
+      "type": "mcq",
+      "q": "What makes Linux 'open' in the guide's terms?",
+      "options": [
+        "It is based on recognized standards - POSIX, TCP/IP, NFS, Samba - so it can share data and services with other systems",
+        "Its source code has no licence at all",
+        "Anyone may push commits to the kernel without review",
+        "It only runs open-source applications"
+      ],
+      "answer": 0,
+      "why": "Multi-platform too: PCs, servers, smartphones/tablets, embedded systems, routers/switches, even TVs and refrigerators."
+    }
+  ]
+}

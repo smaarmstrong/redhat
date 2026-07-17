@@ -1,0 +1,102 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.2.1 (pp. 15-17)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Who began developing UNIX in 1969-1971, judging MULTICS too complex?",
+      "options": [
+        "Ken Thompson and Dennis Ritchie (joined later by Brian Kernighan)",
+        "Richard Stallman and Linus Torvalds",
+        "Andrew Tanenbaum and Brian Kernighan",
+        "Bill Joy and Steve Bourne"
+      ],
+      "answer": 0,
+      "why": "UNIX = UNiplexed Information and Computing Service, a deliberate pun on MULTICS's 'MULTiplexed'."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is January 01, 1970 the reference (epoch) date of UNIX/Linux systems?",
+      "options": [
+        "UNIX was developed in 1970",
+        "That is when Linux 0.02 was published",
+        "It marks the founding of Bell Labs",
+        "The C language was standardised that day"
+      ],
+      "answer": 0,
+      "why": "UNIX was developed in 1970, so the start of time for UNIX/Linux systems is set at 1970-01-01."
+    },
+    {
+      "type": "mcq",
+      "q": "What language was UNIX completely rewritten in (1971), and why does that matter?",
+      "options": [
+        "C - a low-level language close to the hardware, portable to any machine with a C compiler",
+        "Assembly - the fastest language available on every machine",
+        "B - the language UNIX still uses today",
+        "Fortran - the standard language of the era"
+      ],
+      "answer": 0,
+      "why": "Created in Assembly, then via B to C (1971). C's portability lets the OS be adapted to any architecture with a C compiler."
+    },
+    {
+      "type": "mcq",
+      "q": "What did Richard Stallman launch in 1984?",
+      "options": [
+        "The GNU (GNU's Not Unix) Project - a free and open Unix system (gcc, bash, Emacs...)",
+        "The Linux kernel",
+        "The MINIX teaching system",
+        "The Debian distribution"
+      ],
+      "answer": 0,
+      "why": "GNU's own kernel, the Hurd, was started in 1990 - before Linux."
+    },
+    {
+      "type": "mcq",
+      "q": "Who developed MINIX (1987), and what for?",
+      "options": [
+        "Andrew S. Tanenbaum, a simplified UNIX to teach operating systems",
+        "Linus Torvalds, as a prototype for Linux",
+        "Bell Labs, as the successor to UNIX",
+        "Richard Stallman, as the GNU kernel"
+      ],
+      "answer": 0,
+      "why": "Tanenbaum made his OS's source code available - part of what a certain Finnish student built on."
+    },
+    {
+      "type": "mcq",
+      "q": "How did Linux begin in 1991?",
+      "options": [
+        "Finnish student Linus Torvalds published version 0.02 on a Usenet discussion forum",
+        "Red Hat hired Torvalds to write a free UNIX",
+        "The GNU Project renamed the Hurd to Linux",
+        "Bell Labs open-sourced UNIX under a new name"
+      ],
+      "answer": 0,
+      "why": "'Linux' is a play on words between Linus and UNIX; other developers helped improve it."
+    },
+    {
+      "type": "mcq",
+      "q": "Match the distribution to its year: which pairing is correct?",
+      "options": [
+        "Debian 1993, Red Hat 1994, Ubuntu 2004, Rocky Linux 2021",
+        "Red Hat 1991, Debian 1997, Ubuntu 2002, Rocky Linux 2018",
+        "Debian 1994, Red Hat 1993, Ubuntu 2021, Rocky Linux 2004",
+        "Debian 2002, Red Hat 2004, Ubuntu 1993, Rocky Linux 1994"
+      ],
+      "answer": 0,
+      "why": "Also: KDE 1997 (Qt/C++), GNOME 1999 (GTK+), Arch 2002 (rolling release). Ubuntu is Canonical (Mark Shuttleworth), Debian-based; Rocky is based on Red Hat."
+    },
+    {
+      "type": "mcq",
+      "q": "Per the guide's info box, why do some insist on saying \"GNU/Linux\" rather than \"Linux\"?",
+      "options": [
+        "Linux is strictly a kernel; the GNU project's contribution should not be forgotten",
+        "GNU wrote the Linux kernel",
+        "Linux is a trademark that cannot be used alone",
+        "GNU/Linux and Linux are entirely different operating systems"
+      ],
+      "answer": 0,
+      "why": "People call the OS 'Linux' verbally, but Linux is strictly the kernel; GNU supplies much of the rest."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.3.1-3.5.3 (pp. 21-25)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which desktop-environment pairing matches the guide?",
+      "options": [
+        "GNOME is based on GTK+; KDE is based on Qt and suits users familiar with Windows",
+        "GNOME is based on Qt; KDE is based on GTK+",
+        "Both are based on GTK+ but KDE adds Qt on top",
+        "GNOME is a command-line shell; KDE is graphical"
+      ],
+      "answer": 0,
+      "why": "GNOME 3 uses the GNOME Shell concept (not to be confused with the command-line shell)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the relationship between free software and open-source software?",
+      "options": [
+        "Free software is necessarily open-source, but the opposite is not true",
+        "Open-source software is necessarily free software",
+        "They are two names for exactly the same thing",
+        "Free software forbids selling; open source allows it - that is the only difference"
+      ],
+      "answer": 0,
+      "why": "Open source = the source is available under certain conditions; that is distinct from the freedom offered by the GPL. And 'free' does not mean free of charge."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is NOT one of the four freedoms the GPL implies?",
+      "options": [
+        "The freedom to use the software without ever paying anyone",
+        "The freedom to run the program, for any purpose",
+        "The freedom to study how the program works and adapt it to your needs",
+        "The freedom to redistribute copies"
+      ],
+      "answer": 0,
+      "why": "The fourth freedom is improving the program and publishing improvements. GPL products CAN have a cost - not for the product, but for the guarantee that developers keep evolving and supporting it."
+    },
+    {
+      "type": "mcq",
+      "q": "In the guide's 'Areas of use', which pairing is correct?",
+      "options": [
+        "Security: gateway, firewall, router, proxy",
+        "Servers: banks, insurance, industry",
+        "Embedded systems: HTTP, email, groupware",
+        "Central computers: routers, internet boxes, SmartTVs"
+      ],
+      "answer": 0,
+      "why": "Servers: HTTP/email/groupware/file sharing. Central computers: banks/insurance/industry. Embedded: routers/internet boxes/SmartTVs."
+    },
+    {
+      "type": "mcq",
+      "q": "The guide calls the shell a 'command interface'. What else does it stress the shell offers?",
+      "options": [
+        "A real programming language - loops, alternatives, variables - for scripts that automate actions",
+        "A graphical settings panel for every service",
+        "Direct hardware access that bypasses the kernel",
+        "Automatic translation of Windows commands"
+      ],
+      "answer": 0,
+      "why": "Scripts automate things like backups, creation of users, and system monitoring."
+    },
+    {
+      "type": "mcq",
+      "q": "Which shell descriptions match the guide's examples?",
+      "options": [
+        "sh - the POSIX standard shell; csh - command-oriented shell in C; bash - Bourne-Again Shell, the Linux shell",
+        "sh - the Linux shell; csh - the POSIX standard; bash - a graphical shell",
+        "sh and bash are unrelated projects; csh is the POSIX standard",
+        "csh is the default Rocky Linux shell"
+      ],
+      "answer": 0,
+      "why": "Several shells exist and are configurable per platform or user preference."
+    },
+    {
+      "type": "mcq",
+      "q": "After a successful login, per the 3.5.3 diagram, what does the shell display to say it is ready for a command?",
+      "options": [
+        "A prompt - # or $",
+        "The word READY",
+        "A menu of available commands",
+        "The root password"
+      ],
+      "answer": 0,
+      "why": "General message, local message, then the prompt: # (root) or $ (normal user)."
+    },
+    {
+      "type": "cmd",
+      "q": "Besides pressing Ctrl+D, what command ends your shell session (per the 3.5.3 diagram)?",
+      "answers": ["exit"],
+      "show": "exit",
+      "why": "The session loop runs prompt -> command -> result until CTRL+D or exit."
+    }
+  ]
+}

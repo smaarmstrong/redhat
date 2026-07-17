@@ -40,6 +40,7 @@ daily streak. But the foundation is the task → grade → retry loop on real in
 redhat/
 ├── setup/       # runs on the HOST (Fedora/Mac) to build the Rocky 9 VM
 ├── games/       # shared console engine (practice runner + grading lib) — run in the VM
+├── rocky/       # guide-knowledge quizzes over the Rocky Linux Admin Guide
 ├── foundations/ # foundations track — teaches the shell tools the exam tasks assume
 ├── rhcsa/       # RHCSA track — tasks/ (graded Bash tasks) + docs/ (objectives, format)
 ├── rhce/        # RHCE track  — tasks/ (Ansible tasks) + docs/ (objectives, format)
@@ -47,6 +48,13 @@ redhat/
 ```
 
 The trainer covers **two exams**, plus the groundwork for them:
+
+- **Rocky guide quizzes** — `rocky/tasks/`: read a section of the [Rocky Linux
+  Admin Guide](https://docs.rockylinux.org/books/admin_guide/00-toc/), then get
+  quizzed on it (multiple choice for background, type-the-command for
+  commands). Quizzes join the same spaced-repetition cycle as everything else,
+  and the track grows section by section as the guide is read. CC BY-SA — see
+  [rocky/README.md](rocky/README.md).
 
 - **Foundations** — `foundations/tasks/`: first-class interactive lessons that
   *teach* the shell tools everything else assumes — vi/vim, pipes & redirection,

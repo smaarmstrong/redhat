@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 3.2.4-3.3.1 (p. 20)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which of these is one of the UNIX/Linux philosophy points listed by the guide?",
+      "options": [
+        "Treat everything as a file",
+        "Configure everything through a graphical interface",
+        "Prefer one large program over many small ones",
+        "Hide complexity from the administrator"
+      ],
+      "answer": 0,
+      "why": "The list: treat everything as a file; value portability; do one thing and do it well; KISS - Keep It Simple Stupid."
+    },
+    {
+      "type": "mcq",
+      "q": "\"UNIX is a simple operating system, but you have to be a genius to understand the simplicity.\" Who said it?",
+      "options": [
+        "Dennis Ritchie",
+        "Linus Torvalds",
+        "Richard Stallman",
+        "Ken Thompson"
+      ],
+      "answer": 0,
+      "why": "The guide pairs it with the 'user-friendly... just isn't promiscuous about which users it's friendly with' quip."
+    },
+    {
+      "type": "mcq",
+      "q": "The guide defines a Linux distribution as...",
+      "options": [
+        "a consistent set of software assembled around the Linux kernel, ready to install with the components to manage itself",
+        "any computer that has the Linux kernel installed",
+        "the kernel plus exactly one desktop environment",
+        "a commercial support contract for Linux"
+      ],
+      "answer": 0,
+      "why": "Installation, removal, configuration - the distribution ships the management machinery too."
+    },
+    {
+      "type": "mcq",
+      "q": "Which pairing of distribution types matches the guide?",
+      "options": [
+        "Associative/community: Debian, Rocky - commercial: Red Hat, Ubuntu",
+        "Community: Red Hat, Ubuntu - commercial: Debian, Rocky",
+        "Community: Arch, Fedora - commercial: Debian, Gentoo",
+        "All named distributions are commercial"
+      ],
+      "answer": 0,
+      "why": "Also by audience: beginners (Ubuntu, Mint), advanced users (Gentoo, Arch), servers (Debian, Red Hat), workstations (Fedora)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these are named as graphic (desktop) environments?",
+      "options": [
+        "GNOME, KDE, LXDE, XFCE",
+        "Qt, GTK+, Wayland, X11",
+        "Explorer, Finder, Aqua, Metro",
+        "bash, ksh, csh, sh"
+      ],
+      "answer": 0,
+      "why": "Their ergonomics hold their own against Microsoft or Apple systems; KDE is built on Qt/C++, GNOME on GTK+."
+    }
+  ]
+}
