@@ -1,0 +1,8 @@
+{
+  "title": "systemctl unit operations",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - Operational units",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

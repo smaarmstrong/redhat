@@ -1,0 +1,8 @@
+{
+  "title": "systemd unit types",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - Unit types",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

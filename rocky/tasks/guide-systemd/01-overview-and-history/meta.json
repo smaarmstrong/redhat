@@ -1,0 +1,8 @@
+{
+  "title": "systemd: overview and history",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - Basic overview & history",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

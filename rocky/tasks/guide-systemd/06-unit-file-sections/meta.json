@@ -1,0 +1,8 @@
+{
+  "title": "Unit files: [Unit] and [Service] directives",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - unit file content",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - systemd as PID 1",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which SysV runlevel does multi-user.target correspond to?",
+      "options": [
+        "Runlevel 3 (full multi-user command-line mode)",
+        "Runlevel 5",
+        "Runlevel 1",
+        "Runlevel 0"
+      ],
+      "answer": 0,
+      "why": "multi-user.target maps to runlevel 3; graphical.target to 5, rescue.target to 1, reboot to 6, poweroff to 0."
+    },
+    {
+      "type": "mcq",
+      "q": "Which runlevel does graphical.target correspond to?",
+      "options": [
+        "Runlevel 5 (GUI environment)",
+        "Runlevel 3",
+        "Runlevel 4",
+        "Runlevel 6"
+      ],
+      "answer": 0,
+      "why": "graphical.target = runlevel 5 (GUI); it also pulls in multi-user.target."
+    },
+    {
+      "type": "mcq",
+      "q": "What may default.target NOT be a symbolic link to?",
+      "options": [
+        "halt.target, poweroff.target or reboot.target",
+        "multi-user.target",
+        "graphical.target",
+        "Any target at all"
+      ],
+      "answer": 0,
+      "why": "default.target is always a link to multi-user.target or graphical.target - never to halt/poweroff/reboot (that would stop the boot)."
+    },
+    {
+      "type": "mcq",
+      "q": "What are sysinit.target and basic.target?",
+      "options": [
+        "Checkpoints during startup - certain services/targets must complete before others begin",
+        "The two graphical login managers",
+        "Runlevels 7 and 8",
+        "Shutdown targets"
+      ],
+      "answer": 0,
+      "why": "Despite systemd's parallelism, sysinit.target and basic.target are ordered checkpoints; an error there can drop you into emergency mode."
+    },
+    {
+      "type": "mcq",
+      "q": "Which SysV runlevel is rescue.target (single-user mode) equivalent to?",
+      "options": [
+        "Runlevel 1",
+        "Runlevel 3",
+        "Runlevel 5",
+        "Runlevel 6"
+      ],
+      "answer": 0,
+      "why": "rescue.target = runlevel 1 (single-user, minimal services for repair); emergency.target is even more minimal."
+    },
+    {
+      "type": "mcq",
+      "q": "systemd must reach which target before it can enter graphical.target?",
+      "options": [
+        "multi-user.target",
+        "rescue.target",
+        "poweroff.target",
+        "emergency.target"
+      ],
+      "answer": 0,
+      "why": "The GUI (graphical.target) builds on top of multi-user.target, so that must be reached first."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - Important directories & config",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which directory holds the unit files distributed with installed RPM packages?",
+      "options": [
+        "/usr/lib/systemd/system/",
+        "/etc/systemd/system/",
+        "/run/systemd/system/",
+        "/var/lib/systemd/"
+      ],
+      "answer": 0,
+      "why": "/usr/lib/systemd/system/ contains package-provided unit files (like the old /etc/init.d/)."
+    },
+    {
+      "type": "mcq",
+      "q": "Of the three unit-file directories, which has the HIGHEST priority?",
+      "options": [
+        "/etc/systemd/system/",
+        "/usr/lib/systemd/system/",
+        "/run/systemd/system/",
+        "They are equal"
+      ],
+      "answer": 0,
+      "why": "Priority ascends /usr/lib < /run < /etc, so /etc/systemd/system/ wins - it's where enable links and admin overrides live."
+    },
+    {
+      "type": "mcq",
+      "q": "What lives in /run/systemd/system/?",
+      "options": [
+        "Unit files created at run time",
+        "Package-installed unit files",
+        "Admin-created overrides",
+        "Log files"
+      ],
+      "answer": 0,
+      "why": "/run/systemd/system/ holds runtime-generated unit files (middle priority)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file configures the system instance of systemd's basic manager settings?",
+      "options": [
+        "/etc/systemd/system.conf",
+        "/etc/systemd/journald.conf",
+        "/etc/fstab",
+        "/etc/default/grub"
+      ],
+      "answer": 0,
+      "why": "/etc/systemd/system.conf (see man 5 systemd-system.conf) controls the system manager; user.conf is for the user instance."
+    }
+  ]
+}

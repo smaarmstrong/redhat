@@ -1,0 +1,66 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - Unit types",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is a 'target' unit?",
+      "options": [
+        "A synchronization point that groups other units (often to start enabled services at boot)",
+        "A single system service",
+        "A network socket",
+        "A block device"
+      ],
+      "answer": 0,
+      "why": "A target is a grouping/synchronisation unit (see man 5 systemd.target); services, sockets, mounts etc. are other unit types."
+    },
+    {
+      "type": "mcq",
+      "q": "Which unit type schedules the activation of another unit (like a cron job)?",
+      "options": [
+        "timer",
+        "path",
+        "scope",
+        "slice"
+      ],
+      "answer": 0,
+      "why": "A timer unit schedules activation of another unit; path units activate based on filesystem path state."
+    },
+    {
+      "type": "mcq",
+      "q": "Which unit type restricts resources via Linux control groups (cgroups)?",
+      "options": [
+        "slice",
+        "swap",
+        "device",
+        "automount"
+      ],
+      "answer": 0,
+      "why": "A slice unit groups processes into a cgroup hierarchy for resource control; scope units manage externally-created processes."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a 'path' unit do?",
+      "options": [
+        "Activates a unit based on the state of a filesystem path (e.g. whether it exists)",
+        "Sets the system PATH variable",
+        "Mounts a filesystem",
+        "Defines a network route"
+      ],
+      "answer": 0,
+      "why": "path units provide path-based activation - starting a service when a path appears/changes."
+    },
+    {
+      "type": "mcq",
+      "q": "Which unit type represents a mount point that is mounted automatically on access/boot?",
+      "options": [
+        "automount",
+        "mount",
+        "swap",
+        "target"
+      ],
+      "answer": 0,
+      "why": "An automount unit mounts on demand; a plain mount unit is an explicitly managed mount point."
+    }
+  ]
+}

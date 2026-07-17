@@ -1,0 +1,8 @@
+{
+  "title": "systemd directories and configuration files",
+  "domain": "Guide - About systemd",
+  "objective": "Rocky Linux 'About systemd' guide - Important directories & config",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

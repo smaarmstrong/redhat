@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux 'About systemd' guide - Operational units",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Check whether the sshd service is set to start automatically at boot.",
+      "answers": ["systemctl is-enabled sshd.service", "systemctl is-enabled sshd"],
+      "show": "systemctl is-enabled sshd.service",
+      "why": "systemctl is-enabled reports the boot-time enablement state of a unit."
+    },
+    {
+      "type": "cmd",
+      "q": "Mask the sshd service.",
+      "answers": ["systemctl mask sshd", "systemctl mask sshd.service", "sudo systemctl mask sshd"],
+      "show": "systemctl mask sshd",
+      "why": "systemctl mask links the unit to /dev/null so it cannot be started at all."
+    },
+    {
+      "type": "mcq",
+      "q": "How does masking a unit differ from merely disabling it?",
+      "options": [
+        "A masked unit cannot be started at all (even manually); a disabled unit just won't start at boot",
+        "They are identical",
+        "Masking starts the unit; disabling stops it",
+        "Masking only affects timers"
+      ],
+      "answer": 0,
+      "why": "disable removes the boot-time link but you can still start it by hand; mask makes it unstartable until unmasked."
+    },
+    {
+      "type": "cmd",
+      "q": "Unmask the sshd service.",
+      "answers": ["systemctl unmask sshd", "systemctl unmask sshd.service", "sudo systemctl unmask sshd"],
+      "show": "systemctl unmask sshd",
+      "why": "systemctl unmask reverses a mask so the unit can run again."
+    },
+    {
+      "type": "cmd",
+      "q": "View the contents of the sshd.service unit file.",
+      "answers": ["systemctl cat sshd.service", "systemctl cat sshd"],
+      "show": "systemctl cat sshd.service",
+      "why": "systemctl cat prints the unit file (and any overrides)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'systemctl edit sshd.service' do?",
+      "options": [
+        "Opens an override for the unit and saves it under /etc/systemd/system/",
+        "Deletes the unit file",
+        "Renames the service",
+        "Shows the service's logs"
+      ],
+      "answer": 0,
+      "why": "systemctl edit creates/edits a drop-in override in /etc/systemd/system/ rather than touching the distributed unit file."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the complete properties of the sshd service.",
+      "answers": ["systemctl show sshd.service", "systemctl show sshd"],
+      "show": "systemctl show sshd.service",
+      "why": "systemctl show dumps all of a unit's properties as key=value pairs."
+    }
+  ]
+}
