@@ -1,0 +1,8 @@
+{
+  "title": "The file tree: absolute vs relative paths, pwd, cd",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.4 (pp. 40-44)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

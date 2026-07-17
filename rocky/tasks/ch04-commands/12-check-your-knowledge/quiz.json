@@ -1,0 +1,85 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.9 Check your Knowledge (pp. 68-69)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What defines a user under Linux (the seven things the chapter lists)?",
+      "options": [
+        "Login name, UID, GID, command interpreter (shell), home directory, password, and command prompt",
+        "Login name, UID, GID, IP address, MAC address, password, and hostname",
+        "First name, surname, email, UID, GID, shell, and password",
+        "Login name, UID, GID and nothing else"
+      ],
+      "answer": 0,
+      "why": "The chapter lists login, UID, GID, shell and home directory (in /etc/passwd), plus the encrypted password (/etc/shadow) and the prompt (/etc/profile) - seven items in all."
+    },
+    {
+      "type": "mcq",
+      "q": "What characterizes a LONG option for a command?",
+      "options": [
+        "It begins with two dashes, e.g. --list",
+        "It begins with one dash, e.g. -l",
+        "It has no dash at all",
+        "It always takes an argument"
+      ],
+      "answer": 0,
+      "why": "Long options begin with two dashes (--list); short options begin with a single dash (-l)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these commands actually help you search for help on a command: google, chuck --norris, info, apropos, whatis?",
+      "options": [
+        "info, apropos and whatis",
+        "google and chuck --norris",
+        "apropos and google",
+        "Only whatis"
+      ],
+      "answer": 0,
+      "why": "info, apropos and whatis are real help tools; 'google' and 'chuck --norris' are the guide's jokes (not commands you run to read a manual)."
+    },
+    {
+      "type": "cmd",
+      "q": "Which command lets you view a user's command history?",
+      "answers": ["history"],
+      "show": "history",
+      "why": "history displays the commands entered by the user, stored in ~/.bash_history."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command searches for TEXT inside a file: find or grep?",
+      "options": [
+        "grep",
+        "find",
+        "Both do the same thing",
+        "Neither"
+      ],
+      "answer": 0,
+      "why": "grep searches for a string within a file; find locates files, not their contents."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command searches for a FILE: find or grep?",
+      "options": [
+        "find",
+        "grep",
+        "Both do the same thing",
+        "Neither"
+      ],
+      "answer": 0,
+      "why": "find searches for files and directories; grep searches text inside a file."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command redirects the error stream of a command to a NEW errors.log file?",
+      "options": [
+        "ls -R / 2> errors.log",
+        "ls -R / 2>> errors.log",
+        "ls -R / 2> errors.log 2>&1",
+        "ls -R / > errors.log"
+      ],
+      "answer": 0,
+      "why": "'2>' redirects stderr, overwriting (a new file); '2>>' appends to an existing one, and the third form is redundant. A plain '>' would redirect stdout, not errors."
+    }
+  ]
+}

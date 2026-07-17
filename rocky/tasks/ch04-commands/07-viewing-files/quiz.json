@@ -1,0 +1,84 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.5.1-4.5.7 file/more/less/cat/tac/head/tail (pp. 50-53)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Show what TYPE of file /etc/passwd is (ASCII text, directory, and so on).",
+      "answers": ["file /etc/passwd"],
+      "show": "file /etc/passwd",
+      "why": "file reports the type of the file(s) given, e.g. 'ASCII text' or 'directory'."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the whole contents of /etc/passwd to standard output in one go.",
+      "answers": ["cat /etc/passwd"],
+      "show": "cat /etc/passwd",
+      "why": "cat concatenates the given files and writes them to standard output."
+    },
+    {
+      "type": "mcq",
+      "q": "You are reading a file with 'less'. Which key quits back to the prompt?",
+      "options": [
+        "q (or Q)",
+        "Esc",
+        "x",
+        "Ctrl+C"
+      ],
+      "answer": 0,
+      "why": "less is interactive; q or Q quits. Inside it, /text searches, Space pages down, g and G jump to first and last page."
+    },
+    {
+      "type": "cmd",
+      "q": "Display /etc/profile with every line numbered.",
+      "answers": ["cat -n /etc/profile"],
+      "show": "cat -n /etc/profile",
+      "why": "cat -n numbers all output lines; -b would number only the non-empty lines."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between 'cat -n' and 'cat -b'?",
+      "options": [
+        "-n numbers all lines; -b numbers only non-empty lines",
+        "-n numbers only non-empty lines; -b numbers all lines",
+        "-n numbers backwards; -b numbers from the bottom",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "-n numbers every line, -b skips blank lines when numbering."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the tac command do, and why is it handy for logs?",
+      "options": [
+        "It prints a file starting from the last line, so the newest log entries appear first",
+        "It prints only the first line of a file",
+        "It compresses a log file",
+        "It counts the lines in a file"
+      ],
+      "answer": 0,
+      "why": "tac is roughly cat in reverse - it shows a file from the end, useful for reading the most recent log lines first."
+    },
+    {
+      "type": "cmd",
+      "q": "Display just the first 5 lines of /etc/passwd.",
+      "answers": ["head -n 5 /etc/passwd"],
+      "show": "head -n 5 /etc/passwd",
+      "why": "head -n x shows the first x lines; with no -n it defaults to the first 10 lines."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the last 3 lines of /etc/passwd.",
+      "answers": ["tail -n 3 /etc/passwd"],
+      "show": "tail -n 3 /etc/passwd",
+      "why": "tail -n x shows the last x lines; without -n it shows the last 10."
+    },
+    {
+      "type": "cmd",
+      "q": "Follow the file /var/log/messages, showing new lines as they are written in real time.",
+      "answers": ["tail -f /var/log/messages"],
+      "show": "tail -f /var/log/messages",
+      "why": "tail -f keeps printing changes to the file until you press Ctrl+C - the standard way to watch a log live."
+    }
+  ]
+}

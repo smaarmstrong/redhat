@@ -1,0 +1,94 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.4.3 ls command (pp. 44-45)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "List the contents of the current directory including hidden files.",
+      "answers": ["ls -a"],
+      "show": "ls -a",
+      "why": "-a shows all files, including hidden ones (in Linux, files whose name begins with a dot)."
+    },
+    {
+      "type": "mcq",
+      "q": "In Linux, which files are 'hidden' by default?",
+      "options": [
+        "Files whose name begins with a dot (.)",
+        "Files whose name begins with an underscore",
+        "Files owned by root",
+        "Files with no extension"
+      ],
+      "answer": 0,
+      "why": "Hidden files are simply those beginning with '.'; -a (or -A) reveals them."
+    },
+    {
+      "type": "cmd",
+      "q": "List a directory in long format showing full details for each entry.",
+      "answers": ["ls -l"],
+      "show": "ls -l",
+      "why": "-l uses a long listing format, one line of detailed information per file or directory."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ls option displays the inode number of each entry?",
+      "options": [
+        "-i",
+        "-l",
+        "-n",
+        "-d"
+      ],
+      "answer": 0,
+      "why": "-i prints inode numbers; it is the value in the first column of 'ls -lia' output."
+    },
+    {
+      "type": "cmd",
+      "q": "Long-list a directory with file sizes in human-readable units (KB, MB, GB).",
+      "answers": ["ls -lh", "ls -hl"],
+      "show": "ls -lh",
+      "why": "-h means Human Readable and must be combined with -l to show sizes like 1.2M instead of raw bytes."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the details of the directory /etc ITSELF (its own permissions), not the files inside it.",
+      "answers": ["ls -ld /etc", "ls -dl /etc"],
+      "show": "ls -ld /etc",
+      "why": "By default ls lists a directory's contents; -d makes it report the directory itself instead."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ls option lists the contents of subdirectories recursively?",
+      "options": [
+        "-R",
+        "-r",
+        "-d",
+        "-s"
+      ],
+      "answer": 0,
+      "why": "-R recurses into subdirectories; lowercase -r instead reverses the sort order."
+    },
+    {
+      "type": "mcq",
+      "q": "With 'ls -F', which suffix marks a directory and which marks an executable?",
+      "options": [
+        "A directory gets '/', an executable gets '*'",
+        "A directory gets '*', an executable gets '/'",
+        "A directory gets '@', an executable gets '/'",
+        "Both get '@'"
+      ],
+      "answer": 0,
+      "why": "-F appends a type indicator: '/' for a directory, '*' for an executable, '@' for a symbolic link, nothing for a plain text file."
+    },
+    {
+      "type": "mcq",
+      "q": "In the output line '78489 drwx------ 4 rockstar rockstar 4096 25 oct. 08:10 rockstar', what is the first field, 78489?",
+      "options": [
+        "The inode number",
+        "The file size in bytes",
+        "The number of hard links",
+        "The user ID of the owner"
+      ],
+      "answer": 0,
+      "why": "The leading number is the inode; 'drwx------' is the type+rights, '4' the link/subdirectory count, then owner, group, size, date and name."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 4.1 Generalities (pp. 28-31)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which file defines a Linux user by login name, UID, GID, command interpreter and home directory?",
+      "options": [
+        "/etc/passwd",
+        "/etc/shadow",
+        "/etc/profile",
+        "/etc/group"
+      ],
+      "answer": 0,
+      "why": "/etc/passwd holds those fields. The encrypted password lives in /etc/shadow, and the prompt is set via /etc/profile."
+    },
+    {
+      "type": "mcq",
+      "q": "In the command prompt, what does a '#' indicate versus a '$'?",
+      "options": [
+        "'#' is the administrator (root) prompt; '$' is an ordinary user",
+        "'#' is an ordinary user; '$' is the administrator",
+        "'#' means the shell is busy; '$' means it is ready",
+        "'#' is bash; '$' is the Korn shell"
+      ],
+      "answer": 0,
+      "why": "A '#' prompt symbolises administrators, a '$' symbolises other users."
+    },
+    {
+      "type": "mcq",
+      "q": "Which shell is assigned by default to new users?",
+      "options": [
+        "The Bourne-Again Shell (/bin/bash)",
+        "The Korn Shell (ksh)",
+        "The C Shell (csh)",
+        "The Bourne Shell (/bin/sh)"
+      ],
+      "answer": 0,
+      "why": "bash is the most frequently used interpreter and the default for new users; ksh and csh are alternatives advanced users may choose."
+    },
+    {
+      "type": "mcq",
+      "q": "By convention, where are users' login (home) directories stored?",
+      "options": [
+        "/home",
+        "/root",
+        "/usr",
+        "/var"
+      ],
+      "answer": 0,
+      "why": "Login directories are by convention under /home, and the login directory is the current directory at login."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between a TTY and a PTS terminal?",
+      "options": [
+        "tty is a physical terminal; pts is a virtual console within a graphical environment",
+        "tty is virtual; pts is physical",
+        "tty is local; pts is always remote over SSH",
+        "They are two names for the same thing"
+      ],
+      "answer": 0,
+      "why": "tty represents a physical terminal, pts a virtual console (with an instance number 0,1,2...) inside a graphical environment."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key sequence interrupts a running command?",
+      "options": [
+        "Ctrl+C",
+        "Ctrl+Z",
+        "Ctrl+D",
+        "Ctrl+L"
+      ],
+      "answer": 0,
+      "why": "Ctrl+C interrupts the command currently running in the shell."
+    },
+    {
+      "type": "mcq",
+      "q": "In the syntax 'command [option(s)] [argument(s)]', what do the square brackets indicate?",
+      "options": [
+        "That the enclosed option or argument is optional",
+        "That the enclosed item is mandatory",
+        "That the item must be typed literally, including the brackets",
+        "That only one of the items may be chosen"
+      ],
+      "answer": 0,
+      "why": "Square brackets mark an optional element; a vertical bar (pipe) inside them, like [a|e|i], separates mutually exclusive choices."
+    },
+    {
+      "type": "mcq",
+      "q": "How do short options differ from long options?",
+      "options": [
+        "Short options begin with one dash (-l); long options begin with two dashes (--list)",
+        "Short options begin with two dashes; long options begin with one",
+        "Short options need no dash; long options need one",
+        "There is no syntactic difference, only length"
+      ],
+      "answer": 0,
+      "why": "A single dash introduces short options, two dashes introduce long options, and a lone '--' marks the end of the option list."
+    },
+    {
+      "type": "mcq",
+      "q": "Which single command is equivalent to 'ls -l -i -a'?",
+      "options": [
+        "ls -lia",
+        "ls --lia",
+        "ls -l,i,a",
+        "ls l i a"
+      ],
+      "answer": 0,
+      "why": "Several short options can be grouped behind one dash, so 'ls -l -i -a' is the same as 'ls -lia'."
+    }
+  ]
+}

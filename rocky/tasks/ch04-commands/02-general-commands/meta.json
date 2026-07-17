@@ -1,0 +1,8 @@
+{
+  "title": "General commands: apropos, whatis, man, shutdown, history",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.2 (pp. 31-38)",
+  "est_min": 8,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Listing directory contents with ls",
+  "domain": "Ch 4 - Commands for Linux Users",
+  "objective": "Rocky Linux Admin Guide, ch. 4.4.3 (pp. 44-45)",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}
