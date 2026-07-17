@@ -1,0 +1,54 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.2.1 rsyslog configuration (pp. 304-307)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the MAIN rsyslog configuration file?",
+      "options": [
+        "/etc/rsyslog.conf",
+        "/etc/syslog.conf",
+        "/etc/rsyslog/main.cfg",
+        "/var/log/rsyslog.conf"
+      ],
+      "answer": 0,
+      "why": "/etc/rsyslog.conf is the main file; /etc/rsyslog.d/ holds additional drop-in configs."
+    },
+    {
+      "type": "mcq",
+      "q": "Which directory holds additional rsyslog configuration files?",
+      "options": [
+        "/etc/rsyslog.d/",
+        "/etc/logrotate.d/",
+        "/var/log/rsyslog.d/",
+        "/etc/systemd/rsyslog.d/"
+      ],
+      "answer": 0,
+      "why": "/etc/rsyslog.d/ is the drop-in directory for extra config snippets."
+    },
+    {
+      "type": "mcq",
+      "q": "What are the three parts of /etc/rsyslog.conf?",
+      "options": [
+        "Load module, Global Directives, and Rules",
+        "Header, Body, Footer",
+        "Facilities, Priorities, Actions",
+        "Input, Filter, Output"
+      ],
+      "answer": 0,
+      "why": "rsyslog.conf consists of module loading, global directives, and the rules section."
+    },
+    {
+      "type": "mcq",
+      "q": "Which rsyslog configuration format is deprecated and should not be used?",
+      "options": [
+        "The obsolete legacy format",
+        "The basic (sysklogd) format",
+        "The advanced (RainerScript) format",
+        "None of them are deprecated"
+      ],
+      "answer": 0,
+      "why": "rsyslog supports basic (sysklogd), advanced (RainerScript), and the deprecated legacy format - avoid the last."
+    }
+  ]
+}

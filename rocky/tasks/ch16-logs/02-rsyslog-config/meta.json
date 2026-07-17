@@ -1,0 +1,8 @@
+{
+  "title": "rsyslog configuration files and formats",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.2.1 (pp. 304-307)",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

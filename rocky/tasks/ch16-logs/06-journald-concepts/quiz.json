@@ -1,0 +1,54 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.3 journald (pp. 314-315)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In what form does journald store its logs, and are they persistent by default?",
+      "options": [
+        "Binary format, and NOT persistent by default (kept in /run/log/journal/, lost on reboot)",
+        "Plain text, persistent forever",
+        "Binary, always persistent in /var/log/journal/",
+        "Plain text in /run, persistent"
+      ],
+      "answer": 0,
+      "why": "journald writes a binary journal; by default it is volatile (/run/log/journal/) and cleared on reboot - read it with journalctl."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these does journald record?",
+      "options": [
+        "Boot log, kernel log and application logs",
+        "Only kernel logs",
+        "Only application logs",
+        "Only failed logins"
+      ],
+      "answer": 0,
+      "why": "journald captures boot, kernel and application logs (and services' stdout/stderr)."
+    },
+    {
+      "type": "mcq",
+      "q": "In journald's priority numbering, which number is emerg and which is debug?",
+      "options": [
+        "emerg = 0 (most severe), debug = 7 (least severe)",
+        "emerg = 7, debug = 0",
+        "emerg = 1, debug = 8",
+        "They are not numbered"
+      ],
+      "answer": 0,
+      "why": "Like syslog: 0 emerg, 1 alert, 2 crit, 3 err, 4 warning, 5 notice, 6 info, 7 debug."
+    },
+    {
+      "type": "mcq",
+      "q": "As with rsyslog, how does journald priority relate to detail and severity?",
+      "options": [
+        "Higher priority = less information but more serious; lower priority = more information, less serious",
+        "Higher priority = more information",
+        "Priority does not affect volume",
+        "Lower priority = more serious"
+      ],
+      "answer": 0,
+      "why": "Higher priority records fewer, more serious entries; lower priority records more, lighter detail."
+    }
+  ]
+}

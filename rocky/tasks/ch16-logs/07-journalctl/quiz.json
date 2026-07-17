@@ -1,0 +1,67 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 16.3.1 journalctl (pp. 316-318)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Show the journal for the sshd.service unit only.",
+      "answers": ["journalctl -u sshd.service", "journalctl -u sshd"],
+      "show": "journalctl -u sshd.service",
+      "why": "-u <unit> filters to that unit; you can repeat -u for several units."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the kernel messages from the current boot.",
+      "answers": ["journalctl -k"],
+      "show": "journalctl -k",
+      "why": "-k shows kernel messages (dmesg-style) from the current boot; -b limits to the current boot generally."
+    },
+    {
+      "type": "cmd",
+      "q": "Show journal entries since '2025-04-24 14:00:30'.",
+      "answers": ["journalctl --since=\"2025-04-24 14:00:30\"", "journalctl --since \"2025-04-24 14:00:30\"", "journalctl -S \"2025-04-24 14:00:30\""],
+      "show": "journalctl --since=\"2025-04-24 14:00:30\"",
+      "why": "--since (or -S) filters by start time; --until (-U) sets the end time."
+    },
+    {
+      "type": "cmd",
+      "q": "Show only journal entries of priority err (3) or higher.",
+      "answers": ["journalctl -p err", "journalctl -p 3"],
+      "show": "journalctl -p err",
+      "why": "-p PRIORITY shows that level and above; err equals 3, so -p err == -p 0..3."
+    },
+    {
+      "type": "mcq",
+      "q": "What does journalctl -b do?",
+      "options": [
+        "Shows the log since the start of the current boot",
+        "Shows only kernel messages",
+        "Reverses the output",
+        "Shows the boot loader config"
+      ],
+      "answer": 0,
+      "why": "-b limits output to the current boot; --list-boots lists recorded boots."
+    },
+    {
+      "type": "cmd",
+      "q": "Show how much disk space the journal files occupy.",
+      "answers": ["journalctl --disk-usage"],
+      "show": "journalctl --disk-usage",
+      "why": "--disk-usage reports the space used; --vacuum-size=BYTES then trims it down."
+    },
+    {
+      "type": "cmd",
+      "q": "Reduce the journal on disk to at most 500M.",
+      "answers": ["journalctl --vacuum-size=500M", "sudo journalctl --vacuum-size=500M"],
+      "show": "journalctl --vacuum-size=500M",
+      "why": "--vacuum-size deletes old entries until the journal fits the given size (suffixes K/M/G/T); --vacuum-time trims by age."
+    },
+    {
+      "type": "cmd",
+      "q": "Search the journal for entries matching the pattern 'error' (grep-style).",
+      "answers": ["journalctl -g error", "journalctl --grep=error", "journalctl -g \"error\""],
+      "show": "journalctl -g error",
+      "why": "-g / --grep matches log content by pattern (regex); an all-lowercase pattern is case-insensitive by default."
+    }
+  ]
+}

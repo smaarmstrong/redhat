@@ -1,0 +1,8 @@
+{
+  "title": "rsyslog rules: facilities",
+  "domain": "Ch 16 - Log Management",
+  "objective": "Rocky Linux Admin Guide, ch. 16.2.1 Rules (pp. 305-307)",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
