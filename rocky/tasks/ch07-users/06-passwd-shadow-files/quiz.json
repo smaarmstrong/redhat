@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.3.5-7.3.6 /etc/passwd & /etc/shadow (pp. 109-111)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In the /etc/passwd line 'root:x:0:0:root:/root:/bin/bash', what are the seven fields in order?",
+      "options": [
+        "login : password marker : UID : primary GID : comment : home directory : shell",
+        "login : UID : GID : password : shell : home : comment",
+        "login : password : home : shell : UID : GID : comment",
+        "UID : login : GID : comment : home : shell : password"
+      ],
+      "answer": 0,
+      "why": "The seven /etc/passwd fields are: login name, password marker (x), UID, primary GID, comment, home directory, and shell."
+    },
+    {
+      "type": "mcq",
+      "q": "In /etc/passwd, what does an 'x' in the second (password) field mean?",
+      "options": [
+        "The user has a password, whose encrypted form is stored in /etc/shadow",
+        "The user has no password",
+        "The account is locked",
+        "The password is 'x'"
+      ],
+      "answer": 0,
+      "why": "x marks that a password exists; the actual encrypted password is in the second field of /etc/shadow."
+    },
+    {
+      "type": "mcq",
+      "q": "In /etc/shadow, what does the second field hold, and which algorithm does Rocky use by default?",
+      "options": [
+        "The encrypted password, using SHA512 (set by ENCRYPT_METHOD in /etc/login.defs)",
+        "The plain-text password",
+        "The UID",
+        "The account expiry date"
+      ],
+      "answer": 0,
+      "why": "Field 2 is the encrypted password; the default algorithm is SHA512, defined by ENCRYPT_METHOD in /etc/login.defs."
+    },
+    {
+      "type": "mcq",
+      "q": "How is the 'last password change' time (field 3 of /etc/shadow) expressed?",
+      "options": [
+        "As a number of days since 1 January 1970 (a day-based timestamp)",
+        "As a full date and time string",
+        "As seconds since boot",
+        "As a Unix epoch in seconds"
+      ],
+      "answer": 0,
+      "why": "Shadow ageing fields count DAYS since 1970-01-01; +1 for each day that passes."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between password expiration and account expiration in /etc/shadow?",
+      "options": [
+        "Password expiry stops login by password; account expiry stops the user logging in at all",
+        "They are the same thing",
+        "Password expiry deletes the account; account expiry only warns",
+        "Account expiry only affects root"
+      ],
+      "answer": 0,
+      "why": "A password expiry blocks login via the password (field 5); an account expiry (field 8) bars the user from logging in at all."
+    },
+    {
+      "type": "mcq",
+      "q": "What relationship must hold between /etc/passwd and /etc/shadow?",
+      "options": [
+        "Every line in /etc/passwd must have a corresponding line in /etc/shadow",
+        "They are independent files",
+        "shadow may contain users that passwd does not",
+        "Only privileged users appear in shadow"
+      ],
+      "answer": 0,
+      "why": "For each /etc/passwd line there must be a matching /etc/shadow line."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.1 General (pp. 98-99)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the difference between a user's primary group and their supplementary groups?",
+      "options": [
+        "Every user has exactly one primary group; supplementary groups are additional groups they also belong to",
+        "The primary group is optional; supplementary groups are mandatory",
+        "A user can have several primary groups but only one supplementary group",
+        "There is no difference"
+      ],
+      "answer": 0,
+      "why": "Each user has one primary group and may additionally be a member of one or more supplementary groups."
+    },
+    {
+      "type": "mcq",
+      "q": "What do UID and GID stand for?",
+      "options": [
+        "UID = User Identifier (unique user ID); GID = Group Identifier (unique group ID)",
+        "UID = Unix ID; GID = Global ID",
+        "UID = Unique Item Descriptor; GID = Group Item Descriptor",
+        "UID = User Index; GID = Generic ID"
+      ],
+      "answer": 0,
+      "why": "The kernel manages users and groups by their unique numeric UID and GID."
+    },
+    {
+      "type": "mcq",
+      "q": "Which UID makes an account the Super Admin?",
+      "options": [
+        "uid=0 (the root user is the usual holder, but any uid=0 account is Super Admin)",
+        "uid=1000",
+        "uid=999",
+        "Any uid below 1000"
+      ],
+      "answer": 0,
+      "why": "The kernel treats uid=0 as the Super Admin - it need not literally be named root, as long as its UID is 0."
+    },
+    {
+      "type": "mcq",
+      "q": "Which UID range identifies a normal (regular) user account?",
+      "options": [
+        "UID greater than or equal to 1000",
+        "UID between 201 and 999",
+        "UID equal to 0",
+        "UID between 1 and 200"
+      ],
+      "answer": 0,
+      "why": "root is uid=0, system/service accounts use 201-999, and regular login users are uid >= 1000."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is the recommended way to change user and group information?",
+      "options": [
+        "Use the administration commands (useradd, usermod, groupadd, ...) rather than editing the files by hand",
+        "Edit /etc/passwd and /etc/shadow directly with a text editor",
+        "Only ever edit /etc/group",
+        "Reboot into single-user mode to make any change"
+      ],
+      "answer": 0,
+      "why": "The guide warns you to always use the admin commands instead of manually editing files like /etc/passwd, /etc/shadow, /etc/group and /etc/gshadow."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these files is NOT one of the standard user/group management files listed?",
+      "options": [
+        "/etc/hostname",
+        "/etc/passwd",
+        "/etc/shadow",
+        "/etc/login.defs"
+      ],
+      "answer": 0,
+      "why": "The user/group files are /etc/passwd, /etc/shadow, /etc/group, /etc/gshadow, /etc/skel/, /etc/default/useradd and /etc/login.defs; /etc/hostname is unrelated."
+    }
+  ]
+}

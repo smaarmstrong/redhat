@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.2.1-7.2.3 groupadd/groupmod/groupdel (pp. 99-101)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create a group called developers with GID 1012.",
+      "answers": ["sudo groupadd -g 1012 developers", "groupadd -g 1012 developers"],
+      "show": "sudo groupadd -g 1012 developers",
+      "why": "groupadd -g sets the GID of the new group."
+    },
+    {
+      "type": "mcq",
+      "q": "What does groupadd -f do?",
+      "options": [
+        "If the GID given with -g already exists, the system chooses another GID instead of failing",
+        "It forces deletion of an existing group",
+        "It creates a system group",
+        "It suppresses all output"
+      ],
+      "answer": 0,
+      "why": "-f lets groupadd pick a free GID when the one requested with -g is already taken."
+    },
+    {
+      "type": "mcq",
+      "q": "What does groupadd -r create?",
+      "options": [
+        "A system group, with a GID between SYS_GID_MIN and SYS_GID_MAX (from /etc/login.defs)",
+        "A read-only group",
+        "A group with a random name",
+        "A group owned by root only"
+      ],
+      "answer": 0,
+      "why": "-r makes a system group whose GID falls in the SYS_GID_MIN..SYS_GID_MAX range defined in /etc/login.defs."
+    },
+    {
+      "type": "cmd",
+      "q": "Rename the group GroupB to GroupC.",
+      "answers": ["sudo groupmod -n GroupC GroupB", "groupmod -n GroupC GroupB"],
+      "show": "sudo groupmod -n GroupC GroupB",
+      "why": "groupmod -n gives a new name; the old name is the final argument."
+    },
+    {
+      "type": "cmd",
+      "q": "Change the GID of the group GroupP to 1016.",
+      "answers": ["sudo groupmod -g 1016 GroupP", "groupmod -g 1016 GroupP"],
+      "show": "sudo groupmod -g 1016 GroupP",
+      "why": "groupmod -g sets a new GID; afterwards, files still on the old GID appear with an unknown group and must be reassigned."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the group GroupC.",
+      "answers": ["sudo groupdel GroupC", "groupdel GroupC"],
+      "show": "sudo groupdel GroupC",
+      "why": "groupdel removes a group - but it refuses if the group is the primary group of an existing user."
+    },
+    {
+      "type": "mcq",
+      "q": "Why might 'groupdel test' fail with 'cannot remove the primary group of user test'?",
+      "options": [
+        "Because that group is still a user's PRIMARY group; you must reassign the user's primary group first",
+        "Because groups can never be deleted",
+        "Because only root groups can be deleted",
+        "Because the group has supplementary members"
+      ],
+      "answer": 0,
+      "why": "groupdel will not delete a group that is any user's primary group; a supplementary group not primary for anyone deletes without complaint."
+    }
+  ]
+}

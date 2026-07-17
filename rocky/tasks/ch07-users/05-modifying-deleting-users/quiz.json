@@ -1,0 +1,65 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.3.3-7.3.4 usermod/userdel (pp. 108-109)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Change the UID of the user carine to 1044.",
+      "answers": ["sudo usermod -u 1044 carine", "usermod -u 1044 carine"],
+      "show": "sudo usermod -u 1044 carine",
+      "why": "usermod -u sets a new UID; afterwards the user's files still on the old UID must be reassigned (e.g. find / -uid OLD -exec chown NEW: {} \\;)."
+    },
+    {
+      "type": "cmd",
+      "q": "Rename the login 'carine' to 'karine' (change the login name only).",
+      "answers": ["sudo usermod -l karine carine", "usermod -l karine carine"],
+      "show": "sudo usermod -l karine carine",
+      "why": "usermod -l changes the login name; you should also rename the home directory to match."
+    },
+    {
+      "type": "cmd",
+      "q": "Lock the account 'test1' (add a ! at the start of its shadow password field).",
+      "answers": ["sudo usermod -L test1", "usermod -L test1"],
+      "show": "sudo usermod -L test1",
+      "why": "usermod -L locks the account; -U unlocks it again."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the critical difference between 'usermod -G' and 'usermod -aG' for supplementary groups?",
+      "options": [
+        "-G REPLACES (overwrites) the user's supplementary groups; -aG APPENDS to them",
+        "-G appends; -aG replaces",
+        "They are identical",
+        "-G is for primary groups; -aG is for supplementary groups"
+      ],
+      "answer": 0,
+      "why": "-G overwrites the whole supplementary-group list (dropping the others); -a with -G appends without removing existing memberships. Forgetting -a is a classic way to accidentally remove a user from groups."
+    },
+    {
+      "type": "cmd",
+      "q": "Append the user test1 to the supplementary group groupD WITHOUT removing their other groups.",
+      "answers": ["sudo usermod -aG groupD test1", "usermod -aG groupD test1", "sudo usermod -a -G groupD test1"],
+      "show": "sudo usermod -aG groupD test1",
+      "why": "-aG appends the group; using -G alone here would have replaced all of test1's supplementary groups with just groupD."
+    },
+    {
+      "type": "cmd",
+      "q": "Delete the user carine along with their home directory and mail files.",
+      "answers": ["sudo userdel -r carine", "userdel -r carine"],
+      "show": "sudo userdel -r carine",
+      "why": "userdel -r removes the account and its home directory plus /var/spool/mail files; it also deletes the user's same-named primary group."
+    },
+    {
+      "type": "mcq",
+      "q": "What condition must hold before a user can be modified or deleted?",
+      "options": [
+        "The user must be logged out and have no running processes",
+        "The user must be logged in",
+        "The system must be in single-user mode",
+        "The user must first be added to the wheel group"
+      ],
+      "answer": 0,
+      "why": "To be modified or deleted, a user must be disconnected with no running processes."
+    }
+  ]
+}

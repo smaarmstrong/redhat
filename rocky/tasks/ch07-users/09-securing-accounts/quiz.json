@@ -1,0 +1,77 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 7.6 Securing (pp. 116-118)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Permanently lock the account of the user albert using passwd.",
+      "answers": ["sudo passwd -l albert", "passwd -l albert"],
+      "show": "sudo passwd -l albert",
+      "why": "passwd -l locks the account by prefixing the shadow password field (adds !!); -u unlocks it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does 'passwd -S <login>' display?",
+      "options": [
+        "The status of the account (locked, password set, ageing, ...)",
+        "The encrypted password in clear",
+        "The user's supplementary groups",
+        "The user's shell"
+      ],
+      "answer": 0,
+      "why": "passwd -S reports the account status; like -l/-u/-d it is for root (uid=0) use."
+    },
+    {
+      "type": "cmd",
+      "q": "As root, change the password of the user alain.",
+      "answers": ["sudo passwd alain", "passwd alain"],
+      "show": "sudo passwd alain",
+      "why": "root can set any user's password with 'passwd <login>'; a normal user runs 'passwd' alone to change their own (after giving the old one)."
+    },
+    {
+      "type": "mcq",
+      "q": "In a script, what does 'echo \"azerty,1\" | passwd --stdin philippe' do?",
+      "options": [
+        "Sets philippe's password to the piped value (passwd encrypts it); the password is passed in clear on the pipe",
+        "Displays philippe's current password",
+        "Locks philippe's account",
+        "Adds philippe to a group"
+      ],
+      "answer": 0,
+      "why": "--stdin reads the new password from standard input, handy for scripted account setup; passwd encrypts it, but it is supplied in clear text."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the password-ageing policy details for the user alain using chage.",
+      "answers": ["sudo chage -l alain", "chage -l alain"],
+      "show": "sudo chage -l alain",
+      "why": "chage -l lists the account's ageing policy (last change, expiry, min/max, warning)."
+    },
+    {
+      "type": "cmd",
+      "q": "For alain, set the minimum password age to 60 days, maximum to 90, warning to 80 and inactivity delay to 10, using chage.",
+      "answers": ["sudo chage -m 60 -M 90 -W 80 -I 10 alain", "chage -m 60 -M 90 -W 80 -I 10 alain"],
+      "show": "sudo chage -m 60 -M 90 -W 80 -I 10 alain",
+      "why": "chage -m minimum, -M maximum, -W warning days, -I inactivity delay after expiry."
+    },
+    {
+      "type": "cmd",
+      "q": "Force the user philippe to change their password at next login (set last-change to 0) using chage.",
+      "answers": ["sudo chage -d 0 philippe", "chage -d 0 philippe"],
+      "show": "sudo chage -d 0 philippe",
+      "why": "chage -d 0 resets the last-change date to the epoch, so the password is considered expired and must be changed on next login."
+    },
+    {
+      "type": "mcq",
+      "q": "Which chage option sets the ACCOUNT expiration date (as YYYY-MM-DD or a day timestamp)?",
+      "options": [
+        "-E",
+        "-M",
+        "-W",
+        "-m"
+      ],
+      "answer": 0,
+      "why": "chage -E sets the account expiry date; -M sets the maximum PASSWORD lifetime, which is a different thing."
+    }
+  ]
+}
