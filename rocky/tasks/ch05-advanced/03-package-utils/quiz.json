@@ -1,0 +1,63 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.3 yum-utils package (pp. 74-76)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the yum-utils package on Rocky Linux 8+?",
+      "options": [
+        "A collection of utilities that extend yum/dnf; still named yum-utils (also installable as dnf-utils), implemented as CLI shims over DNF",
+        "The core package manager that replaced dnf",
+        "A graphical software centre",
+        "A single command called yum-utils"
+      ],
+      "answer": 0,
+      "why": "yum was replaced by dnf in Rocky 8, but the utility collection kept the yum-utils name (available as dnf-utils too) as backwards-compatible shims on top of DNF."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the repoquery command used for?",
+      "options": [
+        "Querying the packages in the repositories (dependencies, provided files, etc.)",
+        "Installing a package and its dependencies",
+        "Removing orphaned packages",
+        "Rebuilding the repository metadata"
+      ],
+      "answer": 0,
+      "why": "repoquery interrogates repository packages - whether or not they are installed - for information such as requires and file lists."
+    },
+    {
+      "type": "cmd",
+      "q": "Show the dependencies (requires) of the samba package with repoquery.",
+      "answers": ["repoquery --requires samba"],
+      "show": "repoquery --requires samba",
+      "why": "repoquery --requires lists a package's dependencies; it is equivalent to 'dnf deplist samba'."
+    },
+    {
+      "type": "cmd",
+      "q": "List the files provided by the installed package yum-utils using repoquery.",
+      "answers": ["repoquery -l yum-utils", "repoquery --list yum-utils"],
+      "show": "repoquery -l yum-utils",
+      "why": "repoquery -l lists the files a package provides (installed packages only) - equivalent to 'rpm -ql yum-utils'."
+    },
+    {
+      "type": "mcq",
+      "q": "What does yumdownloader do?",
+      "options": [
+        "Downloads RPM packages from the repositories without installing them",
+        "Installs packages from a download server",
+        "Deletes cached RPMs",
+        "Uploads packages to a repository"
+      ],
+      "answer": 0,
+      "why": "yumdownloader fetches RPMs from the repos (equivalent to 'dnf download --downloadonly'), handy for building a small local repo."
+    },
+    {
+      "type": "cmd",
+      "q": "Download the samba RPM AND its dependencies into /var/tmp using yumdownloader.",
+      "answers": ["yumdownloader --destdir /var/tmp --resolve samba", "yumdownloader --resolve --destdir /var/tmp samba"],
+      "show": "yumdownloader --destdir /var/tmp --resolve samba",
+      "why": "--destdir sets the download folder and --resolve additionally pulls the package's dependencies."
+    }
+  ]
+}

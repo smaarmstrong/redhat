@@ -1,0 +1,70 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.4 psmisc & 5.5 watch (pp. 76-77)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Display the running processes as a tree structure (the psmisc command for this).",
+      "answers": ["pstree"],
+      "show": "pstree",
+      "why": "pstree shows the current processes arranged as a tree, making parent/child relationships visible."
+    },
+    {
+      "type": "cmd",
+      "q": "Send a kill signal to every process named httpd, by name.",
+      "answers": ["killall httpd"],
+      "show": "killall httpd",
+      "why": "killall sends a signal to all processes identified by the given name (unlike kill, which takes a PID)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the fuser command identify?",
+      "options": [
+        "The PIDs of the processes that are using specified files or file systems",
+        "The users currently logged in",
+        "The free space on a file system",
+        "The dependencies of a package"
+      ],
+      "answer": 0,
+      "why": "fuser reports which processes (by PID) are using a given file or file system."
+    },
+    {
+      "type": "cmd",
+      "q": "Kill the processes that are accessing the file /etc/httpd/conf/httpd.conf, using fuser.",
+      "answers": ["fuser -k /etc/httpd/conf/httpd.conf"],
+      "show": "fuser -k /etc/httpd/conf/httpd.conf",
+      "why": "fuser -k sends the kill signal to every process using the named file."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the watch command do?",
+      "options": [
+        "Runs a command repeatedly at intervals and shows its output full-screen",
+        "Monitors a file for permission changes",
+        "Records a terminal session to a file",
+        "Watches a process until it exits, then reports"
+      ],
+      "answer": 0,
+      "why": "watch re-runs a command every few seconds and displays the latest result in the terminal."
+    },
+    {
+      "type": "cmd",
+      "q": "Run 'tail -n 3 /etc/passwd' every 5 seconds with watch.",
+      "answers": ["watch -n 5 tail -n 3 /etc/passwd"],
+      "show": "watch -n 5 tail -n 3 /etc/passwd",
+      "why": "-n sets the number of seconds between executions; here it repeats the tail command every 5 seconds."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you exit watch?",
+      "options": [
+        "Press Ctrl+C to kill the process",
+        "Press q",
+        "Press Esc",
+        "Wait for it to finish on its own"
+      ],
+      "answer": 0,
+      "why": "watch runs until interrupted; Ctrl+C kills it and returns you to the prompt."
+    }
+  ]
+}

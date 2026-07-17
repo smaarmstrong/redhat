@@ -1,0 +1,80 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.2 xargs command (pp. 72-74)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does xargs do?",
+      "options": [
+        "Builds and executes command lines using arguments read from standard input",
+        "Sorts standard input alphabetically",
+        "Compresses its standard input",
+        "Displays the arguments of a running process"
+      ],
+      "answer": 0,
+      "why": "xargs reads whitespace/linefeed-delimited arguments from stdin and runs a command (echo by default) with them appended."
+    },
+    {
+      "type": "mcq",
+      "q": "If you run xargs with no command, which command does it run by default, and how do you end the input?",
+      "options": [
+        "It runs echo; you end the input with Ctrl+D",
+        "It runs ls; you end the input with Ctrl+C",
+        "It runs cat; you end with Ctrl+Z",
+        "It runs nothing until you press Enter twice"
+      ],
+      "answer": 0,
+      "why": "The default command is /bin/echo, and Ctrl+D signals end-of-input on stdin."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does xargs place the arguments it reads from stdin, relative to the command?",
+      "options": [
+        "At the END of the command line",
+        "At the very beginning, before the command name",
+        "In the middle, always after the first option",
+        "It replaces the command entirely"
+      ],
+      "answer": 0,
+      "why": "xargs appends the input arguments at the end of the called command - which is why 'find ... | xargs tar cvf archive' works but cp (which wants the destination last) needs -I."
+    },
+    {
+      "type": "cmd",
+      "q": "Run 'ls -ld' once, taking the directories to list from standard input via xargs.",
+      "answers": ["xargs ls -ld"],
+      "show": "xargs ls -ld",
+      "why": "xargs collects the stdin lines and runs 'ls -ld' with all of them as arguments in one go."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between the -L and -n options of xargs?",
+      "options": [
+        "-L N processes at most N input LINES per command run; -n N passes at most N ARGUMENTS per run",
+        "-L sets the log level; -n names the command",
+        "-L N passes N arguments; -n N reads N lines",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "-L limits how many input lines feed each invocation; -n limits how many arguments per invocation - both force xargs to run the command multiple times."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy each *.log file found under /var/log into /root/backup, using xargs with % as the placeholder for the input file so it is NOT put at the end.",
+      "answers": ["find /var/log -type f -name \"*.log\" | xargs -I % cp % /root/backup", "find /var/log -type f -name \"*.log\" | xargs -I% cp % /root/backup"],
+      "show": "find /var/log -type f -name \"*.log\" | xargs -I % cp % /root/backup",
+      "why": "cp wants the destination last, so -I % marks where each input argument goes, letting the destination stay at the end."
+    },
+    {
+      "type": "mcq",
+      "q": "In 'xargs -I % cp % /root/backup', what does the % represent?",
+      "options": [
+        "The placeholder where each input argument from xargs is substituted",
+        "A wildcard matching any file",
+        "The exit status of cp",
+        "A comment marker"
+      ],
+      "answer": 0,
+      "why": "-I lets you choose a placeholder string (here %); xargs substitutes each input item at that position instead of appending it."
+    }
+  ]
+}

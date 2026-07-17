@@ -1,0 +1,58 @@
+{
+  "source": "Rocky Linux Admin Guide, ch. 5.1 uniq command (pp. 71-72)",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why must the input to uniq be sorted first?",
+      "options": [
+        "uniq only compares consecutive (adjacent) lines, so duplicates must be brought together first",
+        "uniq cannot read an unsorted file at all",
+        "sort is what actually removes the duplicates; uniq only counts",
+        "It is not necessary; uniq sorts internally"
+      ],
+      "answer": 0,
+      "why": "uniq compares only lines that follow each other, so scattered duplicates are missed unless sort groups them first."
+    },
+    {
+      "type": "cmd",
+      "q": "Sort firstnames.txt and collapse runs of identical lines into one (the plain, no-option case).",
+      "answers": ["sort firstnames.txt | uniq"],
+      "show": "sort firstnames.txt | uniq",
+      "why": "With no option, uniq drops consecutive duplicate lines, leaving one of each distinct name."
+    },
+    {
+      "type": "cmd",
+      "q": "From firstnames.txt, show only the lines that appear EXACTLY ONCE.",
+      "answers": ["sort firstnames.txt | uniq -u"],
+      "show": "sort firstnames.txt | uniq -u",
+      "why": "-u prints only the lines that are unique (occur a single time)."
+    },
+    {
+      "type": "cmd",
+      "q": "From firstnames.txt, show only the lines that appear AT LEAST TWICE (one line per such name).",
+      "answers": ["sort firstnames.txt | uniq -d"],
+      "show": "sort firstnames.txt | uniq -d",
+      "why": "-d prints one copy of each line that is duplicated (appears two or more times)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between 'uniq -d' and 'uniq -D'?",
+      "options": [
+        "-d prints one copy of each duplicated line; -D prints ALL copies of every duplicated line",
+        "-d prints all copies; -D prints one copy",
+        "-d counts duplicates; -D deletes them",
+        "They are identical"
+      ],
+      "answer": 0,
+      "why": "-d gives a single representative of each duplicated line; -D emits every occurrence of the lines that are duplicated."
+    },
+    {
+      "type": "cmd",
+      "q": "Count how many times each line occurs in firstnames.txt (prefix each line with its count).",
+      "answers": ["sort firstnames.txt | uniq -c"],
+      "show": "sort firstnames.txt | uniq -c",
+      "why": "-c prefixes each output line with the number of times it occurred - the classic 'top offenders' idiom for log analysis."
+    }
+  ]
+}
