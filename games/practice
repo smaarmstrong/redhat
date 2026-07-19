@@ -197,6 +197,45 @@ def curriculum_key(t):
     """Sort key placing a task in teaching order: (domain rank, then its id)."""
     return (DOMAIN_ORDER.get(t["id"].split("/")[1], 99), t["id"])
 
+# ---- rocky quizzes: link to the online guide -------------------------------
+# Each rocky quiz chapter maps to the matching page of the online Rocky Linux
+# Administrator's Guide, so the reader can open the source while they study and
+# test. Keyed by the tasks/<chNN-...>/ directory name. This is a hand-verified
+# map, NOT a formula: the online book numbers and labels its chapters differently
+# from the PDF the quizzes cite (e.g. quiz "ch. 4" == the book's 03-commands),
+# skips 02 and 15, and even ships a real typo in one slug (16-about-sytemd).
+# Every URL below was checked to return HTTP 200.
+ROCKY_GUIDE_BASE = "https://docs.rockylinux.org/books/admin_guide"
+ROCKY_GUIDE_PAGES = {
+    "ch02-about": "01-presentation",
+    "ch03-linux-intro": "01-presentation",
+    "ch04-commands": "03-commands",
+    "ch05-advanced": "04-advanced-commands",
+    "ch06-vi": "05-vi",
+    "ch07-users": "06-users",
+    "ch08-filesystem": "07-file-systems",
+    "ch09-processes": "08-process",
+    "ch10-backup": "09-backups",
+    "ch11-startup": "10-boot",
+    "ch12-tasks": "11-tasks",
+    "ch13-network": "12-network",
+    "ch14-software": "13-softwares",
+    "ch15-permissions": "14-special-authority",
+    "ch16-logs": "17-log",
+    "ch17-conclusions": "99-conclusions",
+    "guide-systemd": "16-about-sytemd",
+}
+
+def guide_url(t):
+    """Online Administrator's Guide URL for a rocky quiz's chapter, or None for
+    non-rocky tasks (and any rocky chapter not yet in the map)."""
+    try:
+        chapter = t["dir"].parent.name
+    except Exception:
+        return None
+    slug = ROCKY_GUIDE_PAGES.get(chapter)
+    return f"{ROCKY_GUIDE_BASE}/{slug}/" if slug else None
+
 def due_reviews(tasks, st, have_spare):
     """Passed tasks whose review date has arrived, most overdue first."""
     out = []
@@ -412,6 +451,9 @@ def run_quiz(tasks, st, t):
     print()
     print(BLD(f"{t['domain']} — {t['title']}"))
     print(DIM(f"covers: {quiz.get('source', t.get('objective',''))}"))
+    gurl = guide_url(t)
+    if gurl:
+        print(DIM(f"guide:  {gurl}"))
     print(DIM(f"id: {t['id']}   {len(qs)} questions · pass mark {need}%"))
     print(DIM("(Enter skips a question — it counts as wrong; q quits without scoring)"))
     print("─" * 60)
@@ -540,6 +582,9 @@ def cmd_learn(tasks, st, ident=None, focus=None):
         print()
         print(BLD(f"QUIZ — {t['domain']}: {t['title']}"))
         print(DIM(f"covers: {quiz.get('source', t.get('objective',''))}"))
+        gurl = guide_url(t)
+        if gurl:
+            print(DIM(f"guide:  {gurl}"))
         prompt = t["dir"] / "prompt.md"
         if prompt.exists():
             print("─" * 60)

@@ -8,6 +8,10 @@ spaced-repetition review cycle as every other task, so the book knowledge
 comes back for review right when you'd start to forget it.
 
 Quizzes are added section by section, pacing the guide as it's actually read.
+While you take a quiz, the runner prints a `guide:` link to the matching page of
+the online guide for that chapter, so you can read the source alongside the
+questions. The chapter -> page map lives in `games/practice`
+(`ROCKY_GUIDE_PAGES`); `./games/quizcheck` fails if a chapter is missing from it.
 
 ## Attribution
 
