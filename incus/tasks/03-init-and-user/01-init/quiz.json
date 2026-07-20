@@ -1,0 +1,82 @@
+{
+  "source": "Incus Server - 3 Incus initialization and user setup: incus admin init, the incusadmin user, and subuid/subgid",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Run the interactive Incus initialization.",
+      "answers": [
+        "incus admin init"
+      ],
+      "why": "incus admin init asks a series of questions to bring the instance up."
+    },
+    {
+      "type": "mcq",
+      "q": "At 'Name of the storage backend to use', what do you accept?",
+      "options": [
+        "The default, zfs",
+        "dir",
+        "lvm",
+        "ceph"
+      ],
+      "answer": 0,
+      "why": "Accept the default zfs backend (you set up the ZFS pool in chapter 2)."
+    },
+    {
+      "type": "mcq",
+      "q": "When asked 'Create a new ZFS pool?', what do you answer, and what comes next?",
+      "options": [
+        "no -- then give the name of the existing ZFS pool (storage)",
+        "yes -- let Incus format the disk",
+        "no -- and skip storage entirely",
+        "yes -- and pick dir"
+      ],
+      "answer": 0,
+      "why": "Answer no and point Incus at the existing pool named storage."
+    },
+    {
+      "type": "mcq",
+      "q": "Why answer 'yes' to 'available over the network?' during init?",
+      "options": [
+        "It is necessary to snapshot the server (to/from the snapshot server)",
+        "To speed up containers",
+        "To enable IPv6",
+        "It is required for images"
+      ],
+      "answer": 0,
+      "why": "Network availability is needed so the primary and snapshot servers can exchange snapshots."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the 'trust password' set during init used for?",
+      "options": [
+        "Connecting to (or back from) the snapshot server",
+        "The root login",
+        "The container root password",
+        "Encrypting ZFS"
+      ],
+      "answer": 0,
+      "why": "The trust password authorizes the primary/snapshot server relationship; save it securely."
+    },
+    {
+      "type": "cmd",
+      "q": "Create the incusadmin user in the wheel and incus-admin groups.",
+      "answers": [
+        "useradd -G wheel,incus-admin incusadmin"
+      ],
+      "why": "incusadmin needs wheel (to sudo) and incus-admin (to run incus)."
+    },
+    {
+      "type": "mcq",
+      "q": "Besides the user, what must be set for the root user before rebooting?",
+      "options": [
+        "The subuid and subgid ranges (edit /etc/subuid and /etc/subgid)",
+        "A new SSH key",
+        "The hostname",
+        "The timezone"
+      ],
+      "answer": 0,
+      "why": "Root's subordinate uid/gid ranges (e.g. root:1000000:1000000000) go in /etc/subuid and /etc/subgid."
+    }
+  ]
+}

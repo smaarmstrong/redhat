@@ -1,0 +1,74 @@
+{
+  "source": "Incus Server - 9 Snapshot Server: Mirroring the server and establishing trust between the two",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How closely should the snapshot server match the primary, and how do you build it?",
+      "options": [
+        "It must mirror the primary in every way -- repeat chapters 1-4 on it",
+        "It can be any spare machine with no setup",
+        "It only needs SSH",
+        "It must run a different OS"
+      ],
+      "answer": 0,
+      "why": "The snapshot server has to mirror production, so you redo the install/ZFS/init/firewall chapters on it."
+    },
+    {
+      "type": "mcq",
+      "q": "Without a DNS server (e.g. in a lab), how do the two servers resolve each other's names?",
+      "options": [
+        "Add both servers' IPs and names to /etc/hosts on each machine",
+        "Use mDNS automatically",
+        "Hard-code IPs everywhere",
+        "Run a DHCP server"
+      ],
+      "answer": 0,
+      "why": "Add entries like '192.168.1.106 incus-primary' to /etc/hosts on both."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you let the two servers exchange traffic through firewalld?",
+      "options": [
+        "Add the other server's IP as a source in the trusted zone (firewall-cmd zone=trusted add-source=<ip> --permanent), then reload",
+        "Disable the firewall",
+        "Open port 22 to the world",
+        "Add a masquerade rule"
+      ],
+      "answer": 0,
+      "why": "Each server trusts the other's IP via the trusted zone."
+    },
+    {
+      "type": "cmd",
+      "q": "Establish the trust relationship from incus-primary to the snapshot server (named incus-snapshot).",
+      "answers": [
+        "incus remote add incus-snapshot"
+      ],
+      "why": "incus remote add shows a cert to accept, then prompts for the trust password set during init."
+    },
+    {
+      "type": "mcq",
+      "q": "Which password does `incus remote add` prompt for?",
+      "options": [
+        "The trust password you set during incus admin init",
+        "The root password",
+        "Your user login password",
+        "The ZFS pool password"
+      ],
+      "answer": 0,
+      "why": "It is the init-time trust password (keep these saved securely)."
+    },
+    {
+      "type": "mcq",
+      "q": "Before migrating snapshots, what profile step is needed on the snapshot server?",
+      "options": [
+        "Create (or copy over) the macvlan profile, e.g. incus profile copy macvlan incus-snapshot",
+        "Delete the default profile",
+        "Nothing",
+        "Recreate the ZFS pool as btrfs"
+      ],
+      "answer": 0,
+      "why": "Profiles used on the primary (macvlan) must exist on the snapshot server; you can copy it over if the parent interface names match."
+    }
+  ]
+}

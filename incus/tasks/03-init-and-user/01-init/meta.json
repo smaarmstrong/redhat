@@ -1,0 +1,8 @@
+{
+  "title": "Initializing Incus and the admin user",
+  "domain": "Incus Initialization",
+  "objective": "Incus Server - 3 Incus initialization and user setup: incus admin init, the incusadmin user, and subuid/subgid",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Getting IPs onto RHEL-family containers",
+  "domain": "Incus Profiles",
+  "objective": "Incus Server - 6 Profiles: macvlan IP assignment fixes for Rocky Linux and Ubuntu containers",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

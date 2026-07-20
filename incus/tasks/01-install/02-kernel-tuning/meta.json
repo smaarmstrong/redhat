@@ -1,0 +1,8 @@
+{
+  "title": "Kernel and limit tuning",
+  "domain": "Incus Install",
+  "objective": "Incus Server - 1 Install and Configuration: Environment setup: limits.conf and the sysctl override",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

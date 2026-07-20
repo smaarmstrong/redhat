@@ -1,0 +1,8 @@
+{
+  "title": "Automating the copy/refresh to the snapshot server",
+  "domain": "Incus Automating Snapshots",
+  "objective": "Incus Server - 10 Automating Snapshots: A refresh script and cron on the primary server",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

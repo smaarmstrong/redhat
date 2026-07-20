@@ -38,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync", "incus"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -210,6 +210,7 @@ GUIDE_BASE = {
     "ansible": "https://docs.rockylinux.org/books/learning_ansible",
     "bash": "https://docs.rockylinux.org/books/learning_bash",
     "rsync": "https://docs.rockylinux.org/books/learning_rsync",
+    "incus": "https://docs.rockylinux.org/books/incus_server",
 }
 GUIDE_PAGES = {
     "rocky": {
@@ -265,6 +266,21 @@ GUIDE_PAGES = {
         "05-auth-free-login": "05_rsync_authentication-free_login",
         "06-inotify": "06_rsync_inotify",
         "07-unison": "07_rsync_unison_use",
+    },
+    # Incus Server — chapter dir -> incus_server book slug.
+    "incus": {
+        "00-introduction": "00-toc",
+        "01-install": "01-install",
+        "02-zfs-setup": "02-zfs_setup",
+        "03-init-and-user": "03-incusinit",
+        "04-firewall": "04-firewall",
+        "05-images": "05-incus_images",
+        "06-profiles": "06-profiles",
+        "07-configurations": "07-configurations",
+        "08-snapshots": "08-snapshots",
+        "09-snapshot-server": "09-snapshot_server",
+        "10-automating-snapshots": "10-automating",
+        "appendix-a-workstation": "30-appendix_a",
     },
 }
 

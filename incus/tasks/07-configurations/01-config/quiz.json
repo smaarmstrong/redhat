@@ -1,0 +1,74 @@
+{
+  "source": "Incus Server - 7 Container Configuration Options: incus info, resource limits, storage, and disk quotas",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Show detailed info (resources, profiles, IPs) for the container ubuntu-test.",
+      "answers": [
+        "incus info ubuntu-test"
+      ],
+      "why": "incus info <container> reports CPU/memory/disk/network usage and applied profiles."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, how are a container's memory, disk, CPU assigned?",
+      "options": [
+        "Incus assigns them automatically; you only set limits if you need to be specific",
+        "You must set every limit manually",
+        "Containers get no resources until configured",
+        "All resources are shared equally and fixed"
+      ],
+      "answer": 0,
+      "why": "Incus manages resources well by default; explicit limits are optional and have trade-offs."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `incus config set NAME limits.memory 2GB` do?",
+      "options": [
+        "Sets a soft memory limit -- the container may exceed 2GB if memory is available",
+        "Sets a hard cap of exactly 2GB",
+        "Reserves 2GB permanently",
+        "Sets disk size"
+      ],
+      "answer": 0,
+      "why": "limits.memory is a soft limit; the container can use more when it is free."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `limits.memory.enforce 2GB` do differently?",
+      "options": [
+        "Makes it a hard limit -- the container can never use more than 2GB",
+        "Doubles the memory",
+        "Is the same as limits.memory",
+        "Sets a disk quota"
+      ],
+      "answer": 0,
+      "why": "limits.memory.enforce is the hard ceiling regardless of availability."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `incus config set NAME limits.cpu 2` do?",
+      "options": [
+        "Limits the container to 2 CPU cores",
+        "Gives it 2GB RAM",
+        "Sets 2 snapshots",
+        "Pins it to CPU #2 only"
+      ],
+      "answer": 0,
+      "why": "limits.cpu restricts the number of CPU cores the container may use."
+    },
+    {
+      "type": "mcq",
+      "q": "On a ZFS pool, how do you set a 2GB disk quota on a container's root device?",
+      "options": [
+        "incus config device override <name> root size=2GB",
+        "incus config set <name> disk 2GB",
+        "incus storage quota 2GB",
+        "zpool set quota=2GB"
+      ],
+      "answer": 0,
+      "why": "config device override <name> root size=2GB caps the root disk (ZFS supports quotas)."
+    }
+  ]
+}

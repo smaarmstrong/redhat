@@ -1,0 +1,78 @@
+{
+  "source": "Incus Server - 9 Snapshot Server: Copying snapshots across, boot.autostart, and the built-in snapshot scheduler",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How do you migrate a snapshot of rockylinux-test-9 to the snapshot server?",
+      "options": [
+        "incus copy rockylinux-test-9/rockylinux-test-9-snap1 incus-snapshot:rockylinux-test-9",
+        "incus move rockylinux-test-9 incus-snapshot",
+        "scp the snapshot",
+        "incus push snap"
+      ],
+      "answer": 0,
+      "why": "incus copy <container>/<snapshot> <remote>:<name> sends it across."
+    },
+    {
+      "type": "mcq",
+      "q": "Before starting a migrated container on the snapshot server, what must you do?",
+      "options": [
+        "Stop it on the primary first, to avoid an IP address conflict",
+        "Delete it on the primary",
+        "Nothing",
+        "Change its MAC address"
+      ],
+      "answer": 0,
+      "why": "Both running at once would clash on the same IP, so stop it on the primary first."
+    },
+    {
+      "type": "mcq",
+      "q": "Why set `incus config set <name> boot.autostart 0` on migrated containers?",
+      "options": [
+        "So they do not auto-start on a snapshot-server reboot and cause IP conflicts with the primary",
+        "To make them start faster",
+        "To delete them",
+        "To enable snapshots"
+      ],
+      "answer": 0,
+      "why": "0 disables autostart, preventing the snapshot copies from coming up and clashing after a reboot."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you schedule automatic snapshots of a container (cron-like)?",
+      "options": [
+        "incus config set <name> snapshots.schedule \"50 20 * * *\"",
+        "crontab incus snapshot",
+        "incus schedule <name>",
+        "incus snapshot --daily"
+      ],
+      "answer": 0,
+      "why": "snapshots.schedule takes a cron-style timestamp (here 20:50 daily)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does snapshots.pattern configure?",
+      "options": [
+        "A meaningful (date/time-stamped) naming pattern for automatic snapshots",
+        "How many to keep",
+        "The storage pool",
+        "The schedule"
+      ],
+      "answer": 0,
+      "why": "snapshots.pattern sets the name template, e.g. embedding creation_date, since Incus uses UTC."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `incus config set <name> snapshots.expiry 1d` do?",
+      "options": [
+        "Automatically removes snapshots after they age past 1 day, so the disk does not fill up",
+        "Takes a snapshot every day",
+        "Keeps snapshots for 1 day of work only",
+        "Expires the container"
+      ],
+      "answer": 0,
+      "why": "snapshots.expiry prunes old snapshots so scheduled ones do not accumulate forever."
+    }
+  ]
+}

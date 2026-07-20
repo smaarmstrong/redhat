@@ -1,0 +1,8 @@
+{
+  "title": "Enabling ZFS and creating the pool",
+  "domain": "Incus ZFS Setup",
+  "objective": "Incus Server - 2 ZFS Setup: Loading ZFS and creating the storage pool",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

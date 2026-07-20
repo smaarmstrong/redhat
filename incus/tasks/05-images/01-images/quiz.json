@@ -1,0 +1,71 @@
+{
+  "source": "Incus Server - 5 Setting Up and Managing Images: Finding images and creating, starting, renaming and listing containers",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "List all available images from the images: remote (pipe through more).",
+      "answers": [
+        "incus image list images: | more",
+        "incus image list images:"
+      ],
+      "why": "incus image list images: shows the (large) catalogue of container/VM images."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you narrow the image list to just Rocky Linux options?",
+      "options": [
+        "incus image list images: | grep rocky",
+        "incus image rocky",
+        "incus list rocky",
+        "incus image search rocky only"
+      ],
+      "answer": 0,
+      "why": "Pipe the listing through grep rocky for a manageable list."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command creates and launches a Rocky Linux 8 container named rockylinux-test-8?",
+      "options": [
+        "incus launch images:rockylinux/8 rockylinux-test-8",
+        "incus create rockylinux-test-8",
+        "incus run rockylinux/8",
+        "incus image add rockylinux/8"
+      ],
+      "answer": 0,
+      "why": "incus launch images:<image> <name> creates and starts the container."
+    },
+    {
+      "type": "mcq",
+      "q": "After `incus launch`, what is the container's state?",
+      "options": [
+        "Running -- it starts automatically when created",
+        "Stopped until you start it",
+        "Paused",
+        "Only created, never started"
+      ],
+      "answer": 0,
+      "why": "A launched container starts automatically."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you rename a container (e.g. rockylinux-test-8 to rockylinux-8)?",
+      "options": [
+        "Stop it first, then: incus move rockylinux-test-8 rockylinux-8",
+        "incus rename while running",
+        "incus cp old new",
+        "You cannot rename containers"
+      ],
+      "answer": 0,
+      "why": "Stop the container, then use incus move <old> <new>."
+    },
+    {
+      "type": "cmd",
+      "q": "List your containers (name, state, IP, type, snapshots).",
+      "answers": [
+        "incus list"
+      ],
+      "why": "incus list shows all your instances and their addresses."
+    }
+  ]
+}

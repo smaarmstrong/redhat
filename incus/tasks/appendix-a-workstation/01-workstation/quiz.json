@@ -1,0 +1,63 @@
+{
+  "source": "Incus Server - Appendix A - Workstation Setup: Running Incus as a lab on a workstation or notebook",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is Appendix A for?",
+      "options": [
+        "Running a lab or semi-permanent OS/apps on a Rocky Linux workstation or notebook -- not a production server",
+        "Clustering many servers",
+        "Backing up the primary",
+        "Configuring the firewall"
+      ],
+      "answer": 0,
+      "why": "It is a workstation/lab setup, outside the production-server chapters."
+    },
+    {
+      "type": "mcq",
+      "q": "Which storage backend does the workstation setup use in the example, and how does it compare?",
+      "options": [
+        "dir -- simpler but somewhat slower than zfs (use zfs if you can dedicate a disk)",
+        "zfs always",
+        "ceph",
+        "lvm only"
+      ],
+      "answer": 0,
+      "why": "The example picks dir (the default offered is btrfs); dir is slower than zfs, which needs a spare disk."
+    },
+    {
+      "type": "cmd",
+      "q": "Add your user (here 'incusadmin') to the incus-admin group.",
+      "answers": [
+        "usermod -a -G incus-admin incusadmin",
+        "sudo usermod -a -G incus-admin incusadmin"
+      ],
+      "why": "usermod -a -G incus-admin <user> lets that user run incus without sudo."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you verify the install worked and your user has privileges?",
+      "options": [
+        "Run `incus list` as your normal user (no sudo) and get the empty container table",
+        "Run sudo incus list",
+        "Check /var/log/incus",
+        "Reboot again"
+      ],
+      "answer": 0,
+      "why": "incus list without sudo returning the table confirms your user's privileges."
+    },
+    {
+      "type": "mcq",
+      "q": "Which production chapters does the appendix recommend to continue on a workstation?",
+      "options": [
+        "5 (Images), 6 (Profiles), and 8 (Container Snapshots)",
+        "1 through 4 again",
+        "9 and 10 (the snapshot server)",
+        "None -- you are done"
+      ],
+      "answer": 0,
+      "why": "For a workstation lab, images, profiles and snapshots are the relevant chapters."
+    }
+  ]
+}

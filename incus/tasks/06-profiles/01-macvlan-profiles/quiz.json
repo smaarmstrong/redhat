@@ -1,0 +1,74 @@
+{
+  "source": "Incus Server - 6 Profiles: Creating a macvlan profile and assigning it to containers",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is special about the default profile?",
+      "options": [
+        "You cannot remove or modify it, but you use it as the basis for new profiles",
+        "It can be deleted freely",
+        "It applies to nothing",
+        "It only works on Ubuntu"
+      ],
+      "answer": 0,
+      "why": "The default profile is fixed; you build additional profiles alongside it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does macvlan let you do?",
+      "options": [
+        "Create many interfaces with different Layer 2 (MAC) addresses, so containers get LAN/WAN IPs",
+        "Encrypt container traffic",
+        "Compress network traffic",
+        "Create ZFS pools"
+      ],
+      "answer": 0,
+      "why": "macvlan gives each container its own L2 address to reach your LAN or WAN."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a profile named macvlan.",
+      "answers": [
+        "incus profile create macvlan"
+      ],
+      "why": "incus profile create <name> makes an empty profile."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you find the parent interface (the one with the LAN IP) for the profile?",
+      "options": [
+        "Run `ip addr` and look for the interface holding the LAN IP (e.g. enp3s0)",
+        "Run incus list",
+        "Check /etc/hosts",
+        "Run zpool status"
+      ],
+      "answer": 0,
+      "why": "ip addr shows which interface (e.g. enp3s0) carries the 192.168.1.0/24 address."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command adds the macvlan NIC device to the profile?",
+      "options": [
+        "incus profile device add macvlan eth0 nic nictype=macvlan parent=enp3s0",
+        "incus profile set macvlan eth0",
+        "incus network add macvlan",
+        "incus config device add eth0"
+      ],
+      "answer": 0,
+      "why": "profile device add ... nictype=macvlan parent=<iface> wires the profile to the parent interface."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you apply BOTH the default and macvlan profiles to a container?",
+      "options": [
+        "incus profile assign <container> default,macvlan",
+        "incus profile assign <container> macvlan",
+        "incus profile add macvlan",
+        "incus assign default macvlan"
+      ],
+      "answer": 0,
+      "why": "profile assign takes a comma-separated list; default,macvlan keeps default and adds macvlan."
+    }
+  ]
+}

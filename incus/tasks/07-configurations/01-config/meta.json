@@ -1,0 +1,8 @@
+{
+  "title": "Inspecting and limiting container resources",
+  "domain": "Incus Configuration Options",
+  "objective": "Incus Server - 7 Container Configuration Options: incus info, resource limits, storage, and disk quotas",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
