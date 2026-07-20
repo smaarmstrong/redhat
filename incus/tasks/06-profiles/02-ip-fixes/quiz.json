@@ -1,0 +1,66 @@
+{
+  "source": "Incus Server - 6 Profiles: macvlan IP assignment fixes for Rocky Linux and Ubuntu containers",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why does macvlan IP assignment misbehave on Rocky Linux 9.4 containers?",
+      "options": [
+        "NetworkManager changes upstream (RHEL) affect macvlan; the assigned interface is not NM-manageable",
+        "Rocky broke it deliberately",
+        "ZFS interferes",
+        "The firewall blocks it"
+      ],
+      "answer": 0,
+      "why": "It stems from upstream NetworkManager changes, not Rocky itself; the macvlan interface is not managed by NM."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the DHCP fix for a Rocky Linux 9 container?",
+      "options": [
+        "Add '@reboot /usr/sbin/dhclient' to root's crontab inside the container",
+        "Run nmtui",
+        "Edit /etc/sysconfig/network-scripts",
+        "Reinstall the container"
+      ],
+      "answer": 0,
+      "why": "A @reboot cron entry runs dhclient on boot so the container picks up its DHCP address."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the static-IP fix rename eth0 to net0 in a script?",
+      "options": [
+        "The macvlan interface (eth0) is not manageable by NetworkManager, so it is renamed and configured with ip commands",
+        "net0 is faster",
+        "eth0 is reserved",
+        "To hide the interface"
+      ],
+      "answer": 0,
+      "why": "Since the interface is not NM-managed (and network-scripts is deprecated), a script renames it and sets IP/route/DNS, run via @reboot."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the Ubuntu container differ for macvlan?",
+      "options": [
+        "Ubuntu's NetworkManager does not break macvlan, so DHCP works after assigning the profile",
+        "Ubuntu cannot use macvlan",
+        "Ubuntu needs dhclient in cron too",
+        "Ubuntu uses ZFS for networking"
+      ],
+      "answer": 0,
+      "why": "Ubuntu's implementation works out of the box; a stop/start picks up a DHCP address."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you set a static IP on the Ubuntu container?",
+      "options": [
+        "Edit its netplan file /etc/netplan/10-incus.yaml (dhcp4 false, addresses, gateway4, nameservers)",
+        "Edit /etc/sysconfig/network-scripts",
+        "Run dhclient",
+        "Use incus config set ip"
+      ],
+      "answer": 0,
+      "why": "Ubuntu uses netplan; set dhcp4:false with a static address, gateway and nameservers."
+    }
+  ]
+}

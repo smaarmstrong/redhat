@@ -1,0 +1,95 @@
+{
+  "source": "Incus Server - 1 Install and Configuration: Installing EPEL, OpenZFS, and Incus",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which base repository does Incus require?",
+      "options": [
+        "EPEL",
+        "RPM Fusion",
+        "BaseOS",
+        "Remi"
+      ],
+      "answer": 0,
+      "why": "dnf install epel-release provides the required EPEL repository."
+    },
+    {
+      "type": "mcq",
+      "q": "Besides EPEL, which repository must be enabled for some special packages?",
+      "options": [
+        "CRB",
+        "AppStream",
+        "extras",
+        "PowerTools-classic"
+      ],
+      "answer": 0,
+      "why": "dnf config-manager --enable crb enables the CRB repository."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does the Incus package come from on Rocky 9 (before EPEL inclusion)?",
+      "options": [
+        "Neil Hanlon's COPR (neil/incus)",
+        "The base repository",
+        "Docker Hub",
+        "snap"
+      ],
+      "answer": 0,
+      "why": "dnf copr enable neil/incus adds the COPR that provides Incus."
+    },
+    {
+      "type": "cmd",
+      "q": "Enable the Incus COPR repository.",
+      "answers": [
+        "dnf copr enable neil/incus"
+      ],
+      "why": "dnf copr enable neil/incus enables Neil Hanlon's Cool Other Package Repo."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two Incus packages does the book install?",
+      "options": [
+        "incus and incus-tools",
+        "incusd only",
+        "lxd and lxd-tools",
+        "incus-server"
+      ],
+      "answer": 0,
+      "why": "dnf install incus incus-tools."
+    },
+    {
+      "type": "cmd",
+      "q": "Enable and start the incus service immediately.",
+      "answers": [
+        "systemctl enable incus --now",
+        "systemctl enable --now incus"
+      ],
+      "why": "--now both enables the unit at boot and starts it right away."
+    },
+    {
+      "type": "mcq",
+      "q": "The OpenZFS repository is installed from where?",
+      "options": [
+        "The zfsonlinux.org zfs-release RPM",
+        "EPEL",
+        "the COPR",
+        "source only"
+      ],
+      "answer": 0,
+      "why": "dnf install https://zfsonlinux.org/epel/zfs-release-...noarch.rpm adds the OpenZFS repo."
+    },
+    {
+      "type": "mcq",
+      "q": "Why install dkms and kernel-devel?",
+      "options": [
+        "So the ZFS kernel module can be built (via DKMS) against your kernel",
+        "For the firewall",
+        "For container images",
+        "For profiles"
+      ],
+      "answer": 0,
+      "why": "dkms + kernel-devel let ZFS build its kernel module for the running kernel."
+    }
+  ]
+}

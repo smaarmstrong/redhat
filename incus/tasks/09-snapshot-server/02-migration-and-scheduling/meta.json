@@ -1,0 +1,8 @@
+{
+  "title": "Migrating snapshots and scheduling them",
+  "domain": "Incus Snapshot Server",
+  "objective": "Incus Server - 9 Snapshot Server: Copying snapshots across, boot.autostart, and the built-in snapshot scheduler",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

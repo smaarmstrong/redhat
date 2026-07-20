@@ -1,0 +1,8 @@
+{
+  "title": "Profiles and macvlan",
+  "domain": "Incus Profiles",
+  "objective": "Incus Server - 6 Profiles: Creating a macvlan profile and assigning it to containers",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Repositories and packages",
+  "domain": "Incus Install",
+  "objective": "Incus Server - 1 Install and Configuration: Installing EPEL, OpenZFS, and Incus",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

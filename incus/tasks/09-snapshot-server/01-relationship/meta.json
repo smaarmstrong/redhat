@@ -1,0 +1,8 @@
+{
+  "title": "Building the primary/snapshot relationship",
+  "domain": "Incus Snapshot Server",
+  "objective": "Incus Server - 9 Snapshot Server: Mirroring the server and establishing trust between the two",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

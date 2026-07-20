@@ -1,0 +1,66 @@
+{
+  "source": "Incus Server - 10 Automating Snapshots: A refresh script and cron on the primary server",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does chapter 10 automate (versus the built-in scheduler in chapter 9)?",
+      "options": [
+        "The copy/refresh of containers over to the snapshot server (a script run by cron on incus-primary)",
+        "The creation of the ZFS pool",
+        "The firewall rules",
+        "The container OS updates"
+      ],
+      "answer": 0,
+      "why": "Chapter 9 schedules snapshots per container; chapter 10 automates pushing/refreshing them to the snapshot server."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command refreshes a single container onto the snapshot server?",
+      "options": [
+        "lxc copy --refresh <container> incus-snapshot:<container>",
+        "incus refresh <container>",
+        "rsync -avz <container>",
+        "incus snapshot copy"
+      ],
+      "answer": 0,
+      "why": "copy --refresh updates the copy on incus-snapshot in place."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the refresh script iterate over every container?",
+      "options": [
+        "It loops over the output of `lxc ls -c n --format csv` (the container names)",
+        "It reads /etc/incus/containers",
+        "It hard-codes each name",
+        "It uses incus list --all only"
+      ],
+      "answer": 0,
+      "why": "A for loop over `lxc ls -c n --format csv` refreshes each named container."
+    },
+    {
+      "type": "mcq",
+      "q": "Where is the automation scheduled, and why log its output to a file?",
+      "options": [
+        "In the incusadmin user's crontab, redirecting output to a log so you know whether the refresh worked",
+        "In /etc/incus.cron with no logging",
+        "In systemd only",
+        "It is not scheduled"
+      ],
+      "answer": 0,
+      "why": "The incusadmin crontab runs the script (e.g. 22:00) and writes a refreshlog -- important to confirm success."
+    },
+    {
+      "type": "mcq",
+      "q": "The automated refresh sometimes fails for one container. What do you do?",
+      "options": [
+        "Manually re-run: lxc copy --refresh <name> incus-snapshot:<name>",
+        "Re-run the whole install",
+        "Reboot both servers",
+        "Delete the container"
+      ],
+      "answer": 0,
+      "why": "A single failed container can be refreshed by hand with the same copy --refresh command."
+    }
+  ]
+}

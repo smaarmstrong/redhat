@@ -1,0 +1,74 @@
+{
+  "source": "Incus Server - 8 Container Snapshots: The snapshot process on the primary server",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why are container snapshots so valuable (e.g. before an update)?",
+      "options": [
+        "If the update breaks the app you restore the snapshot and are back up in seconds",
+        "They replace backups entirely",
+        "They speed up the container",
+        "They free disk space"
+      ],
+      "answer": 0,
+      "why": "Snapshots give quick recovery -- ideal as a failsafe before updating software in a container."
+    },
+    {
+      "type": "mcq",
+      "q": "Can you snapshot a container while it is running?",
+      "options": [
+        "Yes",
+        "No, it must be stopped",
+        "Only virtual machines",
+        "Only with root"
+      ],
+      "answer": 0,
+      "why": "You can snapshot a running container."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a snapshot named ubuntu-test-1 of the container ubuntu-test.",
+      "answers": [
+        "incus snapshot create ubuntu-test ubuntu-test-1"
+      ],
+      "why": "incus snapshot create <container> <snapshot-name>."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the safest way to restore a container from a snapshot?",
+      "options": [
+        "Stop it, run incus snapshot restore <name> <snap>, then start it",
+        "Restore it while running",
+        "Delete and recreate it",
+        "Reboot the host"
+      ],
+      "answer": 0,
+      "why": "Stopping first is safest (especially after many changes), then restore, then start."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the book insist you delete snapshots while the container is RUNNING?",
+      "options": [
+        "Because `incus delete <name>` deletes the whole container with no warning; a running container refuses that, protecting you",
+        "Deletion is faster when running",
+        "Stopped snapshots cannot be deleted",
+        "It frees memory"
+      ],
+      "answer": 0,
+      "why": "A running container can't be deleted accidentally (it errors), so deleting snapshots while running guards against nuking the container."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, container snapshots are...",
+      "options": [
+        "Stateless",
+        "Stateful (they capture running memory)",
+        "Encrypted",
+        "Incremental only"
+      ],
+      "answer": 0,
+      "why": "The snapshots shown are stateless (they do not capture running memory state)."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "source": "Incus Server - 4 Firewall Setup: Setting up firewalld zones for the bridge, local, and trusted networks",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Create a new permanent firewalld zone called bridge.",
+      "answers": [
+        "firewall-cmd --new-zone=bridge --permanent"
+      ],
+      "why": "A custom zone keeps the bridge rules clear; --permanent writes it to disk."
+    },
+    {
+      "type": "mcq",
+      "q": "After adding a zone, what must you do?",
+      "options": [
+        "Reload the firewall: firewall-cmd --reload",
+        "Reboot",
+        "Restart NetworkManager",
+        "Nothing"
+      ],
+      "answer": 0,
+      "why": "firewall-cmd --reload activates the newly added zone."
+    },
+    {
+      "type": "mcq",
+      "q": "To allow ALL traffic on an interface without listing services/protocols, you must...",
+      "options": [
+        "Change the zone's target from default to ACCEPT",
+        "Add every service by hand",
+        "Use the drop zone",
+        "Set masquerade on"
+      ],
+      "answer": 0,
+      "why": "Setting --set-target=ACCEPT allows everything on that zone's interface/source."
+    },
+    {
+      "type": "mcq",
+      "q": "Changing a firewalld zone's target must be done with which flag?",
+      "options": [
+        "--permanent",
+        "--runtime",
+        "--now",
+        "--force"
+      ],
+      "answer": 0,
+      "why": "The book notes target changes must use --permanent."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you attach the incusbr0 bridge to the bridge zone?",
+      "options": [
+        "firewall-cmd --zone=bridge --add-interface=incusbr0 --permanent",
+        "firewall-cmd --add-source=incusbr0",
+        "firewall-cmd --bridge=incusbr0",
+        "nmcli con add incusbr0"
+      ],
+      "answer": 0,
+      "why": "--add-interface binds the interface to the zone."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you allow SSH only from the trusted LAN (192.168.1.0/24)?",
+      "options": [
+        "Add the source to the trusted zone and add the ssh service: --zone=trusted --add-source=192.168.1.0/24 then --add-service=ssh",
+        "Open port 22 on public",
+        "--add-service=ssh on every zone",
+        "Disable the firewall"
+      ],
+      "answer": 0,
+      "why": "The built-in trusted zone (target ACCEPT) plus the LAN source and the ssh service restricts SSH to the LAN."
+    },
+    {
+      "type": "mcq",
+      "q": "For security, what does the book have you remove from the public zone (after confirming LAN access)?",
+      "options": [
+        "The ssh service (firewall-cmd --zone=public --remove-service=ssh)",
+        "The bridge interface",
+        "All zones",
+        "The loopback source"
+      ],
+      "answer": 0,
+      "why": "SSH is removed from public so it is only reachable from the trusted LAN -- verify access first to avoid a lockout."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "source": "Incus Server - 2 ZFS Setup: Loading ZFS and creating the storage pool",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is ZFS?",
+      "options": [
+        "An open-source logical volume manager and filesystem (created by Sun for Solaris)",
+        "A container runtime",
+        "A firewall",
+        "A backup program"
+      ],
+      "answer": 0,
+      "why": "ZFS combines a volume manager and filesystem; it originated at Sun Microsystems."
+    },
+    {
+      "type": "cmd",
+      "q": "Load the ZFS kernel module.",
+      "answers": [
+        "modprobe zfs",
+        "/sbin/modprobe zfs"
+      ],
+      "why": "modprobe zfs loads the module; no output means success."
+    },
+    {
+      "type": "mcq",
+      "q": "modprobe zfs returns an error. What is the most likely cause?",
+      "options": [
+        "UEFI secure boot is enabled (the module would need to be signed)",
+        "The wrong kernel is running",
+        "The disk is full",
+        "ZFS is already loaded"
+      ],
+      "answer": 0,
+      "why": "Secure boot is the most likely culprit; it must be off for the unsigned module to load."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command lists block devices so you can tell the OS disk from a free disk?",
+      "options": [
+        "lsblk",
+        "df",
+        "mount",
+        "top"
+      ],
+      "answer": 0,
+      "why": "lsblk shows disks, partitions and mountpoints (e.g. OS on /dev/sda, free /dev/sdb)."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a ZFS pool named 'storage' on the device /dev/sdb.",
+      "answers": [
+        "zpool create storage /dev/sdb"
+      ],
+      "why": "zpool create <name> <device> makes the pool."
+    },
+    {
+      "type": "mcq",
+      "q": "With several available disks, what does the book suggest for performance and redundancy?",
+      "options": [
+        "raidz (ZFS's software RAID)",
+        "RAID0 striping",
+        "a single bigger disk",
+        "LVM instead"
+      ],
+      "answer": 0,
+      "why": "raidz gives better performance and redundancy (details are out of scope, but noted)."
+    },
+    {
+      "type": "mcq",
+      "q": "After creating the pool, what should you do?",
+      "options": [
+        "Reboot the server",
+        "Nothing",
+        "Run incus admin init immediately",
+        "Reformat /dev/sda"
+      ],
+      "answer": 0,
+      "why": "Reboot again after creating the pool."
+    }
+  ]
+}

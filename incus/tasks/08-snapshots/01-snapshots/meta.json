@@ -1,0 +1,8 @@
+{
+  "title": "Creating, restoring and deleting snapshots",
+  "domain": "Incus Snapshots",
+  "objective": "Incus Server - 8 Container Snapshots: The snapshot process on the primary server",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

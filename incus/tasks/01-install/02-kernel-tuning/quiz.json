@@ -1,0 +1,86 @@
+{
+  "source": "Incus Server - 1 Install and Configuration: Environment setup: limits.conf and the sysctl override",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which file sets the open-file and memlock limits for Incus?",
+      "options": [
+        "/etc/security/limits.conf",
+        "/etc/sysctl.conf",
+        "90-incus-override.conf",
+        "/etc/limits"
+      ],
+      "answer": 0,
+      "why": "limits.conf carries the nofile and memlock soft/hard limits."
+    },
+    {
+      "type": "mcq",
+      "q": "Raising nofile in limits.conf prevents which error under many containers?",
+      "options": [
+        "'Too many open files'",
+        "'Permission denied'",
+        "'No space left on device'",
+        "'Out of memory'"
+      ],
+      "answer": 0,
+      "why": "Too many containers exhaust the default open-file limit; raising nofile avoids it."
+    },
+    {
+      "type": "mcq",
+      "q": "Where do the kernel (sysctl) overrides for Incus go?",
+      "options": [
+        "A drop-in file /etc/sysctl.d/90-incus-override.conf",
+        "Directly in /etc/sysctl.conf",
+        "In limits.conf",
+        "In /proc"
+      ],
+      "answer": 0,
+      "why": "The book creates /etc/sysctl.d/90-incus-override.conf."
+    },
+    {
+      "type": "mcq",
+      "q": "Why use a drop-in file in /etc/sysctl.d rather than editing the main config?",
+      "options": [
+        "systemd lets you override the specific settings you need without touching the main configuration file",
+        "It is required by Incus",
+        "It runs faster",
+        "There is no reason"
+      ],
+      "answer": 0,
+      "why": "A drop-in overrides just the needed settings, leaving the main file alone."
+    },
+    {
+      "type": "mcq",
+      "q": "After editing limits.conf and the sysctl override, what is needed?",
+      "options": [
+        "Reboot the server",
+        "Nothing",
+        "Only log out and back in",
+        "Only restart incus"
+      ],
+      "answer": 0,
+      "why": "A reboot applies the new limits and kernel parameters."
+    },
+    {
+      "type": "cmd",
+      "q": "Check the running value of the kernel parameter net.core.bpf_jit_limit.",
+      "answers": [
+        "sysctl net.core.bpf_jit_limit"
+      ],
+      "why": "sysctl <key> prints the current value, to confirm the override took effect."
+    },
+    {
+      "type": "mcq",
+      "q": "Which kinds of settings does the override raise for running many containers?",
+      "options": [
+        "fs.inotify.* limits and vm.max_map_count (among others)",
+        "Only swap size",
+        "Only CPU governor",
+        "Only the hostname"
+      ],
+      "answer": 0,
+      "why": "It raises inotify queue/instances/watches, vm.max_map_count, ARP thresholds, bpf_jit_limit, keys, aio, etc."
+    }
+  ]
+}

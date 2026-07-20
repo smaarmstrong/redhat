@@ -1,0 +1,8 @@
+{
+  "title": "Workstation / lab setup",
+  "domain": "Incus Appendix A",
+  "objective": "Incus Server - Appendix A - Workstation Setup: Running Incus as a lab on a workstation or notebook",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,102 @@
+{
+  "source": "Incus Server - Introduction: Creating an Incus server: status, prerequisites, and synopsis",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is Incus, in this book's context?",
+      "options": [
+        "A fork of LXD -- a container system that gives the benefits of virtual servers in a container",
+        "A hypervisor that only runs full virtual machines",
+        "A backup tool",
+        "A filesystem"
+      ],
+      "answer": 0,
+      "why": "Incus was forked from LXD; it runs containers with virtual-server-like benefits, many on one host."
+    },
+    {
+      "type": "mcq",
+      "q": "Why did Incus come to exist?",
+      "options": [
+        "Canonical moved LXD under its own projects, and some lead developers resigned and forked it (Aug 2023)",
+        "LXD was discontinued entirely",
+        "A security bug forced a rewrite",
+        "A licence expired"
+      ],
+      "answer": 0,
+      "why": "After Canonical took LXD in-house, departing lead developers forked it into Incus in August 2023."
+    },
+    {
+      "type": "mcq",
+      "q": "What happened to container images after the licensing change?",
+      "options": [
+        "Linux Containers can no longer offer its images within LXD, but it hosts/supports them for Incus",
+        "All images were deleted",
+        "Images are unavailable anywhere",
+        "Images moved to Canonical only"
+      ],
+      "answer": 0,
+      "why": "LXD's bundled images changed; Linux Containers continues hosting images for Incus users."
+    },
+    {
+      "type": "mcq",
+      "q": "Should you treat Incus snapshots/snapshot-server as your backup?",
+      "options": [
+        "No -- you still need a regular backup system such as rsnapshot",
+        "Yes, it replaces backups",
+        "Only for virtual machines",
+        "Snapshots are full backups"
+      ],
+      "answer": 0,
+      "why": "The book is explicit: this is not a traditional backup; keep a real backup system too."
+    },
+    {
+      "type": "mcq",
+      "q": "Which Rocky Linux version is the Incus server supported on?",
+      "options": [
+        "Rocky Linux 9.x (tested on 9.4); it is NOT available on Rocky Linux 8 (use LXD there)",
+        "Rocky Linux 8 only",
+        "Any version",
+        "Rocky Linux 10 only"
+      ],
+      "answer": 0,
+      "why": "The Incus server install targets RL9.x (tested 9.4); on RL8 use the older LXD procedure."
+    },
+    {
+      "type": "mcq",
+      "q": "For ZFS, what must be disabled, and why?",
+      "options": [
+        "UEFI secure boot -- otherwise you must sign the ZFS module for it to load",
+        "The firewall",
+        "SELinux",
+        "Swap"
+      ],
+      "answer": 0,
+      "why": "Secure boot blocks the unsigned ZFS kernel module from loading."
+    },
+    {
+      "type": "mcq",
+      "q": "The Incus project recommends BTRFS. Why does the book use ZFS instead?",
+      "options": [
+        "BTRFS is not available on Rocky Linux 9.4 yet, so ZFS (or another included FS) is the option",
+        "ZFS is officially recommended",
+        "BTRFS cannot do snapshots",
+        "ZFS is the only filesystem that exists"
+      ],
+      "answer": 0,
+      "why": "The project recommends BTRFS, but it is not available on RL9.4, so the book uses ZFS."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the recommended production topology?",
+      "options": [
+        "A primary server plus a snapshot server",
+        "A single server",
+        "Three clustered servers",
+        "Cloud only"
+      ],
+      "answer": 0,
+      "why": "The right way to run Incus in production is a primary and a snapshot server pair."
+    }
+  ]
+}

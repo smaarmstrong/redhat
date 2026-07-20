@@ -1,0 +1,8 @@
+{
+  "title": "firewalld zones for Incus",
+  "domain": "Incus Firewall",
+  "objective": "Incus Server - 4 Firewall Setup: Setting up firewalld zones for the bridge, local, and trusted networks",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
