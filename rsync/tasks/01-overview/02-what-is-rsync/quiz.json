@@ -1,0 +1,102 @@
+{
+  "source": "Learning Rsync - rsync brief description: rsync in brief: why rsync, and its basic principles and features",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why not just use tar/cp plus scp/sftp for production backups?",
+      "options": [
+        "tar/cp is slow and heavy, scp/sftp uses a lot of bandwidth, and manual crontab timing is hard to get right",
+        "They are insecure",
+        "They cannot compress",
+        "They cannot cross a network"
+      ],
+      "answer": 0,
+      "why": "In production those consume time, CPU and bandwidth, and need manual scheduling that is hard to tune."
+    },
+    {
+      "type": "mcq",
+      "q": "Which three requirements should a production backup meet (that rsync addresses)?",
+      "options": [
+        "Transmitted over the network, near real-time file synchronization, and low resource use / high efficiency",
+        "Encryption, a GUI, and cloud storage",
+        "RAID, snapshots, and tape",
+        "None of these"
+      ],
+      "answer": 0,
+      "why": "The book lists network transfer, real-time sync, and efficient low-resource operation as the needs rsync meets."
+    },
+    {
+      "type": "mcq",
+      "q": "Fundamentally, rsync is a...",
+      "options": [
+        "Fast incremental backup tool (GNU-licensed)",
+        "Full-backup-only tool",
+        "Database engine",
+        "Compression format"
+      ],
+      "answer": 0,
+      "why": "rsync is a fast incremental backup tool under the GNU open-source licence."
+    },
+    {
+      "type": "mcq",
+      "q": "Does rsync itself perform real-time synchronization?",
+      "options": [
+        "No -- it is incremental only; real-time needs a helper such as inotify",
+        "Yes, real-time is built in",
+        "Only over the rsync protocol",
+        "Only on Windows"
+      ],
+      "answer": 0,
+      "why": "rsync alone does not do real-time sync; it must be supplemented by another program."
+    },
+    {
+      "type": "mcq",
+      "q": "rsync synchronization is...",
+      "options": [
+        "One-way by default (two-way needs another tool such as unison)",
+        "Always two-way",
+        "Automatically bidirectional",
+        "Read-only"
+      ],
+      "answer": 0,
+      "why": "Sync is one-directional; bidirectional sync requires cooperating tools like unison."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two protocols can rsync use to transfer data?",
+      "options": [
+        "The SSH protocol and the rsync protocol",
+        "FTP and HTTP",
+        "SMB and NFS",
+        "SSH and FTP"
+      ],
+      "answer": 0,
+      "why": "rsync transfers over either SSH or its own rsync protocol."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the default port of the rsync protocol?",
+      "options": [
+        "873",
+        "22",
+        "21",
+        "445"
+      ],
+      "answer": 0,
+      "why": "The rsync protocol listens on port 873 (SSH uses 22)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file attributes can rsync selectively preserve?",
+      "options": [
+        "Hard/soft links, owner, group, permissions, and modification time",
+        "Only the file contents",
+        "Only timestamps",
+        "None -- contents only"
+      ],
+      "answer": 0,
+      "why": "rsync can preserve links, owner, group, permissions, mtime and more, recursively over a directory."
+    }
+  ]
+}

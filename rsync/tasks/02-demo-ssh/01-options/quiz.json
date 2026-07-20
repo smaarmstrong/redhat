@@ -1,0 +1,102 @@
+{
+  "source": "Learning Rsync - rsync demo 01: Basic format and the common rsync options",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the basic rsync command format?",
+      "options": [
+        "rsync [options] source destination",
+        "rsync destination source",
+        "rsync source | destination",
+        "rsync --sync source destination"
+      ],
+      "answer": 0,
+      "why": "rsync [options] original-location target-location."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -a (archive) option do?",
+      "options": [
+        "Recursive copy that preserves attributes -- equivalent to -rlptgoD",
+        "Compresses the data",
+        "Only prints verbose output",
+        "Deletes extra files at the target"
+      ],
+      "answer": 0,
+      "why": "-a = -rlptgoD (recursive, links, perms, times, group, owner, devices); it does not include -H/-A/-X."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -v option do?",
+      "options": [
+        "Shows detailed information about the synchronization",
+        "Compresses the transfer",
+        "Makes the copy recursive",
+        "Preserves permissions"
+      ],
+      "answer": 0,
+      "why": "-v is verbose output."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -z option do?",
+      "options": [
+        "Compresses files during the transfer",
+        "Zips the destination afterwards",
+        "Zero-fills free space",
+        "Does nothing"
+      ],
+      "answer": 0,
+      "why": "-z compresses data in transit to save bandwidth."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the author's habitual rsync invocation?",
+      "options": [
+        "rsync -avz source destination",
+        "rsync -r source destination",
+        "rsync -e source destination",
+        "rsync -H source destination"
+      ],
+      "answer": 0,
+      "why": "-avz = archive + verbose + compress."
+    },
+    {
+      "type": "mcq",
+      "q": "Which option keeps hard-link files?",
+      "options": [
+        "-H",
+        "-l",
+        "-A",
+        "-X"
+      ],
+      "answer": 0,
+      "why": "-H hard links; -l symlinks; -A ACLs; -X chattr/extended attributes."
+    },
+    {
+      "type": "mcq",
+      "q": "The -o (owner) and -g (group) options work only for...",
+      "options": [
+        "The super user (root)",
+        "Any user",
+        "The file's owner",
+        "No one"
+      ],
+      "answer": 0,
+      "why": "Preserving owner and group requires super-user privileges."
+    },
+    {
+      "type": "mcq",
+      "q": "On Rocky Linux 8, is the rsync package installed by default?",
+      "options": [
+        "Yes -- the rsync rpm ships by default (e.g. 3.1.3)",
+        "No, you must dnf install it",
+        "Only on server installs",
+        "Only via pip"
+      ],
+      "answer": 0,
+      "why": "Rocky Linux 8 installs the rsync rpm by default."
+    }
+  ]
+}
