@@ -1,0 +1,8 @@
+{
+  "title": "Transfers over SSH: pull and push",
+  "domain": "Rsync Demo 01",
+  "objective": "Learning Rsync - rsync demo 01: SSH-based rsync: authentication, pull/download, push/upload, and permissions",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

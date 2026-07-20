@@ -1,0 +1,78 @@
+{
+  "source": "Learning Rsync - rsync demo 01: SSH-based rsync: authentication, pull/download, push/upload, and permissions",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do rsync's two authentication methods use?",
+      "options": [
+        "SSH auth uses the Linux system user/password; the rsync protocol uses its own (virtual) users",
+        "Both use system users",
+        "Both use virtual users",
+        "SSH uses LDAP, rsync uses Kerberos"
+      ],
+      "answer": 0,
+      "why": "SSH verification uses GNU/Linux system accounts; the rsync protocol uses non-system virtual users (like vsftpd)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is the pull/download form (fetch a remote file to the local machine)?",
+      "options": [
+        "rsync -avz user@host:/remote/path /local",
+        "rsync -avz /local user@host:/remote/path",
+        "rsync -avz user@host /local",
+        "scp user@host:/path /local"
+      ],
+      "answer": 0,
+      "why": "For a pull the source is remote (user@host:path) and the destination is local."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is the push/upload form?",
+      "options": [
+        "rsync -avz /local/* user@host:/remote/",
+        "rsync -avz user@host:/remote /local",
+        "rsync -avz push /local",
+        "sftp /local user@host"
+      ],
+      "answer": 0,
+      "why": "For a push the source is local and the destination is remote."
+    },
+    {
+      "type": "mcq",
+      "q": "The server's SSH port is not the default 22. How do you tell rsync?",
+      "options": [
+        "-e 'ssh -p PORT'",
+        "-p PORT",
+        "--port PORT",
+        "-P PORT"
+      ],
+      "answer": 0,
+      "why": "-e sets the remote shell, e.g. rsync -avz -e 'ssh -p 2222' ..."
+    },
+    {
+      "type": "mcq",
+      "q": "A push fails with 'mkstemp ... Permission denied'. What is the likely cause?",
+      "options": [
+        "The target directory is not writable by the rsync user",
+        "The password was wrong",
+        "SSH is disabled",
+        "The disk is full"
+      ],
+      "answer": 0,
+      "why": "The /rsync/ directory lacked write permission for the testrsync user."
+    },
+    {
+      "type": "mcq",
+      "q": "How was that permission problem fixed in the demo?",
+      "options": [
+        "setfacl -m u:testrsync:rwx /rsync/  (grant the user rwx via an ACL)",
+        "chmod 777 on everything",
+        "chown the whole filesystem",
+        "Reinstall rsync"
+      ],
+      "answer": 0,
+      "why": "An ACL granting testrsync rwx on the directory (setfacl -m u:testrsync:rwx) fixed the write failure."
+    }
+  ]
+}

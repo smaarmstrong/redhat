@@ -1,0 +1,8 @@
+{
+  "title": "Backup concepts and methods",
+  "domain": "Rsync Overview",
+  "objective": "Learning Rsync - rsync brief description: Backup brief: what a backup is and the backup methods",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,90 @@
+{
+  "source": "Learning Rsync - rsync brief description: Backup brief: what a backup is and the backup methods",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is a backup?",
+      "options": [
+        "Duplicating file-system or database data so it can be restored after an error or disaster",
+        "Permanently deleting old data",
+        "Compressing files to save space",
+        "Encrypting a disk"
+      ],
+      "answer": 0,
+      "why": "A backup duplicates data so effective data can be restored and normal operation resumed after a failure."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a full backup?",
+      "options": [
+        "A one-time copy of all files/data (fastest restore, but the most space)",
+        "Only the files changed since yesterday",
+        "Only files new since the last full backup",
+        "Only part of the system"
+      ],
+      "answer": 0,
+      "why": "A full backup copies everything at once: quickest recovery, largest space usage."
+    },
+    {
+      "type": "mcq",
+      "q": "An incremental backup copies...",
+      "options": [
+        "The data added/changed since the last full OR incremental backup",
+        "Everything, every time",
+        "Only changes since the last FULL backup",
+        "Nothing"
+      ],
+      "answer": 0,
+      "why": "Each incremental backs up just what changed since the previous backup (full or incremental)."
+    },
+    {
+      "type": "mcq",
+      "q": "A differential backup copies...",
+      "options": [
+        "All the changes since the last FULL backup (growing each time)",
+        "Only changes since the previous differential",
+        "Everything each time",
+        "Nothing"
+      ],
+      "answer": 0,
+      "why": "Differential backs up everything changed since the full backup, so it grows until the next full."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between a cold backup and a hot backup?",
+      "options": [
+        "Cold is taken while the system is stopped/maintained (data consistent); hot while it runs (data may lag)",
+        "Cold is online, hot is offline",
+        "Both are taken offline",
+        "Both are taken online"
+      ],
+      "answer": 0,
+      "why": "Cold = system shut down (exact data); hot = running system, so the backup lags the live data a little."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a remote backup?",
+      "options": [
+        "Backing up data to another geographic location, to survive fire/disaster/theft",
+        "Backing up to a second partition on the same disk",
+        "Keeping data in RAM",
+        "Backing up to the same directory"
+      ],
+      "answer": 0,
+      "why": "Remote backup stores data off-site so a local disaster does not destroy it."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a selective backup?",
+      "options": [
+        "Backing up only a chosen part of the system",
+        "Backing up everything",
+        "Backing up only databases",
+        "Backing up only changed files"
+      ],
+      "answer": 0,
+      "why": "Selective backup covers just a part of the system."
+    }
+  ]
+}

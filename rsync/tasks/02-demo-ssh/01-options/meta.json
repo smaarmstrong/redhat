@@ -1,0 +1,8 @@
+{
+  "title": "The rsync command and its options",
+  "domain": "Rsync Demo 01",
+  "objective": "Learning Rsync - rsync demo 01: Basic format and the common rsync options",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
