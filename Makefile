@@ -3,7 +3,7 @@
 #
 # New to the material?  Let it teach you first:
 #
-#     make learn     # explains the next task, then sets it up so you can try it
+#     make learn     # pick a section (or Enter to continue), then it teaches + sets up the next task
 #     ...do the task on the system...
 #     make check     # grade it   (then `make learn` again for the next one)
 #
@@ -22,7 +22,7 @@ PRACTICE := ./games/practice
 
 .PHONY: help learn train next check solution list status cli
 
-help: ; @printf 'redhat trainer — just run one of:\n\n  make learn      teach the next task, then set it up to try\n  make train      pick the next task for you (new material, or a review)\n  make check      grade the task you are currently on\n  make solution   reveal the reference solution for it\n  make list       every task, grouped by domain, with your status\n  make status     your XP, streak and completion\n\nFull CLI (start/reset a specific task by id):  $(PRACTICE) help\n'
+help: ; @printf 'redhat trainer — just run one of:\n\n  make learn      pick a section (or Enter to continue), then teach its next task\n  make train      pick the next task for you (new material, or a review)\n  make check      grade the task you are currently on\n  make solution   reveal the reference solution for it\n  make list       every task, grouped by domain, with your status\n  make status     your XP, streak and completion\n\nFull CLI (start/reset a specific task by id):  $(PRACTICE) help\n'
 
 learn:    ; @$(PRACTICE) learn
 train:    ; @$(PRACTICE) train
