@@ -1,0 +1,8 @@
+{
+  "title": "Releases, shared content, subtree and branches",
+  "domain": "Ansible Deployments (Ansistrano)",
+  "objective": "Learning Ansible with Rocky - Ansistrano Deployments: Limiting releases, shared paths/files, repo subtree, git branch/tag",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

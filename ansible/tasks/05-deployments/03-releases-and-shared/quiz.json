@@ -1,0 +1,66 @@
+{
+  "source": "Learning Ansible with Rocky - Ansistrano Deployments: Limiting releases, shared paths/files, repo subtree, git branch/tag",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which variable limits how many releases are kept?",
+      "options": [
+        "ansistrano_keep_releases",
+        "ansistrano_shared_paths",
+        "ansistrano_git_branch",
+        "ansistrano_deploy_to"
+      ],
+      "answer": 0,
+      "why": "ansistrano_keep_releases: N keeps the N most recent releases and prunes the rest."
+    },
+    {
+      "type": "mcq",
+      "q": "What do ansistrano_shared_paths and ansistrano_shared_files do?",
+      "options": [
+        "Define folders/files symlinked from shared/ into every release so they persist",
+        "Delete old releases",
+        "Set the git branch",
+        "Configure Apache"
+      ],
+      "answer": 0,
+      "why": "They symlink content (e.g. css, img, logs) from each release to shared/, so it survives across releases."
+    },
+    {
+      "type": "mcq",
+      "q": "The repo has an html/ subfolder holding the site. Which variable deploys just that subdirectory?",
+      "options": [
+        "ansistrano_git_repo_tree: 'html'",
+        "ansistrano_git_branch",
+        "ansistrano_shared_paths",
+        "ansistrano_deploy_to"
+      ],
+      "answer": 0,
+      "why": "ansistrano_git_repo_tree names the sub-directory of the repo to deploy, avoiding the extra level."
+    },
+    {
+      "type": "mcq",
+      "q": "Which variable deploys a specific git branch or tag?",
+      "options": [
+        "ansistrano_git_branch",
+        "ansistrano_git_repo",
+        "ansistrano_git_repo_tree",
+        "ansistrano_keep_releases"
+      ],
+      "answer": 0,
+      "why": "ansistrano_git_branch takes a branch (e.g. releases/v1.1.0) or a tag (e.g. v2.0.0)."
+    },
+    {
+      "type": "mcq",
+      "q": "When you set ansistrano_git_repo_tree: 'html', what else must change on the server?",
+      "options": [
+        "The Apache documentroot (no longer .../current/html, now .../current/)",
+        "Nothing at all",
+        "The firewall must be reopened",
+        "git must be uninstalled"
+      ],
+      "answer": 0,
+      "why": "Stripping the html level means the vhost documentroot changes from {{ dest }}current/html to {{ dest }}current/."
+    }
+  ]
+}

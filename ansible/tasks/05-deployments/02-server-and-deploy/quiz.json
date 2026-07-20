@@ -1,0 +1,84 @@
+{
+  "source": "Learning Ansible with Rocky - Ansistrano Deployments: Deploying the web server and the software",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Install the geerlingguy.apache role with ansible-galaxy.",
+      "answers": [
+        "ansible-galaxy role install geerlingguy.apache",
+        "ansible-galaxy install geerlingguy.apache"
+      ],
+      "why": "geerlingguy.apache installs and configures Apache for you."
+    },
+    {
+      "type": "mcq",
+      "q": "Why install the ansible.posix collection in this lab?",
+      "options": [
+        "For its firewalld module, to open the firewall for http",
+        "To install Apache",
+        "To clone the git repo",
+        "To send email"
+      ],
+      "answer": 0,
+      "why": "ansible.posix provides the firewalld module used to permit the http service."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the ansistrano.deploy role with ansible-galaxy.",
+      "answers": [
+        "ansible-galaxy role install ansistrano.deploy",
+        "ansible-galaxy install ansistrano.deploy"
+      ],
+      "why": "ansistrano.deploy is the role that performs the deployment."
+    },
+    {
+      "type": "mcq",
+      "q": "Which variable tells Ansistrano the download method (e.g. git)?",
+      "options": [
+        "ansistrano_deploy_via",
+        "ansistrano_git_repo",
+        "ansistrano_deploy_to",
+        "ansistrano_keep_releases"
+      ],
+      "answer": 0,
+      "why": "ansistrano_deploy_via: \"git\" selects the protocol."
+    },
+    {
+      "type": "mcq",
+      "q": "Which variable sets the git repository URL to deploy?",
+      "options": [
+        "ansistrano_git_repo",
+        "ansistrano_deploy_via",
+        "ansistrano_deploy_to",
+        "ansistrano_git_branch"
+      ],
+      "answer": 0,
+      "why": "ansistrano_git_repo is the source repository URL."
+    },
+    {
+      "type": "mcq",
+      "q": "Which variable sets the destination path to deploy into?",
+      "options": [
+        "ansistrano_deploy_to",
+        "ansistrano_git_repo",
+        "ansistrano_deploy_via",
+        "ansistrano_git_repo_tree"
+      ],
+      "answer": 0,
+      "why": "ansistrano_deploy_to (here \"{{ dest }}\") is the deployment target directory."
+    },
+    {
+      "type": "mcq",
+      "q": "After configuring Apache but before deploying code, curl returns HTTP 404. Why is that expected?",
+      "options": [
+        "No code is deployed yet, but httpd runs and the firewall is open",
+        "Apache failed to install",
+        "The firewall is closed",
+        "DNS is misconfigured"
+      ],
+      "answer": 0,
+      "why": "The 404 confirms the service works and the port is open; there is simply no content yet."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Configuring the server and the deploy playbook",
+  "domain": "Ansible Deployments (Ansistrano)",
+  "objective": "Learning Ansible with Rocky - Ansistrano Deployments: Deploying the web server and the software",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

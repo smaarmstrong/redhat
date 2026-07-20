@@ -1,0 +1,8 @@
+{
+  "title": "Acting between deployment steps",
+  "domain": "Ansible Deployments (Ansistrano)",
+  "objective": "Learning Ansible with Rocky - Ansistrano Deployments: Running tasks before and after deployment steps",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}
