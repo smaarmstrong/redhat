@@ -1,0 +1,93 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: Installation on the management server",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which repository provides Ansible and is required for both install methods here?",
+      "options": [
+        "EPEL",
+        "CRB / PowerTools",
+        "BaseOS",
+        "RPM Fusion"
+      ],
+      "answer": 0,
+      "why": "Ansible is available from EPEL, which is required whether you then install via dnf or via pip."
+    },
+    {
+      "type": "cmd",
+      "q": "Which command installs the EPEL repository on Rocky Linux?",
+      "answers": [
+        "sudo dnf install epel-release",
+        "dnf install epel-release",
+        "sudo dnf install -y epel-release",
+        "dnf install -y epel-release"
+      ],
+      "why": "EPEL is enabled by installing the epel-release package."
+    },
+    {
+      "type": "cmd",
+      "q": "Install Ansible from EPEL using dnf.",
+      "answers": [
+        "sudo dnf install ansible",
+        "dnf install ansible",
+        "sudo dnf install -y ansible",
+        "dnf install -y ansible"
+      ],
+      "why": "With EPEL enabled, dnf install ansible pulls the packaged version."
+    },
+    {
+      "type": "cmd",
+      "q": "Which command shows the installed Ansible version, config file, and python details?",
+      "answers": [
+        "ansible --version"
+      ],
+      "why": "ansible --version prints the core version, config file, module paths, and python version."
+    },
+    {
+      "type": "mcq",
+      "q": "The docs note Ansible ships \"its own version of python\". Why does that matter?",
+      "options": [
+        "Python modules must be pip-installed against Ansible's python (e.g. pip3.11), not the system python",
+        "System commands can no longer be run",
+        "The system python must be uninstalled",
+        "It doubles the memory Ansible uses"
+      ],
+      "answer": 0,
+      "why": "Ansible's python may differ from the system one (e.g. 3.11 vs 3.6.8); install required modules with the matching pip."
+    },
+    {
+      "type": "mcq",
+      "q": "Why might you install Ansible via pip instead of from EPEL?",
+      "options": [
+        "To get a newer version than the EPEL package offers",
+        "Because pip installs are always system-wide",
+        "Because EPEL cannot provide Ansible",
+        "Because pip removes the SSH requirement"
+      ],
+      "answer": 0,
+      "why": "The EPEL version can be too old; pip lets you choose the version (and the python it runs on)."
+    },
+    {
+      "type": "cmd",
+      "q": "Install Ansible into your user account with pip for python 3.8.",
+      "answers": [
+        "pip3.8 install --user ansible",
+        "pip3.8 install ansible"
+      ],
+      "why": "pip3.8 install --user ansible installs Ansible under ~/.local for the current user."
+    },
+    {
+      "type": "mcq",
+      "q": "After a `pip --user` install, where does the ansible executable live (per the docs example)?",
+      "options": [
+        "/home/rocky/.local/bin/ansible",
+        "/usr/bin/ansible",
+        "/etc/ansible/bin/ansible",
+        "/usr/local/sbin/ansible"
+      ],
+      "answer": 0,
+      "why": "A --user pip install places executables under the user's ~/.local/bin."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: Configuration files and the inventory",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where does the Ansible server configuration live?",
+      "options": [
+        "/etc/ansible",
+        "/etc/ansible.d",
+        "~/.ansible",
+        "/usr/share/ansible"
+      ],
+      "answer": 0,
+      "why": "Under /etc/ansible you find ansible.cfg and the hosts inventory."
+    },
+    {
+      "type": "mcq",
+      "q": "What are the two main configuration files under /etc/ansible?",
+      "options": [
+        "ansible.cfg (main config) and hosts (inventory)",
+        "ansible.conf and inventory.yml",
+        "main.cfg and clients.ini",
+        "config.cfg and nodes"
+      ],
+      "answer": 0,
+      "why": "ansible.cfg holds commands/modules/plugins/ssh config; hosts declares clients and groups."
+    },
+    {
+      "type": "mcq",
+      "q": "After a pip install there is no ansible.cfg. How do you create an initial one?",
+      "options": [
+        "ansible-config init --disabled > /etc/ansible/ansible.cfg",
+        "ansible --create-config",
+        "touch /etc/ansible/ansible.cfg",
+        "systemctl init ansible"
+      ],
+      "answer": 0,
+      "why": "ansible-config init creates a starter config; redirect it to /etc/ansible/ansible.cfg."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the --disabled option of `ansible-config init` do?",
+      "options": [
+        "Comments out every option by prefixing it with a ;",
+        "Disables the SSH connection",
+        "Produces a completely empty file",
+        "Turns off fact gathering"
+      ],
+      "answer": 0,
+      "why": "--disabled comments the whole set of options with a leading ;."
+    },
+    {
+      "type": "mcq",
+      "q": "In which order does Ansible load its configuration (first match wins)?",
+      "options": [
+        "$ANSIBLE_CONFIG, then ./ansible.cfg, then ~/.ansible.cfg, then the default",
+        "The default file first, then ~/.ansible.cfg",
+        "~/.ansible.cfg, then $ANSIBLE_CONFIG",
+        "Only /etc/ansible/ansible.cfg, always"
+      ],
+      "answer": 0,
+      "why": "Env var $ANSIBLE_CONFIG, then ansible.cfg in the current dir, then ~/.ansible.cfg, else the default."
+    },
+    {
+      "type": "mcq",
+      "q": "In an INI inventory, how is a group of hosts declared?",
+      "options": [
+        "In square brackets, e.g. [webservers]",
+        "With a leading @ sign",
+        "In curly braces { }",
+        "With the keyword group:"
+      ],
+      "answer": 0,
+      "why": "Groups are delimited by [header] elements; hosts belonging to them follow."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the :children attribute mean, as in [linux:children]?",
+      "options": [
+        "The parent group is composed of sub-groups",
+        "It lists the group's child processes",
+        "The group is restricted to child nodes only",
+        "The hosts in it are unmanaged"
+      ],
+      "answer": 0,
+      "why": "A :children group is built from other groups named beneath it."
+    },
+    {
+      "type": "mcq",
+      "q": "The inventory pattern www[001:006].example.com expands to...",
+      "options": [
+        "www001 through www006 (a host range)",
+        "one literal host named with the brackets",
+        "six randomly chosen hosts",
+        "a regular-expression match"
+      ],
+      "answer": 0,
+      "why": "Bracketed ranges expand numerically; leading zeros are preserved."
+    }
+  ]
+}

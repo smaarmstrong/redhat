@@ -1,0 +1,8 @@
+{
+  "title": "Preparing the client and key authentication",
+  "domain": "Ansible Basics",
+  "objective": "Learning Ansible with Rocky - Ansible Basics: Client preparation and SSH key authentication",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

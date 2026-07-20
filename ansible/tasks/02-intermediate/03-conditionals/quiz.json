@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Intermediate: Conditionals",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which statement makes a task run only under a condition?",
+      "options": [
+        "when",
+        "if",
+        "only_if",
+        "cond"
+      ],
+      "answer": 0,
+      "why": "The when statement gates a task on a condition."
+    },
+    {
+      "type": "mcq",
+      "q": "Behind a `when:`, do the variables need double braces?",
+      "options": [
+        "No, because when is a Jinja2 expression",
+        "Yes, always",
+        "Only for dictionaries",
+        "Only for facts"
+      ],
+      "answer": 0,
+      "why": "when values are already Jinja2 expressions, so the double braces are omitted."
+    },
+    {
+      "type": "mcq",
+      "q": "When `when:` is written as a YAML list of conditions, how are they combined?",
+      "options": [
+        "Logical AND (all must be true)",
+        "Logical OR",
+        "Exclusive OR",
+        "They are ignored"
+      ],
+      "answer": 0,
+      "why": "A list of conditions under when is a logical AND."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you combine OR and AND within a single when expression?",
+      "options": [
+        "Group them with parentheses, e.g. (a and b) or (c and d)",
+        "Separate them with semicolons",
+        "Use commas only",
+        "You cannot combine them"
+      ],
+      "answer": 0,
+      "why": "Conditions can be grouped with parentheses across lines."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module gathers information about a path (existence, is-a-directory) for a when test?",
+      "options": [
+        "stat",
+        "file",
+        "find",
+        "setup"
+      ],
+      "answer": 0,
+      "why": "stat registers values like directory.stat.exists and directory.stat.isdir."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you test that a boolean fact is NOT true in a when list?",
+      "options": [
+        "- not file.stat.isdir",
+        "- file.stat.isdir == no",
+        "- !file.stat.isdir",
+        "- file.stat.isdir is false"
+      ],
+      "answer": 0,
+      "why": "Put `not` before the expression."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you guard against a variable being undefined before using it?",
+      "options": [
+        "when: myboolean is defined and myboolean",
+        "when: myboolean != null",
+        "when: exists(myboolean)",
+        "when: defined myboolean"
+      ],
+      "answer": 0,
+      "why": "`is defined` avoids execution errors when a variable may be missing."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Intermediate: Variables, external files, and register",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which primitive variable types does the guide list?",
+      "options": [
+        "strings, integers, booleans",
+        "floats, dates, sets",
+        "arrays, pointers, structs",
+        "only strings"
+      ],
+      "answer": 0,
+      "why": "Primitives are strings, integers and booleans; they can be organised as lists or dictionaries."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you reference a simple variable named port_http in a playbook?",
+      "options": [
+        "{{ port_http }}",
+        "$port_http",
+        "%port_http%",
+        "{port_http}"
+      ],
+      "answer": 0,
+      "why": "Variables are called between double braces."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two syntaxes both read the 'rhel' key of a dictionary variable named service?",
+      "options": [
+        "{{ service['rhel'] }} and {{ service.rhel }}",
+        "{{ service->rhel }} and {{ service:rhel }}",
+        "{{ service(rhel) }} and {{ service/rhel }}",
+        "{{ rhel@service }} and {{ service#rhel }}"
+      ],
+      "answer": 0,
+      "why": "Both bracket notation and dot notation address a dictionary key."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you pass a variable to ansible-playbook on the command line?",
+      "options": [
+        "--extra-vars \"service=httpd\"",
+        "-m vars service=httpd",
+        "--set service=httpd",
+        "--var-file service"
+      ],
+      "answer": 0,
+      "why": "--extra-vars (or -e) supplies variables from the command line."
+    },
+    {
+      "type": "mcq",
+      "q": "Which play directive loads variables from an external file?",
+      "options": [
+        "vars_files",
+        "include_files",
+        "var_import",
+        "load_vars"
+      ],
+      "answer": 0,
+      "why": "vars_files lists external YAML variable files to load."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module includes variables dynamically during a play?",
+      "options": [
+        "ansible.builtin.include_vars",
+        "ansible.builtin.debug",
+        "ansible.builtin.copy",
+        "ansible.builtin.setup"
+      ],
+      "answer": 0,
+      "why": "include_vars loads variables at runtime, e.g. file: vault.yml."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module prints a variable or a message for debugging?",
+      "options": [
+        "debug",
+        "echo",
+        "print",
+        "setup"
+      ],
+      "answer": 0,
+      "why": "The debug module shows a var: or a msg:."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the `register` keyword do in a task?",
+      "options": [
+        "Saves the task's return so it can be used by later tasks",
+        "Registers the host in the inventory",
+        "Enables logging for the play",
+        "Schedules a handler to run"
+      ],
+      "answer": 0,
+      "why": "register stores the result (e.g. homes.stdout, homes.stdout_lines) for later use."
+    },
+    {
+      "type": "mcq",
+      "q": "For a task registered as 'homes', what is homes.stdout_lines?",
+      "options": [
+        "A list, one entry per line of output",
+        "The task's exit code",
+        "The whole output as a single string",
+        "A dictionary of facts"
+      ],
+      "answer": 0,
+      "why": "stdout_lines is a list of the output lines; stdout is the whole string."
+    }
+  ]
+}

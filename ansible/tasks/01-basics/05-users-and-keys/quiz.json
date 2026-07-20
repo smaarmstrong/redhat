@@ -1,0 +1,94 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: Client preparation and SSH key authentication",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which group is the dedicated ansible user added to so it can use sudo?",
+      "options": [
+        "wheel",
+        "sudoers",
+        "root",
+        "admin"
+      ],
+      "answer": 0,
+      "why": "usermod -aG wheel ansible; members of wheel are granted sudo rights."
+    },
+    {
+      "type": "mcq",
+      "q": "Why set NOPASSWD for the wheel group in sudoers during this setup?",
+      "options": [
+        "So Ansible can run privileged tasks without a sudo password prompt",
+        "To disable sudo entirely",
+        "To allow root login over SSH",
+        "To speed up the SSH handshake"
+      ],
+      "answer": 0,
+      "why": "The %wheel NOPASSWD: ALL line lets wheel members sudo without a password; otherwise you get \"Missing sudo password\"."
+    },
+    {
+      "type": "mcq",
+      "q": "You hit: \"to use the 'ssh' connection type with passwords, you must install the sshpass program\". The fix?",
+      "options": [
+        "Install sshpass on the management station",
+        "Reinstall Ansible",
+        "Disable SSH on the clients",
+        "Add the host to the inventory again"
+      ],
+      "answer": 0,
+      "why": "sudo dnf install sshpass provides the helper needed for password-based SSH."
+    },
+    {
+      "type": "mcq",
+      "q": "By default Ansible forbids password login. Which [defaults] setting in ansible.cfg enables the password prompt?",
+      "options": [
+        "ask_pass = True",
+        "password = True",
+        "ssh_pass = yes",
+        "auth = password"
+      ],
+      "answer": 0,
+      "why": "Uncomment ask_pass in the [defaults] section and set it to True."
+    },
+    {
+      "type": "cmd",
+      "q": "Generate an SSH key pair for the ansible user.",
+      "answers": [
+        "ssh-keygen"
+      ],
+      "why": "ssh-keygen creates the private/public RSA key pair used for key authentication."
+    },
+    {
+      "type": "cmd",
+      "q": "Copy the ansible user's public key to the host 172.16.1.10.",
+      "answers": [
+        "ssh-copy-id ansible@172.16.1.10"
+      ],
+      "why": "ssh-copy-id installs the public key on the target so key-based login works."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the guide replace password authentication with SSH keys?",
+      "options": [
+        "Key-based auth is much more secure than sending passwords",
+        "Keys are faster to type",
+        "Passwords only work on Rocky",
+        "Passwords disable fact gathering"
+      ],
+      "answer": 0,
+      "why": "Being prompted for the remote password is a security problem; private/public keys are preferred."
+    },
+    {
+      "type": "mcq",
+      "q": "Once key authentication works, what should you do in production?",
+      "options": [
+        "Re-comment ask_pass and remove the ansible account passwords",
+        "Keep ask_pass = True enabled",
+        "Store the passwords in the inventory",
+        "Email the passwords to each host"
+      ],
+      "answer": 0,
+      "why": "With keys working, a login password is no longer needed; remove it to harden security."
+    }
+  ]
+}

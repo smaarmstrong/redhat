@@ -1,0 +1,114 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: Concepts and vocabulary",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Ansible is described as \"agentless\". What does that mean?",
+      "options": [
+        "No software has to be deployed on the managed clients",
+        "A daemon must run on every managed client",
+        "It can only manage the control node itself",
+        "It needs a database agent to store host state"
+      ],
+      "answer": 0,
+      "why": "Ansible is agentless: nothing is installed on the managed servers; it connects over SSH (or WinRM)."
+    },
+    {
+      "type": "mcq",
+      "q": "Ansible is \"idempotent\". What does that guarantee?",
+      "options": [
+        "Running the same play repeatedly converges to the same end state",
+        "Each run undoes what the previous run did",
+        "It runs faster on every subsequent execution",
+        "Tasks are executed in a random order"
+      ],
+      "answer": 0,
+      "why": "Idempotent means the same effect each time it is run; a task already in the desired state makes no change."
+    },
+    {
+      "type": "mcq",
+      "q": "Which protocol does Ansible use by default to configure Linux clients?",
+      "options": [
+        "SSH",
+        "WinRM",
+        "HTTP",
+        "SNMP"
+      ],
+      "answer": 0,
+      "why": "SSH for Linux, WinRM for Windows; an API can be used when neither is available."
+    },
+    {
+      "type": "mcq",
+      "q": "Ansible is mainly push-based and \"stateless\". What does that imply?",
+      "options": [
+        "It keeps no state between runs and re-checks state on each execution",
+        "It stores every host's state in a central database",
+        "Clients push their state to the server on a timer",
+        "It cannot detect configuration drift at all"
+      ],
+      "answer": 0,
+      "why": "Being push-based it does not keep the state of targets between runs; it performs new state checks each time."
+    },
+    {
+      "type": "mcq",
+      "q": "In Ansible vocabulary, what is the \"inventory\"?",
+      "options": [
+        "A file containing information about the managed servers",
+        "The list of installed modules",
+        "The facts gathered from a host",
+        "A playbook's list of tasks"
+      ],
+      "answer": 0,
+      "why": "The inventory is a file describing the managed servers (hosts) and groups of hosts."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a \"module\" in Ansible?",
+      "options": [
+        "An abstraction of a task, such as creating a user or installing a package",
+        "A group of hosts",
+        "A YAML inventory file",
+        "A stored SSH key"
+      ],
+      "answer": 0,
+      "why": "A module abstracts a task; Ansible ships many of them (more than 750)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a \"playbook\"?",
+      "options": [
+        "A YAML file defining target hosts and the tasks to perform",
+        "A single shell command",
+        "A bundle of modules",
+        "An SSH configuration file"
+      ],
+      "answer": 0,
+      "why": "A playbook is a YAML file defining the target servers and the tasks to run."
+    },
+    {
+      "type": "mcq",
+      "q": "What are Ansible \"facts\"?",
+      "options": [
+        "Global variables holding system information (hostname, OS version, network config...)",
+        "Handlers that restart services",
+        "The return codes of a playbook",
+        "Encrypted secrets stored in a vault"
+      ],
+      "answer": 0,
+      "why": "Facts are variables about the system, gathered from the managed host."
+    },
+    {
+      "type": "mcq",
+      "q": "What are \"handlers\" used for?",
+      "options": [
+        "Stopping or restarting a service in reaction to a change",
+        "Declaring the inventory",
+        "Gathering facts",
+        "Storing variables"
+      ],
+      "answer": 0,
+      "why": "Handlers cause a service to be stopped or restarted when a change is notified."
+    }
+  ]
+}

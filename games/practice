@@ -8,9 +8,9 @@ exam is scored), not the commands you typed.
 
 Usage:
     practice learn                # teach the next new task, then let you try it
-    practice train                # auto-pick what to do next (review or new) and start it
+    practice train  [track]       # auto-pick what to do next (review or new) and start it
     practice check                # grade the task you're currently on
-    practice list                 # all tasks, grouped by domain, with your status
+    practice list   [track]       # all tasks (or one track), grouped by domain, with your status
     practice start  <id>          # show a task and set up its starting state
     practice check  <id>          # grade what you did (pass/fail per requirement)
     practice solution <id>        # reveal a reference solution
@@ -38,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rocky", "foundations", "rhcsa", "rhce"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -197,44 +197,63 @@ def curriculum_key(t):
     """Sort key placing a task in teaching order: (domain rank, then its id)."""
     return (DOMAIN_ORDER.get(t["id"].split("/")[1], 99), t["id"])
 
-# ---- rocky quizzes: link to the online guide -------------------------------
-# Each rocky quiz chapter maps to the matching page of the online Rocky Linux
-# Administrator's Guide, so the reader can open the source while they study and
-# test. Keyed by the tasks/<chNN-...>/ directory name. This is a hand-verified
-# map, NOT a formula: the online book numbers and labels its chapters differently
-# from the PDF the quizzes cite (e.g. quiz "ch. 4" == the book's 03-commands),
-# skips 02 and 15, and even ships a real typo in one slug (16-about-sytemd).
-# Every URL below was checked to return HTTP 200.
-ROCKY_GUIDE_BASE = "https://docs.rockylinux.org/books/admin_guide"
-ROCKY_GUIDE_PAGES = {
-    "ch02-about": "01-presentation",
-    "ch03-linux-intro": "01-presentation",
-    "ch04-commands": "03-commands",
-    "ch05-advanced": "04-advanced-commands",
-    "ch06-vi": "05-vi",
-    "ch07-users": "06-users",
-    "ch08-filesystem": "07-file-systems",
-    "ch09-processes": "08-process",
-    "ch10-backup": "09-backups",
-    "ch11-startup": "10-boot",
-    "ch12-tasks": "11-tasks",
-    "ch13-network": "12-network",
-    "ch14-software": "13-softwares",
-    "ch15-permissions": "14-special-authority",
-    "ch16-logs": "17-log",
-    "ch17-conclusions": "99-conclusions",
-    "guide-systemd": "16-about-sytemd",
+# ---- quiz tracks: link to the online guide ---------------------------------
+# Each quiz chapter maps to the matching page of the online guide it quizzes, so
+# the reader can open the source while they study and test. Keyed per track by
+# the tasks/<chapter-dir>/ directory name. These are hand-verified maps, NOT a
+# formula: the online books number and label their chapters differently from the
+# quizzes' dirs (e.g. rocky quiz "ch. 4" == the admin guide's 03-commands; the
+# admin guide skips 02/15 and ships a real typo slug, 16-about-sytemd). Every URL
+# was checked to return HTTP 200. quizcheck fails if a chapter here is unmapped.
+GUIDE_BASE = {
+    "rocky": "https://docs.rockylinux.org/books/admin_guide",
+    "ansible": "https://docs.rockylinux.org/books/learning_ansible",
+}
+GUIDE_PAGES = {
+    "rocky": {
+        "ch02-about": "01-presentation",
+        "ch03-linux-intro": "01-presentation",
+        "ch04-commands": "03-commands",
+        "ch05-advanced": "04-advanced-commands",
+        "ch06-vi": "05-vi",
+        "ch07-users": "06-users",
+        "ch08-filesystem": "07-file-systems",
+        "ch09-processes": "08-process",
+        "ch10-backup": "09-backups",
+        "ch11-startup": "10-boot",
+        "ch12-tasks": "11-tasks",
+        "ch13-network": "12-network",
+        "ch14-software": "13-softwares",
+        "ch15-permissions": "14-special-authority",
+        "ch16-logs": "17-log",
+        "ch17-conclusions": "99-conclusions",
+        "guide-systemd": "16-about-sytemd",
+    },
+    # Learning Ansible with Rocky — chapter dir -> learning_ansible book slug.
+    "ansible": {
+        "01-basics": "01-basic",
+        "02-intermediate": "02-advanced",
+        "03-file-management": "03-working-with-files",
+        "04-ansible-galaxy": "04-ansible-galaxy",
+        "05-deployments": "05-deployments",
+        "06-large-scale": "06-large-scale-infrastructure",
+        "07-filters": "07-working-with-filters",
+        "08-server-optimizations": "08-management-server-optimizations",
+        "09-jinja-templates": "09-working-with-jinja-template",
+    },
 }
 
 def guide_url(t):
-    """Online Administrator's Guide URL for a rocky quiz's chapter, or None for
-    non-rocky tasks (and any rocky chapter not yet in the map)."""
+    """Online guide URL for a quiz's chapter, or None for tasks on a track with
+    no guide map (and any chapter not yet mapped)."""
     try:
+        track = t.get("track") or t["dir"].parent.parent.parent.name
         chapter = t["dir"].parent.name
     except Exception:
         return None
-    slug = ROCKY_GUIDE_PAGES.get(chapter)
-    return f"{ROCKY_GUIDE_BASE}/{slug}/" if slug else None
+    base = GUIDE_BASE.get(track)
+    slug = GUIDE_PAGES.get(track, {}).get(chapter)
+    return f"{base}/{slug}/" if base and slug else None
 
 def due_reviews(tasks, st, have_spare):
     """Passed tasks whose review date has arrived, most overdue first."""
@@ -295,13 +314,13 @@ def run_root(script, extra_env=None):
     return subprocess.run(cmd, env=env).returncode
 
 # ---- commands --------------------------------------------------------------
-def cmd_list(tasks, st):
+def cmd_list(tasks, st, focus=None):
     if not tasks:
         print(DIM("No tasks found yet."))
         return
     have_spare = spare_present()
     print()
-    for track in TRACKS:
+    for track in ([focus] if focus else TRACKS):
         tt = [t for t in tasks.values() if t["track"] == track]
         if not tt:
             continue
@@ -758,7 +777,7 @@ def main():
         return
     cmd, rest = args[0], args[1:]
     if cmd == "list":
-        cmd_list(tasks, st)
+        cmd_list(tasks, st, focus=rest[0] if rest and rest[0] in TRACKS else None)
     elif cmd == "status":
         cmd_status(tasks, st)
     elif cmd in ("train", "next"):
