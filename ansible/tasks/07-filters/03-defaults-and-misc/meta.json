@@ -1,0 +1,8 @@
+{
+  "title": "Defaults, ternary, and handy filters",
+  "domain": "Ansible Jinja Filters",
+  "objective": "Learning Ansible with Rocky - Working with Filters: Default values, protecting variables, and other filters",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

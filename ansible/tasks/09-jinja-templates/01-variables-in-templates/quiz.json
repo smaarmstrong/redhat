@@ -1,0 +1,74 @@
+{
+  "source": "Learning Ansible with Rocky - Working With Jinja Templates: Adding variables to a configuration file with the template module",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which module renders a Jinja template into a file on the target?",
+      "options": [
+        "template",
+        "copy",
+        "lineinfile",
+        "get_url"
+      ],
+      "answer": 0,
+      "why": "The template module renders a .j2 template to the destination path."
+    },
+    {
+      "type": "mcq",
+      "q": "In a Jinja template, how is a variable placeholder written?",
+      "options": [
+        "{{ ssh_port }}",
+        "${ssh_port}",
+        "%ssh_port%",
+        "<ssh_port>"
+      ],
+      "answer": 0,
+      "why": "Jinja uses {{ variable }} double-brace placeholders."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two template-task parameters set the template file and the output path?",
+      "options": [
+        "src and dest",
+        "from and to",
+        "template and target",
+        "in and out"
+      ],
+      "answer": 0,
+      "why": "src is the .j2 template; dest is the generated file."
+    },
+    {
+      "type": "mcq",
+      "q": "How can variables be supplied to a template task?",
+      "options": [
+        "From the playbook/task vars or inventory (and external files)",
+        "Only hardcoded in the template",
+        "Only on the CLI",
+        "Only from facts"
+      ],
+      "answer": 0,
+      "why": "Variables defined in the playbook, task vars, or inventory (or external files) are injected into the template."
+    },
+    {
+      "type": "mcq",
+      "q": "The template module is idempotent. What does that mean here?",
+      "options": [
+        "The file is (re)written only when the rendered content actually changes",
+        "It runs only once, ever",
+        "It always rewrites the file",
+        "It never changes the file"
+      ],
+      "answer": 0,
+      "why": "Idempotent execution means the template is applied only if changes are detected."
+    },
+    {
+      "type": "cmd",
+      "q": "Run the playbook your_playbook.yml to apply the template.",
+      "answers": [
+        "ansible-playbook your_playbook.yml"
+      ],
+      "why": "ansible-playbook <file> applies the play, rendering the template to the target."
+    }
+  ]
+}

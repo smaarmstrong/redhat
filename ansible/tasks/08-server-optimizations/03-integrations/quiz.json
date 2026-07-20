@@ -1,0 +1,78 @@
+{
+  "source": "Learning Ansible with Rocky - Management Server Optimizations: Windows, network modules, and generating a CMDB",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "To manage Windows servers, which python package provides WinRM support?",
+      "options": [
+        "pywinrm",
+        "paramiko",
+        "netaddr",
+        "redis"
+      ],
+      "answer": 0,
+      "why": "pip3 install pywinrm (plus kerberos packages) enables WinRM management."
+    },
+    {
+      "type": "mcq",
+      "q": "Which packages/config support Kerberos authentication to Windows realms?",
+      "options": [
+        "The krb5 packages plus /etc/krb5.conf realms",
+        "redis",
+        "netaddr only",
+        "pywinrm only"
+      ],
+      "answer": 0,
+      "why": "Install krb5-devel/libs/workstation and configure realms in /etc/krb5.conf."
+    },
+    {
+      "type": "mcq",
+      "q": "Which python module do the network/IP modules usually require?",
+      "options": [
+        "netaddr",
+        "ipaddress only",
+        "pywinrm",
+        "redis"
+      ],
+      "answer": 0,
+      "why": "sudo pip3 install netaddr is needed for the IP/network modules."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the ansible-cmdb tool generate?",
+      "options": [
+        "A CMDB (configuration database) built from Ansible facts",
+        "An encrypted vault",
+        "A playbook",
+        "A redis cache"
+      ],
+      "answer": 0,
+      "why": "ansible-cmdb turns exported setup facts into a CMDB."
+    },
+    {
+      "type": "mcq",
+      "q": "How are the facts exported for ansible-cmdb?",
+      "options": [
+        "With the setup module and --tree, e.g. ansible -m setup --tree <dir>",
+        "With ansible-vault",
+        "With the to_nice_json filter",
+        "With --tags"
+      ],
+      "answer": 0,
+      "why": "ansible -m setup --tree <dir> writes per-host facts that ansible-cmdb then reads."
+    },
+    {
+      "type": "mcq",
+      "q": "ansible-cmdb can output which formats (per the examples)?",
+      "options": [
+        "json, and an html web interface (html_fancy_split)",
+        "only csv",
+        "only yaml",
+        "only pdf"
+      ],
+      "answer": 0,
+      "why": "ansible-cmdb -t json or -t html_fancy_split produce a JSON file or an HTML interface."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Loops and complex data in templates",
+  "domain": "Ansible Jinja Templates",
+  "objective": "Learning Ansible with Rocky - Working With Jinja Templates: Building complete files with loops and data structures",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

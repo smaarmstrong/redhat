@@ -1,0 +1,8 @@
+{
+  "title": "ansible.cfg performance options",
+  "domain": "Ansible Server Optimization",
+  "objective": "Learning Ansible with Rocky - Management Server Optimizations: Tuning ansible.cfg for performance",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

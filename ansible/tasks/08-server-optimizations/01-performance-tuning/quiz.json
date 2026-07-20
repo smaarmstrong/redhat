@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - Management Server Optimizations: Tuning ansible.cfg for performance",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the `forks` option control?",
+      "options": [
+        "The number of processes Ansible runs in parallel to reach remote hosts (default 5)",
+        "The SSH timeout",
+        "The number of retries",
+        "The fact-cache size"
+      ],
+      "answer": 0,
+      "why": "forks sets parallelism; the default of 5 is small (many users set 50, 500, or more)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does setting gathering = smart do?",
+      "options": [
+        "Collects facts only when they have not already been collected",
+        "Never collects facts",
+        "Always collects facts twice",
+        "Disables SSH"
+      ],
+      "answer": 0,
+      "why": "smart avoids re-gathering facts; paired with a fact cache it boosts performance."
+    },
+    {
+      "type": "mcq",
+      "q": "Why might you disable host_key_checking (in a controlled environment)?",
+      "options": [
+        "To skip SSH host-key verification and save time at connection",
+        "To encrypt facts",
+        "To enable Windows management",
+        "To cache facts"
+      ],
+      "answer": 0,
+      "why": "Disabling the key check saves connection time -- at a security cost, so only where you control the environment."
+    },
+    {
+      "type": "mcq",
+      "q": "In ssh_args, what does ControlPersist do?",
+      "options": [
+        "Keeps the SSH connection open so it can be reused on reconnect",
+        "Compresses the data stream",
+        "Disables DNS",
+        "Sets the fork count"
+      ],
+      "answer": 0,
+      "why": "ControlPersist keeps connections alive for reuse (the docs suggest ~30 minutes), a big time saving."
+    },
+    {
+      "type": "mcq",
+      "q": "Why set control_path_dir to something short like /tmp/.cp?",
+      "options": [
+        "A too-long connection-socket path can cause problems",
+        "It speeds up DNS",
+        "It enables pipelining",
+        "It stores the facts"
+      ],
+      "answer": 0,
+      "why": "Shortening the control-path avoids issues when the socket path is too long."
+    },
+    {
+      "type": "mcq",
+      "q": "What does pipelining = True do, and what must be true first?",
+      "options": [
+        "Reduces the number of SSH connections for running modules; needs requiretty disabled in sudoers",
+        "Enables Windows support",
+        "Caches the facts",
+        "Raises the fork count"
+      ],
+      "answer": 0,
+      "why": "pipelining cuts SSH round-trips; the sudoers requiretty option must be disabled first."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the ansible_managed variable typically used for?",
+      "options": [
+        "A notice inserted into templated files, warning that the file is auto-managed",
+        "The inventory name",
+        "The vault key",
+        "The fork count"
+      ],
+      "answer": 0,
+      "why": "ansible_managed marks deployed template files as managed (changing it can restart daemons via handlers)."
+    }
+  ]
+}

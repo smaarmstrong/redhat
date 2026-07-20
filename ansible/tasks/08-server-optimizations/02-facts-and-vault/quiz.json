@@ -1,0 +1,94 @@
+{
+  "source": "Learning Ansible with Rocky - Management Server Optimizations: Caching facts and encrypting secrets with vault",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Gathering facts can be slow. What two ways does the chapter give to reduce the cost?",
+      "options": [
+        "Disable it with gather_facts where unneeded, and/or cache the facts",
+        "Increase forks",
+        "Use the split filter",
+        "Disable SSH"
+      ],
+      "answer": 0,
+      "why": "Use gather_facts: false when facts aren't needed, or cache facts for a period."
+    },
+    {
+      "type": "mcq",
+      "q": "Which datastore does the chapter use to cache facts?",
+      "options": [
+        "redis",
+        "memcached",
+        "a plain file only",
+        "postgres"
+      ],
+      "answer": 0,
+      "why": "Facts are stored in a redis database (fact_caching = redis)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ansible.cfg setting controls how long cached facts live?",
+      "options": [
+        "fact_caching_timeout",
+        "fact_caching",
+        "fact_caching_connection",
+        "cache_ttl"
+      ],
+      "answer": 0,
+      "why": "fact_caching_timeout (e.g. 86400 = 24h) sets the cache lifetime."
+    },
+    {
+      "type": "mcq",
+      "q": "Which tool encrypts secrets and variables in Ansible?",
+      "options": [
+        "ansible-vault",
+        "gpg",
+        "openssl",
+        "vault-cli"
+      ],
+      "answer": 0,
+      "why": "ansible-vault encrypts a variable or a whole file."
+    },
+    {
+      "type": "cmd",
+      "q": "Encrypt the file myfile.yml with ansible-vault.",
+      "answers": [
+        "ansible-vault encrypt myfile.yml"
+      ],
+      "why": "ansible-vault encrypt <file> encrypts it in place."
+    },
+    {
+      "type": "cmd",
+      "q": "Edit an already-encrypted file myfile.yml with ansible-vault.",
+      "answers": [
+        "ansible-vault edit myfile.yml"
+      ],
+      "why": "ansible-vault edit decrypts the file for editing, then re-encrypts on save."
+    },
+    {
+      "type": "mcq",
+      "q": "An ansible-vault encrypted file can be recognized by which header?",
+      "options": [
+        "$ANSIBLE_VAULT;1.1;AES256",
+        "-----BEGIN VAULT-----",
+        "#ENCRYPTED",
+        "VAULT256:"
+      ],
+      "answer": 0,
+      "why": "The file starts with the line $ANSIBLE_VAULT;1.1;AES256."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ansible.cfg option points to the file holding the vault password (for non-interactive decryption)?",
+      "options": [
+        "vault_password_file",
+        "vault_pass",
+        "ask_vault_pass",
+        "vault_key"
+      ],
+      "answer": 0,
+      "why": "vault_password_file = /etc/ansible/vault_pass lets Ansible decrypt at runtime."
+    }
+  ]
+}

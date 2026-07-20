@@ -1,0 +1,8 @@
+{
+  "title": "Separating variables from code",
+  "domain": "Ansible at Scale",
+  "objective": "Learning Ansible with Rocky - Large Scale Infrastructure: Variables storage and naming",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

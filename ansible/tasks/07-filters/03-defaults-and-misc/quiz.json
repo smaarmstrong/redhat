@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - Working with Filters: Default values, protecting variables, and other filters",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which filter substitutes a value when a variable does not exist?",
+      "options": [
+        "default",
+        "fallback",
+        "coalesce",
+        "orelse"
+      ],
+      "answer": 0,
+      "why": "var|default(whatever) uses the fallback when var is undefined."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you make an optional module argument simply be ignored when its variable is undefined?",
+      "options": [
+        "variable | default(omit)",
+        "variable | default(\"\")",
+        "skip: variable",
+        "ignore_errors on the task"
+      ],
+      "answer": 0,
+      "why": "default(omit) drops the argument entirely, avoiding a runtime error."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter protects a string (e.g. quoting for the shell)?",
+      "options": [
+        "quote",
+        "escape",
+        "shellsafe",
+        "protect"
+      ],
+      "answer": 0,
+      "why": "whatever|quote safely quotes the value (e.g. the apostrophe) for shell use."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter assigns one of two values based on a condition (avoiding a set_fact)?",
+      "options": [
+        "ternary",
+        "iif",
+        "cond",
+        "switch"
+      ],
+      "answer": 0,
+      "why": "(user_name == 'antoine')|ternary('admin', 'normal_user') picks by condition."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filters pretty-print (nicely formatted) a variable as YAML or JSON?",
+      "options": [
+        "to_nice_yaml and to_nice_json",
+        "to_yaml and to_json",
+        "yaml and json",
+        "dump and pretty"
+      ],
+      "answer": 0,
+      "why": "my_list|to_nice_yaml(indent=4) and |to_nice_json(indent=4) produce indented output."
+    },
+    {
+      "type": "mcq",
+      "q": "Which pair extracts the first element and the length of a list?",
+      "options": [
+        "first and length",
+        "head and count",
+        "index and size",
+        "top and len"
+      ],
+      "answer": 0,
+      "why": "list|first gives the first element; list|length gives the count."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter generates a hashed password (e.g. sha512)?",
+      "options": [
+        "password_hash('sha512')",
+        "hash('sha512')",
+        "crypt('sha512')",
+        "sha512"
+      ],
+      "answer": 0,
+      "why": "user_password|password_hash('sha512') returns a sha512 password hash."
+    }
+  ]
+}

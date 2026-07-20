@@ -1,0 +1,8 @@
+{
+  "title": "Windows, IP modules, and CMDB",
+  "domain": "Ansible Server Optimization",
+  "objective": "Learning Ansible with Rocky - Management Server Optimizations: Windows, network modules, and generating a CMDB",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

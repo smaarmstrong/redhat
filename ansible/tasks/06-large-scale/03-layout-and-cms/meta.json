@@ -1,0 +1,8 @@
+{
+  "title": "The CMS directory layout",
+  "domain": "Ansible at Scale",
+  "objective": "Learning Ansible with Rocky - Large Scale Infrastructure: Directory layout, toggling roles, and testing",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}
