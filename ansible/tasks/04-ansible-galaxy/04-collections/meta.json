@@ -1,0 +1,8 @@
+{
+  "title": "Collections: install, use, and create",
+  "domain": "Ansible Galaxy",
+  "objective": "Learning Ansible with Rocky - Ansible Galaxy: Ansible collections and ansible-galaxy collection",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

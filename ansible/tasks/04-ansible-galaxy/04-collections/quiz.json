@@ -1,0 +1,82 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Galaxy: Ansible collections and ansible-galaxy collection",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is a collection?",
+      "options": [
+        "A distribution format bundling playbooks, roles, modules, and plugins",
+        "A single role",
+        "A group of hosts",
+        "A YAML inventory"
+      ],
+      "answer": 0,
+      "why": "Collections package roles, modules, plugins, and playbooks together."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the community.general collection with ansible-galaxy.",
+      "answers": [
+        "ansible-galaxy collection install community.general"
+      ],
+      "why": "ansible-galaxy collection install <namespace.collection> installs a collection."
+    },
+    {
+      "type": "mcq",
+      "q": "Which flag upgrades an already-installed collection?",
+      "options": [
+        "--upgrade",
+        "--force-reinstall",
+        "--latest",
+        "-U only"
+      ],
+      "answer": 0,
+      "why": "ansible-galaxy collection install namespace.collection --upgrade upgrades it."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you reference a module that comes from an installed collection?",
+      "options": [
+        "By its fully-qualified name: namespace.collection.modulename",
+        "Always just the bare modulename",
+        "collection::module",
+        "module@collection"
+      ],
+      "answer": 0,
+      "why": "Use namespace.collection.modulename, e.g. community.general.yum_versionlock."
+    },
+    {
+      "type": "mcq",
+      "q": "Where are installed collections stored by default (per the example)?",
+      "options": [
+        "Under ~/.ansible/collections/ansible_collections/",
+        "/etc/ansible/collections",
+        "/usr/share/collections",
+        "Only in ./collections"
+      ],
+      "answer": 0,
+      "why": "Collections install under ~/.ansible/collections/ansible_collections/<namespace>/<name>."
+    },
+    {
+      "type": "cmd",
+      "q": "Create a skeleton for your own collection named rocky8.rockstarcollection.",
+      "answers": [
+        "ansible-galaxy collection init rocky8.rockstarcollection"
+      ],
+      "why": "ansible-galaxy collection init <namespace.name> scaffolds a new collection."
+    },
+    {
+      "type": "mcq",
+      "q": "The generated collection skeleton contains directories for...",
+      "options": [
+        "docs, plugins, and roles (plus a galaxy.yml)",
+        "tasks, handlers, and defaults",
+        "templates, files, and vars",
+        "inventory and tests only"
+      ],
+      "answer": 0,
+      "why": "A new collection has docs/, plugins/, roles/ and a galaxy.yml manifest."
+    }
+  ]
+}

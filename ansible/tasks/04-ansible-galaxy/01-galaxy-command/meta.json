@@ -1,0 +1,8 @@
+{
+  "title": "The ansible-galaxy command",
+  "domain": "Ansible Galaxy",
+  "objective": "Learning Ansible with Rocky - Ansible Galaxy: The ansible-galaxy command and its subcommands",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

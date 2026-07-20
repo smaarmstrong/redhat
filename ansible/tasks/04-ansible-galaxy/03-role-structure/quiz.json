@@ -1,0 +1,87 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Galaxy: Developing a role: init, skeleton, vars and defaults",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "cmd",
+      "q": "Generate a skeleton for a new role named rocky8.",
+      "answers": [
+        "ansible-galaxy role init rocky8",
+        "ansible-galaxy init rocky8"
+      ],
+      "why": "ansible-galaxy role init <name> scaffolds the role's directory tree."
+    },
+    {
+      "type": "mcq",
+      "q": "In a role, where do you put variables you do NOT want overridden from outside?",
+      "options": [
+        "vars/main.yml",
+        "defaults/main.yml",
+        "meta/main.yml",
+        "files/"
+      ],
+      "answer": 0,
+      "why": "vars/main.yml holds variables that should not be overridden."
+    },
+    {
+      "type": "mcq",
+      "q": "Where do you put variables you DO want to allow overriding from outside the role?",
+      "options": [
+        "defaults/main.yml",
+        "vars/main.yml",
+        "handlers/main.yml",
+        "tests/"
+      ],
+      "answer": 0,
+      "why": "defaults/main.yml variables can be overridden by the calling playbook."
+    },
+    {
+      "type": "mcq",
+      "q": "Where is a role's task code defined?",
+      "options": [
+        "tasks/main.yml",
+        "meta/main.yml",
+        "templates/",
+        "README.md"
+      ],
+      "answer": 0,
+      "why": "The role's tasks live in tasks/main.yml."
+    },
+    {
+      "type": "mcq",
+      "q": "Which role directory holds the Jinja2 templates the role needs?",
+      "options": [
+        "templates/",
+        "files/",
+        "vars/",
+        "defaults/"
+      ],
+      "answer": 0,
+      "why": "templates/ holds templates; files/ holds static files; handlers/main.yml holds handlers."
+    },
+    {
+      "type": "mcq",
+      "q": "Which Jinja filter removes the items of one list from another (used to trim the uninstall list)?",
+      "options": [
+        "difference()",
+        "intersect()",
+        "union()",
+        "dict2items()"
+      ],
+      "answer": 0,
+      "why": "rocky8_remove_packages | difference(rocky8_specifics_packages) subtracts the second list from the first."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module does the sample role use to install/remove packages in a distro-agnostic way?",
+      "options": [
+        "package (name/state present or absent)",
+        "dnf only",
+        "copy",
+        "systemd"
+      ],
+      "answer": 0,
+      "why": "The generic package module handles present/absent regardless of the distro's package manager."
+    }
+  ]
+}
