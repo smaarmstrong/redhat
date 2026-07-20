@@ -38,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync", "incus", "sag"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync", "incus", "sag", "security"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -212,6 +212,7 @@ GUIDE_BASE = {
     "rsync": "https://docs.rockylinux.org/books/learning_rsync",
     "incus": "https://docs.rockylinux.org/books/incus_server",
     "sag": "https://docs.rockylinux.org/books/sed_awk_grep",
+    "security": "https://docs.rockylinux.org/books/security_enhancements",
 }
 GUIDE_PAGES = {
     "rocky": {
@@ -289,6 +290,11 @@ GUIDE_PAGES = {
         "02-grep": "2_grep_command",
         "03-sed": "3_sed_command",
         "04-awk": "4_awk_command",
+    },
+    # Security Enhancements — chapter dir -> security_enhancements book slug.
+    # New book, only the PAM chapter published so far (its own number is 18).
+    "security": {
+        "18-about-pam": "18-about-pam",
     },
 }
 

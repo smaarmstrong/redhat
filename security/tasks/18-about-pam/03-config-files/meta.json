@@ -1,0 +1,8 @@
+{
+  "title": "PAM configuration files",
+  "domain": "PAM",
+  "objective": "Security Enhancements - Introduction to PAM and basic usage: Where PAM policy and module config live, and how a policy line is written",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

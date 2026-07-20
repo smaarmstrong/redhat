@@ -1,0 +1,8 @@
+{
+  "title": "Common modules and practical hardening",
+  "domain": "PAM",
+  "objective": "Security Enhancements - Introduction to PAM and basic usage: Key PAM modules and the password-complexity/lockout/history cases",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

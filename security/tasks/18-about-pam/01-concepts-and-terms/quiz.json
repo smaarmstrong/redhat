@@ -1,0 +1,102 @@
+{
+  "source": "Security Enhancements - Introduction to PAM and basic usage: PAM concepts, history, and terminology",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is PAM?",
+      "options": [
+        "Pluggable Authentication Modules -- centralized user authentication for many applications/services",
+        "A firewall",
+        "A password-hashing algorithm",
+        "A login shell"
+      ],
+      "answer": 0,
+      "why": "PAM lets many applications authenticate users in a centralized, pluggable way."
+    },
+    {
+      "type": "mcq",
+      "q": "Who originally proposed PAM, and when?",
+      "options": [
+        "Sun Microsystems (Vipin Samar and Charlie Lai), in 1995, on Solaris",
+        "Red Hat, in 2005",
+        "The GNU project, in 1984",
+        "Oracle, in 2010"
+      ],
+      "answer": 0,
+      "why": "Sun proposed and implemented PAM in 1995; other UNIX/Linux systems adopted it later."
+    },
+    {
+      "type": "mcq",
+      "q": "What problem does PAM solve for application developers?",
+      "options": [
+        "Apps delegate authentication to PAM, so changing the auth method needs no rewrite/recompile of each app",
+        "It makes login faster",
+        "It encrypts the disk",
+        "It replaces the shell"
+      ],
+      "answer": 0,
+      "why": "Without PAM you would write (and rewrite/recompile) auth in every application."
+    },
+    {
+      "type": "mcq",
+      "q": "PAM is primarily composed of...",
+      "options": [
+        "Shared libraries (.so files) and configuration files",
+        "A daemon and a database",
+        "Kernel modules",
+        "A web service"
+      ],
+      "answer": 0,
+      "why": "PAM is modular: shared-library modules plus configuration files."
+    },
+    {
+      "type": "mcq",
+      "q": "In PAM terminology, who is the 'applicant'?",
+      "options": [
+        "The user or entity requesting authentication",
+        "The administrator",
+        "The password itself",
+        "The service being accessed"
+      ],
+      "answer": 0,
+      "why": "The applicant is who (or what) is requesting authentication."
+    },
+    {
+      "type": "mcq",
+      "q": "In PAM terminology, what is a 'token'?",
+      "options": [
+        "A chunk of information (like a password/passphrase) the applicant provides to prove identity",
+        "A running session",
+        "A loadable module",
+        "A service name"
+      ],
+      "answer": 0,
+      "why": "The authentication token is the secret proving identity."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a 'facility' in PAM?",
+      "options": [
+        "One of the four functionality groups: authentication, account, session, and password management",
+        "A single module",
+        "A configuration file",
+        "A user account"
+      ],
+      "answer": 0,
+      "why": "PAM provides four facilities (a.k.a. module types)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a 'policy' in PAM?",
+      "options": [
+        "The complete set of configuration statements for a service (normally four chains, one per facility)",
+        "A single module",
+        "An authentication token",
+        "A user session"
+      ],
+      "answer": 0,
+      "why": "A policy describes how to handle PAM requests for one service; each chain handles one facility."
+    }
+  ]
+}
