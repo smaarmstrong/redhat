@@ -1,0 +1,8 @@
+{
+  "title": "Integrated help and the file explorer",
+  "domain": "UI",
+  "objective": "NvChad - NvChad UI: NvChad Interface: the built-in help commands and opening NvimTree",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

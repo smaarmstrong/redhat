@@ -1,0 +1,8 @@
+{
+  "title": "Prerequisites and a clean install",
+  "domain": "Install",
+  "objective": "NvChad - Install NvChad: the requirements and backing up / removing an old Neovim config",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

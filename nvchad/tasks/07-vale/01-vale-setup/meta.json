@@ -1,0 +1,8 @@
+{
+  "title": "Adding vale via nvim-lint and Mason",
+  "domain": "vale",
+  "objective": "NvChad - Using vale in NvChad: what vale is, the nvim-lint plugin, and installing vale with Mason",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

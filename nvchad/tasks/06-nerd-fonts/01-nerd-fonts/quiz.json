@@ -1,0 +1,98 @@
+{
+  "source": "NvChad - Installing Nerd Fonts: what Nerd Fonts are and how to install them on Rocky Linux",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are Nerd Fonts?",
+      "options": [
+        "Programming fonts patched with extra glyphs/icons (Font Awesome, Devicons, etc.)",
+        "A Neovim colorscheme",
+        "A terminal emulator",
+        "A language server"
+      ],
+      "answer": 0,
+      "why": "Nerd Fonts add iconic-font glyphs to popular programming fonts."
+    },
+    {
+      "type": "mcq",
+      "q": "Why would you use the Nerd Fonts font patcher?",
+      "options": [
+        "To add the icon glyphs to a font that has not already been patched",
+        "To shrink the font size",
+        "To convert TTF to OTF",
+        "To install Neovim"
+      ],
+      "answer": 0,
+      "why": "The patcher adds glyphs to fonts that are not pre-patched."
+    },
+    {
+      "type": "mcq",
+      "q": "The Rocky Linux install method uses git plus which tool to register fonts?",
+      "options": [
+        "fc-cache (fontconfig)",
+        "dnf",
+        "systemctl",
+        "gsettings"
+      ],
+      "answer": 0,
+      "why": "install.sh copies the fonts then calls fc-cache."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the guide use a sparse, blob:none clone of the nerd-fonts repo?",
+      "options": [
+        "So you download only the fonts you want, not every patched font",
+        "So the clone is encrypted",
+        "To keep full git history",
+        "To get all fonts faster"
+      ],
+      "answer": 0,
+      "why": "Sparse checkout avoids pulling the huge patched-fonts tree."
+    },
+    {
+      "type": "mcq",
+      "q": "After ./install.sh IBMPlexMono, the font is renamed to BlexMono because...",
+      "options": [
+        "of the SIL Open Font License (OFL) reserved-name mechanism",
+        "IBM trademarks block the original name",
+        "of a typo in the script",
+        "Nerd Fonts always shorten names"
+      ],
+      "answer": 0,
+      "why": "The OFL reserved-name rule requires the rename to BlexMono."
+    },
+    {
+      "type": "mcq",
+      "q": "Where does install.sh copy the fonts?",
+      "options": [
+        "~/.local/share/fonts/",
+        "/usr/share/fonts",
+        "~/.fonts.conf",
+        "~/.config/nvim/fonts"
+      ],
+      "answer": 0,
+      "why": "Fonts go to the user's ~/.local/share/fonts/ folder."
+    },
+    {
+      "type": "mcq",
+      "q": "On the default Gnome desktop, where do you select the Nerd Font?",
+      "options": [
+        "In gnome-terminal Preferences (the profile's font)",
+        "In NvChad's chadrc.lua",
+        "In /etc/fonts",
+        "In the BIOS"
+      ],
+      "answer": 0,
+      "why": "Set the profile font in gnome-terminal Preferences."
+    },
+    {
+      "type": "cmd",
+      "q": "What command runs the provided installer for the IBM Plex Mono set?",
+      "answers": [
+        "./install.sh IBMPlexMono"
+      ],
+      "why": "./install.sh IBMPlexMono installs and registers that font family."
+    }
+  ]
+}

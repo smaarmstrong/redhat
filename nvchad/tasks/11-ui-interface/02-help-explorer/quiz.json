@@ -1,0 +1,66 @@
+{
+  "source": "NvChad - NvChad UI: NvChad Interface: the built-in help commands and opening NvimTree",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Pressing the Space (leader) key alone...",
+      "options": [
+        "shows a legend of associated commands",
+        "saves the file",
+        "quits the editor",
+        "enters INSERT mode"
+      ],
+      "answer": 0,
+      "why": "Space alone pops up the command legend."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command lists all commands included in the editor?",
+      "options": [
+        "Space + wK (<leader>wK)",
+        "Space + h",
+        "Ctrl + K",
+        ":commands"
+      ],
+      "answer": 0,
+      "why": "<leader>wK shows all commands (press d for the rest)."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you view all of Neovim's options as a category tree?",
+      "options": [
+        ":options (Shift + : options)",
+        ":set all only",
+        ":config",
+        ":help options only"
+      ],
+      "answer": 0,
+      "why": ":options presents options indexed by category."
+    },
+    {
+      "type": "mcq",
+      "q": "Which combination opens NvimTree (the file explorer)?",
+      "options": [
+        "Ctrl + n",
+        "Ctrl + t",
+        "Space + e",
+        "Alt + n"
+      ],
+      "answer": 0,
+      "why": "Ctrl+n opens/closes NvimTree (Space+e focuses it)."
+    },
+    {
+      "type": "mcq",
+      "q": "Where is the default light/dark theme toggle?",
+      "options": [
+        "An icon on the right of the Tabufline (click it)",
+        "Only in chadrc.lua",
+        "On F5",
+        "It cannot be changed"
+      ],
+      "answer": 0,
+      "why": "Click the theme icon at the right of the Tabufline."
+    }
+  ]
+}

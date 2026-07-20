@@ -1,0 +1,114 @@
+{
+  "source": "NvChad - NvChad UI: Built-In Plugins: the base plugins NvChad ships and the init.lua vs ui.lua split",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which plugin naming convention does this chapter use?",
+      "options": [
+        "user_github/plugin_name",
+        "plugin_name only",
+        "github.com/user",
+        "@user:plugin"
+      ],
+      "answer": 0,
+      "why": "The user_github/plugin_name form avoids ambiguity between similar names."
+    },
+    {
+      "type": "mcq",
+      "q": "Within NvChad's plugins folder, what do init.lua and ui.lua handle?",
+      "options": [
+        "init.lua = functionality plugins; ui.lua = editor appearance",
+        "init.lua = appearance; ui.lua = functionality",
+        "both handle only themes",
+        "both handle only keymaps"
+      ],
+      "answer": 0,
+      "why": "init.lua configures functionality; ui.lua sets colors/icons/appearance."
+    },
+    {
+      "type": "mcq",
+      "q": "What does nvim-lua/plenary.nvim provide?",
+      "options": [
+        "A library of common Lua functions used by other plugins (telescope, gitsigns)",
+        "The theme engine",
+        "The file explorer",
+        "The statusline"
+      ],
+      "answer": 0,
+      "why": "plenary is a shared Lua utility library."
+    },
+    {
+      "type": "mcq",
+      "q": "stevearc/conform.nvim is a...",
+      "options": [
+        "formatting plugin",
+        "git plugin",
+        "linter",
+        "file explorer"
+      ],
+      "answer": 0,
+      "why": "conform.nvim formats code (configured via configs/conform.lua)."
+    },
+    {
+      "type": "mcq",
+      "q": "lewis6991/gitsigns.nvim provides...",
+      "options": [
+        "git decorations (added/removed/changed lines), also shown in the statusline",
+        "a full git GUI like lazygit",
+        "LSP support",
+        "autocomplete"
+      ],
+      "answer": 0,
+      "why": "gitsigns shows git change signs in the gutter and statusline."
+    },
+    {
+      "type": "mcq",
+      "q": "williamboman/mason.nvim is used to...",
+      "options": [
+        "manage installation of language servers/tools via a graphical interface",
+        "manage themes",
+        "format code",
+        "close buffers"
+      ],
+      "answer": 0,
+      "why": "Mason simplifies installing LSP servers and tools."
+    },
+    {
+      "type": "mcq",
+      "q": "hrsh7th/nvim-cmp provides...",
+      "options": [
+        "completion (autocomplete), fed by sources like LuaSnip, cmp-nvim-lsp, cmp-buffer, cmp-path",
+        "git signs",
+        "syntax parsing",
+        "file search"
+      ],
+      "answer": 0,
+      "why": "nvim-cmp is the completion engine with several source plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "windwp/nvim-autopairs does what?",
+      "options": [
+        "Automatically inserts the closing bracket/quote when you type an opening one",
+        "Renames files",
+        "Pairs git branches",
+        "Splits windows"
+      ],
+      "answer": 0,
+      "why": "Typing ( auto-inserts ) with the cursor in the middle."
+    },
+    {
+      "type": "mcq",
+      "q": "nvim-telescope/telescope.nvim provides...",
+      "options": [
+        "advanced fuzzy file search (and e.g. :Telescope themes)",
+        "git operations",
+        "Markdown preview",
+        "code formatting"
+      ],
+      "answer": 0,
+      "why": "Telescope is the fuzzy finder; it can even pick NvChad themes."
+    }
+  ]
+}

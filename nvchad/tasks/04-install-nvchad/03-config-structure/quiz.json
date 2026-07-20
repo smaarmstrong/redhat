@@ -1,0 +1,114 @@
+{
+  "source": "NvChad - Install NvChad: the files under ~/.config/nvim and the default key mappings",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which file initializes and coordinates the whole configuration?",
+      "options": [
+        "init.lua",
+        "chadrc.lua",
+        "options.lua",
+        "lazy-lock.json"
+      ],
+      "answer": 0,
+      "why": "init.lua is the starting file that loads everything else."
+    },
+    {
+      "type": "mcq",
+      "q": "What does lazy-lock.json store?",
+      "options": [
+        "The installed plugins and their commit state, for syncing across machines",
+        "Your theme colors",
+        "Your keymaps",
+        "The editor logs"
+      ],
+      "answer": 0,
+      "why": "It records each plugin's status so installs can be replicated."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file is used to customize the editor's appearance (UI)?",
+      "options": [
+        "chadrc.lua",
+        "options.lua",
+        "mappings.lua",
+        "init.lua"
+      ],
+      "answer": 0,
+      "why": "chadrc.lua shares syntax with the plugin's nvconfig.lua for UI settings."
+    },
+    {
+      "type": "mcq",
+      "q": "Where should your own (personal) plugins go?",
+      "options": [
+        "the lua/plugins folder",
+        "the lua/configs folder",
+        "init.lua only",
+        "~/.cache/nvim"
+      ],
+      "answer": 0,
+      "why": "Personal plugins live in lua/plugins; their extra configs in lua/configs."
+    },
+    {
+      "type": "mcq",
+      "q": "The lua/configs folder is for...",
+      "options": [
+        "additional configurations for plugins",
+        "the plugins themselves",
+        "themes",
+        "log files"
+      ],
+      "answer": 0,
+      "why": "configs holds plugin configuration such as conform.lua."
+    },
+    {
+      "type": "mcq",
+      "q": "In mappings, which single-letter reference means Ctrl?",
+      "options": [
+        "C",
+        "A",
+        "S",
+        "leader"
+      ],
+      "answer": 0,
+      "why": "C = Ctrl, A = Alt, S = Shift, leader = Space."
+    },
+    {
+      "type": "mcq",
+      "q": "The default mapping <leader>th does what?",
+      "options": [
+        "Changes the theme (Space + t + h)",
+        "Opens a terminal",
+        "Toggles hidden files",
+        "Saves the file"
+      ],
+      "answer": 0,
+      "why": "<leader>th switches theme."
+    },
+    {
+      "type": "mcq",
+      "q": "Which default mappings open nvimtree and a floating terminal?",
+      "options": [
+        "<C-n> opens nvimtree; <A-i> opens a floating terminal",
+        "<C-t> / <A-t>",
+        "<leader>n / <leader>i",
+        "<S-n> / <S-i>"
+      ],
+      "answer": 0,
+      "why": "Ctrl+n toggles nvimtree; Alt+i opens a floating terminal."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the default insert-mode escape mapping?",
+      "options": [
+        "jk",
+        "kj",
+        "jj",
+        "Ctrl+["
+      ],
+      "answer": 0,
+      "why": "map(\"i\", \"jk\", \"<ESC>\") escapes INSERT mode."
+    }
+  ]
+}

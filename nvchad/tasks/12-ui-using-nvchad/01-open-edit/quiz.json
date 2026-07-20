@@ -1,0 +1,90 @@
+{
+  "source": "NvChad - NvChad UI: Using NvChad: opening files, Telescope find, and INSERT-mode cursor movement",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "To open a file directly from the shell you run...",
+      "options": [
+        "nvim /path/to/the/file",
+        "edit /path",
+        "open /path",
+        "nvim --file /path"
+      ],
+      "answer": 0,
+      "why": "nvim followed by the path opens that file."
+    },
+    {
+      "type": "mcq",
+      "q": "Inside the editor, which command opens a file read-only?",
+      "options": [
+        ":view",
+        ":readonly",
+        ":ro",
+        ":open -r"
+      ],
+      "answer": 0,
+      "why": ":view opens the file without the ability to change it."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command opens a file in a vertical split?",
+      "options": [
+        ":vsplit",
+        ":split",
+        ":vs open",
+        ":tabedit"
+      ],
+      "answer": 0,
+      "why": ":vsplit is vertical; :split is horizontal; :tabedit is a new tab."
+    },
+    {
+      "type": "mcq",
+      "q": "Telescope's fuzzy find-file (with ripgrep) is invoked with...",
+      "options": [
+        ":Telescope fd",
+        ":find",
+        ":fzf",
+        ":Telescope grep"
+      ],
+      "answer": 0,
+      "why": ":Telescope fd searches interactively as you type."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key enters INSERT mode?",
+      "options": [
+        "i",
+        "a is the only way",
+        "Enter",
+        ":i"
+      ],
+      "answer": 0,
+      "why": "i enters INSERT mode; the statusline changes to INSERT."
+    },
+    {
+      "type": "mcq",
+      "q": "In INSERT mode, NvChad's Ctrl+b and Ctrl+e move the cursor to...",
+      "options": [
+        "the beginning and end of the line",
+        "the top and bottom of the file",
+        "the previous and next word",
+        "left and right one character"
+      ],
+      "answer": 0,
+      "why": "Ctrl+b = start of line, Ctrl+e = end of line."
+    },
+    {
+      "type": "mcq",
+      "q": "In INSERT mode, which pair moves down a line and up a line?",
+      "options": [
+        "Ctrl+j (down), Ctrl+k (up)",
+        "Ctrl+h / Ctrl+l",
+        "Ctrl+n / Ctrl+p",
+        "Ctrl+d / Ctrl+u"
+      ],
+      "answer": 0,
+      "why": "Ctrl+j/k move down/up; Ctrl+h/l move left/right one character."
+    }
+  ]
+}

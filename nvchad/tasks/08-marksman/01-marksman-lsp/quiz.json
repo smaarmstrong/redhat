@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - Marksman: what Marksman is, installing it via Mason and wiring it into lspconfig",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is Marksman?",
+      "options": [
+        "A language server (LSP) that assists writing/maintaining Markdown",
+        "A Markdown-to-PDF converter",
+        "A spellchecker only",
+        "A git plugin"
+      ],
+      "answer": 0,
+      "why": "Marksman is an LSP for Markdown."
+    },
+    {
+      "type": "mcq",
+      "q": "Which features does Marksman provide?",
+      "options": [
+        "Completion, go-to definition, reference search, rename refactoring, diagnostics",
+        "Disk backups",
+        "Theme switching",
+        "Package management"
+      ],
+      "answer": 0,
+      "why": "Typical LSP features, applied to Markdown documents."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command installs Marksman from Mason?",
+      "options": [
+        ":MasonInstall marksman",
+        ":LspInstall marksman",
+        ":Lazy install marksman",
+        ":dnf marksman"
+      ],
+      "answer": 0,
+      "why": ":MasonInstall marksman installs the language server."
+    },
+    {
+      "type": "mcq",
+      "q": "To activate Marksman you add it to the servers list in which file?",
+      "options": [
+        "configs/lspconfig.lua",
+        "chadrc.lua",
+        "plugins/init.lua",
+        "mappings.lua"
+      ],
+      "answer": 0,
+      "why": "Add \"marksman\" to local servers in configs/lspconfig.lua."
+    },
+    {
+      "type": "mcq",
+      "q": "Which plugin integrates language servers into NvChad?",
+      "options": [
+        "nvim-lspconfig",
+        "mason.nvim",
+        "nvim-cmp",
+        "conform.nvim"
+      ],
+      "answer": 0,
+      "why": "nvim-lspconfig supplies the configs for the servers."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command shows the language servers applied to the current buffer?",
+      "options": [
+        ":LspInfo",
+        ":LspStatus",
+        ":checkhealth lsp",
+        ":servers"
+      ],
+      "answer": 0,
+      "why": ":LspInfo lists clients, filetypes, root directory and cmd."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is the LSP 'root directory' (working directory) important?",
+      "options": [
+        "The server needs a global view of the project (links, images)",
+        "It stores the theme",
+        "It is where fonts live",
+        "It is the git remote"
+      ],
+      "answer": 0,
+      "why": "The root folder is like a 'Project' in graphical IDEs."
+    },
+    {
+      "type": "mcq",
+      "q": "Which commands show and change the working directory for a buffer?",
+      "options": [
+        ":pwd shows it; :lcd changes it for that buffer only",
+        ":cwd / :cd",
+        ":root / :setroot",
+        ":dir / :chdir"
+      ],
+      "answer": 0,
+      "why": ":pwd prints it; :lcd reassigns it only for that buffer."
+    }
+  ]
+}

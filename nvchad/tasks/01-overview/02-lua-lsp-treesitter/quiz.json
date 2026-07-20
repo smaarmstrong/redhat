@@ -1,0 +1,90 @@
+{
+  "source": "NvChad - Overview: the technologies behind the IDE: Lua, the Language Server Protocol, tree-sitter",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "The name 'Lua' comes from the Portuguese word meaning...",
+      "options": [
+        "moon",
+        "light",
+        "fast",
+        "star"
+      ],
+      "answer": 0,
+      "why": "Lua means 'moon' in Portuguese; it was developed in Brazil."
+    },
+    {
+      "type": "mcq",
+      "q": "How is Lua code actually executed?",
+      "options": [
+        "The interpreter compiles it to bytecode, which the Lua virtual machine runs",
+        "It is interpreted line-by-line straight from the .lua file",
+        "It is compiled to native machine code by GCC",
+        "It runs inside a web browser"
+      ],
+      "answer": 0,
+      "why": "Unlike Python, Lua compiles to bytecode run by the Lua VM."
+    },
+    {
+      "type": "mcq",
+      "q": "Lua is most often used as...",
+      "options": [
+        "an embedded/integrated scripting language inside other programs",
+        "a stand-alone application language",
+        "a markup language",
+        "a database engine"
+      ],
+      "answer": 0,
+      "why": "Lua is rarely stand-alone; it is embedded (games, Nmap, ModSecurity, etc.)."
+    },
+    {
+      "type": "mcq",
+      "q": "Under which license is Lua distributed?",
+      "options": [
+        "MIT",
+        "GPLv3",
+        "CC BY-SA",
+        "Apache 2.0"
+      ],
+      "answer": 0,
+      "why": "Lua is free/open-source under the permissive MIT license."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the Language Server Protocol (LSP)?",
+      "options": [
+        "A standard so one language server can give autocomplete/goto-definition to many editors",
+        "A network firewall protocol",
+        "a Lua package manager",
+        "a syntax-theme file format"
+      ],
+      "answer": 0,
+      "why": "LSP standardizes tool<->server communication so servers are reusable across editors."
+    },
+    {
+      "type": "mcq",
+      "q": "What does tree-sitter do?",
+      "options": [
+        "Parses source into a syntax tree and updates it incrementally on each change",
+        "Installs language servers",
+        "Manages git repositories",
+        "Renders Markdown to HTML"
+      ],
+      "answer": 0,
+      "why": "Tree-sitter is a parser generator plus incremental parsing library."
+    },
+    {
+      "type": "mcq",
+      "q": "tree-sitter helps improve which of these?",
+      "options": [
+        "syntax highlighting, code navigation, and refactoring",
+        "disk backups",
+        "network throughput",
+        "font rendering"
+      ],
+      "answer": 0,
+      "why": "A syntax tree lets the editor manipulate code structure intelligently."
+    }
+  ]
+}

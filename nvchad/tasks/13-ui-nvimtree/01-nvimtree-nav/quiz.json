@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - NvChad UI: NvimTree: opening the explorer, moving between windows, and tree navigation keys",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which plugin provides NvChad's file explorer?",
+      "options": [
+        "kyazdani42/nvim-tree.lua",
+        "telescope.nvim",
+        "neo-tree.nvim",
+        "plenary.nvim"
+      ],
+      "answer": 0,
+      "why": "nvim-tree.lua is the file explorer."
+    },
+    {
+      "type": "mcq",
+      "q": "Which combination opens/closes NvimTree, and in which mode?",
+      "options": [
+        "Ctrl + n, available only in NORMAL mode",
+        "Space + e, in INSERT mode",
+        "Ctrl + t, in any mode",
+        "F2, in VISUAL mode"
+      ],
+      "answer": 0,
+      "why": "Ctrl+n toggles NvimTree and only works in NORMAL mode."
+    },
+    {
+      "type": "mcq",
+      "q": "To move between the explorer window and the editor window you use...",
+      "options": [
+        "Ctrl + h (left) and Ctrl + l (right)",
+        "Ctrl + j / Ctrl + k",
+        "Tab / Shift+Tab",
+        "the arrow keys only"
+      ],
+      "answer": 0,
+      "why": "Ctrl+h and Ctrl+l switch windows left/right."
+    },
+    {
+      "type": "mcq",
+      "q": "In NvimTree, which key toggles showing hidden (dotfile) entries?",
+      "options": [
+        "H (hide)",
+        "h",
+        "Ctrl+h",
+        "the dot key"
+      ],
+      "answer": 0,
+      "why": "Capital H hides/shows dotfiles."
+    },
+    {
+      "type": "mcq",
+      "q": "Which keys expand the whole tree and collapse it again?",
+      "options": [
+        "E (expand_all), W (collapse_all)",
+        "e / w",
+        "+ / -",
+        "Ctrl+e / Ctrl+w"
+      ],
+      "answer": 0,
+      "why": "E expands the entire tree; W collapses it."
+    },
+    {
+      "type": "mcq",
+      "q": "The f key starts interactive search, but it is confined to...",
+      "options": [
+        "the folder NvimTree is currently in (open the whole tree with E first for a global search)",
+        "the whole workspace always",
+        "only the selected file",
+        "the git repo only"
+      ],
+      "answer": 0,
+      "why": "Search stays in the current folder unless you E-expand first."
+    },
+    {
+      "type": "mcq",
+      "q": "NvChad's default mapping to move the cursor into the file tree (focus it) is...",
+      "options": [
+        "Space + e (:NvimTreeFocus)",
+        "Ctrl + n",
+        "Space + f",
+        ":focus tree"
+      ],
+      "answer": 0,
+      "why": "<leader>e (Space+e) focuses the tree via :NvimTreeFocus."
+    },
+    {
+      "type": "mcq",
+      "q": "Navigating with > and < is confined to the current folder; which key returns you up to the workspace?",
+      "options": [
+        "Ctrl + p (parent directory)",
+        "Backspace (BS)",
+        "Ctrl + u",
+        "q"
+      ],
+      "answer": 0,
+      "why": "Ctrl+p goes up to the folder you opened the editor from (the workspace)."
+    }
+  ]
+}

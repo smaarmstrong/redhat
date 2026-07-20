@@ -1,0 +1,8 @@
+{
+  "title": "Lua, LSP and tree-sitter",
+  "domain": "NvChad",
+  "objective": "NvChad - Overview: the technologies behind the IDE: Lua, the Language Server Protocol, tree-sitter",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,98 @@
+{
+  "source": "NvChad - Using vale in NvChad: the .vale.ini file, vale sync, styles, and wiring vale into lint.lua",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where must the .vale.ini file live?",
+      "options": [
+        "In the root of your home folder (~/)",
+        "In ~/.config/nvim",
+        "Next to each markdown file",
+        "In /etc"
+      ],
+      "answer": 0,
+      "why": "The .vale.ini goes in your home root."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command generates the 'styles' directory?",
+      "options": [
+        "vale sync",
+        "vale init",
+        "vale build",
+        "vale styles"
+      ],
+      "answer": 0,
+      "why": "vale sync downloads the styles defined in .vale.ini."
+    },
+    {
+      "type": "cmd",
+      "q": "From the vale binary's directory, what command generates the styles folder?",
+      "answers": [
+        "./vale sync"
+      ],
+      "why": "Run ./vale sync from the mason packages/vale directory."
+    },
+    {
+      "type": "mcq",
+      "q": "Which base and supplementary styles does the guide choose?",
+      "options": [
+        "Red Hat Documentation Style Guide, plus alex",
+        "Google plus Microsoft",
+        "Vale plus write-good",
+        "PEP8 plus black"
+      ],
+      "answer": 0,
+      "why": "Red Hat as base, alex as the optional supplementary style."
+    },
+    {
+      "type": "mcq",
+      "q": "The optional 'alex' style helps catch...",
+      "options": [
+        "gendered, polarizing, or race-related wording",
+        "spelling mistakes only",
+        "broken links",
+        "code syntax errors"
+      ],
+      "answer": 0,
+      "why": "alex flags insensitive or exclusionary language."
+    },
+    {
+      "type": "mcq",
+      "q": "To hide the styles folder, which .vale.ini option do you change?",
+      "options": [
+        "StylesPath (e.g. to .vale_styles)",
+        "MinAlertLevel",
+        "BasedOnStyles",
+        "Vocab"
+      ],
+      "answer": 0,
+      "why": "Set StylesPath to a hidden name like .vale_styles."
+    },
+    {
+      "type": "mcq",
+      "q": "The final step that actually enables vale for markdown is...",
+      "options": [
+        "adding \"vale\" to the markdown linters in lua/configs/lint.lua",
+        "rebooting the machine",
+        "editing /etc/vale.conf",
+        "running dnf install vale"
+      ],
+      "answer": 0,
+      "why": "Add vale to markdown = { ... } in configs/lint.lua."
+    },
+    {
+      "type": "mcq",
+      "q": "When does vale check a newly created (not yet saved) file?",
+      "options": [
+        "When you leave INSERT mode (on write / BufWritePost), not while inserting",
+        "On every keystroke",
+        "Never",
+        "Only on :checkhealth"
+      ],
+      "answer": 0,
+      "why": "Linting runs on BufWritePost, keeping insert mode uncluttered."
+    }
+  ]
+}

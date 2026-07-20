@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - NvChad UI: Plugins Manager: lazy.nvim's role, checkhealth, and inserting/removing a plugin",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which plugin manages plugins in NvChad 2.0?",
+      "options": [
+        "folke/lazy.nvim",
+        "packer.nvim",
+        "vim-plug",
+        "mason.nvim"
+      ],
+      "answer": 0,
+      "why": "lazy.nvim is installed during the bootstrap and manages all plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "A key startup benefit of lazy.nvim is that it...",
+      "options": [
+        "automatically checks for and installs missing plugins",
+        "disables all plugins",
+        "formats your code",
+        "opens a browser"
+      ],
+      "answer": 0,
+      "why": "Missing plugins are auto-installed, handy when moving a config to a new machine."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command runs lazy.nvim's environment health check?",
+      "options": [
+        ":checkhealth lazy",
+        ":Lazy doctor",
+        ":health",
+        ":lazy check"
+      ],
+      "answer": 0,
+      "why": ":checkhealth lazy reports git, package managers and warnings."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you add a NEW plugin?",
+      "options": [
+        "Manually edit lua/plugins/init.lua",
+        "Run :Lazy add",
+        "Click Add in the UI",
+        "Edit lazy-lock.json directly"
+      ],
+      "answer": 0,
+      "why": "New plugins are added by editing lua/plugins/init.lua."
+    },
+    {
+      "type": "mcq",
+      "q": "After you save a changed plugins file, lazy.nvim shows...",
+      "options": [
+        "a 'Config Change Detected. Reloading...' prompt",
+        "an error",
+        "nothing at all",
+        "a reboot request"
+      ],
+      "answer": 0,
+      "why": "Answer yes to reload without leaving the editor."
+    },
+    {
+      "type": "mcq",
+      "q": "In the :Lazy interface, which key installs a recognized plugin?",
+      "options": [
+        "I",
+        "i",
+        "A",
+        "S"
+      ],
+      "answer": 0,
+      "why": "Press capital I to install."
+    },
+    {
+      "type": "mcq",
+      "q": "To remove a plugin you delete its block from init.lua, then in :Lazy press...",
+      "options": [
+        "X",
+        "D",
+        "R",
+        "d"
+      ],
+      "answer": 0,
+      "why": "Removal (cleaning the folder) is done with X."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you open lazy.nvim's inline help?",
+      "options": [
+        ":Lazy help (or ? in the interface)",
+        ":help lazy only",
+        "F1",
+        ":Lazy man"
+      ],
+      "answer": 0,
+      "why": ":Lazy help or ? shows navigation and controls."
+    }
+  ]
+}

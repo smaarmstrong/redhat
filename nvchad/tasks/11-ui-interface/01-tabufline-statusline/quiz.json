@@ -1,0 +1,90 @@
+{
+  "source": "NvChad - NvChad UI: NvChad Interface: the top buffer bar, buffer status icons, splits and the bottom status line",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the top bar in NvChad called, and what does it do?",
+      "options": [
+        "Tabufline; it manages open buffers",
+        "Statusline; it shows modes",
+        "Winbar; it shows git",
+        "Tabline; it shows themes"
+      ],
+      "answer": 0,
+      "why": "The Tabufline manages open buffers at the top."
+    },
+    {
+      "type": "mcq",
+      "q": "The Tabufline appears...",
+      "options": [
+        "only when you have more than one file open",
+        "always",
+        "never in NORMAL mode",
+        "only in INSERT mode"
+      ],
+      "answer": 0,
+      "why": "It only shows with more than one buffer open."
+    },
+    {
+      "type": "mcq",
+      "q": "In a buffer's status icon, what do a red x and a green dot mean?",
+      "options": [
+        "red x = file is saved (safe to close); green dot = unsaved changes",
+        "red x = an error; green dot = ok",
+        "red x = unsaved; green dot = saved",
+        "both mean the file is modified"
+      ],
+      "answer": 0,
+      "why": "Red x means saved; green dot means it needs saving."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you work on two files side by side?",
+      "options": [
+        "Split the buffer with :vsplit and pick the second file in the tabufline",
+        "Use :tabnew",
+        "Open two separate terminals",
+        "Use :diffthis"
+      ],
+      "answer": 0,
+      "why": ":vsplit then selecting the other file gives side-by-side editing."
+    },
+    {
+      "type": "mcq",
+      "q": "Which are the valid editor states shown in the Statusline?",
+      "options": [
+        "NORMAL, INSERT, COMMAND, VISUAL",
+        "READ, WRITE, EXEC",
+        "EDIT, SAVE, QUIT",
+        "ON, OFF, IDLE"
+      ],
+      "answer": 0,
+      "why": "Neovim's modes: NORMAL, INSERT, COMMAND, VISUAL."
+    },
+    {
+      "type": "mcq",
+      "q": "On the right, the statusline shows the folder you opened from, which for LSP is...",
+      "options": [
+        "the workspace (root) evaluated during diagnostics",
+        "the git remote URL",
+        "the theme name",
+        "the swap file path"
+      ],
+      "answer": 0,
+      "why": "That folder is the LSP workspace used for diagnostics."
+    },
+    {
+      "type": "mcq",
+      "q": "Git status indicators in the statusline are provided by...",
+      "options": [
+        "gitsigns.nvim",
+        "lazygit",
+        "telescope",
+        "conform"
+      ],
+      "answer": 0,
+      "why": "lewis6991/gitsigns.nvim feeds the git status."
+    }
+  ]
+}

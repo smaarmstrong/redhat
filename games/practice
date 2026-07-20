@@ -38,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync", "incus", "sag", "security"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash", "rsync", "incus", "sag", "security", "nvchad"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -213,6 +213,7 @@ GUIDE_BASE = {
     "incus": "https://docs.rockylinux.org/books/incus_server",
     "sag": "https://docs.rockylinux.org/books/sed_awk_grep",
     "security": "https://docs.rockylinux.org/books/security_enhancements",
+    "nvchad": "https://docs.rockylinux.org/books/nvchad",
 }
 GUIDE_PAGES = {
     "rocky": {
@@ -295,6 +296,30 @@ GUIDE_PAGES = {
     # New book, only the PAM chapter published so far (its own number is 18).
     "security": {
         "18-about-pam": "18-about-pam",
+    },
+    # NvChad (Neovim as an IDE) — chapter dir -> nvchad book slug. The book is not
+    # chaptered; dirs follow the sidebar's reading order. 01-overview is the book
+    # ROOT (empty slug), which has no standalone page path, so it maps to "" -- the
+    # key satisfies quizcheck while guide_url() returns None (no broken link); that
+    # quiz's prompt.md carries the book URL in prose. The NvChad UI and Plugins
+    # sub-sections keep their nested slugs (dir/page).
+    "nvchad": {
+        "01-overview": "",
+        "02-additional-software": "additional_software",
+        "03-install-neovim": "install_nvim",
+        "04-install-nvchad": "install_nvchad",
+        "05-example-config": "template_chadrc",
+        "06-nerd-fonts": "nerd_fonts",
+        "07-vale": "vale_nvchad",
+        "08-marksman": "marksman",
+        "09-ui-builtin-plugins": "nvchad_ui/builtin_plugins",
+        "10-ui-plugins-manager": "nvchad_ui/plugins_manager",
+        "11-ui-interface": "nvchad_ui/nvchad_ui",
+        "12-ui-using-nvchad": "nvchad_ui/using_nvchad",
+        "13-ui-nvimtree": "nvchad_ui/nvimtree",
+        "14-plugins-overview": "plugins",
+        "15-plugins-md-preview": "plugins/md_preview",
+        "16-plugins-projectmgr": "plugins/projectmgr",
     },
 }
 

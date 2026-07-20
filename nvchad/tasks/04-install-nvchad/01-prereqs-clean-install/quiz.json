@@ -1,0 +1,78 @@
+{
+  "source": "NvChad - Install NvChad: the requirements and backing up / removing an old Neovim config",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What minimum Neovim version does this page require for NvChad?",
+      "options": [
+        "0.10.0",
+        "0.5.0",
+        "0.9.5",
+        "2.5.0"
+      ],
+      "answer": 0,
+      "why": "The prerequisites list Neovim 0.10.0."
+    },
+    {
+      "type": "mcq",
+      "q": "The Nerd Font you set in your terminal emulator must...",
+      "options": [
+        "not end with the word 'Mono'",
+        "always end with 'Mono'",
+        "be a serif font",
+        "be exactly size 8"
+      ],
+      "answer": 0,
+      "why": "Use e.g. 'Iosevka Nerd Font', not 'Iosevka Nerd Font Mono'."
+    },
+    {
+      "type": "mcq",
+      "q": "Besides a Nerd Font and Neovim, which build tools are required?",
+      "options": [
+        "GCC and Make",
+        "Java and Maven",
+        "Node and npm",
+        "Python and pip"
+      ],
+      "answer": 0,
+      "why": "GCC and Make are needed to build components."
+    },
+    {
+      "type": "mcq",
+      "q": "Which three folders does Neovim create for your files?",
+      "options": [
+        "~/.config/nvim, ~/.local/share/nvim, ~/.cache/nvim",
+        "~/.nvim, /etc/nvim, /var/nvim",
+        "only ~/.config/nvim",
+        "~/.vim, ~/.viminfo, ~/.vimrc"
+      ],
+      "answer": 0,
+      "why": "Those three folders hold config, data and cache respectively."
+    },
+    {
+      "type": "mcq",
+      "q": "Before a clean install you should first...",
+      "options": [
+        "back up the existing config folders, then delete them",
+        "delete them without backing up",
+        "rename nvim to vim",
+        "reinstall the operating system"
+      ],
+      "answer": 0,
+      "why": "Copy the three folders to a backup, then rm -rf them for a clean slate."
+    },
+    {
+      "type": "mcq",
+      "q": "In the prerequisites, ripgrep is...",
+      "options": [
+        "optional (needed for Telescope grep searches)",
+        "mandatory",
+        "installed by NvChad automatically",
+        "a replacement for git"
+      ],
+      "answer": 0,
+      "why": "Ripgrep is optional but enables Telescope grep."
+    }
+  ]
+}

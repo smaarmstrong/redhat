@@ -1,0 +1,8 @@
+{
+  "title": "Installing and integrating Marksman",
+  "domain": "Marksman",
+  "objective": "NvChad - Marksman: what Marksman is, installing it via Mason and wiring it into lspconfig",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

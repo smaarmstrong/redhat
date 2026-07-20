@@ -1,0 +1,8 @@
+{
+  "title": "Tabufline and Statusline",
+  "domain": "UI",
+  "objective": "NvChad - NvChad UI: NvChad Interface: the top buffer bar, buffer status icons, splits and the bottom status line",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

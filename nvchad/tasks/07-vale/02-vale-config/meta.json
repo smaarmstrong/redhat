@@ -1,0 +1,8 @@
+{
+  "title": "Configuring and enabling vale",
+  "domain": "vale",
+  "objective": "NvChad - Using vale in NvChad: the .vale.ini file, vale sync, styles, and wiring vale into lint.lua",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

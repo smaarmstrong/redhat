@@ -1,0 +1,8 @@
+{
+  "title": "The config structure and main keys",
+  "domain": "Install",
+  "objective": "NvChad - Install NvChad: the files under ~/.config/nvim and the default key mappings",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

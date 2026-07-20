@@ -1,0 +1,90 @@
+{
+  "source": "NvChad - Install Neovim: Neovim's origin, features and the built-in tutorial",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Neovim is...",
+      "options": [
+        "a fork of the Vim editor",
+        "a fork of Emacs",
+        "written from scratch in Rust",
+        "a VS Code extension"
+      ],
+      "answer": 0,
+      "why": "Neovim forked from Vim in 2014."
+    },
+    {
+      "type": "mcq",
+      "q": "Why was Neovim created (2014)?",
+      "options": [
+        "Mainly because Vim lacked asynchronous job support at the time",
+        "To drop all Vim keybindings",
+        "To become a GUI-only editor",
+        "To replace Lua with Python"
+      ],
+      "answer": 0,
+      "why": "Async job support was the main early motivation."
+    },
+    {
+      "type": "mcq",
+      "q": "Which language did Neovim choose for embedding/configuration?",
+      "options": [
+        "Lua",
+        "Vimscript only",
+        "Python",
+        "Ruby"
+      ],
+      "answer": 0,
+      "why": "Lua (via LuaJIT) is fast and easy to embed."
+    },
+    {
+      "type": "mcq",
+      "q": "From which Neovim version are Treesitter and LSP support included?",
+      "options": [
+        "0.5",
+        "0.1",
+        "0.9",
+        "2.5"
+      ],
+      "answer": 0,
+      "why": "Since version 0.5, reducing the plugins needed for advanced editing."
+    },
+    {
+      "type": "mcq",
+      "q": "A key strength of Neovim is that its configuration...",
+      "options": [
+        "is contained in a single file that can be version-controlled and synced across installs",
+        "cannot be changed",
+        "is stored in a binary format",
+        "must be edited in a GUI"
+      ],
+      "answer": 0,
+      "why": "One config file distributes cleanly via git across machines."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command opens the interactive tutorial for learning Neovim?",
+      "options": [
+        ":Tutor",
+        ":help learn",
+        ":teach",
+        ":Tutorial"
+      ],
+      "answer": 0,
+      "why": ":Tutor opens a file you can read and practice in."
+    },
+    {
+      "type": "mcq",
+      "q": "Compared with Vim, Neovim's development model is...",
+      "options": [
+        "more open community development",
+        "closed source",
+        "controlled solely by one creator",
+        "abandoned"
+      ],
+      "answer": 0,
+      "why": "Neovim has more open community development than Vim."
+    }
+  ]
+}
