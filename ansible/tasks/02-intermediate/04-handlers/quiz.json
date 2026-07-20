@@ -1,0 +1,66 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Intermediate: Managing changes: the handlers",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What triggers a handler?",
+      "options": [
+        "A notify from a task that reported a change",
+        "The setup module running",
+        "A when statement",
+        "Loading the inventory"
+      ],
+      "answer": 0,
+      "why": "Tasks notify handlers; a handler reacts to a change, e.g. restarting a service."
+    },
+    {
+      "type": "mcq",
+      "q": "When does a notified handler actually run?",
+      "options": [
+        "After all the tasks in the block have completed",
+        "Immediately, the moment it is notified",
+        "Before the play starts",
+        "Never, unless forced with a flag"
+      ],
+      "answer": 0,
+      "why": "Handlers wait until all tasks finish, then run."
+    },
+    {
+      "type": "mcq",
+      "q": "If several tasks notify the same handler, how many times does it run?",
+      "options": [
+        "Once",
+        "Once per notifying task",
+        "Twice",
+        "Not at all"
+      ],
+      "answer": 0,
+      "why": "A handler runs only once even if notified multiple times, avoiding needless restarts."
+    },
+    {
+      "type": "mcq",
+      "q": "Since Ansible 2.2, how can several handlers respond to one notification topic?",
+      "options": [
+        "With the `listen` keyword, e.g. listen: \"web services restart\"",
+        "With a when clause",
+        "With register",
+        "With a loop"
+      ],
+      "answer": 0,
+      "why": "Handlers can listen to a shared topic; notifying that topic runs every listener."
+    },
+    {
+      "type": "mcq",
+      "q": "A module is idempotent, so what lets a playbook fire a handler?",
+      "options": [
+        "The task detected a significant change on the remote system",
+        "It fires on every single run regardless",
+        "A manual flag passed each run",
+        "The exit code being 3"
+      ],
+      "answer": 0,
+      "why": "When a task reports a change, its notify triggers the handler."
+    }
+  ]
+}

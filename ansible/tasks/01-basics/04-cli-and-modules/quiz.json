@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: The ansible command line and modules",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the general form of the ansible ad-hoc command?",
+      "options": [
+        "ansible <host-pattern> [-m module_name] [-a args] [options]",
+        "ansible [options] playbook.yml",
+        "ansible-playbook <host> -m module",
+        "ansible run <module> on <host>"
+      ],
+      "answer": 0,
+      "why": "The ad-hoc command runs a module against a host pattern with optional args and options."
+    },
+    {
+      "type": "cmd",
+      "q": "List the hosts belonging to the rocky8 group.",
+      "answers": [
+        "ansible rocky8 --list-hosts"
+      ],
+      "why": "--list-hosts shows which hosts a pattern matches, without doing anything to them."
+    },
+    {
+      "type": "cmd",
+      "q": "Ping every host in the rocky8 group using the ping module.",
+      "answers": [
+        "ansible rocky8 -m ping"
+      ],
+      "why": "-m ping runs the ping module and expects a pong back."
+    },
+    {
+      "type": "cmd",
+      "q": "Display the gathered facts of the rocky8 group.",
+      "answers": [
+        "ansible rocky8 -m setup"
+      ],
+      "why": "The setup module returns the host's facts."
+    },
+    {
+      "type": "mcq",
+      "q": "Which option runs an ad-hoc command with root privileges and prompts for the password?",
+      "options": [
+        "-b -K",
+        "-m become",
+        "--root",
+        "-a sudo"
+      ],
+      "answer": 0,
+      "why": "-b becomes root (privilege escalation) and -K asks for the escalation password."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -C option do?",
+      "options": [
+        "Simulation (check mode): reports what would change without changing anything",
+        "Opens the SSH connection",
+        "Copies a file to the target",
+        "Clears the fact cache"
+      ],
+      "answer": 0,
+      "why": "-C is check/simulation mode: it tests the target without making changes."
+    },
+    {
+      "type": "mcq",
+      "q": "Rather than reaching for the shell module, the docs advise you to...",
+      "options": [
+        "Look for a dedicated module that fits the need",
+        "Always use the command module instead",
+        "Write and copy a bash script",
+        "Connect with raw SSH"
+      ],
+      "answer": 0,
+      "why": "There is a module for almost every need; prefer it over the generic shell module."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module installs packages on a Rocky/RHEL target?",
+      "options": [
+        "dnf",
+        "apt",
+        "copy",
+        "systemd"
+      ],
+      "answer": 0,
+      "why": "dnf (or yum) manages RPM packages; apt is the Debian family, copy handles files, systemd manages services."
+    },
+    {
+      "type": "mcq",
+      "q": "After installing httpd with the dnf module, which module starts the service?",
+      "options": [
+        "systemd (name=httpd state=started)",
+        "dnf",
+        "get_url",
+        "copy"
+      ],
+      "answer": 0,
+      "why": "The systemd module manages service state; name=httpd state=started starts it."
+    }
+  ]
+}

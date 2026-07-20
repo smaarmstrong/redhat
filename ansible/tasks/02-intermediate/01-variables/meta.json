@@ -1,0 +1,8 @@
+{
+  "title": "Variables and registering results",
+  "domain": "Ansible Intermediate",
+  "objective": "Learning Ansible with Rocky - Ansible Intermediate: Variables, external files, and register",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

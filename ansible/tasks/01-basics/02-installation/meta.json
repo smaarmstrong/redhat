@@ -1,0 +1,8 @@
+{
+  "title": "Installing Ansible (EPEL and pip)",
+  "domain": "Ansible Basics",
+  "objective": "Learning Ansible with Rocky - Ansible Basics: Installation on the management server",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

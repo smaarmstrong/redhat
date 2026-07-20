@@ -88,24 +88,25 @@ def main():
         if m.get("kind") == "quiz" and not (meta.parent / "quiz.json").exists():
             err(str(meta.parent.relative_to(root)), 'kind "quiz" but no quiz.json')
 
-    # Every rocky quiz chapter must have an online-guide URL in the runner's map
-    # (games/practice ROCKY_GUIDE_PAGES) so the in-quiz "guide:" line never goes
-    # silently missing as new chapters are added. Reuse that map as the single
-    # source of truth rather than duplicating it here.
+    # Every quiz chapter on a guide-backed track must have an online-guide URL in
+    # the runner's map (games/practice GUIDE_PAGES) so the in-quiz "guide:" line
+    # never goes silently missing as new chapters are added. Reuse that map as the
+    # single source of truth rather than duplicating it here.
     try:
         import importlib.machinery
         import importlib.util
         _loader = importlib.machinery.SourceFileLoader("practice", str(root / "games" / "practice"))
         _practice = importlib.util.module_from_spec(importlib.util.spec_from_loader("practice", _loader))
         _loader.exec_module(_practice)
-        guide_pages = _practice.ROCKY_GUIDE_PAGES
+        guide_pages = _practice.GUIDE_PAGES
     except Exception as e:  # practice should always import cleanly
         guide_pages = None
-        err("games/practice", f"could not load ROCKY_GUIDE_PAGES to validate guide links ({e})")
+        err("games/practice", f"could not load GUIDE_PAGES to validate guide links ({e})")
     if guide_pages is not None:
-        for ch in sorted({q.parent.parent.name for q in root.glob("rocky/tasks/*/*/quiz.json")}):
-            if ch not in guide_pages:
-                err(f"rocky/tasks/{ch}", "no online-guide URL — add it to games/practice ROCKY_GUIDE_PAGES")
+        for track, pages in guide_pages.items():
+            for ch in sorted({q.parent.parent.name for q in root.glob(f"{track}/tasks/*/*/quiz.json")}):
+                if ch not in pages:
+                    err(f"{track}/tasks/{ch}", "no online-guide URL — add it to games/practice GUIDE_PAGES")
 
     print(f"quizcheck: {len(quizzes)} quiz task(s), {nq} question(s)")
     if errors:

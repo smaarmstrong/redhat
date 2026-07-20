@@ -1,0 +1,103 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Basics: Playbooks, collections, and validation",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What format are Ansible playbooks written in?",
+      "options": [
+        "YAML",
+        "INI",
+        "JSON",
+        "XML"
+      ],
+      "answer": 0,
+      "why": "Playbooks are YAML files grouping a set of tasks."
+    },
+    {
+      "type": "cmd",
+      "q": "Run a playbook named test.yml.",
+      "answers": [
+        "ansible-playbook test.yml"
+      ],
+      "why": "ansible-playbook <file.yml> executes a playbook."
+    },
+    {
+      "type": "mcq",
+      "q": "In a play, what does `become: true` do?",
+      "options": [
+        "Runs the tasks as another user (root by default) via privilege escalation",
+        "Enables verbose output",
+        "Skips fact gathering",
+        "Marks the play as a handler"
+      ],
+      "answer": 0,
+      "why": "become escalates privilege; become_user sets which user (root by default)."
+    },
+    {
+      "type": "mcq",
+      "q": "ansible-playbook exits 0. Besides success, what else can that mean (a documented gotcha)?",
+      "options": [
+        "No host matched the target",
+        "One host failed",
+        "The run was interrupted by the user",
+        "There was a syntax error"
+      ],
+      "answer": 0,
+      "why": "Ansible returns OK/0 even when no host matches your target, which can mislead you."
+    },
+    {
+      "type": "mcq",
+      "q": "Which exit code means \"one or more hosts are unreachable\"?",
+      "options": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "answer": 0,
+      "why": "0 ok/no match, 1 error, 2 hosts failing, 3 hosts unreachable, 4 parse error."
+    },
+    {
+      "type": "mcq",
+      "q": "Which collection provides the default built-in modules (so dnf may be written ansible.builtin.dnf)?",
+      "options": [
+        "ansible.builtin",
+        "ansible.core",
+        "community.general",
+        "ansible.default"
+      ],
+      "answer": 0,
+      "why": "Default modules live in ansible.builtin; other collections are installed separately."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the collection community.mysql with ansible-galaxy.",
+      "answers": [
+        "ansible-galaxy collection install community.mysql"
+      ],
+      "why": "ansible-galaxy collection install <name> fetches a collection of roles/modules/plugins."
+    },
+    {
+      "type": "cmd",
+      "q": "Check the syntax of a playbook play.yml without running it.",
+      "answers": [
+        "ansible-playbook --syntax-check play.yml",
+        "ansible-playbook play.yml --syntax-check"
+      ],
+      "why": "--syntax-check validates the playbook without executing any task."
+    },
+    {
+      "type": "mcq",
+      "q": "Which tool does the guide use to lint the YAML of your playbooks?",
+      "options": [
+        "yamllint",
+        "jsonlint",
+        "yq",
+        "shellcheck"
+      ],
+      "answer": 0,
+      "why": "dnf install yamllint, then yamllint test.yml checks the YAML syntax."
+    }
+  ]
+}

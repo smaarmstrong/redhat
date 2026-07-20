@@ -1,0 +1,8 @@
+{
+  "title": "Looping over lists and dictionaries",
+  "domain": "Ansible Intermediate",
+  "objective": "Learning Ansible with Rocky - Ansible Intermediate: Loop management",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

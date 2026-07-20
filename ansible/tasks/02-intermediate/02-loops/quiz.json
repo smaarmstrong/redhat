@@ -1,0 +1,78 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Intermediate: Loop management",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which keyword iterates a task over a list?",
+      "options": [
+        "loop",
+        "with_each",
+        "foreach",
+        "repeat"
+      ],
+      "answer": 0,
+      "why": "loop iterates a task; each value is exposed as item."
+    },
+    {
+      "type": "mcq",
+      "q": "Inside a loop, which variable holds the current value?",
+      "options": [
+        "item",
+        "loop_var",
+        "current",
+        "this"
+      ],
+      "answer": 0,
+      "why": "At each iteration the value of the list is stored in item."
+    },
+    {
+      "type": "mcq",
+      "q": "To loop over a dictionary you first convert it. Which Jinja filter does that?",
+      "options": [
+        "dict2items",
+        "items2dict",
+        "to_list",
+        "dictsort"
+      ],
+      "answer": 0,
+      "why": "| dict2items turns a dict into a list of {key, value} entries you can loop over."
+    },
+    {
+      "type": "mcq",
+      "q": "After `loop: \"{{ users | dict2items }}\"`, how do you read each entry's key and value?",
+      "options": [
+        "item.key and item.value",
+        "item[0] and item[1]",
+        "key and value",
+        "item.name and item.data"
+      ],
+      "answer": 0,
+      "why": "dict2items exposes item.key (the dictionary key) and item.value (its value)."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you loop over the values of a dict variable 'service' as a list?",
+      "options": [
+        "loop: \"{{ service.values() | list }}\"",
+        "loop: \"{{ service | values }}\"",
+        "loop: \"{{ list(service) }}\"",
+        "loop: \"{{ service[] }}\""
+      ],
+      "answer": 0,
+      "why": "service.values() piped to the list filter yields a list of the values."
+    },
+    {
+      "type": "mcq",
+      "q": "You can iterate a registered command's output with...",
+      "options": [
+        "loop: \"{{ homes.stdout_lines }}\"",
+        "loop: \"{{ homes }}\"",
+        "loop: \"{{ homes.stdout }}\"",
+        "with_register: homes"
+      ],
+      "answer": 0,
+      "why": "stdout_lines is a list, so it can be looped over directly."
+    }
+  ]
+}

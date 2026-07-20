@@ -1,0 +1,78 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Intermediate: Asynchronous tasks",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "By default, what happens to SSH connections while a playbook runs?",
+      "options": [
+        "They stay open while tasks execute on all nodes",
+        "They close after every task",
+        "They reconnect for each module",
+        "They are pooled on a central proxy"
+      ],
+      "answer": 0,
+      "why": "Connections remain open, which is a problem for long tasks or a rebooting host."
+    },
+    {
+      "type": "mcq",
+      "q": "Which situation does asynchronous mode address?",
+      "options": [
+        "A task longer than the SSH timeout, or a connection dropped mid-action (e.g. a reboot)",
+        "A YAML syntax error",
+        "A missing module",
+        "A typo in the inventory"
+      ],
+      "answer": 0,
+      "why": "async handles long-running tasks and interruptions such as reboots."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the `async` and `poll` keywords control?",
+      "options": [
+        "async = maximum execution time; poll = how often to check status",
+        "async = number of retries; poll = the SSH timeout only",
+        "Both set the SSH port",
+        "Both enable privilege escalation"
+      ],
+      "answer": 0,
+      "why": "async sets the max runtime; poll sets the status-check frequency (default 10s)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does setting `poll: 0` do?",
+      "options": [
+        "Fire-and-forget: start the task and continue without waiting for the result",
+        "Poll continuously with no pause",
+        "Disable the task",
+        "Wait forever for completion"
+      ],
+      "answer": 0,
+      "why": "poll: 0 runs the task and moves on without caring about the result."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module waits for a host's port 22 to become reachable again after a reboot?",
+      "options": [
+        "wait_for",
+        "pause",
+        "systemd",
+        "ping"
+      ],
+      "answer": 0,
+      "why": "wait_for (with host/port/state, delegate_to: localhost) waits for the port to come back."
+    },
+    {
+      "type": "mcq",
+      "q": "In the reboot example, why is `delegate_to: localhost` set on the wait_for task?",
+      "options": [
+        "The wait must run from the control node, since the target is rebooting",
+        "To reboot the control node too",
+        "To gather facts locally",
+        "To skip the task"
+      ],
+      "answer": 0,
+      "why": "The control node polls the rebooting host's port; running it on the target itself would fail."
+    }
+  ]
+}
