@@ -1,0 +1,102 @@
+{
+  "source": "Learning bash with Rocky - Data Entry and Manipulations: Arguments, positional variables, shift and set",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How are arguments passed to a script?",
+      "options": [
+        "After the script name, separated by spaces: ./script arg1 arg2",
+        "With a --args flag",
+        "Only via the read command",
+        "Inside the IFS variable"
+      ],
+      "answer": 0,
+      "why": "Arguments follow the command name, space-separated."
+    },
+    {
+      "type": "mcq",
+      "q": "What are positional variables?",
+      "options": [
+        "Variables holding the passed arguments in order ($1..$9, ${10}+ )",
+        "Environment variables",
+        "Loop counters",
+        "Return codes"
+      ],
+      "answer": 0,
+      "why": "Positional variables store the arguments by position."
+    },
+    {
+      "type": "mcq",
+      "q": "What does $0 contain?",
+      "options": [
+        "The name of the script as entered",
+        "The first argument",
+        "The number of arguments",
+        "All the arguments"
+      ],
+      "answer": 0,
+      "why": "$0 is the script name; $1..$9 are the arguments."
+    },
+    {
+      "type": "mcq",
+      "q": "What does $# contain?",
+      "options": [
+        "The number of arguments passed",
+        "The script name",
+        "The last argument",
+        "The process id"
+      ],
+      "answer": 0,
+      "why": "$# is the count of arguments."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between $* and $@?",
+      "options": [
+        "$* holds the args as one string \"$1 $2 $3\"; $@ holds them separately \"$1\" \"$2\" \"$3\"",
+        "They are identical",
+        "$@ is the count",
+        "$* is the script name"
+      ],
+      "answer": 0,
+      "why": "They differ in storage format; the difference becomes visible via the IFS separator."
+    },
+    {
+      "type": "mcq",
+      "q": "Can positional variables be assigned to (e.g. $1=\"x\")?",
+      "options": [
+        "No -- they are used like any variable but cannot be assigned",
+        "Yes, freely",
+        "Only $0 can",
+        "Only after export"
+      ],
+      "answer": 0,
+      "why": "Positional variables are read-only in that sense; unused ones exist but are empty."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `shift 2` do?",
+      "options": [
+        "Shifts the positional variables left by two, dropping the first two ($# and $* update)",
+        "Adds two arguments",
+        "Reverses the arguments",
+        "Skips two lines of input"
+      ],
+      "answer": 0,
+      "why": "shift moves positional variables to the left; $# and $* change accordingly."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `set one two three` do?",
+      "options": [
+        "Splits the values into positional variables: $1=one, $2=two, $3=three",
+        "Defines environment variables",
+        "Deletes variables",
+        "Enables shell options"
+      ],
+      "answer": 0,
+      "why": "set <values> populates the positional variables from a string."
+    }
+  ]
+}

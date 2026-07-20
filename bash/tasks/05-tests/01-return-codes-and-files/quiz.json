@@ -1,0 +1,102 @@
+{
+  "source": "Learning bash with Rocky - Tests: Return codes, exit, and testing files",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "By convention, a command's return code of 0 means...",
+      "options": [
+        "Success -- it ran correctly",
+        "Failure",
+        "Command not found",
+        "Permission denied"
+      ],
+      "answer": 0,
+      "why": "0 = ran correctly; a non-zero code signals a problem."
+    },
+    {
+      "type": "mcq",
+      "q": "Which special variable holds the return code of the last command?",
+      "options": [
+        "$?",
+        "$$",
+        "$@",
+        "$!"
+      ],
+      "answer": 0,
+      "why": "$? stores the exit/status code, updated after each command."
+    },
+    {
+      "type": "mcq",
+      "q": "Which return code does 'command not found' produce (per the examples)?",
+      "options": [
+        "127",
+        "0",
+        "1",
+        "2"
+      ],
+      "answer": 0,
+      "why": "A missing command returns 127."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you set a script's own return code?",
+      "options": [
+        "exit N (the exit command with a numeric argument, 0-255)",
+        "return N",
+        "$?=N",
+        "set -e"
+      ],
+      "answer": 0,
+      "why": "exit [n] ends the script with return code n."
+    },
+    {
+      "type": "mcq",
+      "q": "For a test, what do the return codes 0, 1 and 2 mean?",
+      "options": [
+        "0 = true, 1 = false, 2 = the test was not executed correctly",
+        "0 = false, 1 = true, 2 = error",
+        "All three mean error",
+        "Only 0 and 1 are used"
+      ],
+      "answer": 0,
+      "why": "$?=0 true, $?=1 false, $?=2 test not correctly executed."
+    },
+    {
+      "type": "mcq",
+      "q": "Which test option checks that a file exists and is a directory?",
+      "options": [
+        "-d",
+        "-e",
+        "-f",
+        "-x"
+      ],
+      "answer": 0,
+      "why": "-d = directory; -e = exists; -f = exists and is a regular file."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is the modern, more capable internal test syntax in bash?",
+      "options": [
+        "[[ ... ]]",
+        "the external test only",
+        "( ... )",
+        "{ ... }"
+      ],
+      "answer": 0,
+      "why": "[[ ]] is the bash built-in test, with more features than the external test / [ ]."
+    },
+    {
+      "type": "mcq",
+      "q": "Which operator tests whether file1 is newer than file2?",
+      "options": [
+        "-nt",
+        "-ot",
+        "-ef",
+        "-gt"
+      ],
+      "answer": 0,
+      "why": "-nt newer-than, -ot older-than, -ef same physical link."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "A practical application: variables with logs",
+  "domain": "Bash Appendix",
+  "objective": "Learning bash with Rocky - Appendix: Variables With Logs: Using variables to extract dated entries from a log and email them",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

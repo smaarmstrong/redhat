@@ -1,0 +1,114 @@
+{
+  "source": "Learning bash with Rocky - Data Entry and Manipulations: The read, cut, tr, basename and dirname commands",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which command reads user input into a variable?",
+      "options": [
+        "read",
+        "input",
+        "scan",
+        "get"
+      ],
+      "answer": 0,
+      "why": "read pauses the script and stores the typed input in a variable."
+    },
+    {
+      "type": "mcq",
+      "q": "Which read option displays a prompt message?",
+      "options": [
+        "-p",
+        "-n",
+        "-s",
+        "-d"
+      ],
+      "answer": 0,
+      "why": "read -p \"message\" name shows a prompt before reading."
+    },
+    {
+      "type": "mcq",
+      "q": "Which read option hides the input (e.g. for a password)?",
+      "options": [
+        "-s",
+        "-p",
+        "-n",
+        "-h"
+      ],
+      "answer": 0,
+      "why": "read -s hides what the user types."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `read -n5 name` do?",
+      "options": [
+        "Limits input to 5 characters and validates automatically (no Enter needed)",
+        "Waits 5 seconds",
+        "Reads 5 lines",
+        "Hides 5 characters"
+      ],
+      "answer": 0,
+      "why": "-n limits the number of characters and auto-validates once reached."
+    },
+    {
+      "type": "mcq",
+      "q": "Which system variable defines the field separator read uses to split words?",
+      "options": [
+        "IFS (Internal Field Separator)",
+        "FS",
+        "SEP",
+        "PS3"
+      ],
+      "answer": 0,
+      "why": "IFS defaults to space, tab and newline."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command isolates a column/field from a file or stream?",
+      "options": [
+        "cut",
+        "tr",
+        "sort",
+        "wc"
+      ],
+      "answer": 0,
+      "why": "cut isolates columns; often combined with grep via a pipe."
+    },
+    {
+      "type": "mcq",
+      "q": "In `cut -d: -f1 /etc/passwd`, what do -d and -f mean?",
+      "options": [
+        "-d sets the field delimiter (:); -f selects the field/column number",
+        "-d the field, -f the delimiter",
+        "-d a directory, -f a file",
+        "-d deletes, -f finds"
+      ],
+      "answer": 0,
+      "why": "-d is the separator, -f the column number (and -c selects character positions)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command converts a string, e.g. `tr -s \"o\"` to squeeze repeated o's to one?",
+      "options": [
+        "tr (-s squeeze, -d delete, -c complement)",
+        "cut",
+        "sed",
+        "paste"
+      ],
+      "answer": 0,
+      "why": "tr translates/squeezes/deletes characters; -s reduces the specified char to a single unit."
+    },
+    {
+      "type": "mcq",
+      "q": "For a path in $FILE, what do basename and dirname return?",
+      "options": [
+        "basename gives the filename, dirname gives the parent directory",
+        "basename the parent, dirname the filename",
+        "both give the filename",
+        "both give the parent"
+      ],
+      "answer": 0,
+      "why": "basename /usr/bin/passwd -> passwd; dirname /usr/bin/passwd -> /usr/bin."
+    }
+  ]
+}

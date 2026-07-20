@@ -1,0 +1,8 @@
+{
+  "title": "Defining and using variables",
+  "domain": "Bash Variables",
+  "objective": "Learning bash with Rocky - Using Variables: Storing information: creating, quoting, and referencing variables",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

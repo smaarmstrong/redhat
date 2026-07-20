@@ -1,0 +1,78 @@
+{
+  "source": "Learning bash with Rocky - Loops: while, until, and the exit/break/continue/true/false controls",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In any loop, the commands to repeat are placed between which words?",
+      "options": [
+        "do and done",
+        "then and fi",
+        "in and esac",
+        "begin and end"
+      ],
+      "answer": 0,
+      "why": "Loop bodies sit between do and done."
+    },
+    {
+      "type": "mcq",
+      "q": "A while loop runs its body while the evaluated command is...",
+      "options": [
+        "true ($? = 0)",
+        "false",
+        "always",
+        "never"
+      ],
+      "answer": 0,
+      "why": "while runs the body as long as the command returns true."
+    },
+    {
+      "type": "mcq",
+      "q": "An until loop runs its body while the command is...",
+      "options": [
+        "false ($? != 0); it stops when the command becomes true",
+        "true",
+        "always",
+        "never"
+      ],
+      "answer": 0,
+      "why": "until is the inverse of while."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command ends the whole script immediately (optionally with a return code)?",
+      "options": [
+        "exit [n]",
+        "break",
+        "continue",
+        "done"
+      ],
+      "answer": 0,
+      "why": "exit ends the script; the optional argument (0-255) sets the return code."
+    },
+    {
+      "type": "mcq",
+      "q": "In a loop, what do break and continue do?",
+      "options": [
+        "break leaves the loop; continue jumps to the next iteration",
+        "break restarts, continue exits",
+        "both exit the loop",
+        "both restart the loop"
+      ],
+      "answer": 0,
+      "why": "break goes to the first command after done; continue re-evaluates the loop."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `while true; do ...; done` create?",
+      "options": [
+        "An infinite loop (until a break or exit)",
+        "A loop that runs once",
+        "A loop that never runs",
+        "A syntax error"
+      ],
+      "answer": 0,
+      "why": "true always returns 0, so the loop repeats forever; false always returns non-zero."
+    }
+  ]
+}

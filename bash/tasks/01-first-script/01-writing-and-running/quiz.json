@@ -1,0 +1,95 @@
+{
+  "source": "Learning bash with Rocky - First Script: Writing a first script, the shebang, and running it",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which naming rules does the book give for a script?",
+      "options": [
+        "Alphanumeric only (no spaces/accents), a .sh extension, and not the name of an existing command",
+        "Any name works",
+        "It must start with a number",
+        "It must be all uppercase"
+      ],
+      "answer": 0,
+      "why": "Avoid existing command names, use only alphanumeric characters, and add the .sh extension."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the shebang?",
+      "options": [
+        "The first line, starting with #! followed by the path to the interpreter",
+        "A comment anywhere in the file",
+        "The last line of the script",
+        "A variable assignment"
+      ],
+      "answer": 0,
+      "why": "The shebang is the first line: #! then the path to the command interpreter."
+    },
+    {
+      "type": "mcq",
+      "q": "Which shebang does the book recommend for a bash script, and why?",
+      "options": [
+        "#!/usr/bin/env bash -- it increases portability (the interpreter is found wherever it lives)",
+        "#!/bin/bash -- it is shorter",
+        "#!bash -- it needs no path",
+        "# bash -- it is a comment"
+      ],
+      "answer": 0,
+      "why": "Using env locates the interpreter via PATH, so the script still works if bash lives elsewhere."
+    },
+    {
+      "type": "cmd",
+      "q": "Run the script hello-world.sh by passing it to the bash binary.",
+      "answers": [
+        "bash hello-world.sh"
+      ],
+      "why": "bash <script> runs the file through the interpreter without needing execute permission."
+    },
+    {
+      "type": "cmd",
+      "q": "Give the owner execute permission on ./hello-world.sh.",
+      "answers": [
+        "chmod u+x ./hello-world.sh",
+        "chmod u+x hello-world.sh"
+      ],
+      "why": "chmod u+x adds the execute right for the owner; you only do this once on a new script."
+    },
+    {
+      "type": "mcq",
+      "q": "After making it executable, how do you run a script that is in your current directory?",
+      "options": [
+        "./hello-world.sh",
+        "hello-world.sh",
+        "run hello-world.sh",
+        "exec hello-world.sh"
+      ],
+      "answer": 0,
+      "why": "You must prefix ./ (a path); the shell will not run a script in the current dir from a bare name."
+    },
+    {
+      "type": "mcq",
+      "q": "Why must you use ./ (or a full path) to run a script in the current directory?",
+      "options": [
+        "The interpreter refuses a bare name unless the directory is in your PATH",
+        "./ makes it run faster",
+        "./ is the shebang",
+        "It is purely optional"
+      ],
+      "answer": 0,
+      "why": "Without a path it is only found if placed in a PATH directory; otherwise use ./ or the full path."
+    },
+    {
+      "type": "mcq",
+      "q": "To use python instead of bash for a script, you change the shebang to...",
+      "options": [
+        "#!/usr/bin/env python",
+        "#!python3",
+        "leave it as bash",
+        "#!/usr/bin/python only"
+      ],
+      "answer": 0,
+      "why": "Swap the interpreter in the env shebang, e.g. #!/usr/bin/env ksh or #!/usr/bin/env python."
+    }
+  ]
+}

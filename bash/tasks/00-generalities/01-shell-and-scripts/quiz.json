@@ -1,0 +1,102 @@
+{
+  "source": "Learning bash with Rocky - Introduction: Generalities: the shell and what a script is",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the shell?",
+      "options": [
+        "The command interpreter of Linux -- a binary layered on the kernel, not part of it",
+        "Part of the Linux kernel",
+        "A text editor",
+        "A compiler for C programs"
+      ],
+      "answer": 0,
+      "why": "The shell parses the user's commands and has the system execute them; it is a layer on top of the kernel, not part of it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does bash stand for?",
+      "options": [
+        "The Bourne-Again shell",
+        "The Basic shell",
+        "The Berkeley shell",
+        "The Bash Advanced shell"
+      ],
+      "answer": 0,
+      "why": "bash is the Bourne-Again shell; ksh (Korn) and csh (C shell) are other examples."
+    },
+    {
+      "type": "mcq",
+      "q": "Which shell is present by default in most (all) Linux distributions?",
+      "options": [
+        "bash",
+        "ksh",
+        "csh",
+        "tcsh"
+      ],
+      "answer": 0,
+      "why": "bash ships by default nearly everywhere, known for its practical, user-friendly features."
+    },
+    {
+      "type": "mcq",
+      "q": "As a basic programming language, the shell allows...",
+      "options": [
+        "Variables, conditional execution of commands, and repetition of commands",
+        "Compiling C code",
+        "Loading kernel modules",
+        "Drawing graphics"
+      ],
+      "answer": 0,
+      "why": "The shell supports variables, conditional execution, and repetition (loops)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is a shell script?",
+      "options": [
+        "A plain text file of commands, with no formatting (bold, italics, etc.)",
+        "A compiled binary",
+        "A configuration database",
+        "A kernel module"
+      ],
+      "answer": 0,
+      "why": "It is just a text file; made executable, the shell reads it sequentially and runs each command."
+    },
+    {
+      "type": "mcq",
+      "q": "Which are two ways to run a shell script?",
+      "options": [
+        "Make it executable and run ./script, or pass its name to the bash binary",
+        "Only compile it first",
+        "Only via cron",
+        "Only while logged in as root"
+      ],
+      "answer": 0,
+      "why": "Either bash script.sh, or chmod +x then ./script.sh."
+    },
+    {
+      "type": "mcq",
+      "q": "When the shell hits an error partway through a script, by default it...",
+      "options": [
+        "Displays a message identifying the problem but continues executing",
+        "Stops immediately, always",
+        "Ignores it silently",
+        "Reboots the machine"
+      ],
+      "answer": 0,
+      "why": "By default it reports the error and carries on; there are mechanisms to stop on error instead."
+    },
+    {
+      "type": "mcq",
+      "q": "According to the book, what makes a good script?",
+      "options": [
+        "Reliable, commented, readable, and portable",
+        "Fast, short, clever, and obfuscated",
+        "Compiled and signed",
+        "Colourful and bold"
+      ],
+      "answer": 0,
+      "why": "A good script is reliable (even when misused), commented, readable (indented), and portable."
+    }
+  ]
+}

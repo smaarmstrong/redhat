@@ -1,0 +1,8 @@
+{
+  "title": "for and select loops",
+  "domain": "Bash Loops",
+  "objective": "Learning bash with Rocky - Loops: The for loop over a list and the select menu",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

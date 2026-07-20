@@ -1,0 +1,66 @@
+{
+  "source": "Learning bash with Rocky - Conditional Structures (if and case): The case ... in / esac multi-branch conditional",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does a case structure evaluate?",
+      "options": [
+        "A single variable, compared against listed values",
+        "A command's return code",
+        "A file's contents",
+        "A loop counter"
+      ],
+      "answer": 0,
+      "why": "case $variable in ... esac compares the variable to each value."
+    },
+    {
+      "type": "mcq",
+      "q": "Which keyword closes a case structure?",
+      "options": [
+        "esac",
+        "fi",
+        "done",
+        "endcase"
+      ],
+      "answer": 0,
+      "why": "esac (case reversed) ends the structure."
+    },
+    {
+      "type": "mcq",
+      "q": "What terminates the commands of each case branch?",
+      "options": [
+        ";;",
+        "break",
+        "fi",
+        "}"
+      ],
+      "answer": 0,
+      "why": "The commands between ) and ;; run for the first matching value."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the * branch do in a case?",
+      "options": [
+        "Runs for all values not matched by an earlier branch (the default)",
+        "Matches a literal asterisk only",
+        "Causes an error",
+        "Exits the script"
+      ],
+      "answer": 0,
+      "why": "* at the end is the catch-all default branch."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you match \"yes\" OR \"YES\" in one case branch?",
+      "options": [
+        "\"yes\" | \"YES\") using the | alternation",
+        "\"yes\" && \"YES\")",
+        "\"yes\", \"YES\")",
+        "\"yes\" + \"YES\")"
+      ],
+      "answer": 0,
+      "why": "| separates alternative values; wildcards like [Yy][Ee][Ss] also work."
+    }
+  ]
+}

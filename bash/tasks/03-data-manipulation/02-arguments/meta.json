@@ -1,0 +1,8 @@
+{
+  "title": "Script arguments and positional variables",
+  "domain": "Bash Data Manipulation",
+  "objective": "Learning bash with Rocky - Data Entry and Manipulations: Arguments, positional variables, shift and set",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

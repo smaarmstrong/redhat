@@ -1,0 +1,8 @@
+{
+  "title": "while and until loops, and loop control",
+  "domain": "Bash Loops",
+  "objective": "Learning bash with Rocky - Loops: while, until, and the exit/break/continue/true/false controls",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,102 @@
+{
+  "source": "Learning bash with Rocky - Conditional Structures (if and case): if / then / else / elif / fi and parameter substitution",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In `if command; then ... fi`, what decides which branch runs?",
+      "options": [
+        "The command's return code ($?): 0 runs then, non-zero runs else",
+        "The command's printed output",
+        "A variable's value",
+        "The script's exit code"
+      ],
+      "answer": 0,
+      "why": "if evaluates the return code of the command placed after it."
+    },
+    {
+      "type": "mcq",
+      "q": "Which keyword closes an if structure?",
+      "options": [
+        "fi",
+        "end",
+        "endif",
+        "done"
+      ],
+      "answer": 0,
+      "why": "fi (if reversed) closes the block."
+    },
+    {
+      "type": "mcq",
+      "q": "Is the else block required?",
+      "options": [
+        "No, it is optional",
+        "Yes, always",
+        "Only with elif",
+        "Only inside a case"
+      ],
+      "answer": 0,
+      "why": "You often act only when the test is true; else is optional."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you merge an else immediately followed by a new if?",
+      "options": [
+        "elif",
+        "elseif",
+        "else if (only)",
+        "elsif"
+      ],
+      "answer": 0,
+      "why": "elif combines else and if into one branch."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `[[ -e /etc/passwd ]] && echo yes || echo no` do?",
+      "options": [
+        "Runs echo yes if the test is true, echo no if it is false",
+        "Runs both regardless",
+        "Runs echo no on true",
+        "Is a syntax error"
+      ],
+      "answer": 0,
+      "why": "&& runs the command on true; || runs the (optional) command on false."
+    },
+    {
+      "type": "mcq",
+      "q": "What does ${variable:-value} do?",
+      "options": [
+        "Displays value if the variable is empty (without assigning it)",
+        "Assigns value if empty",
+        "Displays value if NOT empty",
+        "Deletes the variable"
+      ],
+      "answer": 0,
+      "why": ":- substitutes a replacement value when the variable is empty, without changing it."
+    },
+    {
+      "type": "mcq",
+      "q": "What does ${variable:=value} do?",
+      "options": [
+        "Assigns value to the variable if it is empty",
+        "Only displays value if empty",
+        "Displays value if not empty",
+        "Unsets the variable"
+      ],
+      "answer": 0,
+      "why": ":= assigns a new value when the variable is empty."
+    },
+    {
+      "type": "mcq",
+      "q": "What does ${variable:+value} do?",
+      "options": [
+        "Displays value if the variable is NOT empty",
+        "Displays value if empty",
+        "Assigns value if empty",
+        "Deletes the variable"
+      ],
+      "answer": 0,
+      "why": ":+ substitutes a value when the variable is set/non-empty."
+    }
+  ]
+}

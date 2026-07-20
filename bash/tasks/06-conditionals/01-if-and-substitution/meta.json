@@ -1,0 +1,8 @@
+{
+  "title": "The if structure and variable substitution",
+  "domain": "Bash Conditionals",
+  "objective": "Learning bash with Rocky - Conditional Structures (if and case): if / then / else / elif / fi and parameter substitution",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

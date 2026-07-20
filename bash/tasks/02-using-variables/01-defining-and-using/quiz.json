@@ -1,0 +1,90 @@
+{
+  "source": "Learning bash with Rocky - Using Variables: Storing information: creating, quoting, and referencing variables",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How do you assign a value to a variable in bash?",
+      "options": [
+        "variable=value, with no spaces around the = sign",
+        "variable = value, spaces required",
+        "set variable value",
+        "var := value"
+      ],
+      "answer": 0,
+      "why": "= assigns the content; there must be no space before or after it."
+    },
+    {
+      "type": "mcq",
+      "q": "Which variable name is valid?",
+      "options": [
+        "It must start with a letter, then letters/digits/underscore; no other special characters",
+        "It may start with a digit",
+        "It may contain spaces",
+        "It must be uppercase"
+      ],
+      "answer": 0,
+      "why": "Names start with a letter; underscore is the only special character allowed."
+    },
+    {
+      "type": "mcq",
+      "q": "What naming convention does the book give?",
+      "options": [
+        "Lowercase for user variables; uppercase for globals that should not be modified",
+        "Always uppercase",
+        "Always lowercase",
+        "camelCase everywhere"
+      ],
+      "answer": 0,
+      "why": "User variables are lower case by convention; upper case is used for globals/constants."
+    },
+    {
+      "type": "mcq",
+      "q": "Having done file=myfile, how do you use (expand) that variable?",
+      "options": [
+        "$file",
+        "file",
+        "&file",
+        "@file"
+      ],
+      "answer": 0,
+      "why": "Prefix the name with a dollar sign: $file."
+    },
+    {
+      "type": "mcq",
+      "q": "Why quote a variable, e.g. touch \"$file\"?",
+      "options": [
+        "So a value containing spaces is treated as one word, not split into several arguments",
+        "It makes the command run faster",
+        "It uppercases the value",
+        "Quoting is mandatory syntax"
+      ],
+      "answer": 0,
+      "why": "If $file holds a space, unquoted it creates two files; \"$file\" keeps it a single argument."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you isolate a variable name from adjacent text, e.g. to append a 1?",
+      "options": [
+        "${file}1 (braces) -- or \"$file\"1",
+        "$file1",
+        "$(file)1",
+        "$[file]1"
+      ],
+      "answer": 0,
+      "why": "Braces delimit the name; $file1 would instead look up a variable called file1. Systematic braces are recommended."
+    },
+    {
+      "type": "mcq",
+      "q": "What do single quotes (apostrophes) do to $message inside them?",
+      "options": [
+        "Inhibit interpretation -- the text stays literal ($message is not expanded)",
+        "Expand the variable as usual",
+        "Cause a syntax error",
+        "Behave exactly like double quotes"
+      ],
+      "answer": 0,
+      "why": "Single quotes inhibit special-character interpretation; double quotes allow variable expansion."
+    }
+  ]
+}

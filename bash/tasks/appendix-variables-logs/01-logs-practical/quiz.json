@@ -1,0 +1,66 @@
+{
+  "source": "Learning bash with Rocky - Appendix: Variables With Logs: Using variables to extract dated entries from a log and email them",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why does the log-extraction script need special handling for dnf.log?",
+      "options": [
+        "dnf.log and messages format the date differently, so the same date approach will not work for both",
+        "dnf.log is binary",
+        "dnf.log is owned by a different user",
+        "dnf.log uses a different character encoding"
+      ],
+      "answer": 0,
+      "why": "dnf.log uses a yyyy-mm-dd style while /var/log/messages uses \"May  4\"; the script must match dnf.log's format."
+    },
+    {
+      "type": "mcq",
+      "q": "What date format does `date +%F` produce?",
+      "options": [
+        "yyyy-mm-dd (e.g. 2022-05-04)",
+        "dd/mm/yyyy",
+        "the full date and time",
+        "the Unix epoch seconds"
+      ],
+      "answer": 0,
+      "why": "+%F gives the ISO yyyy-mm-dd form, matching the dnf.log date."
+    },
+    {
+      "type": "mcq",
+      "q": "Why store today=$(date +%F) in a variable?",
+      "options": [
+        "To hold today's date in the dnf.log format so it can be grepped from the log",
+        "To set the system timezone",
+        "To email the administrator",
+        "To create a loop"
+      ],
+      "answer": 0,
+      "why": "The variable is then used to search the log for today's entries."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the script pull today's lines out of the log?",
+      "options": [
+        "grep $today $logfile",
+        "cut -d: -f1 $logfile",
+        "tr -s $today",
+        "basename $logfile"
+      ],
+      "answer": 0,
+      "why": "grep matches the date variable against the log file."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the script send the results, and how is it run daily?",
+      "options": [
+        "Pipe grep's output to mail -s \"subject\" address; automate it with a cron job",
+        "scp the file nightly",
+        "print it and read it manually",
+        "email via the read command"
+      ],
+      "answer": 0,
+      "why": "The output is piped to /bin/mail; a cron job runs the script daily."
+    }
+  ]
+}

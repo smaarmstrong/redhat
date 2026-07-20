@@ -1,0 +1,102 @@
+{
+  "source": "Learning bash with Rocky - Using Variables: Deleting/locking variables, environment variables, export, and command substitution",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which command deletes a variable?",
+      "options": [
+        "unset",
+        "del",
+        "rm",
+        "clear"
+      ],
+      "answer": 0,
+      "why": "unset <name> removes the variable."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command locks a variable so it cannot be changed?",
+      "options": [
+        "readonly (or typeset -r)",
+        "const",
+        "lock",
+        "freeze"
+      ],
+      "answer": 0,
+      "why": "readonly/typeset -r makes a variable read-only; reassigning or unsetting it then errors."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `set -u` at the start of a script do?",
+      "options": [
+        "Stops execution if an undeclared (unset) variable is used",
+        "Enables debug tracing",
+        "Unsets all variables",
+        "Disables filename globbing"
+      ],
+      "answer": 0,
+      "why": "set -u aborts the script when an undeclared variable is referenced."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command displays all the environment variables?",
+      "options": [
+        "env",
+        "set",
+        "unset",
+        "readonly"
+      ],
+      "answer": 0,
+      "why": "env shows the environment variables; set shows all shell/system variables."
+    },
+    {
+      "type": "mcq",
+      "q": "Which special variable holds the return code of the last command executed?",
+      "options": [
+        "$?",
+        "$$",
+        "$!",
+        "$0"
+      ],
+      "answer": 0,
+      "why": "$? is the last command's exit code; $$ is the script's process id."
+    },
+    {
+      "type": "mcq",
+      "q": "Which special variable holds the process id of the running script?",
+      "options": [
+        "$$",
+        "$?",
+        "$!",
+        "$PID"
+      ],
+      "answer": 0,
+      "why": "$$ is the PID of the script execution."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the `export` command do to a variable?",
+      "options": [
+        "Makes it available to the script's child processes",
+        "Deletes it",
+        "Makes it read-only",
+        "Writes it to a file"
+      ],
+      "answer": 0,
+      "why": "export puts the variable in the environment so child processes see it (changes in a child do not flow back to the parent)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the preferred syntax to store a command's output in a variable?",
+      "options": [
+        "variable=$(command)",
+        "variable=`command` (the older backtick form)",
+        "variable=command",
+        "variable={command}"
+      ],
+      "answer": 0,
+      "why": "$(command) is preferred over backticks, e.g. homedir=$(pwd)."
+    }
+  ]
+}

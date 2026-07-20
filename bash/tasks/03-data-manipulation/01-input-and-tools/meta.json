@@ -1,0 +1,8 @@
+{
+  "title": "Reading input and manipulating data",
+  "domain": "Bash Data Manipulation",
+  "objective": "Learning bash with Rocky - Data Entry and Manipulations: The read, cut, tr, basename and dirname commands",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

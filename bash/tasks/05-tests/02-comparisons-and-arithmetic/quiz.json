@@ -1,0 +1,90 @@
+{
+  "source": "Learning bash with Rocky - Tests: Testing variables/strings/integers, combined tests, and arithmetic",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which option tests whether a variable is empty?",
+      "options": [
+        "-z",
+        "-n",
+        "-e",
+        "-f"
+      ],
+      "answer": 0,
+      "why": "-z is empty, -n is not empty."
+    },
+    {
+      "type": "mcq",
+      "q": "Which operator tests two strings for equality?",
+      "options": [
+        "= (and != for inequality)",
+        "-eq",
+        "==only",
+        "eq"
+      ],
+      "answer": 0,
+      "why": "[[ str1 = str2 ]]; != is inequality; < and > compare ASCII order."
+    },
+    {
+      "type": "mcq",
+      "q": "Which operator tests two integers for equality?",
+      "options": [
+        "-eq",
+        "=",
+        "==",
+        "-is"
+      ],
+      "answer": 0,
+      "why": "-eq equal, -ne not equal, -gt greater than, -lt less than."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between `test \"1\" = \"1\"` and `test \"1\" -eq \"1\"`?",
+      "options": [
+        "= compares them as strings (ASCII); -eq compares them as numbers",
+        "They are identical in meaning",
+        "-eq is the string test",
+        "= is the numeric test"
+      ],
+      "answer": 0,
+      "why": "Same result here, but = means equal ASCII characters while -eq means equal numeric values."
+    },
+    {
+      "type": "mcq",
+      "q": "With the internal command, how do you AND two tests together?",
+      "options": [
+        "[[ test1 && test2 ]] (the external test uses -a / -o)",
+        "[[ test1 -o test2 ]]",
+        "test1 + test2",
+        "test1 , test2"
+      ],
+      "answer": 0,
+      "why": "&& / || inside [[ ]]; -a (AND) and -o (OR) with the external test; ! negates."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command performs arithmetic with integers (spaces required around the operator)?",
+      "options": [
+        "expr",
+        "calc",
+        "math",
+        "sum"
+      ],
+      "answer": 0,
+      "why": "expr 2 + 2 -> 4; the * for multiply must be escaped as \\*."
+    },
+    {
+      "type": "mcq",
+      "q": "Which perform arithmetic: let and $(( )) ?",
+      "options": [
+        "Both -- let var=5+5 and $((5+2)) evaluate math; typeset -i also makes a var integer",
+        "Only expr can",
+        "Neither does math",
+        "Only $(( )) and only for addition"
+      ],
+      "answer": 0,
+      "why": "let and $(( )) evaluate arithmetic; typeset -i declares a variable as an integer so assignments are computed."
+    }
+  ]
+}
