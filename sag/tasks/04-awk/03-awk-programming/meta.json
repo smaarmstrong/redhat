@@ -1,0 +1,8 @@
+{
+  "title": "awk flow control, arrays, and functions",
+  "domain": "awk",
+  "objective": "Sed, Awk & Grep - Awk command: if/for/while, associative arrays, built-in functions, and getline",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

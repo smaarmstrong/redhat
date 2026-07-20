@@ -1,0 +1,8 @@
+{
+  "title": "Substitution and line editing",
+  "domain": "sed",
+  "objective": "Sed, Awk & Grep - Sed command: s///, backreferences, and the a/i/c/n commands",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

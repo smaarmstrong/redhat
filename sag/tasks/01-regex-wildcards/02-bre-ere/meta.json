@@ -1,0 +1,8 @@
+{
+  "title": "Regex flavors: BRE, ERE, and shorthands",
+  "domain": "Regex and Wildcards",
+  "objective": "Sed, Awk & Grep - Regular expressions and wildcards: The regex schools (POSIX BRE/ERE, PCRE) and their metacharacters",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

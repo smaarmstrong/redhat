@@ -1,0 +1,90 @@
+{
+  "source": "Sed, Awk & Grep - Awk command: FS/OFS/RS/ORS, NF/NR/FNR, and the match operators",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are FS and OFS?",
+      "options": [
+        "The input field separator and the output field separator",
+        "The file and output names",
+        "The first and second fields",
+        "Two unrelated flags"
+      ],
+      "answer": 0,
+      "why": "FS splits input fields; OFS joins output fields."
+    },
+    {
+      "type": "mcq",
+      "q": "What are RS and ORS (default: newline)?",
+      "options": [
+        "The input and output record separators",
+        "The row and column counts",
+        "Read and write modes",
+        "Regex start/end"
+      ],
+      "answer": 0,
+      "why": "RS separates input records, ORS separates output records; both default to the newline."
+    },
+    {
+      "type": "mcq",
+      "q": "What does NF hold?",
+      "options": [
+        "The number of fields in the current record",
+        "The number of records so far",
+        "The filename",
+        "The next field"
+      ],
+      "answer": 0,
+      "why": "NF is the field count; $NF is the last field's value."
+    },
+    {
+      "type": "mcq",
+      "q": "What does NR hold?",
+      "options": [
+        "The number of records processed so far (cumulative across files)",
+        "The number of fields",
+        "A filename",
+        "A line range"
+      ],
+      "answer": 0,
+      "why": "NR increments per record and keeps counting across multiple files."
+    },
+    {
+      "type": "mcq",
+      "q": "How does FNR differ from NR?",
+      "options": [
+        "FNR resets to 1 at the start of each file; NR keeps accumulating across files",
+        "They are identical",
+        "FNR is cumulative; NR is per-file",
+        "FNR counts fields"
+      ],
+      "answer": 0,
+      "why": "FNR is per-file; NR is global."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you print the last field, and the second-to-last?",
+      "options": [
+        "$NF for the last, $(NF-1) for the second-to-last",
+        "$1 and $2",
+        "$NF and $NF-1 (no parens)",
+        "NF[1] and NF[2]"
+      ],
+      "answer": 0,
+      "why": "$NF is the last field; arithmetic like $(NF-1) reaches earlier fields."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the ~ and !~ operators do?",
+      "options": [
+        "Match / do-not-match a value against a regular expression (e.g. $2 ~ /tcp/)",
+        "Assign / unassign a variable",
+        "Add / subtract",
+        "Compare numbers"
+      ],
+      "answer": 0,
+      "why": "~ tests a string/field against a regex; !~ is the negation."
+    }
+  ]
+}

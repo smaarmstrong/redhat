@@ -1,0 +1,90 @@
+{
+  "source": "Sed, Awk & Grep - Awk command: if/for/while, associative arrays, built-in functions, and getline",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is awk's if syntax?",
+      "options": [
+        "if (condition) statement [else statement]",
+        "if condition then statement",
+        "if { statement }",
+        "when (condition) statement"
+      ],
+      "answer": 0,
+      "why": "awk uses C-like if/else."
+    },
+    {
+      "type": "mcq",
+      "q": "What is awk's for-loop syntax?",
+      "options": [
+        "for (expr1; expr2; expr3) statement",
+        "for each x in list",
+        "for x = 1 to n",
+        "loop (n) statement"
+      ],
+      "answer": 0,
+      "why": "A C-style three-part for loop; for (i in array) also iterates array keys."
+    },
+    {
+      "type": "mcq",
+      "q": "What do break and continue do inside a loop?",
+      "options": [
+        "break exits the loop; continue skips to the next iteration",
+        "break skips; continue exits",
+        "both exit the loop",
+        "both restart the loop"
+      ],
+      "answer": 0,
+      "why": "Standard loop control."
+    },
+    {
+      "type": "mcq",
+      "q": "What kind of arrays does awk have?",
+      "options": [
+        "Associative -- the subscript (index) can be a number OR a string",
+        "Fixed-size numeric only",
+        "Linked lists",
+        "It has no arrays"
+      ],
+      "answer": 0,
+      "why": "awk arrays are associative: array[index]=value with numeric or string keys; for (i in a) iterates the keys."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the idiom a[$1]++ do (and !a[$1]++)?",
+      "options": [
+        "a[$1]++ counts occurrences of each value of field 1; !a[$1]++ prints only the first occurrence (dedupe)",
+        "It sums field 1",
+        "It sorts the input",
+        "It deletes field 1"
+      ],
+      "answer": 0,
+      "why": "a[$1]++ tallies per key; !a[$1]++ is the classic keep-first-occurrence dedupe."
+    },
+    {
+      "type": "mcq",
+      "q": "Which built-in function globally replaces text (like sed's s///g)?",
+      "options": [
+        "gsub(r,s) -- gsub is global, sub(r,s) replaces only the first match",
+        "split()",
+        "index()",
+        "substr()"
+      ],
+      "answer": 0,
+      "why": "gsub does a global replace; sub replaces the first match only."
+    },
+    {
+      "type": "mcq",
+      "q": "What does getline do?",
+      "options": [
+        "Reads the next input record (into $0, or into a named variable)",
+        "Prints a line number",
+        "Opens a file for writing",
+        "Ends the program"
+      ],
+      "answer": 0,
+      "why": "getline advances the input, e.g. to peek at or process the following line."
+    }
+  ]
+}

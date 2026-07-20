@@ -1,0 +1,102 @@
+{
+  "source": "Sed, Awk & Grep - Awk command: What awk is, its record/field model, and program structure",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where does the name 'awk' come from?",
+      "options": [
+        "The initials of its creators: Aho, Weinberger, Kernighan (Bell Labs, 1977)",
+        "A Unix system-call acronym",
+        "The word 'awkward'",
+        "Its configuration file"
+      ],
+      "answer": 0,
+      "why": "awk is named for Alfred Aho, Peter Weinberger and Brian Kernighan."
+    },
+    {
+      "type": "mcq",
+      "q": "On Rocky Linux, which implementation is awk?",
+      "options": [
+        "gawk (GNU awk) -- /usr/bin/awk is a symlink to gawk",
+        "mawk",
+        "nawk",
+        "jawk"
+      ],
+      "answer": 0,
+      "why": "Rocky's awk points to gawk; Debian/Ubuntu often default to mawk."
+    },
+    {
+      "type": "mcq",
+      "q": "In awk's model, each line is a ___ and each part of it is a ___.",
+      "options": [
+        "record (row); field (column)",
+        "file; line",
+        "token; character",
+        "key; value"
+      ],
+      "answer": 0,
+      "why": "awk processes records (rows) made of fields (columns), like a relational database."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, what separates fields in awk?",
+      "options": [
+        "Spaces and tabs",
+        "Commas",
+        "Colons",
+        "Newlines"
+      ],
+      "answer": 0,
+      "why": "The default field separator FS is whitespace (spaces/tabs)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between $0 and $1?",
+      "options": [
+        "$0 is the entire line/record; $1 is the first field",
+        "$0 is the first field; $1 is the line",
+        "$0 is the line count; $1 is the filename",
+        "They are the same"
+      ],
+      "answer": 0,
+      "why": "$0 = whole record, $N = the Nth field."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the general shape of an awk invocation?",
+      "options": [
+        "awk 'pattern {action}' file",
+        "awk file 'pattern'",
+        "awk -p action file",
+        "awk {action} < pattern"
+      ],
+      "answer": 0,
+      "why": "The pattern selects records and the {action} runs on them; either part can be omitted."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -F option do?",
+      "options": [
+        "Set the field separator (FS), e.g. -F ':'",
+        "Read the program from a file",
+        "Assign a variable",
+        "Force output"
+      ],
+      "answer": 0,
+      "why": "-F sets FS; -f reads a program file; -v sets a variable."
+    },
+    {
+      "type": "mcq",
+      "q": "When do BEGIN{} and END{} blocks run?",
+      "options": [
+        "BEGIN runs before any records are read; END runs after all records are read",
+        "BEGIN after, END before",
+        "Once per line each",
+        "Only on error"
+      ],
+      "answer": 0,
+      "why": "BEGIN and END bracket the per-record main loop."
+    }
+  ]
+}

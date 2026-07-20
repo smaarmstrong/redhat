@@ -1,0 +1,8 @@
+{
+  "title": "grep context and file filters",
+  "domain": "grep",
+  "objective": "Sed, Awk & Grep - Grep command: Context options and include/exclude filters",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}
