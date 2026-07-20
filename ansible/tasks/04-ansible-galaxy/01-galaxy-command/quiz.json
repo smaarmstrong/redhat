@@ -1,0 +1,87 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Galaxy: The ansible-galaxy command and its subcommands",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does the ansible-galaxy command manage, using galaxy.ansible.com?",
+      "options": [
+        "Roles and collections",
+        "Playbooks and inventories",
+        "Users and groups",
+        "Facts and handlers"
+      ],
+      "answer": 0,
+      "why": "ansible-galaxy manages roles and collections from galaxy.ansible.com."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ansible-galaxy role subcommand installs a role?",
+      "options": [
+        "install",
+        "init",
+        "import",
+        "info"
+      ],
+      "answer": 0,
+      "why": "ansible-galaxy role install <name> installs a role."
+    },
+    {
+      "type": "mcq",
+      "q": "Which subcommand generates a skeleton for a NEW role or collection?",
+      "options": [
+        "init",
+        "install",
+        "import",
+        "list"
+      ],
+      "answer": 0,
+      "why": "init generates a starting skeleton."
+    },
+    {
+      "type": "mcq",
+      "q": "Which subcommand displays the name and version of installed roles?",
+      "options": [
+        "list",
+        "info",
+        "import",
+        "remove"
+      ],
+      "answer": 0,
+      "why": "list shows the installed roles' names and versions."
+    },
+    {
+      "type": "mcq",
+      "q": "Which role subcommand pulls a role from the galaxy web site and requires a login?",
+      "options": [
+        "import",
+        "install",
+        "list",
+        "info"
+      ],
+      "answer": 0,
+      "why": "import imports a role from the galaxy site and needs a login."
+    },
+    {
+      "type": "cmd",
+      "q": "Install the role alemorvan.patchmanagement with ansible-galaxy.",
+      "answers": [
+        "ansible-galaxy role install alemorvan.patchmanagement",
+        "ansible-galaxy install alemorvan.patchmanagement"
+      ],
+      "why": "ansible-galaxy role install <namespace.name> installs a role."
+    },
+    {
+      "type": "mcq",
+      "q": "Which subcommands exist for BOTH roles and collections in the guide's tables?",
+      "options": [
+        "install, list, and init",
+        "import and login only",
+        "remove only",
+        "info only"
+      ],
+      "answer": 0,
+      "why": "Roles and collections both offer install, list, and init."
+    }
+  ]
+}

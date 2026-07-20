@@ -1,0 +1,78 @@
+{
+  "source": "Learning Ansible with Rocky - Ansible Galaxy: Ansible roles and installing a community role",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is an Ansible role?",
+      "options": [
+        "A unit that promotes the reusability of playbooks",
+        "A single module",
+        "A group of hosts",
+        "An inventory file"
+      ],
+      "answer": 0,
+      "why": "A role is a reusable unit bundling tasks, variables, templates, and so on."
+    },
+    {
+      "type": "mcq",
+      "q": "A key benefit of roles is that they...",
+      "options": [
+        "Remove the need to manually include files or specify file paths in playbooks",
+        "Require no variables at all",
+        "Replace the SSH connection",
+        "Only work against localhost"
+      ],
+      "answer": 0,
+      "why": "With a role you just specify a task; Ansible handles the inclusions, so no include directives or file paths."
+    },
+    {
+      "type": "mcq",
+      "q": "Which directive includes a role from within a task list?",
+      "options": [
+        "include_role (name: ...)",
+        "import_playbook",
+        "vars_files",
+        "get_url"
+      ],
+      "answer": 0,
+      "why": "include_role includes a role as a task, naming the role."
+    },
+    {
+      "type": "mcq",
+      "q": "Where are installed roles stored by default (per the example output)?",
+      "options": [
+        "Under ~/.ansible/roles/",
+        "/etc/ansible/roles",
+        "/usr/share/roles",
+        "Only in ./roles"
+      ],
+      "answer": 0,
+      "why": "Installed roles live under the user's ~/.ansible/roles/ (e.g. /home/ansible/.ansible/roles/)."
+    },
+    {
+      "type": "mcq",
+      "q": "How is a role applied through a play's `roles:` key?",
+      "options": [
+        "Listed as an entry, e.g. - role: rocky8 (with become/become_user as needed)",
+        "With a loop over hosts",
+        "By calling get_url",
+        "With a regexp match"
+      ],
+      "answer": 0,
+      "why": "The roles: section lists the roles to apply, each as - role: <name>."
+    },
+    {
+      "type": "mcq",
+      "q": "The patchmanagement role lets you inject your own pre/post-update steps via...",
+      "options": [
+        "Variables pointing to custom task files (pm_before/after_update_tasks_file)",
+        "Editing the role's own source",
+        "A single handler",
+        "The inventory file"
+      ],
+      "answer": 0,
+      "why": "You point variables at your custom_tasks/*.yml files; the role includes them before and after updating."
+    }
+  ]
+}

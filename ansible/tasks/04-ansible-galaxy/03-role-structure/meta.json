@@ -1,0 +1,8 @@
+{
+  "title": "Role structure and development",
+  "domain": "Ansible Galaxy",
+  "objective": "Learning Ansible with Rocky - Ansible Galaxy: Developing a role: init, skeleton, vars and defaults",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
