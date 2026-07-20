@@ -1,0 +1,8 @@
+{
+  "title": "Comparing values and doing arithmetic",
+  "domain": "Bash Tests",
+  "objective": "Learning bash with Rocky - Tests: Testing variables/strings/integers, combined tests, and arithmetic",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

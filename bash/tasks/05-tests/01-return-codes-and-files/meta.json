@@ -1,0 +1,8 @@
+{
+  "title": "Return codes and file tests",
+  "domain": "Bash Tests",
+  "objective": "Learning bash with Rocky - Tests: Return codes, exit, and testing files",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

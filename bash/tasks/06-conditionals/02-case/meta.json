@@ -1,0 +1,8 @@
+{
+  "title": "The case structure",
+  "domain": "Bash Conditionals",
+  "objective": "Learning bash with Rocky - Conditional Structures (if and case): The case ... in / esac multi-branch conditional",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

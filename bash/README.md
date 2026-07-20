@@ -21,10 +21,11 @@ missing from it.
 
 ## Chapters
 
-Added chapter by chapter as the book is read.
+The whole book is covered.
 
 | Dir | Book chapter | Online page |
 |---|---|---|
+| `00-generalities` | Learning bash with Rocky (Generalities) | `learning_bash/00-toc/` |
 | `01-first-script` | Bash - First script | `learning_bash/01-first-script/` |
 | `02-using-variables` | Bash - Using Variables | `learning_bash/02-using-variables/` |
 | `03-data-manipulation` | Bash - Data entry and manipulations | `learning_bash/03-data-entry-and-manipulations/` |
@@ -33,10 +34,11 @@ Added chapter by chapter as the book is read.
 | `06-conditionals` | Bash - Conditional structures (if and case) | `learning_bash/06-conditional-structures/` |
 | `07-loops` | Bash - Loops | `learning_bash/07-loops/` |
 | `08-check-knowledge-2` | Bash - Check your knowledge (chapters 5-7) | `learning_bash/08-check-your-knowledge/` |
+| `appendix-variables-logs` | Appendix - Practical Examples (Variables with logs) | `learning_bash/appendix/02-variables-logs/` |
 
 The book's own two "Check your knowledge" pages are quizzes in their own right,
-so those chapters mine the book's questions directly. The "Appendix - Practical
-Examples" has its own sub-pages and will be mapped in when that content is read.
+so those chapters mine the book's questions directly. Further appendix
+practical-examples pages can be added under their own `appendix-*` dirs.
 
 ## Attribution
 

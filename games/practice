@@ -244,6 +244,7 @@ GUIDE_PAGES = {
     },
     # Learning bash with Rocky — chapter dir -> learning_bash book slug.
     "bash": {
+        "00-generalities": "00-toc",
         "01-first-script": "01-first-script",
         "02-using-variables": "02-using-variables",
         "03-data-manipulation": "03-data-entry-and-manipulations",
@@ -252,6 +253,7 @@ GUIDE_PAGES = {
         "06-conditionals": "06-conditional-structures",
         "07-loops": "07-loops",
         "08-check-knowledge-2": "08-check-your-knowledge",
+        "appendix-variables-logs": "appendix/02-variables-logs",
     },
 }
 

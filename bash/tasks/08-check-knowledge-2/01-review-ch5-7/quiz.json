@@ -1,0 +1,104 @@
+{
+  "source": "Learning bash with Rocky - Check Your Knowledge (chapters 5-7): The book's own review quiz for tests, conditionals and loops",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Every command returns a return code at the end of its execution. True or false?",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "why": "All commands return a status/return code on completion."
+    },
+    {
+      "type": "mcq",
+      "q": "A return code of 0 indicates an execution error. True or false?",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": 0,
+      "why": "0 means success; a non-zero code indicates an error."
+    },
+    {
+      "type": "mcq",
+      "q": "The return code is stored in the variable $@. True or false?",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": 0,
+      "why": "The return code is stored in $?, not $@ (which holds the arguments)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these can the test command do?",
+      "options": [
+        "All of these: test a file's type, test a variable, compare numbers, compare two files",
+        "Only test a file's type",
+        "Only compare numbers",
+        "Only compare strings"
+      ],
+      "answer": 0,
+      "why": "test works on files (type/rights/comparison), strings, and integers."
+    },
+    {
+      "type": "mcq",
+      "q": "The expr command...",
+      "options": [
+        "Performs mathematical operations",
+        "Concatenates two strings",
+        "Displays text on the screen",
+        "Tests files"
+      ],
+      "answer": 0,
+      "why": "expr performs integer arithmetic (e.g. expr 2 + 2)."
+    },
+    {
+      "type": "mcq",
+      "q": "Is this if syntax correct?  if command / command if $?=0 / else / command if $?!=0 / fi",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": 0,
+      "why": "It is missing the `then` keyword after the if command."
+    },
+    {
+      "type": "mcq",
+      "q": "What does ${variable:=value} mean?",
+      "options": [
+        "Assigns a new value to the variable if it is empty",
+        "Displays a replacement value if the variable is empty",
+        "Displays a replacement value if the variable is not empty",
+        "Deletes the variable"
+      ],
+      "answer": 0,
+      "why": ":= assigns the value when the variable is empty."
+    },
+    {
+      "type": "mcq",
+      "q": "Is this case syntax correct (branches value1) and value2) with no ;; before *)?",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": 0,
+      "why": "Each branch's commands must be terminated by ;;; the first two branches are missing it."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is NOT a looping structure?",
+      "options": [
+        "loop",
+        "while",
+        "until",
+        "for"
+      ],
+      "answer": 0,
+      "why": "while, until, for (and select) are loops; there is no `loop` keyword."
+    }
+  ]
+}

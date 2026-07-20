@@ -1,0 +1,78 @@
+{
+  "source": "Learning bash with Rocky - Loops: The for loop over a list and the select menu",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the syntax of a for loop over a list?",
+      "options": [
+        "for variable in list; do ... done",
+        "for (variable in list)",
+        "foreach variable list",
+        "loop variable in list"
+      ],
+      "answer": 0,
+      "why": "for assigns each element of the list to the variable in turn."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you loop with for over the output of a command?",
+      "options": [
+        "Use a sub-execution after in, e.g. for f in $(ls -d /tmp/*)",
+        "Pipe the command into for",
+        "Only with read",
+        "Only by setting PS3"
+      ],
+      "answer": 0,
+      "why": "Any command producing a list can follow in via $(...)."
+    },
+    {
+      "type": "mcq",
+      "q": "To make a for loop read a file line by line, what must you change?",
+      "options": [
+        "Set IFS to $'\\t\\n' (remove the space) so it splits on lines, not words",
+        "Nothing -- it reads lines by default",
+        "Use the -n option",
+        "Use break after each line"
+      ],
+      "answer": 0,
+      "why": "By default IFS also splits on spaces; removing the space makes each line one element."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the select structure display?",
+      "options": [
+        "A numbered menu, assigning the chosen item to a variable",
+        "A single file",
+        "A loop counter",
+        "Nothing"
+      ],
+      "answer": 0,
+      "why": "select shows numbered choices and reads the user's pick."
+    },
+    {
+      "type": "mcq",
+      "q": "In select, which variable is the prompt and which holds the chosen number?",
+      "options": [
+        "PS3 is the prompt; REPLY holds the entered number",
+        "PS1 / IFS",
+        "PROMPT / CHOICE",
+        "PS3 / IFS"
+      ],
+      "answer": 0,
+      "why": "PS3 sets the input prompt; REPLY returns the number chosen."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you leave a select loop?",
+      "options": [
+        "With a break command",
+        "It exits on its own",
+        "With done",
+        "With continue"
+      ],
+      "answer": 0,
+      "why": "select needs an explicit break to exit."
+    }
+  ]
+}
