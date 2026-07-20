@@ -1,0 +1,8 @@
+{
+  "title": "Transferring, generating, and downloading files",
+  "domain": "Ansible File Management",
+  "objective": "Learning Ansible with Rocky - File Management: Moving files: copy, fetch, template, and get_url",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
