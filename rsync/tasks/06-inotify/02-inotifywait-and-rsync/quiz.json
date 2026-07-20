@@ -1,0 +1,78 @@
+{
+  "source": "Learning Rsync - inotify-tools installation and use: inotifywait options, event types, and the real-time sync script",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does inotifywait -m do?",
+      "options": [
+        "Monitors continuously (keeps running)",
+        "Recurses into subdirectories",
+        "Quietens the output",
+        "Selects event types"
+      ],
+      "answer": 0,
+      "why": "-m = continuous monitoring; -r recursive, -q quiet, -e event types."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -e option specify?",
+      "options": [
+        "Which event types to monitor (comma-separated)",
+        "A command to execute",
+        "A pattern to exclude",
+        "Text to echo"
+      ],
+      "answer": 0,
+      "why": "-e lists the events, e.g. -e create,delete,modify,move."
+    },
+    {
+      "type": "mcq",
+      "q": "Which event type fires when a file is created in the monitored directory?",
+      "options": [
+        "create",
+        "modify",
+        "open",
+        "access"
+      ],
+      "answer": 0,
+      "why": "create fires on a new file/dir; modify on content writes; access on reads."
+    },
+    {
+      "type": "mcq",
+      "q": "How is inotifywait combined with rsync for real-time synchronization?",
+      "options": [
+        "Pipe inotifywait -mrq -e ... into a `while read` loop that runs rsync on each event",
+        "Schedule rsync with cron",
+        "Use a systemd timer",
+        "Use a for loop over files"
+      ],
+      "answer": 0,
+      "why": "The event stream drives an rsync run per change: inotifywait ... | while read ...; do rsync ...; done."
+    },
+    {
+      "type": "mcq",
+      "q": "You can add which rsync option in that script to also remove deleted files at the target?",
+      "options": [
+        "--delete",
+        "--remove",
+        "--purge",
+        "--mirror"
+      ],
+      "answer": 0,
+      "why": "--delete makes the target mirror the source, removing files deleted at the source."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you make the sync script start at boot?",
+      "options": [
+        "Append 'bash /root/rsync_inotify.sh &' to /etc/rc.local (and make it executable)",
+        "Only a @reboot crontab",
+        "It starts automatically",
+        "Add it to authorized_keys"
+      ],
+      "answer": 0,
+      "why": "The book adds the script to /etc/rc.local and chmods it executable."
+    }
+  ]
+}

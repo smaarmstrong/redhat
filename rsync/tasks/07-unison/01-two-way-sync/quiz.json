@@ -1,0 +1,78 @@
+{
+  "source": "Learning Rsync - Use unison: Using inotify-tools with unison for bidirectional sync",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which toolchains give one-way versus two-way synchronization?",
+      "options": [
+        "One-way = rsync + inotify-tools; two-way = inotify-tools + unison",
+        "Both use rsync only",
+        "Two-way uses cron",
+        "One-way uses unison"
+      ],
+      "answer": 0,
+      "why": "unison is added for the two-way case; rsync+inotify is the one-way case."
+    },
+    {
+      "type": "mcq",
+      "q": "unison's underlying dependency (which must be compiled first) is which language?",
+      "options": [
+        "OCaml",
+        "Python",
+        "Perl",
+        "Go"
+      ],
+      "answer": 0,
+      "why": "unison is built on OCaml, so OCaml is compiled and installed first."
+    },
+    {
+      "type": "mcq",
+      "q": "For two-way synchronization, how many of the sync scripts must be running?",
+      "options": [
+        "Both machines' scripts (otherwise it errors)",
+        "Only one",
+        "Neither",
+        "Three"
+      ],
+      "answer": 0,
+      "why": "Both scripts must be started for bidirectional sync."
+    },
+    {
+      "type": "mcq",
+      "q": "What triggers unison to run on each change in the demo?",
+      "options": [
+        "An inotifywait monitor on the local directory piped into a `while read` loop",
+        "A cron job",
+        "A for loop",
+        "A systemd path unit"
+      ],
+      "answer": 0,
+      "why": "The same inotifywait | while-read pattern as rsync, but running unison per event."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the unison command form used in the script?",
+      "options": [
+        "unison -batch /localdir/ ssh://user@host//remotedir",
+        "unison /localdir /remotedir (no options)",
+        "rsync -avz ...",
+        "scp -r ..."
+      ],
+      "answer": 0,
+      "why": "-batch runs unison non-interactively; ssh://user@host//dir addresses the remote directory."
+    },
+    {
+      "type": "mcq",
+      "q": "What authentication does the unison demo require on both machines?",
+      "options": [
+        "Password-free SSH login (PubkeyAuthentication yes)",
+        "The rsync protocol with a password",
+        "Anonymous access",
+        "No authentication"
+      ],
+      "answer": 0,
+      "why": "Both machines need password-free SSH login for the unattended two-way sync."
+    }
+  ]
+}

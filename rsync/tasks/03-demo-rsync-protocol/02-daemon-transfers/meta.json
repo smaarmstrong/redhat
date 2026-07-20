@@ -1,0 +1,8 @@
+{
+  "title": "Transfers over the rsync protocol",
+  "domain": "Rsync Demo 02",
+  "objective": "Learning Rsync - rsync demo 02: Pull/push against a daemon module and fixing permissions",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

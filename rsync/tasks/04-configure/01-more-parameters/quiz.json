@@ -1,0 +1,102 @@
+{
+  "source": "Learning Rsync - rsync configuration file: Supplementary daemon parameters and a recommended configuration",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "The uid and gid parameters default to which user/group when the daemon runs as root?",
+      "options": [
+        "nobody",
+        "root",
+        "the auth user",
+        "daemon"
+      ],
+      "answer": 0,
+      "why": "uid/gid default to nobody -- the account used to transfer files."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `use chroot = yes` do (and what is the default)?",
+      "options": [
+        "Locks (chroots) the module's root directory before transfer for security; default is yes",
+        "Disables root; default no",
+        "Runs the daemon as root; default no",
+        "Has no default"
+      ],
+      "answer": 0,
+      "why": "use chroot locks the root directory before transmitting; rsync defaults it to yes for security."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `max connections = 0` (the default) mean?",
+      "options": [
+        "No limit on simultaneous connections",
+        "Exactly zero connections allowed",
+        "Four connections",
+        "One connection"
+      ],
+      "answer": 0,
+      "why": "max connections default 0 means unrestricted; it pairs with a lock file when set."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `timeout = 0` (the default) mean?",
+      "options": [
+        "Never time out",
+        "Time out immediately",
+        "Wait 900 seconds",
+        "Wait 1 second"
+      ],
+      "answer": 0,
+      "why": "timeout is seconds of no data before rsync exits; 0 means never."
+    },
+    {
+      "type": "mcq",
+      "q": "If a client matches BOTH hosts allow and hosts deny, what happens (and if it matches neither)?",
+      "options": [
+        "Matching both -> denied; matching neither -> allowed",
+        "Matching both -> allowed; neither -> denied",
+        "Both -> allowed",
+        "Neither -> denied"
+      ],
+      "answer": 0,
+      "why": "A conflicting match denies the client; a client in neither list is allowed by default."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `fake super = yes` allow?",
+      "options": [
+        "Storing complete file attributes without running the daemon as root",
+        "Becoming the root user",
+        "Faking a login",
+        "Skipping authentication"
+      ],
+      "answer": 0,
+      "why": "fake super lets the daemon preserve full attributes without needing to run as root."
+    },
+    {
+      "type": "mcq",
+      "q": "How are multiple auth users written?",
+      "options": [
+        "Separated by commas",
+        "Separated by spaces",
+        "One per line",
+        "Separated by semicolons"
+      ],
+      "answer": 0,
+      "why": "Multiple virtual users in auth users are comma-separated."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `exclude = lost+found/` do?",
+      "options": [
+        "Excludes that directory from the transfer",
+        "Includes only that directory",
+        "Logs that directory",
+        "Compresses that directory"
+      ],
+      "answer": 0,
+      "why": "exclude lists directories that should not be transferred."
+    }
+  ]
+}

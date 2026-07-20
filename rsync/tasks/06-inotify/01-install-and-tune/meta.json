@@ -1,0 +1,8 @@
+{
+  "title": "Installing and tuning inotify-tools",
+  "domain": "Rsync inotify-tools",
+  "objective": "Learning Rsync - inotify-tools installation and use: Compiling inotify-tools and adjusting the inotify kernel parameters",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

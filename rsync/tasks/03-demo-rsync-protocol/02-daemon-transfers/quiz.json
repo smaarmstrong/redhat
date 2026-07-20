@@ -1,0 +1,78 @@
+{
+  "source": "Learning Rsync - rsync demo 02: Pull/push against a daemon module and fixing permissions",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which syntax targets an rsync-daemon module (note the punctuation)?",
+      "options": [
+        "user@host::share (a double colon) -- or rsync://user@host/share",
+        "user@host:/path (a single colon)",
+        "host:share",
+        "//host/share"
+      ],
+      "answer": 0,
+      "why": "A double colon :: (or the rsync:// URL) addresses a daemon module; a single colon : means SSH."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is the pull/download form from the daemon share to /root?",
+      "options": [
+        "rsync -avz li@host::share /root",
+        "rsync -avz /root li@host::share",
+        "rsync -avz li@host:/share /root",
+        "scp li@host:share /root"
+      ],
+      "answer": 0,
+      "why": "The source is the daemon module (host::share), the destination local."
+    },
+    {
+      "type": "mcq",
+      "q": "A push fails with 'Connection reset by peer'. Which server setting caused it?",
+      "options": [
+        "read only = yes on the module (set it to no and restart)",
+        "The wrong port",
+        "A closed firewall",
+        "A bad password"
+      ],
+      "answer": 0,
+      "why": "The module was read-only; change read only = no and restart rsyncd."
+    },
+    {
+      "type": "mcq",
+      "q": "After enabling writes, a push still fails 'Permission denied'. Why?",
+      "options": [
+        "The virtual user maps to the system user nobody, which lacks write on the directory",
+        "The password was wrong",
+        "The port is blocked",
+        "The disk is full"
+      ],
+      "answer": 0,
+      "why": "By default the virtual user li maps to nobody, which has no write permission on /rsync/."
+    },
+    {
+      "type": "mcq",
+      "q": "How is that write-permission problem fixed?",
+      "options": [
+        "setfacl -m u:nobody:rwx /rsync/  (grant nobody rwx via an ACL)",
+        "chmod 777 everything",
+        "chown the filesystem to li",
+        "Reinstall rsync"
+      ],
+      "answer": 0,
+      "why": "An ACL granting nobody rwx on the directory lets the mapped user write."
+    },
+    {
+      "type": "mcq",
+      "q": "After editing rsyncd.conf, what must you do for the change to take effect?",
+      "options": [
+        "Restart the daemon: systemctl restart rsyncd.service",
+        "Nothing",
+        "Reboot",
+        "Log out and in"
+      ],
+      "answer": 0,
+      "why": "Config changes require a daemon restart."
+    }
+  ]
+}

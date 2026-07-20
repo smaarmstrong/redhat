@@ -1,0 +1,8 @@
+{
+  "title": "Configuring the rsync daemon",
+  "domain": "Rsync Demo 02",
+  "objective": "Learning Rsync - rsync demo 02: The rsync-protocol daemon and /etc/rsyncd.conf",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

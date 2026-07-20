@@ -1,0 +1,74 @@
+{
+  "source": "Learning Rsync - inotify-tools installation and use: Compiling inotify-tools and adjusting the inotify kernel parameters",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which two commands does inotify-tools provide?",
+      "options": [
+        "inotifywait and inotifywatch",
+        "inotify and watch",
+        "notifywait and notifywatch",
+        "inotifyd and inotifyctl"
+      ],
+      "answer": 0,
+      "why": "inotifywait (continuous) and inotifywatch (short-term)."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the difference between inotifywait and inotifywatch?",
+      "options": [
+        "inotifywait monitors continuously with real-time output; inotifywatch monitors short-term and reports after finishing",
+        "The reverse",
+        "They are identical",
+        "inotifywatch is a GUI"
+      ],
+      "answer": 0,
+      "why": "inotifywait streams events live (used with rsync); inotifywatch summarizes after the task."
+    },
+    {
+      "type": "mcq",
+      "q": "Why does the author compile inotify-tools from source rather than use the EPEL RPM?",
+      "options": [
+        "For efficiency and a newer version (bug fixes/features, possibly higher transfer efficiency) in production",
+        "The RPM does not exist",
+        "Source is required",
+        "The RPM is insecure"
+      ],
+      "answer": 0,
+      "why": "It is the author's personal recommendation: a newer, potentially more efficient build for production."
+    },
+    {
+      "type": "mcq",
+      "q": "After installing to a custom prefix, how do you put the binaries permanently on PATH?",
+      "options": [
+        "Append PATH=$PATH:/usr/local/inotify-tools/bin/ in /etc/profile and re-source it",
+        "Create a shell alias",
+        "Copy them into /bin by hand each boot",
+        "Nothing is needed"
+      ],
+      "answer": 0,
+      "why": "Write the PATH addition into /etc/profile, then . /etc/profile."
+    },
+    {
+      "type": "mcq",
+      "q": "Which three tunables live under /proc/sys/fs/inotify?",
+      "options": [
+        "max_queued_events, max_user_instances, max_user_watches",
+        "max_files, max_dirs, max_events",
+        "only max_user_watches",
+        "queue_size, instances, timeout"
+      ],
+      "answer": 0,
+      "why": "queue size, number of instances, and files watched per instance."
+    },
+    {
+      "type": "cmd",
+      "q": "Apply kernel parameters you have written into /etc/sysctl.conf.",
+      "answers": [
+        "sysctl -p"
+      ],
+      "why": "sysctl -p reloads the settings from /etc/sysctl.conf."
+    }
+  ]
+}
