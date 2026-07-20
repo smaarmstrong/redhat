@@ -1,0 +1,83 @@
+{
+  "source": "NvChad - Install Neovim: why EPEL is discouraged, the precompiled install, verification and the symlink",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why is installing Neovim from EPEL discouraged for NvChad?",
+      "options": [
+        "The EPEL version is too old to meet NvChad's minimum requirements",
+        "EPEL is not free software",
+        "It installs Vim instead of Neovim",
+        "It needs a paid subscription"
+      ],
+      "answer": 0,
+      "why": "EPEL's Neovim is too old; the precompiled package or source is recommended."
+    },
+    {
+      "type": "mcq",
+      "q": "Which precompiled archive do you download for a 64-bit Linux install?",
+      "options": [
+        "nvim-linux64.tar.gz",
+        "nvim-win64.zip",
+        "nvim-macos.tar.gz",
+        "nvim.rpm"
+      ],
+      "answer": 0,
+      "why": "The linux64 build ships as nvim-linux64.tar.gz (plus its .sha256sum)."
+    },
+    {
+      "type": "cmd",
+      "q": "What command verifies the download against its checksum file?",
+      "answers": [
+        "sha256sum -c nvim-linux64.tar.gz.sha256sum"
+      ],
+      "why": "sha256sum -c reads the .sha256sum file and reports OK on a good download."
+    },
+    {
+      "type": "mcq",
+      "q": "In this guide, where is the precompiled package unpacked?",
+      "options": [
+        "~/.local/share/",
+        "/usr/bin",
+        "/opt",
+        "~/.config"
+      ],
+      "answer": 0,
+      "why": "tar xvzf ... -C ~/.local/share/ (the location is up to you)."
+    },
+    {
+      "type": "mcq",
+      "q": "After unpacking, what makes nvim runnable from your PATH?",
+      "options": [
+        "A symbolic link to the nvim executable placed in ~/.local/bin/",
+        "Adding it to /etc/fstab",
+        "A systemd service",
+        "A dnf module"
+      ],
+      "answer": 0,
+      "why": "ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim inside ~/.local/bin/."
+    },
+    {
+      "type": "cmd",
+      "q": "What command prints the installed Neovim version?",
+      "answers": [
+        "nvim -v",
+        "nvim --version"
+      ],
+      "why": "nvim -v shows e.g. NVIM v0.9.5 and the LuaJIT version."
+    },
+    {
+      "type": "mcq",
+      "q": "A basic Neovim install, on its own, is...",
+      "options": [
+        "a good editor but not yet an IDE until configured (e.g. with NvChad)",
+        "already a full IDE",
+        "unusable without plugins",
+        "identical to VS Code"
+      ],
+      "answer": 0,
+      "why": "The base editor is fine but needs configuration to become an IDE."
+    }
+  ]
+}

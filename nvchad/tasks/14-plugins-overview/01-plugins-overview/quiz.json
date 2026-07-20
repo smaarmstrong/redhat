@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - Plugins: Overview: how user plugins are organized, loaded, and the restart requirement",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "User plugins are inserted from which folder?",
+      "options": [
+        "lua/plugins",
+        "lua/configs",
+        "lua/core",
+        "~/.cache/nvim"
+      ],
+      "answer": 0,
+      "why": "NvChad loads user plugins from lua/plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "How are plugin files in the plugins folder loaded?",
+      "options": [
+        "All .lua files in the folder are loaded and merged",
+        "Only init.lua is loaded",
+        "Only files listed in chadrc",
+        "One at a time in alphabetical order"
+      ],
+      "answer": 0,
+      "why": "Every .lua file in plugins is queried and merged, so you can split them up."
+    },
+    {
+      "type": "mcq",
+      "q": "A plugin file must enclose its plugin configs within...",
+      "options": [
+        "a Lua table returned with return { { ... }, }",
+        "a JSON object",
+        "a shell function",
+        "an XML block"
+      ],
+      "answer": 0,
+      "why": "Return a Lua table containing the plugin tables."
+    },
+    {
+      "type": "mcq",
+      "q": "It is advisable to...",
+      "options": [
+        "use separate files for your own plugins (e.g. editor.lua) rather than piling into init.lua",
+        "put everything in init.lua",
+        "never create new files",
+        "edit lazy-lock.json by hand"
+      ],
+      "answer": 0,
+      "why": "Separate files keep the configuration organized; init.lua is best for overrides."
+    },
+    {
+      "type": "mcq",
+      "q": "The configs folder is intended for...",
+      "options": [
+        "particularly long or user-modifiable plugin settings (e.g. conform.nvim)",
+        "the plugins themselves",
+        "themes",
+        "session files"
+      ],
+      "answer": 0,
+      "why": "Long or editable settings go in configs."
+    },
+    {
+      "type": "mcq",
+      "q": "After editing a plugins file, to get the plugin's full functionality you must...",
+      "options": [
+        "stop nvim and reopen it (Neovim has no live auto-update of a running editor)",
+        "run :NvChadUpdate",
+        "do nothing, it hot-reloads fully",
+        "reboot the machine"
+      ],
+      "answer": 0,
+      "why": "Neovim must be restarted to fully load a newly added plugin."
+    },
+    {
+      "type": "mcq",
+      "q": "Which sites does the page suggest for researching Neovim plugins?",
+      "options": [
+        "Dotfyle and Neovimcraft",
+        "GitHub Trending and npm",
+        "Reddit and Discord",
+        "Vim Awesome and PyPI"
+      ],
+      "answer": 0,
+      "why": "Dotfyle and Neovimcraft catalog plugins and configs."
+    },
+    {
+      "type": "mcq",
+      "q": "The plugin-search feature that helps organize user plugins has been present since...",
+      "options": [
+        "version 2.5",
+        "version 2.0",
+        "version 0.5",
+        "version 1.0"
+      ],
+      "answer": 0,
+      "why": "Since v2.5 you can organize user plugins more efficiently."
+    }
+  ]
+}

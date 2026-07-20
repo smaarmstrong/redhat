@@ -1,0 +1,8 @@
+{
+  "title": "lazy.nvim basics: health, add, remove",
+  "domain": "Plugins",
+  "objective": "NvChad - NvChad UI: Plugins Manager: lazy.nvim's role, checkhealth, and inserting/removing a plugin",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

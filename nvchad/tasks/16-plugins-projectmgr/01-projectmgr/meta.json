@@ -1,0 +1,8 @@
+{
+  "title": "The Project Manager plugin",
+  "domain": "Plugins",
+  "objective": "NvChad - Plugins: Project Manager: projectmgr.nvim: opening it, its keys, autogit and sessions",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

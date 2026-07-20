@@ -1,0 +1,8 @@
+{
+  "title": "lazy.nvim operations and lazy-lock.json",
+  "domain": "Plugins",
+  "objective": "NvChad - NvChad UI: Plugins Manager: update/sync/profile/log/debug/restore and the lock file",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

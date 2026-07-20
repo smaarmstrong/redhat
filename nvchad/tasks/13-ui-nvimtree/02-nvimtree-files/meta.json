@@ -1,0 +1,8 @@
+{
+  "title": "NvimTree: opening files and file management",
+  "domain": "NvimTree",
+  "objective": "NvChad - NvChad UI: NvimTree: how NvimTree opens files and its create/rename/delete/cut/copy keys",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

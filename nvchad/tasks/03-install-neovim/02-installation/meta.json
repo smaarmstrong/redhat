@@ -1,0 +1,8 @@
+{
+  "title": "Installing Neovim from the precompiled package",
+  "domain": "Install",
+  "objective": "NvChad - Install Neovim: why EPEL is discouraged, the precompiled install, verification and the symlink",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

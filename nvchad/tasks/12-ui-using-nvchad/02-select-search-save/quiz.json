@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - NvChad UI: Using NvChad: Visual mode, text search and saving/quitting",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "After Esc (to NORMAL), which combo enters Visual Block mode to select text?",
+      "options": [
+        "Ctrl + v",
+        "v",
+        "Shift + v",
+        "Ctrl + b"
+      ],
+      "answer": 0,
+      "why": "Ctrl+v enters V-BLOCK (Visual Block) mode."
+    },
+    {
+      "type": "mcq",
+      "q": "In Visual mode, which keys copy (yank) and delete the selection?",
+      "options": [
+        "y to copy, d to delete",
+        "c to copy, x to delete",
+        "Ctrl+c / Ctrl+x",
+        "p to copy, d to delete"
+      ],
+      "answer": 0,
+      "why": "y yanks to the clipboard; d deletes the selection."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you search for text?",
+      "options": [
+        "Type / followed by the search term",
+        "Type : then find",
+        "Press Ctrl+F",
+        "Type = then the term"
+      ],
+      "answer": 0,
+      "why": "/search_term highlights all occurrences."
+    },
+    {
+      "type": "mcq",
+      "q": "After a search, how do you jump to the next and previous match?",
+      "options": [
+        "/ + Enter for next, ? + Enter for previous",
+        "n and N are disabled",
+        "Tab / Shift+Tab",
+        "Ctrl+n / Ctrl+p"
+      ],
+      "answer": 0,
+      "why": "/ + Enter moves forward, ? + Enter moves back."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command clears search highlighting?",
+      "options": [
+        ":noh (no highlight)",
+        ":clear",
+        ":unhighlight",
+        ":nohl!only"
+      ],
+      "answer": 0,
+      "why": ":noh removes the search highlight."
+    },
+    {
+      "type": "mcq",
+      "q": "To save the current file you use...",
+      "options": [
+        ":w (write)",
+        ":s",
+        ":save!",
+        ":wq only"
+      ],
+      "answer": 0,
+      "why": ":w writes the file with its current name."
+    },
+    {
+      "type": "mcq",
+      "q": "To save AND close the editor you use...",
+      "options": [
+        ":wq (write-quit)",
+        ":q!",
+        ":x!",
+        ":close"
+      ],
+      "answer": 0,
+      "why": ":wq writes then quits."
+    },
+    {
+      "type": "mcq",
+      "q": "To save under a new name or location you run...",
+      "options": [
+        ":w /path/to/new/file",
+        ":saveas is the only way",
+        ":mv /path",
+        ":w! only"
+      ],
+      "answer": 0,
+      "why": ":w followed by a path saves a copy there."
+    }
+  ]
+}

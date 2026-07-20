@@ -1,0 +1,98 @@
+{
+  "source": "NvChad - Additional Software: the supporting tools ripgrep and lazygit",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is ripgrep (rg)?",
+      "options": [
+        "A line-oriented tool that recursively searches a directory for a regex pattern",
+        "A git client",
+        "A text editor",
+        "A font patcher"
+      ],
+      "answer": 0,
+      "why": "ripgrep recursively searches for regex patterns."
+    },
+    {
+      "type": "mcq",
+      "q": "By default, ripgrep...",
+      "options": [
+        "respects .gitignore and skips hidden files/directories and binaries",
+        "searches every file including binaries",
+        "only searches the current file",
+        "cannot use regular expressions"
+      ],
+      "answer": 0,
+      "why": "It honors gitignore rules and skips hidden/binary files by default."
+    },
+    {
+      "type": "cmd",
+      "q": "What command checks the installed ripgrep version?",
+      "answers": [
+        "rg --version"
+      ],
+      "why": "rg --version prints the version and SIMD/AVX build info."
+    },
+    {
+      "type": "mcq",
+      "q": "In NvChad, ripgrep is needed for...",
+      "options": [
+        "recursive searches with :Telescope",
+        "git operations",
+        "Markdown preview",
+        "theme switching"
+      ],
+      "answer": 0,
+      "why": "Telescope's grep/find relies on ripgrep."
+    },
+    {
+      "type": "mcq",
+      "q": "On Rocky Linux 8/9, from which repository does this guide install ripgrep?",
+      "options": [
+        "EPEL (via epel-release)",
+        "RPM Fusion",
+        "CRB",
+        "Flathub"
+      ],
+      "answer": 0,
+      "why": "You enable epel-release, upgrade, then dnf install ripgrep."
+    },
+    {
+      "type": "mcq",
+      "q": "What is LazyGit?",
+      "options": [
+        "An ncurses-style interface for performing all git operations",
+        "A Neovim colorscheme",
+        "A language server",
+        "A Markdown linter"
+      ],
+      "answer": 0,
+      "why": "LazyGit is a friendly terminal UI for git."
+    },
+    {
+      "type": "mcq",
+      "q": "Which plugin lets you use LazyGit directly inside NvChad?",
+      "options": [
+        "lazygit.nvim",
+        "gitsigns.nvim",
+        "telescope.nvim",
+        "conform.nvim"
+      ],
+      "answer": 0,
+      "why": "lazygit.nvim opens LazyGit in a floating window."
+    },
+    {
+      "type": "mcq",
+      "q": "Inside LazyGit, which key brings up the menu of all available commands?",
+      "options": [
+        "?",
+        "h",
+        "m",
+        ":"
+      ],
+      "answer": 0,
+      "why": "Pressing ? shows the full command menu."
+    }
+  ]
+}

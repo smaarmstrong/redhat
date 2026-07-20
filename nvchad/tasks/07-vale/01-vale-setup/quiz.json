@@ -1,0 +1,90 @@
+{
+  "source": "NvChad - Using vale in NvChad: what vale is, the nvim-lint plugin, and installing vale with Mason",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is vale?",
+      "options": [
+        "An open-source prose/style linter for technical writers",
+        "A git client",
+        "A Markdown-to-HTML converter",
+        "A font manager"
+      ],
+      "answer": 0,
+      "why": "vale checks writing voice and style consistency."
+    },
+    {
+      "type": "mcq",
+      "q": "Which plugin adds linter support to NvChad (vale rides on it)?",
+      "options": [
+        "nvim-lint (mfussenegger/nvim-lint)",
+        "conform.nvim",
+        "telescope.nvim",
+        "gitsigns.nvim"
+      ],
+      "answer": 0,
+      "why": "nvim-lint integrates linters like markdownlint, vale and yamllint."
+    },
+    {
+      "type": "mcq",
+      "q": "To install nvim-lint you create which file?",
+      "options": [
+        "lua/plugins/nvim-lint.lua",
+        "lua/configs/lint.lua only",
+        "a .vale.ini in home",
+        "chadrc.lua"
+      ],
+      "answer": 0,
+      "why": "Create lua/plugins/nvim-lint.lua; NvChad picks it up on restart."
+    },
+    {
+      "type": "mcq",
+      "q": "In the nvim-lint config, `linters_by_ft` maps...",
+      "options": [
+        "a filetype (e.g. markdown) to its list of linters",
+        "a linter to a color",
+        "a key to a command",
+        "a file to a theme"
+      ],
+      "answer": 0,
+      "why": "e.g. markdown = { \"markdownlint\", \"vale\" }."
+    },
+    {
+      "type": "mcq",
+      "q": "vale itself is installed through which tool inside nvim?",
+      "options": [
+        "Mason",
+        "dnf",
+        "cargo",
+        "lazy.nvim"
+      ],
+      "answer": 0,
+      "why": "Mason installs vale and keeps it up to date."
+    },
+    {
+      "type": "mcq",
+      "q": "In the Mason list, pressing menu item 4 does what?",
+      "options": [
+        "Limits the listing to linters",
+        "Installs everything",
+        "Uninstalls a package",
+        "Updates Mason itself"
+      ],
+      "answer": 0,
+      "why": "Item 4 filters the list to linters so you can find vale."
+    },
+    {
+      "type": "mcq",
+      "q": "With the cursor on vale in the Mason list, which key installs it?",
+      "options": [
+        "i",
+        "I",
+        "Enter",
+        "a"
+      ],
+      "answer": 0,
+      "why": "Press i to install the package under the cursor."
+    }
+  ]
+}

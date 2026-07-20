@@ -1,0 +1,8 @@
+{
+  "title": "Markdown preview plugins",
+  "domain": "Plugins",
+  "objective": "NvChad - Plugins: Markdown Preview: peek.nvim and markdown-preview.nvim, and porting vim.g options",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

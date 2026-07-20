@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - Overview: what NvChad is, its philosophy, Lua, updating, theme switching",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is NvChad?",
+      "options": [
+        "A ready-made configuration (packaged as a Neovim plugin) that turns Neovim into an IDE",
+        "A fork of the Vim editor",
+        "A standalone terminal emulator",
+        "A programming language"
+      ],
+      "answer": 0,
+      "why": "NvChad is a base configuration for Neovim, delivered inside the lazy.nvim plugin manager."
+    },
+    {
+      "type": "mcq",
+      "q": "How do the NvChad developers describe the project's purpose?",
+      "options": [
+        "Only a base on which to build your own personal IDE",
+        "A finished, unchangeable IDE",
+        "A drop-in replacement for Neovim itself",
+        "A theme pack and nothing more"
+      ],
+      "answer": 0,
+      "why": "NvChad is meant as a starting base; further customization is done with plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "What language is NvChad's configuration written in?",
+      "options": [
+        "Lua",
+        "Python",
+        "Vimscript",
+        "JSON"
+      ],
+      "answer": 0,
+      "why": "Lua is fast and integrates seamlessly into Neovim's configuration."
+    },
+    {
+      "type": "mcq",
+      "q": "Why are NvChad's startup and command times so fast?",
+      "options": [
+        "Lazy loading loads plugins only when their functionality is required",
+        "It is compiled to a native binary",
+        "It disables all plugins by default",
+        "It runs on a remote server"
+      ],
+      "answer": 0,
+      "why": "The Lazy loading technique defers plugins until needed."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command updates NvChad?",
+      "options": [
+        ":NvChadUpdate",
+        ":update",
+        ":PlugUpdate",
+        "nvchad --upgrade"
+      ],
+      "answer": 0,
+      "why": "NvChad ships a git-based update mechanism invoked with :NvChadUpdate."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key combination is used to change the theme?",
+      "options": [
+        "<leader> + th",
+        "<leader> + ct",
+        "Ctrl + t",
+        ":theme"
+      ],
+      "answer": 0,
+      "why": "Themes are selected with the <leader> + th mapping."
+    },
+    {
+      "type": "mcq",
+      "q": "When NvChad talks about 'customization', it refers to...",
+      "options": [
+        "functionality, not the appearance of the interface",
+        "only the color scheme",
+        "only the font",
+        "the Neovim source code"
+      ],
+      "answer": 0,
+      "why": "Customization means adapting functionality; the UI look is a separate matter."
+    },
+    {
+      "type": "mcq",
+      "q": "NvChad's automatic update mechanism is built on top of...",
+      "options": [
+        "git",
+        "dnf",
+        "pip",
+        "npm"
+      ],
+      "answer": 0,
+      "why": "Updates (and the config sync model) use git."
+    }
+  ]
+}

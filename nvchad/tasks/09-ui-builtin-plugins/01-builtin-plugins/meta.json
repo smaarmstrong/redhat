@@ -1,0 +1,8 @@
+{
+  "title": "The built-in NvChad plugins",
+  "domain": "Plugins",
+  "objective": "NvChad - NvChad UI: Built-In Plugins: the base plugins NvChad ships and the init.lua vs ui.lua split",
+  "est_min": 7,
+  "needs": "",
+  "kind": "quiz"
+}

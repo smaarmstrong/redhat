@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - Marksman: the snippet activation keys Marksman adds to the completion widgets",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Typing h then a number (e.g. h4) inserts...",
+      "options": [
+        "that many hash marks and a space for a heading (h1 to h6)",
+        "a horizontal rule",
+        "a hyperlink",
+        "a highlight"
+      ],
+      "answer": 0,
+      "why": "h4 + Enter inserts four # and a space, ready for the title."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the b and i snippets do?",
+      "options": [
+        "b = bold (four asterisks); i = italic (two asterisks)",
+        "b = blockquote; i = image",
+        "b = break; i = indent",
+        "b = bullet; i = inline code"
+      ],
+      "answer": 0,
+      "why": "b inserts **** for bold, i inserts ** for italic, cursor in the middle."
+    },
+    {
+      "type": "mcq",
+      "q": "The link snippet inserts...",
+      "options": [
+        "a [text](url) link structure",
+        "an image tag",
+        "a code block",
+        "a table"
+      ],
+      "answer": 0,
+      "why": "link builds the [text](url) structure (with path autocomplete)."
+    },
+    {
+      "type": "mcq",
+      "q": "The img snippet inserts...",
+      "options": [
+        "an image structure ![alt text](path)",
+        "a plain link",
+        "a heading",
+        "a blockquote"
+      ],
+      "answer": 0,
+      "why": "img inserts ![alt text](path)."
+    },
+    {
+      "type": "mcq",
+      "q": "The q snippet inserts...",
+      "options": [
+        "a blockquote tag (> followed by a space)",
+        "a quit command",
+        "a database query",
+        "a quote-of-the-day"
+      ],
+      "answer": 0,
+      "why": "q inserts the > citation tag and positions the cursor."
+    },
+    {
+      "type": "mcq",
+      "q": "Which snippet inserts a fenced code block (triple backticks plus a language)?",
+      "options": [
+        "codeblock",
+        "code",
+        "block",
+        "fence"
+      ],
+      "answer": 0,
+      "why": "codeblock inserts the fenced block; code inserts inline (double) backticks."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you navigate the completion widget to pick a Marksman snippet?",
+      "options": [
+        "With the Tab key",
+        "With the Enter key",
+        "With the arrow keys only",
+        "With the mouse only"
+      ],
+      "answer": 0,
+      "why": "Use Tab to move through the widget entries."
+    },
+    {
+      "type": "mcq",
+      "q": "The table snippet...",
+      "options": [
+        "quickly creates a table structure (choice of starting layouts)",
+        "sorts a table",
+        "deletes a table",
+        "converts a table to CSV"
+      ],
+      "answer": 0,
+      "why": "table scaffolds a Markdown table."
+    }
+  ]
+}

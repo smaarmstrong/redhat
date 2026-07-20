@@ -1,0 +1,114 @@
+{
+  "source": "NvChad - NvChad UI: NvimTree: how NvimTree opens files and its create/rename/delete/cut/copy keys",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "With a file selected, what do Enter or o do?",
+      "options": [
+        "Open it in a new buffer with the cursor on the first line",
+        "Rename it",
+        "Delete it",
+        "Open a terminal"
+      ],
+      "answer": 0,
+      "why": "Enter/o opens the file and places the cursor at line one."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key opens a file in a new buffer but KEEPS the cursor in nvimtree?",
+      "options": [
+        "Tab",
+        "Enter",
+        "Ctrl + t",
+        "o"
+      ],
+      "answer": 0,
+      "why": "Tab is handy for opening several files at once."
+    },
+    {
+      "type": "mcq",
+      "q": "What do Ctrl+t and Ctrl+v do in NvimTree?",
+      "options": [
+        "Ctrl+t opens in a new tab; Ctrl+v opens in a vertical split",
+        "both open in the same buffer",
+        "Ctrl+t vertical; Ctrl+v tab",
+        "both open in a new tab"
+      ],
+      "answer": 0,
+      "why": "Ctrl+t = new tab, Ctrl+v = vertical split, Ctrl+h = horizontal split."
+    },
+    {
+      "type": "mcq",
+      "q": "The a (add) key creates a FOLDER (not a file) when the name...",
+      "options": [
+        "ends with a slash / (e.g. /nvchad/nvimtree/)",
+        "starts with a dot",
+        "has no extension",
+        "is uppercase"
+      ],
+      "answer": 0,
+      "why": "A trailing / makes it a folder; otherwise a file is created."
+    },
+    {
+      "type": "mcq",
+      "q": "Which keys rename a selected file?",
+      "options": [
+        "r (from the original name); Ctrl+r (regardless of the original name)",
+        "R / Ctrl+R",
+        "m / Ctrl+m",
+        "n / Ctrl+n"
+      ],
+      "answer": 0,
+      "why": "r renames keeping the old name as a base; Ctrl+r renames from scratch."
+    },
+    {
+      "type": "mcq",
+      "q": "What does d do in NvimTree (with a y/n confirm)?",
+      "options": [
+        "Deletes the selected file, or a folder with all its contents",
+        "Duplicates it",
+        "Downloads it",
+        "Diffs it"
+      ],
+      "answer": 0,
+      "why": "d deletes; all destructive actions confirm with y/n."
+    },
+    {
+      "type": "mcq",
+      "q": "Which trio cut, copy and paste in NvimTree?",
+      "options": [
+        "x (cut), c (copy), p (paste)",
+        "d / y / p",
+        "Ctrl+x / Ctrl+c / Ctrl+v",
+        "m / c / v"
+      ],
+      "answer": 0,
+      "why": "x cut, c copy, p paste; cut+paste moves files within the tree."
+    },
+    {
+      "type": "mcq",
+      "q": "What do y, Y and g+y copy to the clipboard?",
+      "options": [
+        "y = file name, Y = relative path, g+y = absolute path",
+        "y = absolute path, Y = relative path, g+y = name",
+        "all three copy the file contents",
+        "y = name, Y = size, g+y = date"
+      ],
+      "answer": 0,
+      "why": "y name, Y relative path, g+y absolute path."
+    },
+    {
+      "type": "mcq",
+      "q": "NvimTree's git integration is...",
+      "options": [
+        "disabled by default; enabled via override (see the Template Chadrc page)",
+        "always on",
+        "not available at all",
+        "configured in mappings.lua"
+      ],
+      "answer": 0,
+      "why": "Enable git support by overriding M.nvimtree settings."
+    }
+  ]
+}

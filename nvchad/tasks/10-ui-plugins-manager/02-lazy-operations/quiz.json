@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - NvChad UI: Plugins Manager: update/sync/profile/log/debug/restore and the lock file",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In :Lazy, which key checks for updates?",
+      "options": [
+        "C",
+        "U",
+        "S",
+        "I"
+      ],
+      "answer": 0,
+      "why": "C runs git fetch and lists updatable plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key updates all checked plugins at once?",
+      "options": [
+        "U",
+        "u",
+        "C",
+        "S"
+      ],
+      "answer": 0,
+      "why": "U updates all; u updates an individually selected plugin."
+    },
+    {
+      "type": "mcq",
+      "q": "The Sync operation (:Lazy sync / S) is a concatenation of...",
+      "options": [
+        "install + clean + update",
+        "fetch + merge + push",
+        "backup + restore",
+        "check + log + debug"
+      ],
+      "answer": 0,
+      "why": "Sync runs install, clean and update together."
+    },
+    {
+      "type": "mcq",
+      "q": ":Lazy profile (P) shows...",
+      "options": [
+        "plugin loading times (a profiler for troubleshooting slowness)",
+        "git history",
+        "the plugin list",
+        "error logs only"
+      ],
+      "answer": 0,
+      "why": "The profiler helps find slow plugins."
+    },
+    {
+      "type": "mcq",
+      "q": "Which key/command shows the last operations performed on plugins?",
+      "options": [
+        "L (:Lazy log)",
+        "D (:Lazy debug)",
+        "P (:Lazy profile)",
+        "H (:Lazy history)"
+      ],
+      "answer": 0,
+      "why": "L opens the log of recent plugin operations."
+    },
+    {
+      "type": "mcq",
+      "q": ":Lazy debug (D) lets you inspect...",
+      "options": [
+        "active lazy-loading handlers and the module cache",
+        "the git log",
+        "font glyphs",
+        "the theme list"
+      ],
+      "answer": 0,
+      "why": "Debug shows loading handlers and what is cached."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the lazy-lock.json file enable?",
+      "options": [
+        "Syncing/restoring the exact plugin commit state across machines",
+        "Storing your passwords",
+        "Theme colors",
+        "Keymaps"
+      ],
+      "answer": 0,
+      "why": "It records each plugin's branch and commit."
+    },
+    {
+      "type": "mcq",
+      "q": "The Restore function (R / :Lazy restore) does what?",
+      "options": [
+        "Returns all plugins to the state recorded in lazy-lock.json",
+        "Deletes all plugins",
+        "Updates everything to latest",
+        "Resets your config to defaults"
+      ],
+      "answer": 0,
+      "why": "Restore brings plugins back to the locked commits."
+    }
+  ]
+}

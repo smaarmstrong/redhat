@@ -1,0 +1,102 @@
+{
+  "source": "NvChad - Install NvChad: the starter clone, first-run modules, lazy loading and the bootstrap",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "How is the NvChad configuration installed?",
+      "options": [
+        "By cloning the starter repository into ~/.config/nvim with git",
+        "From a dnf package",
+        "By compiling Neovim from source",
+        "With a curl | bash one-liner"
+      ],
+      "answer": 0,
+      "why": "git clone https://github.com/NvChad/starter ~/.config/nvim && nvim."
+    },
+    {
+      "type": "mcq",
+      "q": "In `git clone ... starter ~/.config/nvim && nvim`, what does the `&& nvim` do?",
+      "options": [
+        "Launches nvim, which initializes the just-downloaded configuration",
+        "Renames the folder",
+        "Deletes the repository",
+        "Updates the whole system"
+      ],
+      "answer": 0,
+      "why": "The clone downloads the starter; nvim then bootstraps it."
+    },
+    {
+      "type": "mcq",
+      "q": "On first start, which four modules are loaded (marked with a checkmark)?",
+      "options": [
+        "base46, NvChad, nvim-treesitter, ui",
+        "only NvChad",
+        "all installed plugins at once",
+        "none until you configure them"
+      ],
+      "answer": 0,
+      "why": "Only those four load initially; the rest are lazy-loaded."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of those loaded modules provides the editor themes?",
+      "options": [
+        "base46",
+        "ui",
+        "nvim-treesitter",
+        "NvChad"
+      ],
+      "answer": 0,
+      "why": "base46 provides the themes; ui is the interface; treesitter does highlighting."
+    },
+    {
+      "type": "mcq",
+      "q": "The remaining modules are activated...",
+      "options": [
+        "on demand, via lazy loading, when their functionality is requested",
+        "all at startup",
+        "only after :NvChadUpdate",
+        "never"
+      ],
+      "answer": 0,
+      "why": "Lazy loading improves startup time by deferring modules."
+    },
+    {
+      "type": "mcq",
+      "q": "In the bootstrap init.lua, the leader key (vim.g.mapleader) is set to...",
+      "options": [
+        "the Space key",
+        "the comma key",
+        "the backslash key",
+        "Ctrl"
+      ],
+      "answer": 0,
+      "why": "vim.g.mapleader = \" \" sets Space as leader."
+    },
+    {
+      "type": "mcq",
+      "q": "Which plugin manager does the bootstrap install and then use?",
+      "options": [
+        "lazy.nvim",
+        "packer.nvim",
+        "vim-plug",
+        "Mason"
+      ],
+      "answer": 0,
+      "why": "The bootstrap clones folke/lazy.nvim and runs require('lazy').setup."
+    },
+    {
+      "type": "mcq",
+      "q": "After installing plugins/parsers, which key closes the plugin manager screen?",
+      "options": [
+        "q",
+        ":wq",
+        "Esc Esc",
+        "Ctrl+c"
+      ],
+      "answer": 0,
+      "why": "Press q to close it; :q quits the editor."
+    }
+  ]
+}

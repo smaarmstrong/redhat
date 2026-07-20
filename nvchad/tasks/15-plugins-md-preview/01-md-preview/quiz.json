@@ -1,0 +1,114 @@
+{
+  "source": "NvChad - Plugins: Markdown Preview: peek.nvim and markdown-preview.nvim, and porting vim.g options",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Rocky Linux documentation is converted from Markdown to...",
+      "options": [
+        "static HTML pages (by a Python application)",
+        "PDF only",
+        "plain text",
+        "a database"
+      ],
+      "answer": 0,
+      "why": "The docs are built to static HTML, so previewing HTML output matters."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two Markdown-preview plugins does the page cover?",
+      "options": [
+        "toppair/peek.nvim and iamcco/markdown-preview.nvim",
+        "glow.nvim and vimwiki",
+        "peek.nvim and neoscroll",
+        "mkdocs and pandoc"
+      ],
+      "answer": 0,
+      "why": "Both support github-style, browser choice and synced scrolling."
+    },
+    {
+      "type": "mcq",
+      "q": "peek.nvim relies on which runtime?",
+      "options": [
+        "Deno (installed via :MasonInstall deno)",
+        "Node.js only",
+        "Python",
+        "Ruby"
+      ],
+      "answer": 0,
+      "why": "Peek uses the Deno runtime."
+    },
+    {
+      "type": "mcq",
+      "q": "Important ordering when installing peek.nvim:",
+      "options": [
+        "Install the Deno language server BEFORE installing the plugin",
+        "Install the plugin first",
+        "Order does not matter",
+        "Install a browser first"
+      ],
+      "answer": 0,
+      "why": "If Deno is missing the plugin install fails and must be cleaned up."
+    },
+    {
+      "type": "mcq",
+      "q": "peek.nvim's default activation mapping is...",
+      "options": [
+        "<leader>op (Space + o then p)",
+        "<leader>mp",
+        "<leader>pk",
+        "Ctrl + p"
+      ],
+      "answer": 0,
+      "why": "The config maps <leader>op to toggle Peek."
+    },
+    {
+      "type": "mcq",
+      "q": "In opts = { theme = \"dark\", app = \"browser\" }, the alternative to \"browser\" is...",
+      "options": [
+        "\"webview\" (preview via Deno's webview_deno, no external browser)",
+        "\"terminal\"",
+        "\"pdf\"",
+        "\"html\""
+      ],
+      "answer": 0,
+      "why": "webview previews inside Deno rather than the system browser."
+    },
+    {
+      "type": "mcq",
+      "q": "markdown-preview.nvim is written in ... and its NvChad install ...",
+      "options": [
+        "node.js; needs no dependencies (a precompiled version is provided)",
+        "Deno; needs Deno installed",
+        "Python; needs pip",
+        "Rust; needs cargo"
+      ],
+      "answer": 0,
+      "why": "A precompiled build means no extra dependencies."
+    },
+    {
+      "type": "mcq",
+      "q": "To port a project option like `let g:mkdp_theme = 'dark'` into NvChad you write...",
+      "options": [
+        "vim.g.mkdp_theme = \"dark\" (replace let g: with vim.g.)",
+        "set mkdp_theme=dark",
+        "g:mkdp_theme := dark",
+        "no change is needed"
+      ],
+      "answer": 0,
+      "why": "Swap the Vimscript `let g:` prefix for Lua's `vim.g.`."
+    },
+    {
+      "type": "mcq",
+      "q": "Which commands does markdown-preview.nvim provide to open/close the preview?",
+      "options": [
+        ":MarkdownPreview and :MarkdownPreviewStop",
+        ":Peek / :PeekClose",
+        ":MdOpen / :MdClose",
+        ":Preview / :Stop"
+      ],
+      "answer": 0,
+      "why": "You can also map them to <leader>mp and <leader>mc."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "source": "NvChad - Plugins: Project Manager: projectmgr.nvim: opening it, its keys, autogit and sessions",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which plugin adds project management to NvChad?",
+      "options": [
+        "charludo/projectmgr.nvim",
+        "natecraddock/workspaces.nvim",
+        "telescope-project.nvim",
+        "projectionist.vim"
+      ],
+      "answer": 0,
+      "why": "projectmgr.nvim manages projects with good Telescope integration."
+    },
+    {
+      "type": "mcq",
+      "q": "projectmgr.nvim integrates especially well with...",
+      "options": [
+        "Telescope",
+        "lazygit",
+        "Mason",
+        "conform"
+      ],
+      "answer": 0,
+      "why": "Its Telescope integration makes project management functional."
+    },
+    {
+      "type": "mcq",
+      "q": "Which single command opens the project manager buffer?",
+      "options": [
+        ":ProjectMgr",
+        ":Projects",
+        ":Telescope projects",
+        ":PM"
+      ],
+      "answer": 0,
+      "why": ":ProjectMgr opens the interactive buffer."
+    },
+    {
+      "type": "mcq",
+      "q": "In the ProjectMgr buffer, which key ADDS a project interactively?",
+      "options": [
+        "Ctrl + a",
+        "Ctrl + n",
+        "a",
+        "Ctrl + p"
+      ],
+      "answer": 0,
+      "why": "Ctrl+a starts the interactive add procedure."
+    },
+    {
+      "type": "mcq",
+      "q": "Which keys edit and delete a project?",
+      "options": [
+        "Ctrl + e (edit), Ctrl + d (delete)",
+        "e / d",
+        "Ctrl + x / Ctrl + r",
+        "Ctrl + m / Ctrl + q"
+      ],
+      "answer": 0,
+      "why": "Ctrl+e edits, Ctrl+d deletes; Ctrl+q closes the buffer."
+    },
+    {
+      "type": "mcq",
+      "q": "Startup/Exit commands for a project are entered...",
+      "options": [
+        "as editor commands WITHOUT the leading colon (e.g. NvimTreeToggle), not bash",
+        "as bash commands",
+        "with the colon, e.g. :NvimTreeToggle",
+        "in lazy-lock.json"
+      ],
+      "answer": 0,
+      "why": "They are editor commands, entered without the colon."
+    },
+    {
+      "type": "mcq",
+      "q": "When enabled, the autogit feature runs on project open...",
+      "options": [
+        "git pull --ff-only (fast-forward-only sync, logged to a file)",
+        "git push --force",
+        "git reset --hard",
+        "git clone"
+      ],
+      "answer": 0,
+      "why": "It fast-forwards the repo and logs to .git/fastforward.log."
+    },
+    {
+      "type": "mcq",
+      "q": "The session feature (session = { enabled = true, ... }) does what?",
+      "options": [
+        "Saves the editor session so you reopen the files you were working on",
+        "Saves your theme",
+        "Backs up the git repo",
+        "Records keystrokes"
+      ],
+      "answer": 0,
+      "why": "It stores editor state; the guide writes Session.vim into .git."
+    },
+    {
+      "type": "mcq",
+      "q": "Which command checks whether open buffers were changed outside NvChad?",
+      "options": [
+        ":checktime",
+        ":checkhealth",
+        ":reload",
+        ":gitstatus"
+      ],
+      "answer": 0,
+      "why": ":checktime warns when files were modified outside the editor."
+    }
+  ]
+}
