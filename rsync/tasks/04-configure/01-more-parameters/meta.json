@@ -1,0 +1,8 @@
+{
+  "title": "More rsyncd.conf parameters",
+  "domain": "Rsync Configuration",
+  "objective": "Learning Rsync - rsync configuration file: Supplementary daemon parameters and a recommended configuration",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

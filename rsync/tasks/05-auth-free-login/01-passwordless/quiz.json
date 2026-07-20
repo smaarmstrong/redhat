@@ -1,0 +1,86 @@
+{
+  "source": "Learning Rsync - rsync password-free authentication login: Setting up password-free authentication for real-time sync",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why set up password-free login here?",
+      "options": [
+        "Real-time synchronization (with inotify-tools) runs unattended and cannot stop to type a password",
+        "It is faster",
+        "It avoids encryption",
+        "It is mandatory for rsync"
+      ],
+      "answer": 0,
+      "why": "Real-time one-way sync needs password-free login so it can run without human input."
+    },
+    {
+      "type": "mcq",
+      "q": "Password-free login can be set up for...",
+      "options": [
+        "Both the SSH protocol and the rsync protocol",
+        "SSH only",
+        "The rsync protocol only",
+        "Neither"
+      ],
+      "answer": 0,
+      "why": "Either protocol can achieve password-free authentication."
+    },
+    {
+      "type": "cmd",
+      "q": "Generate a 2048-bit RSA key pair (SSH password-free login).",
+      "answers": [
+        "ssh-keygen -t rsa -b 2048"
+      ],
+      "why": "ssh-keygen -t rsa -b 2048 creates the key pair under ~/.ssh/."
+    },
+    {
+      "type": "mcq",
+      "q": "For SSH key auth, where does the client's public key go on the server?",
+      "options": [
+        "Appended to the target user's ~/.ssh/authorized_keys",
+        "/etc/ssh/keys",
+        "The user's ~/.ssh/id_rsa",
+        "~/.ssh/known_hosts"
+      ],
+      "answer": 0,
+      "why": "cat id_rsa.pub >> ~/.ssh/authorized_keys for that user."
+    },
+    {
+      "type": "mcq",
+      "q": "Which sshd_config option must be enabled for key authentication?",
+      "options": [
+        "PubkeyAuthentication yes",
+        "PasswordAuthentication yes",
+        "PermitRootLogin yes",
+        "UsePAM yes"
+      ],
+      "answer": 0,
+      "why": "PubkeyAuthentication yes must be set in /etc/ssh/sshd_config."
+    },
+    {
+      "type": "mcq",
+      "q": "For the rsync protocol, which environment variable supplies the virtual user's password non-interactively?",
+      "options": [
+        "RSYNC_PASSWORD",
+        "RSYNCPASS",
+        "RSYNC_PWD",
+        "PASSWORD"
+      ],
+      "answer": 0,
+      "why": "export RSYNC_PASSWORD=<pass> lets the rsync command authenticate without prompting."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you make RSYNC_PASSWORD persist permanently?",
+      "options": [
+        "Write 'export RSYNC_PASSWORD=...' into /etc/profile",
+        "Put it in rsyncd.conf",
+        "Add it to authorized_keys",
+        "Put it in ~/.ssh/config"
+      ],
+      "answer": 0,
+      "why": "Adding the export to /etc/profile makes it take effect for every login."
+    }
+  ]
+}

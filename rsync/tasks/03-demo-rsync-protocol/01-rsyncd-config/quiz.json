@@ -1,0 +1,99 @@
+{
+  "source": "Learning Rsync - rsync demo 02: The rsync-protocol daemon and /etc/rsyncd.conf",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Why does rsync offer the rsync-protocol (virtual user) login instead of only SSH?",
+      "options": [
+        "To avoid creating many system users, which is less secure -- it uses virtual users (like vsftpd)",
+        "Because it is faster",
+        "Because it encrypts better",
+        "Because SSH cannot transfer files"
+      ],
+      "answer": 0,
+      "why": "Many synchronization needs would mean many system users (more users = less secure); the rsync protocol uses virtual users instead."
+    },
+    {
+      "type": "mcq",
+      "q": "Which file do you create to configure the rsync daemon on Rocky Linux 8?",
+      "options": [
+        "/etc/rsyncd.conf",
+        "/etc/rsync.conf",
+        "~/.rsyncd",
+        "/etc/rsyncd/config"
+      ],
+      "answer": 0,
+      "why": "You manually create /etc/rsyncd.conf."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a [share] header define in rsyncd.conf?",
+      "options": [
+        "A share (module) name that clients connect to",
+        "A virtual user",
+        "The log file",
+        "The listen IP"
+      ],
+      "answer": 0,
+      "why": "[name] is the share/module name; clients target it by that name."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `read only = yes` mean for a module (and how do you allow uploads)?",
+      "options": [
+        "The share is read-only; set read only = no to allow read and write",
+        "It is read-write; yes allows uploads",
+        "It hides the share",
+        "It compresses the share"
+      ],
+      "answer": 0,
+      "why": "yes = read only, no = read and write."
+    },
+    {
+      "type": "mcq",
+      "q": "What does `auth users = li` do?",
+      "options": [
+        "Enables a virtual user named li for the share (you must create it)",
+        "Grants a system user li",
+        "Sets the share owner",
+        "Sets the log path"
+      ],
+      "answer": 0,
+      "why": "auth users names the virtual user(s); these are not system accounts."
+    },
+    {
+      "type": "mcq",
+      "q": "Where are the virtual users' passwords stored, and in what format?",
+      "options": [
+        "In the secrets file (e.g. /etc/rsyncd_users.db), one 'username:password' per line, ending in .db",
+        "In /etc/passwd",
+        "In environment variables",
+        "Inline in rsyncd.conf"
+      ],
+      "answer": 0,
+      "why": "The `secrets file` holds username:password lines and must end in .db."
+    },
+    {
+      "type": "mcq",
+      "q": "What permission must the rsync password (secrets) file have?",
+      "options": [
+        "600",
+        "644",
+        "777",
+        "755"
+      ],
+      "answer": 0,
+      "why": "The password file must be 600 (owner read/write only)."
+    },
+    {
+      "type": "cmd",
+      "q": "Start the rsync daemon service (after installing rsync-daemon).",
+      "answers": [
+        "systemctl start rsyncd.service",
+        "systemctl start rsyncd"
+      ],
+      "why": "systemctl start rsyncd.service starts the daemon; it then listens on port 873."
+    }
+  ]
+}

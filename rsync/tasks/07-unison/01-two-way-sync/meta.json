@@ -1,0 +1,8 @@
+{
+  "title": "Two-way synchronization with unison",
+  "domain": "Rsync unison (two-way)",
+  "objective": "Learning Rsync - Use unison: Using inotify-tools with unison for bidirectional sync",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

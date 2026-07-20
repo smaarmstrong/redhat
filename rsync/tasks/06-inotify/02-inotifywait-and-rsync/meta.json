@@ -1,0 +1,8 @@
+{
+  "title": "inotifywait options and driving rsync",
+  "domain": "Rsync inotify-tools",
+  "objective": "Learning Rsync - inotify-tools installation and use: inotifywait options, event types, and the real-time sync script",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

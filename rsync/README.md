@@ -21,7 +21,7 @@ missing from it.
 
 ## Chapters
 
-Added chapter by chapter as the book is read.
+The whole book is covered.
 
 | Dir | Book chapter | Online page |
 |---|---|---|

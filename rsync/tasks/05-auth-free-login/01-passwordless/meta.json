@@ -1,0 +1,8 @@
+{
+  "title": "Password-free login (SSH and rsync protocol)",
+  "domain": "Rsync Password-free Login",
+  "objective": "Learning Rsync - rsync password-free authentication login: Setting up password-free authentication for real-time sync",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
