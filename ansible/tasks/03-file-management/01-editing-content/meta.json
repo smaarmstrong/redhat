@@ -1,0 +1,8 @@
+{
+  "title": "Editing file content in place (ini_file, lineinfile)",
+  "domain": "Ansible File Management",
+  "objective": "Learning Ansible with Rocky - File Management: Editing file content: the ini_file and lineinfile modules",
+  "est_min": 5,
+  "needs": "",
+  "kind": "quiz"
+}

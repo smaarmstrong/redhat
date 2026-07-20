@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - File Management: Moving files: copy, fetch, template, and get_url",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "To copy a file FROM the Ansible server TO one or more hosts, which module?",
+      "options": [
+        "copy",
+        "fetch",
+        "template",
+        "get_url"
+      ],
+      "answer": 0,
+      "why": "copy pushes a local file out to the target hosts."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the fetch module do, relative to copy?",
+      "options": [
+        "The opposite: copies a file FROM a remote host back TO the local server",
+        "Exactly the same as copy",
+        "Downloads a file from a URL",
+        "Edits an INI file in place"
+      ],
+      "answer": 0,
+      "why": "fetch retrieves files from remote hosts to the control node (the reverse of copy)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which module generates a file on the target from a Jinja2 template?",
+      "options": [
+        "template",
+        "copy",
+        "lineinfile",
+        "get_url"
+      ],
+      "answer": 0,
+      "why": "template renders a .j2 Jinja2 template to the destination file."
+    },
+    {
+      "type": "mcq",
+      "q": "Which templating system does the template module use?",
+      "options": [
+        "Jinja2",
+        "ERB",
+        "Mustache",
+        "Go text/template"
+      ],
+      "answer": 0,
+      "why": "Ansible's template module uses the Jinja2 template system."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the `validate` parameter (e.g. validate: '/usr/sbin/apachectl -t') do?",
+      "options": [
+        "Runs a validation command on the generated file before putting it in place",
+        "Schedules a handler to restart the service",
+        "Downloads and checks a checksum",
+        "Only sets the file's permissions"
+      ],
+      "answer": 0,
+      "why": "validate runs a check command (if the service supports it, like apachectl -t) before the file is applied."
+    },
+    {
+      "type": "mcq",
+      "q": "To download a file from a website or FTP to the hosts, which module?",
+      "options": [
+        "get_url",
+        "copy",
+        "fetch",
+        "template"
+      ],
+      "answer": 0,
+      "why": "get_url fetches a file over http/ftp onto the target."
+    },
+    {
+      "type": "mcq",
+      "q": "In get_url, what does providing a checksum achieve?",
+      "options": [
+        "The file is not re-downloaded if it is already present and its checksum matches",
+        "It encrypts the downloaded file",
+        "It validates only the TLS certificate",
+        "It renames the file after download"
+      ],
+      "answer": 0,
+      "why": "A matching checksum at the destination makes get_url skip the re-download, keeping it idempotent."
+    },
+    {
+      "type": "mcq",
+      "q": "Common to copy, template, and get_url, which parameters set ownership and permissions?",
+      "options": [
+        "owner, group, mode",
+        "section, option, value",
+        "regexp, line",
+        "src, flat"
+      ],
+      "answer": 0,
+      "why": "owner/group/mode set the resulting file's ownership and permission bits."
+    }
+  ]
+}

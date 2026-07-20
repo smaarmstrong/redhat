@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - File Management: Editing file content: the ini_file and lineinfile modules",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "To modify an INI file (sections in [] with key=value pairs), which module is easiest?",
+      "options": [
+        "ini_file",
+        "lineinfile",
+        "copy",
+        "template"
+      ],
+      "answer": 0,
+      "why": "ini_file edits an INI file's section/option/value directly."
+    },
+    {
+      "type": "mcq",
+      "q": "Which three pieces of information does the ini_file module require?",
+      "options": [
+        "The section, the option name, and the new value",
+        "The owner, group, and mode",
+        "A regexp, a line, and a path",
+        "A src, a dest, and a checksum"
+      ],
+      "answer": 0,
+      "why": "ini_file needs the section, the option, and the new value (plus the dest path)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which collection provides ini_file in the guide's example?",
+      "options": [
+        "community.general",
+        "ansible.builtin",
+        "ansible.posix",
+        "community.crypto"
+      ],
+      "answer": 0,
+      "why": "The example uses community.general.ini_file."
+    },
+    {
+      "type": "mcq",
+      "q": "To ensure a single line is present in a file, or to add/modify one line, which module?",
+      "options": [
+        "lineinfile",
+        "ini_file",
+        "copy",
+        "get_url"
+      ],
+      "answer": 0,
+      "why": "lineinfile ensures a given line is present or updated in a file."
+    },
+    {
+      "type": "mcq",
+      "q": "In lineinfile, how is the line to modify located?",
+      "options": [
+        "With a regexp",
+        "By line number only",
+        "By byte offset",
+        "By file checksum"
+      ],
+      "answer": 0,
+      "why": "lineinfile finds the target line using a regexp."
+    },
+    {
+      "type": "mcq",
+      "q": "Which two lineinfile parameters say which line to match and what it should become?",
+      "options": [
+        "regexp (match) and line (the replacement content)",
+        "src and dest",
+        "section and option",
+        "url and checksum"
+      ],
+      "answer": 0,
+      "why": "regexp locates the line (e.g. '^SELINUX='); line sets its new content (e.g. 'SELINUX=enforcing')."
+    },
+    {
+      "type": "mcq",
+      "q": "Which collection provides lineinfile in the guide's example?",
+      "options": [
+        "ansible.builtin",
+        "community.general",
+        "ansible.posix",
+        "community.mysql"
+      ],
+      "answer": 0,
+      "why": "The example uses ansible.builtin.lineinfile."
+    }
+  ]
+}
