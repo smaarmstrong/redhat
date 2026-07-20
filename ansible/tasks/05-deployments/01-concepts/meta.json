@@ -1,0 +1,8 @@
+{
+  "title": "Ansistrano concepts and the release layout",
+  "domain": "Ansible Deployments (Ansistrano)",
+  "objective": "Learning Ansible with Rocky - Ansistrano Deployments: Introduction: what Ansistrano is, its steps and layout",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

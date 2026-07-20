@@ -1,0 +1,66 @@
+{
+  "source": "Learning Ansible with Rocky - Ansistrano Deployments: Running tasks before and after deployment steps",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Where can you intervene with Ansistrano hooks?",
+      "options": [
+        "Before and after each of the five steps",
+        "Only at the very end",
+        "Only before Setup",
+        "Nowhere -- steps are fixed"
+      ],
+      "answer": 0,
+      "why": "You can run a task file before and after each of Setup, Update Code, Symlink Shared, Symlink, Clean Up."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the variable pattern to run a task file BEFORE a given step?",
+      "options": [
+        "ansistrano_before_<task>_tasks_file",
+        "ansistrano_pre_<task>",
+        "before_<task>_hook",
+        "ansistrano_<task>_before"
+      ],
+      "answer": 0,
+      "why": "ansistrano_before_<task>_tasks_file (and ansistrano_after_<task>_tasks_file for after)."
+    },
+    {
+      "type": "mcq",
+      "q": "To run something at the very beginning of a deployment, which hook fits?",
+      "options": [
+        "ansistrano_before_setup_tasks_file",
+        "ansistrano_after_symlink_tasks_file",
+        "ansistrano_after_cleanup_tasks_file",
+        "ansistrano_before_symlink_tasks_file"
+      ],
+      "answer": 0,
+      "why": "Setup is the first step, so before_setup runs at the very start."
+    },
+    {
+      "type": "mcq",
+      "q": "To restart Apache after the new release goes live, which hook does the example use?",
+      "options": [
+        "ansistrano_after_symlink_tasks_file",
+        "ansistrano_before_setup_tasks_file",
+        "ansistrano_after_setup_tasks_file",
+        "ansistrano_before_symlink_tasks_file"
+      ],
+      "answer": 0,
+      "why": "The Symlink step swings current to the new release; after_symlink restarts httpd once it is live."
+    },
+    {
+      "type": "mcq",
+      "q": "In the 'send a mail at deployment start' example, what module and delegation are used?",
+      "options": [
+        "The mail module, delegate_to: localhost",
+        "The debug module, run on the target",
+        "get_url",
+        "template"
+      ],
+      "answer": 0,
+      "why": "The before-setup task uses the mail module delegated to localhost (the control node)."
+    }
+  ]
+}

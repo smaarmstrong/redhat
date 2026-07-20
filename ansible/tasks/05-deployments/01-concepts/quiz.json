@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - Ansistrano Deployments: Introduction: what Ansistrano is, its steps and layout",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is Ansistrano?",
+      "options": [
+        "An Ansible role to easily deploy applications (PHP, Python, ...)",
+        "A standalone CLI tool independent of Ansible",
+        "A web server",
+        "A git hosting service"
+      ],
+      "answer": 0,
+      "why": "Ansistrano is an Ansible role for application deployment."
+    },
+    {
+      "type": "mcq",
+      "q": "Ansistrano is based on the functionality of which tool?",
+      "options": [
+        "Capistrano",
+        "Jenkins",
+        "Terraform",
+        "Puppet"
+      ],
+      "answer": 0,
+      "why": "It reproduces Capistrano's deployment approach as an Ansible role."
+    },
+    {
+      "type": "mcq",
+      "q": "What does Ansistrano require to run?",
+      "options": [
+        "Ansible on the deployment machine, plus rsync or git on the client",
+        "Docker on both machines",
+        "A database server",
+        "Only systemd"
+      ],
+      "answer": 0,
+      "why": "Ansible on the deploy machine; rsync or git on the managed client."
+    },
+    {
+      "type": "mcq",
+      "q": "From where can Ansistrano fetch the source code?",
+      "options": [
+        "rsync, git, scp, http, S3, and more",
+        "git only",
+        "only a local filesystem path",
+        "only S3"
+      ],
+      "answer": 0,
+      "why": "It supports several methods: rsync, git, scp, http, S3, etc."
+    },
+    {
+      "type": "mcq",
+      "q": "Which of these is NOT one of Ansistrano's five deployment steps?",
+      "options": [
+        "Compile",
+        "Setup",
+        "Update Code",
+        "Clean Up"
+      ],
+      "answer": 0,
+      "why": "The five steps are Setup, Update Code, Symlink Shared, Symlink, and Clean Up -- there is no Compile step."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the Setup step do?",
+      "options": [
+        "Creates the directory structure that will host the releases",
+        "Downloads the new release",
+        "Points the current symlink",
+        "Removes old versions"
+      ],
+      "answer": 0,
+      "why": "Setup builds the directory structure to hold releases."
+    },
+    {
+      "type": "mcq",
+      "q": "In the release layout, what is the `current` symlink?",
+      "options": [
+        "A symbolic link pointing to the active release under releases/",
+        "The git repository",
+        "The shared folder",
+        "A backup archive"
+      ],
+      "answer": 0,
+      "why": "current -> ./releases/<timestamp> points at the live release."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the purpose of the `shared` directory?",
+      "options": [
+        "It holds files/folders kept across releases, symlinked into each release",
+        "It stores old releases only",
+        "It is the git clone",
+        "It holds Apache logs only"
+      ],
+      "answer": 0,
+      "why": "shared/ content is symlinked into each release so it persists between deployments."
+    }
+  ]
+}
