@@ -1,0 +1,102 @@
+{
+  "source": "Security Enhancements - Introduction to PAM and basic usage: Where PAM policy and module config live, and how a policy line is written",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What replaced the traditional single /etc/pam.conf on most distributions?",
+      "options": [
+        "Per-service policy files under /etc/pam.d/",
+        "/etc/passwd",
+        "~/.pam",
+        "/etc/security only"
+      ],
+      "answer": 0,
+      "why": "Modern PAM centralizes per-service policy files in /etc/pam.d/."
+    },
+    {
+      "type": "mcq",
+      "q": "In /etc/pam.d/, how is a service's policy file identified?",
+      "options": [
+        "By its filename, which is the service name",
+        "By a header line inside it",
+        "By its first field",
+        "Only by a symlink"
+      ],
+      "answer": 0,
+      "why": "The service name is the file name, so the same file can serve multiple names via symlink."
+    },
+    {
+      "type": "mcq",
+      "q": "A line in an /etc/pam.d/ file has which four fields?",
+      "options": [
+        "TYPE (facility), CONTROL (flag), MODULE_PATH (.so), and MODULE_ARGS",
+        "user, group, permission, path",
+        "service, facility, flag, module (five including args)",
+        "type, path, user, mode"
+      ],
+      "answer": 0,
+      "why": "The service is the filename, so the line itself is type/control/module/args."
+    },
+    {
+      "type": "mcq",
+      "q": "Where do the PAM module .so files live on a 64-bit system?",
+      "options": [
+        "/lib64/security/",
+        "/etc/pam.d/",
+        "/usr/bin/",
+        "/etc/security/"
+      ],
+      "answer": 0,
+      "why": "Modules are under /lib64/security/; the path in a line is relative to it."
+    },
+    {
+      "type": "mcq",
+      "q": "What is stored in /etc/security/?",
+      "options": [
+        "Global per-module configuration files (e.g. limits.conf, pam_env.conf)",
+        "The service policy files",
+        "The module binaries",
+        "User passwords"
+      ],
+      "answer": 0,
+      "why": "/etc/security/ holds module-specific configuration; /etc/pam.d/ holds the policies."
+    },
+    {
+      "type": "mcq",
+      "q": "What does a leading '-' on a line (e.g. -session) mean?",
+      "options": [
+        "If the module does not exist, it will not affect the result or be logged (handy for optional modules)",
+        "It disables the line",
+        "It negates the module's result",
+        "It comments the line out"
+      ],
+      "answer": 0,
+      "why": "The - prefix tolerates a missing module silently."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the '#%PAM-1.0' line?",
+      "options": [
+        "A version-declaration comment (a convention, like #!/bin/bash), not a functional directive",
+        "A required directive",
+        "A module invocation",
+        "An error marker"
+      ],
+      "answer": 0,
+      "why": "It just declares the config version by convention."
+    },
+    {
+      "type": "mcq",
+      "q": "Why is /etc/pam.d/system-auth important?",
+      "options": [
+        "It is the central policy for logging into the system, and many other services reuse it via the include keyword",
+        "It is the SSH server config",
+        "It lists all users",
+        "It is the module directory"
+      ],
+      "answer": 0,
+      "why": "system-auth authenticates system login and is include'd by other services to save reconfiguration."
+    }
+  ]
+}

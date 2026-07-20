@@ -1,0 +1,110 @@
+{
+  "source": "Security Enhancements - Introduction to PAM and basic usage: Key PAM modules and the password-complexity/lockout/history cases",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does pam_unix.so do?",
+      "options": [
+        "Prompts for a password and checks it against /etc/shadow",
+        "Always denies every request",
+        "Sets environment variables",
+        "Locks accounts after failures"
+      ],
+      "answer": 0,
+      "why": "pam_unix is the standard UNIX password authentication module."
+    },
+    {
+      "type": "mcq",
+      "q": "What does pam_deny.so do?",
+      "options": [
+        "Always returns failure -- used as a catch-all reject at the end of a chain",
+        "Always allows access",
+        "Sets environment variables",
+        "Checks password quality"
+      ],
+      "answer": 0,
+      "why": "pam_deny always says 'no'; unmatched requests fall through to it and are rejected."
+    },
+    {
+      "type": "mcq",
+      "q": "pam_pwquality.so checks new-password complexity. What does dcredit=-1 require?",
+      "options": [
+        "At least one digit in the new password (a negative credit sets a minimum of that class)",
+        "At most one digit",
+        "No digits allowed",
+        "Exactly one digit"
+      ],
+      "answer": 0,
+      "why": "N<0 means 'at least |N| of this class required'; N>0 would be a maximum credit."
+    },
+    {
+      "type": "mcq",
+      "q": "Which pam_pwquality parameter makes the complexity rules also apply to root?",
+      "options": [
+        "enforce_for_root",
+        "even_deny_root",
+        "root_unlock_time",
+        "local_users_only"
+      ],
+      "answer": 0,
+      "why": "Without enforce_for_root the checks are advisory for root."
+    },
+    {
+      "type": "mcq",
+      "q": "What does pam_faillock.so do, and which parameters control it?",
+      "options": [
+        "Locks an account after too many failed attempts: deny=N, unlock_time=secs, fail_interval=secs, even_deny_root",
+        "Checks password complexity",
+        "Remembers old passwords",
+        "Sets resource limits"
+      ],
+      "answer": 0,
+      "why": "faillock counts failures in fail_interval and locks for unlock_time after deny attempts."
+    },
+    {
+      "type": "cmd",
+      "q": "View the current per-user faillock records.",
+      "answers": [
+        "faillock"
+      ],
+      "why": "faillock shows failed-login records; faillock --reset clears them (data in /var/run/faillock/)."
+    },
+    {
+      "type": "mcq",
+      "q": "pam_pwhistory.so with remember=3 does what, and where are the old hashes stored?",
+      "options": [
+        "Forbids reusing the last 3 passwords; old hashes are recorded in /etc/security/opasswd",
+        "Locks the account after 3 tries; stored in /etc/shadow",
+        "Checks complexity; stored in pam.conf",
+        "Logs logins; stored in /var/log/secure"
+      ],
+      "answer": 0,
+      "why": "pwhistory blocks reuse of the last N passwords, tracked in /etc/security/opasswd."
+    },
+    {
+      "type": "mcq",
+      "q": "What do pam_wheel.so, pam_nologin.so, and pam_time.so do?",
+      "options": [
+        "wheel: permit root access only to the wheel group; nologin: block non-root logins; time: time-based access control",
+        "They all lock accounts",
+        "They all check passwords",
+        "They all set environment variables"
+      ],
+      "answer": 0,
+      "why": "Three targeted modules: group-gating su/root, blocking non-root login, and time-of-day control."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you check which facilities (module types) a given module supports?",
+      "options": [
+        "Read its man page, e.g. man 8 pam_unix (the MODULE TYPES PROVIDED section)",
+        "Run the module with --help",
+        "ls /etc/pam.d/",
+        "cat the module binary"
+      ],
+      "answer": 0,
+      "why": "man 8 <module> lists the module types it provides."
+    }
+  ]
+}

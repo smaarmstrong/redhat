@@ -1,0 +1,102 @@
+{
+  "source": "Security Enhancements - Introduction to PAM and basic usage: The four facilities, module return states, and control flags",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are the four PAM facilities (module types)?",
+      "options": [
+        "auth, account, session, and password",
+        "read, write, execute, own",
+        "user, group, other, all",
+        "login, logout, su, sudo"
+      ],
+      "answer": 0,
+      "why": "auth, account, session, password are the four facilities."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the auth facility do?",
+      "options": [
+        "Authenticates the applicant and establishes account credentials",
+        "Sets up and tears down sessions",
+        "Changes the password token",
+        "Checks time-of-day access"
+      ],
+      "answer": 0,
+      "why": "auth handles authentication; account handles non-auth availability (time/workload) checks."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the password facility do?",
+      "options": [
+        "Changes the authentication token (because it expired or the user wants to change it)",
+        "Authenticates the user",
+        "Sets up a session",
+        "Checks the server workload"
+      ],
+      "answer": 0,
+      "why": "password management updates the auth token."
+    },
+    {
+      "type": "mcq",
+      "q": "A PAM module returns one of which three states?",
+      "options": [
+        "success, failure, or ignore",
+        "yes, no, or maybe",
+        "pass or fail only",
+        "true or false"
+      ],
+      "answer": 0,
+      "why": "success (meets policy), failure (does not), or ignore (not involved in the policy)."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the 'required' control flag mean?",
+      "options": [
+        "The module must succeed, but failure is not reported to the user until all such modules in that interface have run",
+        "Failure is reported immediately",
+        "The result is ignored",
+        "Success ends the chain at once"
+      ],
+      "answer": 0,
+      "why": "required must pass; notification of failure is deferred until the chain finishes."
+    },
+    {
+      "type": "mcq",
+      "q": "How does 'requisite' differ from 'required'?",
+      "options": [
+        "On failure, requisite stops and notifies immediately; required keeps running the rest of the chain first",
+        "They are identical",
+        "requisite is optional",
+        "required stops immediately"
+      ],
+      "answer": 0,
+      "why": "requisite fails fast; required defers the failure."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the 'sufficient' control flag do?",
+      "options": [
+        "If it succeeds (and no prior required module failed) the user is authenticated with no further modules needed; if it fails, its result is ignored",
+        "It must succeed or auth fails",
+        "It always ends the chain on failure",
+        "It is always ignored"
+      ],
+      "answer": 0,
+      "why": "A successful sufficient short-circuits to grant; a failing one is skipped over."
+    },
+    {
+      "type": "mcq",
+      "q": "How does the 'substack' control differ from 'include'?",
+      "options": [
+        "Both pull in another file's lines, but with substack a requisite failure only ends the sub-stack (not the parent stack)",
+        "They are identical",
+        "include isolates failures; substack does not",
+        "Neither pulls in other files"
+      ],
+      "answer": 0,
+      "why": "substack nests a stack; a requisite failure inside it returns to the parent rather than killing it."
+    }
+  ]
+}

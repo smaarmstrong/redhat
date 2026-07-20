@@ -1,0 +1,8 @@
+{
+  "title": "Facilities, module states, and control flags",
+  "domain": "PAM",
+  "objective": "Security Enhancements - Introduction to PAM and basic usage: The four facilities, module return states, and control flags",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
