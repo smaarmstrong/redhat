@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - Large Scale Infrastructure: Directory layout, toggling roles, and testing",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In the proposed layout, what is site.yml's role?",
+      "options": [
+        "The orchestrator that includes the roles needed for the target nodes",
+        "The inventory",
+        "A role's task file",
+        "A variable file"
+      ],
+      "answer": 0,
+      "why": "site.yml is the conductor: it includes the roles required for the targets."
+    },
+    {
+      "type": "mcq",
+      "q": "How is a role made optional (able to be disabled) in site.yml?",
+      "options": [
+        "With a when condition using a default, e.g. when: enable_functionality1|default(true)",
+        "By deleting the role",
+        "With --skip-tags always",
+        "By commenting it out each time"
+      ],
+      "answer": 0,
+      "why": "Include the role with when: enable_functionalityN|default(...) so it can be toggled per node."
+    },
+    {
+      "type": "mcq",
+      "q": "What does enable_functionality2|default(false) mean?",
+      "options": [
+        "The functionality is OFF unless a variable enables it",
+        "It is always on",
+        "It errors if undefined",
+        "It enables debug output"
+      ],
+      "answer": 0,
+      "why": "default(false) leaves it disabled unless overridden to true."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you turn functionality2 ON for one specific host?",
+      "options": [
+        "Set enable_functionality2: true in that host's host_vars file",
+        "Edit the role's source",
+        "Always pass --tags",
+        "Rewrite site.yml"
+      ],
+      "answer": 0,
+      "why": "Setting enable_functionality2: true in host_vars/<host>.yml enables it for that node only."
+    },
+    {
+      "type": "mcq",
+      "q": "In `ansible-playbook -i ... -e \"target=client1\" site.yml`, what does -e do?",
+      "options": [
+        "Passes an extra variable (here target=client1, which drives hosts: \"{{ target }}\")",
+        "Skips client1",
+        "Sets a tag",
+        "Limits to a group named e"
+      ],
+      "answer": 0,
+      "why": "-e supplies extra-vars; target selects which hosts the play runs against."
+    },
+    {
+      "type": "mcq",
+      "q": "Where are the roles referenced by site.yml expected to live?",
+      "options": [
+        "Under a roles/ directory beside site.yml",
+        "In /etc/ansible",
+        "Inside the inventory",
+        "In group_vars"
+      ],
+      "answer": 0,
+      "why": "Roles live under roles/ at the same level as site.yml."
+    },
+    {
+      "type": "mcq",
+      "q": "A stated benefit of this organization is that...",
+      "options": [
+        "Your systems' specifics are separated from code, auditable, and centralized in inventory files",
+        "It removes the need for SSH",
+        "It makes Ansible faster than Puppet",
+        "It eliminates variables entirely"
+      ],
+      "answer": 0,
+      "why": "The information-system specifics are separated from code, easy to audit, and centralized in the inventories."
+    }
+  ]
+}

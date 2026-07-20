@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - Working with Filters: Joining, dict/list conversion, and set operations",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which filter joins list elements into a single string with a separator?",
+      "options": [
+        "join",
+        "concat",
+        "merge",
+        "implode"
+      ],
+      "answer": 0,
+      "why": "my_simple_list|join(\",\") produces a comma-separated string."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter turns a dictionary into a list of key/value items?",
+      "options": [
+        "dict2items",
+        "items2dict",
+        "to_list",
+        "dictsort"
+      ],
+      "answer": 0,
+      "why": "my_dictionary|dict2items yields a list of {key, value} entries."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter turns a list of items back into a dictionary?",
+      "options": [
+        "items2dict",
+        "dict2items",
+        "to_dict",
+        "zip"
+      ],
+      "answer": 0,
+      "why": "my_list|items2dict(key_name=..., value_name=...) builds a dict."
+    },
+    {
+      "type": "mcq",
+      "q": "In dict2items/items2dict, what do key_name and value_name do?",
+      "options": [
+        "Name which fields hold the key and the value in the transformation",
+        "Set default values",
+        "Sort the result",
+        "Filter out entries"
+      ],
+      "answer": 0,
+      "why": "You can specify the names of the key and value fields used in the conversion."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter merges two lists into one (all unique values from both)?",
+      "options": [
+        "union",
+        "intersect",
+        "difference",
+        "concat"
+      ],
+      "answer": 0,
+      "why": "a|union(b) is the set union of the two lists."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter keeps only values present in BOTH lists?",
+      "options": [
+        "intersect",
+        "union",
+        "difference",
+        "unique"
+      ],
+      "answer": 0,
+      "why": "a|intersect(b) keeps the shared values."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter keeps only the values in the first list that are NOT in the second?",
+      "options": [
+        "difference",
+        "intersect",
+        "union",
+        "symmetric_difference"
+      ],
+      "answer": 0,
+      "why": "a|difference(b) subtracts b's values from a."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter removes duplicate values from a list?",
+      "options": [
+        "unique",
+        "distinct",
+        "dedup",
+        "set"
+      ],
+      "answer": 0,
+      "why": "list|unique drops non-unique values."
+    }
+  ]
+}

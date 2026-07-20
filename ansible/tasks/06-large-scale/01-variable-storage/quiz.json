@@ -1,0 +1,90 @@
+{
+  "source": "Learning Ansible with Rocky - Large Scale Infrastructure: Variables storage and naming",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "For maintainable large-scale Ansible, the most important separation is...",
+      "options": [
+        "Separating the variables (data) from the Ansible code",
+        "Separating tasks from handlers",
+        "Separating hosts from groups",
+        "Separating roles from collections"
+      ],
+      "answer": 0,
+      "why": "Correctly separating variables from code is what keeps a large site maintainable."
+    },
+    {
+      "type": "mcq",
+      "q": "Ansible can auto-load variables from folders based on...",
+      "options": [
+        "The node's inventory name and its group memberships",
+        "The current date",
+        "The SSH key used",
+        "The module being run"
+      ],
+      "answer": 0,
+      "why": "group_vars and host_vars are loaded automatically by group membership and hostname."
+    },
+    {
+      "type": "mcq",
+      "q": "In the recommended layout, where do group-specific variables go?",
+      "options": [
+        "inventories/production/group_vars/<group>.yml",
+        "host_vars/<host>.yml",
+        "roles/<role>/vars/main.yml",
+        "site.yml"
+      ],
+      "answer": 0,
+      "why": "group_vars/<group>.yml holds variables for that group."
+    },
+    {
+      "type": "mcq",
+      "q": "Where do variables specific to a single host go?",
+      "options": [
+        "inventories/production/host_vars/<hostname>.yml",
+        "group_vars/<group>.yml",
+        "vars/global_vars.yml",
+        "defaults/main.yml"
+      ],
+      "answer": 0,
+      "why": "host_vars/<hostname>.yml holds per-host variables."
+    },
+    {
+      "type": "mcq",
+      "q": "If node hostname1 belongs to group1, which variable files load automatically?",
+      "options": [
+        "hostname1.yml (host_vars) and group1.yml (group_vars)",
+        "Only site.yml",
+        "Only the role defaults",
+        "None -- you must include them"
+      ],
+      "answer": 0,
+      "why": "Both the matching host_vars and group_vars files load automatically for that node."
+    },
+    {
+      "type": "mcq",
+      "q": "The chapter calls a server's inventory file its...",
+      "options": [
+        "Identity card -- holding every variable that differs from the defaults",
+        "Backup",
+        "Log file",
+        "Changelog"
+      ],
+      "answer": 0,
+      "why": "The inventory file becomes the server's identity card of non-default variables."
+    },
+    {
+      "type": "mcq",
+      "q": "Recommended variable-naming style inside roles?",
+      "options": [
+        "Prefix with the role name and prefer flat names (e.g. sshd_config_permitrootlogin)",
+        "Deep dictionaries (sshd.config.permitrootlogin)",
+        "Short random names",
+        "ALLCAPS globals"
+      ],
+      "answer": 0,
+      "why": "Prefix variables by role and prefer flat names over dictionaries for clarity when centralized."
+    }
+  ]
+}

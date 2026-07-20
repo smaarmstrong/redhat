@@ -1,0 +1,78 @@
+{
+  "source": "Learning Ansible with Rocky - Working With Jinja Templates: Building complete files with loops and data structures",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "In a Jinja template, how do you loop over a list?",
+      "options": [
+        "{% for component in components %} ... {% endfor %}",
+        "{{ for component in components }}",
+        "loop: components",
+        "[for component in components]"
+      ],
+      "answer": 0,
+      "why": "{% for %} / {% endfor %} is the Jinja control block for iteration."
+    },
+    {
+      "type": "mcq",
+      "q": "Which templating engine does the template module use?",
+      "options": [
+        "Jinja2",
+        "ERB",
+        "Mustache",
+        "Go text/template"
+      ],
+      "answer": 0,
+      "why": "The template module leverages the Jinja2 engine."
+    },
+    {
+      "type": "mcq",
+      "q": "components is a list of dicts with keys name/path/port. How is a component's port referenced?",
+      "options": [
+        "{{ component.port }}",
+        "{{ component[port] }}",
+        "{{ port }}",
+        "$component.port"
+      ],
+      "answer": 0,
+      "why": "Dot access on the loop item: {{ component.port }}."
+    },
+    {
+      "type": "mcq",
+      "q": "Beyond simple substitution, what advanced features does Jinja2 give in templates?",
+      "options": [
+        "Conditionals, loops, and filters",
+        "Only variable substitution",
+        "Database queries",
+        "SSH connection control"
+      ],
+      "answer": 0,
+      "why": "Jinja2 provides conditionals, loops, and filters for advanced template manipulation."
+    },
+    {
+      "type": "mcq",
+      "q": "Which is a recommended best practice for templates?",
+      "options": [
+        "Keep config logic in the templates (separation of concerns) and version-control them",
+        "Hardcode everything in the playbook",
+        "Never test them",
+        "Embed secrets directly in them"
+      ],
+      "answer": 0,
+      "why": "Separate the logic into templates, store them under version control, and test them independently."
+    },
+    {
+      "type": "mcq",
+      "q": "A key benefit of the template module for configuration management is that it...",
+      "options": [
+        "Separates configuration logic from data, making playbooks flexible and maintainable",
+        "Replaces the inventory",
+        "Removes the need for variables",
+        "Disables idempotency"
+      ],
+      "answer": 0,
+      "why": "It separates logic and data, improving flexibility and maintainability."
+    }
+  ]
+}

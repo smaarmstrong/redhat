@@ -22,7 +22,7 @@ chapter is missing from it.
 
 ## Chapters
 
-Quizzes are added chapter by chapter, pacing the book as it's actually read.
+All nine chapters of the book are covered.
 
 | Dir | Book chapter | Online page |
 |---|---|---|

@@ -1,0 +1,8 @@
+{
+  "title": "Fact caching and ansible-vault",
+  "domain": "Ansible Server Optimization",
+  "objective": "Learning Ansible with Rocky - Management Server Optimizations: Caching facts and encrypting secrets with vault",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

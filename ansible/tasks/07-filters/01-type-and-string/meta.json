@@ -1,0 +1,8 @@
+{
+  "title": "Type conversion and string filters",
+  "domain": "Ansible Jinja Filters",
+  "objective": "Learning Ansible with Rocky - Working with Filters: Converting data and transforming strings",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

@@ -1,0 +1,66 @@
+{
+  "source": "Learning Ansible with Rocky - Large Scale Infrastructure: Ansible tags",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What do Ansible tags let you do?",
+      "options": [
+        "Run or skip a subset of the tasks in your code",
+        "Encrypt variables",
+        "Define hosts",
+        "Schedule handlers"
+      ],
+      "answer": 0,
+      "why": "Tags let you execute or skip part of the tasks."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you attach a tag to a task?",
+      "options": [
+        "Add a tags: key to the task (e.g. tags: users)",
+        "Pass tag=users on the CLI",
+        "Write a # users comment",
+        "Use register: users"
+      ],
+      "answer": 0,
+      "why": "A tags: key on the task (or role) names its tag(s)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which ansible-playbook option runs ONLY the tasks with a given tag?",
+      "options": [
+        "--tags",
+        "--only",
+        "--filter",
+        "--select"
+      ],
+      "answer": 0,
+      "why": "--tags <name> limits the run to tasks carrying that tag."
+    },
+    {
+      "type": "mcq",
+      "q": "Which option does the opposite -- skips tasks with a given tag?",
+      "options": [
+        "--skip-tags",
+        "--no-tags",
+        "--exclude",
+        "--without"
+      ],
+      "answer": 0,
+      "why": "--skip-tags <name> runs everything except the tagged tasks."
+    },
+    {
+      "type": "mcq",
+      "q": "Tags can be applied to...",
+      "options": [
+        "Both individual tasks and whole roles",
+        "Only tasks",
+        "Only playbooks",
+        "Only handlers"
+      ],
+      "answer": 0,
+      "why": "The chapter tags both tasks and entire roles."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "source": "Learning Ansible with Rocky - Working with Filters: Converting data and transforming strings",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which filter reports a variable's (python) data type?",
+      "options": [
+        "type_debug",
+        "type",
+        "debug",
+        "typeof"
+      ],
+      "answer": 0,
+      "why": "var|type_debug shows the type, e.g. \"bool\"."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter converts an integer to a string?",
+      "options": [
+        "string",
+        "str",
+        "tostring",
+        "text"
+      ],
+      "answer": 0,
+      "why": "zero|string yields \"0\"."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter converts a string to an integer?",
+      "options": [
+        "int",
+        "integer",
+        "number",
+        "toint"
+      ],
+      "answer": 0,
+      "why": "zero_string|int parses it to an integer."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter converts a value to a boolean?",
+      "options": [
+        "bool",
+        "boolean",
+        "tobool",
+        "truthy"
+      ],
+      "answer": 0,
+      "why": "non_zero|bool coerces the value to a boolean."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter uppercases a string (turning It's false! into IT'S FALSE!)?",
+      "options": [
+        "upper",
+        "capitalize",
+        "ucase",
+        "title"
+      ],
+      "answer": 0,
+      "why": "whatever|upper uppercases the whole string (capitalize only changes the first letter)."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter lowercases a string?",
+      "options": [
+        "lower",
+        "downcase",
+        "min",
+        "tolower"
+      ],
+      "answer": 0,
+      "why": "whatever|lower lowercases the string."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter replaces occurrences of a substring with another?",
+      "options": [
+        "replace",
+        "sub",
+        "gsub",
+        "tr"
+      ],
+      "answer": 0,
+      "why": "whatever|replace(\"false\", \"true\") swaps the text."
+    },
+    {
+      "type": "mcq",
+      "q": "Which filter splits a string into a list on a separator?",
+      "options": [
+        "split",
+        "cut",
+        "tokenize",
+        "explode"
+      ],
+      "answer": 0,
+      "why": "whatever|split(\" \") returns a list of pieces."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "List and dictionary filters",
+  "domain": "Ansible Jinja Filters",
+  "objective": "Learning Ansible with Rocky - Working with Filters: Joining, dict/list conversion, and set operations",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}
