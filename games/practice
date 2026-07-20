@@ -7,7 +7,8 @@ job to do on the system; the grader then checks the *end state* (the way the rea
 exam is scored), not the commands you typed.
 
 Usage:
-    practice learn                # teach the next new task, then let you try it
+    practice learn                # offer a section menu, then teach that section's next task
+    practice learn  [track]       # skip the menu — teach the next task in one section
     practice train  [track]       # auto-pick what to do next (review or new) and start it
     practice check                # grade the task you're currently on
     practice list   [track]       # all tasks (or one track), grouped by domain, with your status
@@ -17,10 +18,11 @@ Usage:
     practice reset  <id>          # re-run setup to start the task over
     practice status               # your XP, streak, and completion
 
-New to the material? Run `practice learn` — it explains the concept behind the
-next task, then sets it up so you can try it. Once you know the ropes, `practice
-train` just picks what to practise next (new material or a review) so you don't
-have to decide.
+New to the material? Run `practice learn` — it offers a menu of sections (each
+with a completion bar), or just press Enter to continue the autopilot path; it
+then explains the next task and sets it up so you can try it. Once you know the
+ropes, `practice train` just picks what to practise next (new material or a
+review) so you don't have to decide.
 
 <id> can be the full "domain/nn-name" or just the unique trailing name. For
 check/solution/reset you can omit <id> to act on the task train/start gave you.
@@ -661,17 +663,79 @@ def run_lesson(beats):
             print(DIM("  " + "─" * 49))
     return True
 
+def track_stats(tasks, st):
+    """(track, done, total) for every non-empty track, in TRACKS order."""
+    out = []
+    for track in TRACKS:
+        tt = [t for t in tasks.values() if t["track"] == track]
+        if not tt:
+            continue
+        done = sum(1 for t in tt
+                   if st["tasks"].get(t["id"], {}).get("status") == "done")
+        out.append((track, done, len(tt)))
+    return out
+
+def _bar(done, total, width=10):
+    filled = min(width, round(width * done / total)) if total else 0
+    return "#" * filled + "-" * (width - filled)
+
+def pick_track(tasks, st, have_spare):
+    """Interactive section menu for a bare `learn`. Returns a track name to
+    focus on, None to 'continue' (the autopilot pick), or "__quit__". A
+    non-interactive stdin (piped / CI) returns None with no menu, so scripted
+    runs behave exactly as before."""
+    if not sys.stdin.isatty():
+        return None
+    stats = track_stats(tasks, st)
+    if len(stats) <= 1:                       # only one section — nothing to pick
+        return None
+    nxt = next_new(tasks, st, have_spare, None)   # what "continue" would teach
+    cont = f"{nxt['track']} / {nxt.get('title', '')}" if nxt else "all caught up"
+    print()
+    print(BLD("Pick a path") +
+          DIM(" — or press Enter to continue where you left off."))
+    print()
+    print("   " + GRN(BLD("> ")) + BLD("Continue") + DIM(f"   next: {cont}"))
+    for i, (track, done, total) in enumerate(stats, 1):
+        pct = round(100 * done / total) if total else 0
+        colour = GRN if pct == 100 else (YEL if pct else DIM)
+        print(f"  {i:>2}  {track:<13} {colour(_bar(done, total))}  "
+              f"{pct:>3}%  " + DIM(f"({done}/{total})"))
+    print()
+    while True:
+        choice = ask("  choice [Enter = continue]: ")
+        if choice in ("", "c", "continue"):
+            return None
+        if choice in ("q", "quit"):
+            return "__quit__"
+        if choice.isdigit() and 1 <= int(choice) <= len(stats):
+            return stats[int(choice) - 1][0]
+        if choice in {track for track, _, _ in stats}:
+            return choice
+        print(DIM("  Enter a number from the list, a section name, or just Enter."))
+
 def cmd_learn(tasks, st, ident=None, focus=None):
     """Teach a task like a tutor: a paced lecture from learn.md, telling you
-    which commands to run as you go, then a solo practice run. With no id, it
-    teaches the next new task — the same one `train` would give you."""
+    which commands to run as you go, then a solo practice run. A bare `learn`
+    (no id, no section) first offers a section menu; picking one teaches that
+    section's next task, while Enter continues the autopilot path."""
+    if ident is None and focus is None:
+        choice = pick_track(tasks, st, spare_present())
+        if choice == "__quit__":
+            print(DIM("No worries — come back with:  ") + f"{INVOKE} learn")
+            return
+        focus = choice                        # None = continue (autopilot)
     if ident:
         t = resolve(tasks, ident)
     else:
         t = next_new(tasks, st, spare_present(), focus)
         if t is None:
-            print(DIM("You've started every task already. "
-                      "Revisit a lesson with:  practice learn <id>"))
+            if focus:
+                print(GRN(f"Nothing new left in {focus} — that section is done.") +
+                      DIM("  Pick another with:  ") + f"{INVOKE} learn")
+            else:
+                print(DIM("You've started every task already. "
+                          "Revisit a lesson with:  practice learn <id>"))
             return
     short = t["id"].split("/")[-1]
     if is_quiz(t):
