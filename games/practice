@@ -38,7 +38,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible"]
+TRACKS = ["rocky", "foundations", "rhcsa", "rhce", "ansible", "bash"]
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "rhcsa-trainer/progress.json"
 
 # How the learner invoked us, so hints name a command they can actually run.
@@ -208,6 +208,7 @@ def curriculum_key(t):
 GUIDE_BASE = {
     "rocky": "https://docs.rockylinux.org/books/admin_guide",
     "ansible": "https://docs.rockylinux.org/books/learning_ansible",
+    "bash": "https://docs.rockylinux.org/books/learning_bash",
 }
 GUIDE_PAGES = {
     "rocky": {
@@ -240,6 +241,17 @@ GUIDE_PAGES = {
         "07-filters": "07-working-with-filters",
         "08-server-optimizations": "08-management-server-optimizations",
         "09-jinja-templates": "09-working-with-jinja-template",
+    },
+    # Learning bash with Rocky — chapter dir -> learning_bash book slug.
+    "bash": {
+        "01-first-script": "01-first-script",
+        "02-using-variables": "02-using-variables",
+        "03-data-manipulation": "03-data-entry-and-manipulations",
+        "04-check-knowledge-1": "04-check-your-knowledge",
+        "05-tests": "05-tests",
+        "06-conditionals": "06-conditional-structures",
+        "07-loops": "07-loops",
+        "08-check-knowledge-2": "08-check-your-knowledge",
     },
 }
 
