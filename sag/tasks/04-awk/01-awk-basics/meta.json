@@ -1,0 +1,8 @@
+{
+  "title": "awk basics: records, fields, and structure",
+  "domain": "awk",
+  "objective": "Sed, Awk & Grep - Awk command: What awk is, its record/field model, and program structure",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

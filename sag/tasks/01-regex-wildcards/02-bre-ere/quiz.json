@@ -1,0 +1,90 @@
+{
+  "source": "Sed, Awk & Grep - Regular expressions and wildcards: The regex schools (POSIX BRE/ERE, PCRE) and their metacharacters",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What are the two POSIX regular-expression flavors?",
+      "options": [
+        "BRE (Basic) and ERE (Extended)",
+        "PCRE and POSIX",
+        "GRE and XRE",
+        "NRE and SRE"
+      ],
+      "answer": 0,
+      "why": "POSIX defines BRE and ERE (plus POSIX character classes); PCRE (Perl) is a separate school."
+    },
+    {
+      "type": "mcq",
+      "q": "Which grep option enables ERE?",
+      "options": [
+        "-E",
+        "-P",
+        "-G",
+        "-r"
+      ],
+      "answer": 0,
+      "why": "grep -E = ERE; -P = PCRE; -G = BRE (the default)."
+    },
+    {
+      "type": "mcq",
+      "q": "In a regular expression, what do ^ and $ anchor?",
+      "options": [
+        "The beginning and the end of a line",
+        "Word boundaries",
+        "Any single character",
+        "A character range"
+      ],
+      "answer": 0,
+      "why": "^ matches line start, $ matches line end."
+    },
+    {
+      "type": "mcq",
+      "q": "What does . match in a regular expression?",
+      "options": [
+        "Any single character except a line break",
+        "A literal dot only",
+        "Zero characters",
+        "The end of the line"
+      ],
+      "answer": 0,
+      "why": ". is any one character (except newline); escape it as \\. to match a literal dot."
+    },
+    {
+      "type": "mcq",
+      "q": "In BRE, how do you match 'the previous character, 2 to 4 times'?",
+      "options": [
+        "\\{2,4\\} (escaped braces)",
+        "{2,4}",
+        "+{2,4}",
+        "[2-4]"
+      ],
+      "answer": 0,
+      "why": "BRE requires escaped braces \\{n,m\\}; ERE uses plain {n,m}."
+    },
+    {
+      "type": "mcq",
+      "q": "ERE adds + and ? quantifiers -- what do they mean?",
+      "options": [
+        "+ is one-or-more of the previous char; ? is zero-or-one",
+        "+ is zero-or-more; ? is one-or-more",
+        "Both mean optional",
+        "Both mean exactly one"
+      ],
+      "answer": 0,
+      "why": "ERE + = 1 or more, ? = 0 or 1."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the shorthands \\d, \\w and \\s stand for?",
+      "options": [
+        "\\d=[0-9], \\w=[a-zA-Z0-9], \\s=whitespace",
+        "letters, digits, spaces respectively",
+        "\\d=any, \\w=word, \\s=start",
+        "they are literal backslash-letters"
+      ],
+      "answer": 0,
+      "why": "\\d digits, \\w word chars, \\s whitespace; the capital forms (\\D \\W \\S) negate them."
+    }
+  ]
+}

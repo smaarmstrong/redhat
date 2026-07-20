@@ -1,0 +1,90 @@
+{
+  "source": "Sed, Awk & Grep - Regular expressions and wildcards: The Three Swordsmen, and wildcards versus regular expressions",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which philosophy does the book open with about GNU/Linux?",
+      "options": [
+        "Everything is a file",
+        "Everything is a process",
+        "Everything is a socket",
+        "Everything is a package"
+      ],
+      "answer": 0,
+      "why": "The 'everything is a file' philosophy is why admins constantly process files, names and content."
+    },
+    {
+      "type": "mcq",
+      "q": "Who are the 'Three Swordsmen' for processing file content?",
+      "options": [
+        "grep, sed, and awk",
+        "cat, less, and more",
+        "find, locate, and which",
+        "cut, tr, and sort"
+      ],
+      "answer": 0,
+      "why": "grep, sed and awk are the potent, frequently-used content-processing trio."
+    },
+    {
+      "type": "mcq",
+      "q": "What is the key difference between regular expressions and wildcards?",
+      "options": [
+        "Regex match file CONTENT (grep/sed/awk); wildcards match file/dir NAMES (cp/find/mv/touch/ls)",
+        "They are identical",
+        "Regex match names; wildcards match content",
+        "Regex only work in awk"
+      ],
+      "answer": 0,
+      "why": "Same symbols, different jobs: regex on content, wildcards (globbing) on names."
+    },
+    {
+      "type": "mcq",
+      "q": "As a wildcard, what does ? match?",
+      "options": [
+        "Exactly one character of a file/dir name",
+        "Zero or more characters",
+        "Only a digit",
+        "A range of files"
+      ],
+      "answer": 0,
+      "why": "? matches a single character; * matches zero or more."
+    },
+    {
+      "type": "mcq",
+      "q": "As a wildcard, what does * match?",
+      "options": [
+        "Zero or more arbitrary characters of a name",
+        "Exactly one character",
+        "Only digits",
+        "Only letters"
+      ],
+      "answer": 0,
+      "why": "* matches 0+ characters in a file/dir name."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the brace expansion {1..3} produce (as in mkdir dir{1..3})?",
+      "options": [
+        "1 2 3 -- a continuous range (like [1-3])",
+        "the literal text {1..3}",
+        "1 and 3 only",
+        "nothing"
+      ],
+      "answer": 0,
+      "why": "{..} expands a continuous range; {,} (e.g. {1,5,9}) expands a discrete list."
+    },
+    {
+      "type": "mcq",
+      "q": "What does [0-9] match (as a wildcard or in a bracket expression)?",
+      "options": [
+        "Any single character in the range 0 to 9",
+        "The literal text 0-9",
+        "0 or 9 only",
+        "Any digit sequence"
+      ],
+      "answer": 0,
+      "why": "[-] matches one character within the given range."
+    }
+  ]
+}

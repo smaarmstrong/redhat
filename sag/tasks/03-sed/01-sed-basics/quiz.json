@@ -1,0 +1,78 @@
+{
+  "source": "Sed, Awk & Grep - Sed command: How sed works, its options, and addressing lines",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does sed stand for?",
+      "options": [
+        "Stream Editor",
+        "Sequential Editor",
+        "Simple Editor",
+        "System Editor"
+      ],
+      "answer": 0,
+      "why": "sed is the Stream Editor."
+    },
+    {
+      "type": "mcq",
+      "q": "Which memory area holds the line sed is currently processing?",
+      "options": [
+        "The pattern space (with an optional hold space)",
+        "The stack",
+        "The heap",
+        "A temporary file"
+      ],
+      "answer": 0,
+      "why": "sed reads a line into the pattern space, processes it, outputs, and clears it; the hold space is extra storage."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -n option do?",
+      "options": [
+        "Suppress automatic printing (so only commands like p produce output)",
+        "Number the lines",
+        "Do a dry run",
+        "Do nothing"
+      ],
+      "answer": 0,
+      "why": "-n plus the p command prints only the lines you select."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the -i option do?",
+      "options": [
+        "Edit the file in place",
+        "Ignore case",
+        "Insert a line",
+        "Run interactively"
+      ],
+      "answer": 0,
+      "why": "-i modifies the original file."
+    },
+    {
+      "type": "mcq",
+      "q": "Which option enables extended regular expressions in sed?",
+      "options": [
+        "-r (or -E)",
+        "-n",
+        "-g",
+        "-P"
+      ],
+      "answer": 0,
+      "why": "sed -r (or -E) turns on ERE."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the address '23,26p' select, and what does $ mean?",
+      "options": [
+        "Lines 23 to 26 (an addr1,addr2 range); $ is the last line",
+        "The 23rd to 26th character; $ is a variable",
+        "Columns 23-26; $ is end-of-line",
+        "23 times; $ is a prompt"
+      ],
+      "answer": 0,
+      "why": "addr1,addr2 is a line range; $ matches the last line; /regexp/ and first~step are other address forms."
+    }
+  ]
+}

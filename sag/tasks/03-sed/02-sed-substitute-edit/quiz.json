@@ -1,0 +1,78 @@
+{
+  "source": "Sed, Awk & Grep - Sed command: s///, backreferences, and the a/i/c/n commands",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What is the sed substitution syntax?",
+      "options": [
+        "s/regexp/replacement/",
+        "r/old/new/",
+        "sub(old,new)",
+        "replace old new"
+      ],
+      "answer": 0,
+      "why": "The s command substitutes: s/regexp/replacement/."
+    },
+    {
+      "type": "mcq",
+      "q": "What does the trailing g do in s/old/new/g?",
+      "options": [
+        "Replaces ALL matches on a line, not just the first",
+        "Makes it greedy across files",
+        "Ignores case",
+        "Prints the line"
+      ],
+      "answer": 0,
+      "why": "Without g, only the first match on each line is replaced."
+    },
+    {
+      "type": "mcq",
+      "q": "In a replacement, what does & refer to?",
+      "options": [
+        "The whole string that was matched",
+        "A shell variable",
+        "A newline",
+        "Capture group 1"
+      ],
+      "answer": 0,
+      "why": "& inserts the entire matched text into the replacement."
+    },
+    {
+      "type": "mcq",
+      "q": "In sed, what does \\1 refer to?",
+      "options": [
+        "The text captured by the first () group",
+        "The whole match",
+        "The first line",
+        "A literal 1"
+      ],
+      "answer": 0,
+      "why": "\\1, \\2 ... are backreferences to parenthesized groups."
+    },
+    {
+      "type": "mcq",
+      "q": "What do the a\\text and i\\text commands do?",
+      "options": [
+        "a appends line(s) AFTER the matched line; i inserts line(s) BEFORE it",
+        "a inserts before; i appends after",
+        "both replace the line",
+        "both delete the line"
+      ],
+      "answer": 0,
+      "why": "a = append after, i = insert before, c = change (replace) the line."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you print ONLY the lines that were substituted?",
+      "options": [
+        "Use the p flag on s together with -n, e.g. sed -n 's/a/b/p'",
+        "Use s///d",
+        "Use plain s///",
+        "Use p on its own"
+      ],
+      "answer": 0,
+      "why": "-n suppresses auto-print and the p flag on s prints just the changed lines (the I flag would make the match case-insensitive)."
+    }
+  ]
+}

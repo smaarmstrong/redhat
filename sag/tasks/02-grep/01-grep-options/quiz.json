@@ -1,0 +1,90 @@
+{
+  "source": "Sed, Awk & Grep - Grep command: What grep does and its match/output options",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "What does grep do?",
+      "options": [
+        "Filters (matches) the content of one or more files by a pattern",
+        "Renames files",
+        "Lists directories",
+        "Edits files in place"
+      ],
+      "answer": 0,
+      "why": "grep filters file content line by line against a pattern."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -i do?",
+      "options": [
+        "Ignore case",
+        "Invert the match",
+        "Include a file",
+        "Print an index"
+      ],
+      "answer": 0,
+      "why": "-i makes matching case-insensitive."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -v do?",
+      "options": [
+        "Select the lines that do NOT match (invert)",
+        "Verbose output",
+        "Print the version",
+        "View only"
+      ],
+      "answer": 0,
+      "why": "-v inverts: it prints non-matching lines."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -r do?",
+      "options": [
+        "Recursively search directories",
+        "Reverse the output",
+        "Raw output",
+        "Use regex"
+      ],
+      "answer": 0,
+      "why": "-r recurses into directories."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -c do?",
+      "options": [
+        "Print the count of matching lines per file",
+        "Print the content",
+        "Show columns",
+        "Add context"
+      ],
+      "answer": 0,
+      "why": "-c reports how many lines matched."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -o do?",
+      "options": [
+        "Print only the matched text, not the whole line",
+        "Write to an output file",
+        "Omit filenames",
+        "Show an offset"
+      ],
+      "answer": 0,
+      "why": "-o outputs just the matching part of each line."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -f FILE do?",
+      "options": [
+        "Read patterns from FILE, one per line",
+        "Force the match",
+        "Set the format",
+        "Select a field"
+      ],
+      "answer": 0,
+      "why": "-f reads patterns from a file; -e adds patterns inline, -w matches whole words, -x whole lines."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "awk built-in variables and operators",
+  "domain": "awk",
+  "objective": "Sed, Awk & Grep - Awk command: FS/OFS/RS/ORS, NF/NR/FNR, and the match operators",
+  "est_min": 6,
+  "needs": "",
+  "kind": "quiz"
+}

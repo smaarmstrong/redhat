@@ -1,0 +1,66 @@
+{
+  "source": "Sed, Awk & Grep - Grep command: Context options and include/exclude filters",
+  "pass_pct": 80,
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "Which option prints NUM lines of context AFTER each match?",
+      "options": [
+        "-A NUM",
+        "-B NUM",
+        "-C NUM",
+        "-m NUM"
+      ],
+      "answer": 0,
+      "why": "-A = after, -B = before, -C = both."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -B NUM do?",
+      "options": [
+        "Print NUM lines of leading context before each match",
+        "NUM lines after",
+        "NUM lines both sides",
+        "The first NUM matches"
+      ],
+      "answer": 0,
+      "why": "-B is the leading (before) context."
+    },
+    {
+      "type": "mcq",
+      "q": "What does -m NUM do?",
+      "options": [
+        "Stop after the first NUM matching results",
+        "Set the max line length",
+        "Match NUM files",
+        "Set a minimum"
+      ],
+      "answer": 0,
+      "why": "-m limits how many matches are output."
+    },
+    {
+      "type": "mcq",
+      "q": "How do you strip blank lines and comment lines from a config file with grep?",
+      "options": [
+        "grep -v -E \"^$|^#\" file",
+        "grep -E \"^$|^#\" file",
+        "grep -o \"^#\" file",
+        "grep -c \"^$\" file"
+      ],
+      "answer": 0,
+      "why": "-v inverts a pattern matching empty lines (^$) or comment lines (^#)."
+    },
+    {
+      "type": "mcq",
+      "q": "What do --include and --exclude control in a recursive grep?",
+      "options": [
+        "Which files (by filename pattern) are searched or skipped",
+        "Which content lines to keep",
+        "Directories only",
+        "The output format"
+      ],
+      "answer": 0,
+      "why": "They filter which files are searched by name; --exclude-dir skips directories."
+    }
+  ]
+}
